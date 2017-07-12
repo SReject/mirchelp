@@ -34,6 +34,7 @@ window.onload = function () {
         var link = './' + location.hash.substring(1);
         var ele = document.querySelector('a[href="' + link + '"]');
         if (ele) {
+            selectedNode = ele;
             removeCssClass(selectedNode, 'selected');
             addCssClass(ele, 'selected');
             iframe.setAttribute('src', link);
