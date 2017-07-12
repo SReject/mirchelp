@@ -27,6 +27,7 @@ window.onload = function () {
             var href = node.getAttribute('href');
             iframe.setAttribute('src', href);
             location.hash = href.substring(2);
+            window.scrollTo(0,0);
         });
     });
     if (/^#[a-z\d_]+\.html(?:#.*)?$/i.test(location.hash)) {
