@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>DDE</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="DDE" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">DDE</span></p>
+<p>&nbsp;</p>
+<p>mIRC supports <span class="f_Bolddefault">DDE</span> communication, which allows external applications to control mIRC or to request information from it. Note that it is also possible to communicate with mIRC directly by using <a href="sendmessage.html">SendMessage()</a>. The default DDE service name is <span class="f_Bolddefault">mIRC,</span> though this can be changed in the options dialog.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">DDE Topics</span></p>
+<p>mIRC supports the following DDE Topics.</p>
+<p>&nbsp;</p>
+<p>For each of the following DDE topics an example is given using the /dde command and $dde() identifier (both are explained after this section) which should help you understand how they work.</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">COMMAND</span></p>
+<p>Transaction Type: XTYP_POKE</p>
+<p>Item: None</p>
+<p>Data (Arguments): One line of text containing the command to be performed.</p>
+<p>Returns:Nothing</p>
+<p>Example: /dde mirc command &quot;&quot; /server irc.dal.net</p>
+<p>Description: This tells mIRC to execute whatever command you give it.</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">EVALUATE</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: The line of text containing variables or identifiers that you want evaluated</p>
+<p>Data (Arguments): None</p>
+<p>Returns:Evaluated line</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">CONNECT</span></p>
+<p>Transaction Type: XTYP_POKE</p>
+<p>Item: None</p>
+<p>Data (Arguments): one line of text in the form: address,port,channel,number</p>
+<p>Returns:Nothing</p>
+<p>Example: /dde mirc connect &quot;&quot; irc.undernet.org,6667,#mIRC,1</p>
+<p>Description: This will tell mIRC to connect to the server irc.undernet.org, port 6667 and after it has connected it will automatically join channel #mIRC. If the number at the end is a 1 then the mIRC window will be activated, if it is a 0 it will not.</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">CONNECTED</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns:&quot;connected&quot; if you are connected to a server, &quot;connecting&quot; if you are in the process of connecting to a server, and &quot;not connected&quot; if you are not currently connected to a server.</p>
+<p>Example: //echo mIRC is currently $dde(mirc, connected) to a server</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">EXENAME</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns: The full path and name of the mIRC EXE file. eg. &quot;c:\mirc\mirc.exe&quot;</p>
+<p>Example: //echo The mIRC exe path and name is $dde(mirc, exename)</p>
+<p>Description: This might be useful for applications that need to know the path and name of the exe file.</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">VERSION</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns: mIRC version info.</p>
+<p>Example: //echo The version number is $dde(mirc, version)</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">INIFILE</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns: The full path and name of the main INI file that is being used. eg. &quot;c:\mirc\mirc.ini&quot;</p>
+<p>Example: //echo The main ini file is $dde(mirc, inifile)</p>
+<p>Description: This might be useful for applications that need to take a look at the INI file for various bits of information.</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">NICKNAME</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns: The nickname currently being used.</p>
+<p>Example: //echo My mIRCbot is using the nickname $dde(mirc, nickname)</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">SERVER</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns: The server to which you were last or are currently connected. eg. &quot;irc.undernet.org&quot;</p>
+<p>Example: //echo The current server is $dde(mirc, server)</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">PORT</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns: The port currently being used to connect to the irc server</p>
+<p>Example: //echo My mIRCbot is using port $dde(mirc, port)</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">CHANNELS</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: None</p>
+<p>Data (Arguments): None</p>
+<p>Returns: A single line of text listing the channels which you are currently on separated by spaces. eg. &quot;#mirc #mircremote #irchelp&quot;</p>
+<p>Example: This should only be called by an application, not from within an mIRC alias.</p>
+<p>Description: The line of text that this returns could be quite long, so an application should be prepared to handle this.</p>
+<p>&nbsp;</p>
+<p>Topic: <span class="f_Bolddefault">USERS</span></p>
+<p>Transaction Type: XTYP_REQUEST</p>
+<p>Item: Channel name, in the form #channel</p>
+<p>Data (Arguments): None</p>
+<p>Returns: A single line of text listing the users on the specified channel separated by spaces.</p>
+<p>Example: This should definitely only be called by an application, not from within an mIRC alias.</p>
+<p>Description: You can only request the names of users on a channel which mIRC has joined. The line of text that this returns could be quite long, so an application should be prepared to handle this.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">DDE Commands and Identifiers</span></p>
+<p>The following commands and identifiers allow you to communicate with other DDE-enabled applications.</p>
+<p>&nbsp;</p>
+<p>All DDE transactions are <span class="f_Bolddefault">synchronous</span>, mIRC waits at most one second for a reply or acknowledgement to any DDE request that it makes.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ddeserver"></a><span class="f_Bolddefault">/ddeserver [[on [service name]] | off]</span></p>
+<p>The default DDE service name is mIRC. The mIRC DDE Server defaults to on at startup unless it finds another mIRC or another application using its current DDE Service name.</p>
+<p>&nbsp;</p>
+<p>You can use the /ddeserver command to manually turn the dde server on or off. If you have more than one mIRC acting as a DDE server then you should specify a different <span class="f_Bolddefault">service name</span> for each mIRC.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dde"></a><span class="f_Bolddefault">/dde [-re] &lt;service&gt; &lt;topic&gt; &lt;item&gt; [data]</span></p>
+<p>This sends an <span class="f_Bolddefault">XTYP_POKE</span> by defaults unless you specify the <span class="f_Bolddefault">-r</span> switch in which case an <span class="f_Bolddefault">XTYP_REQUEST</span> is sent, or if you specify the <span class="f_Bolddefault">-e</span> switch, an <span class="f_Bolddefault">XTYP_EXECUTE</span> is sent.</p>
+<p>&nbsp;</p>
+<p>If you are sending an <span class="f_Bolddefault">XTYP_POKE</span> then all four arguments are mandatory.</p>
+<p>&nbsp;</p>
+<p>If you are sending an <span class="f_Bolddefault">XTYP_REQUEST</span> then the first three arguments are mandatory. This is why you can see a <span class="f_Bolddefault">&quot;&quot;</span> in the examples above, it acts as a filler and is not actually used for anything.</p>
+<p>&nbsp;</p>
+<p>If you are sending an <span class="f_Bolddefault">XTYP_EXECUTE</span> then only the first three arguments are required.</p>
+<p>&nbsp;</p>
+<p><a name="id_dde"></a><span class="f_Bolddefault">$dde(name, topic, item, delay)</span></p>
+<p>Returns the value returned by the specified service name, topic, and item, by sending an XTYP_REQUEST.</p>
+<p>&nbsp;</p>
+<p>//echo My other mIRC is $dde(mirc, connected) to $dde(mirc, server)</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">item</span> and <span class="f_Bolddefault">delay</span> parameters are optional.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">delay</span> value indicates that you want $dde() to wait N seconds for a reply before giving up. The default is one second, which is usually enough.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If the value returned by $dde is too long for mIRC to handle, $dde returns a value of $error.</p>
+<p>&nbsp;</p>
+<p><a name="id_isdde"></a><span class="f_Bolddefault">$isdde(name)</span></p>
+<p>Returns $true if the specified dde name is in use, $false otherwise.</p>
+<p>&nbsp;</p>
+<p><a name="id_ddename"></a><span class="f_Bolddefault">$ddename</span></p>
+<p>Returns the current dde service name in use by the mIRC DDE Server.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Sockets</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Sockets" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Sockets</span></p>
+<p>&nbsp;</p>
+<p>Socket support allows you to create your own raw socket connections in order to send and receive information. You should already be an <span class="f_Bolddefault">expert</span> at writing <a href="aliases.html">Aliases</a>, <a href="popups.html">Popups</a>, and <a href="remote.html">Scripts</a> before attempting to use sockets.</p>
+<p>&nbsp;</p>
+<p>Sockets are a <span class="f_Bolddefault">limited resource</span> so it is important that you understand how these commands work before trying to use them. Sockets should always be closed after they have been used to make them available to other applications.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Socket Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$sock"></a><span class="f_Bolddefault">$sock(name,N)</span></p>
+<p>This returns information about a socket connection that you created using the socket commands.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> name, ip, addr, port, status, sent, rcvd, sq, rq, ls, lr, mark, type, saddr, sport, to, wserr, wsmsg, bindip, bindport, ssl, pause</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">.name</span> is the name you give to a connection to identify it</p>
+<p><span class="f_Bolddefault">.addr</span> original named address if one was used.</p>
+<p><span class="f_Bolddefault">.sent</span> and <span class="f_Bolddefault">.rcvd</span> return the number of bytes sent and rcvd over that connection so far</p>
+<p><span class="f_Bolddefault">.sq</span> and <span class="f_Bolddefault">.rq</span> return the number of bytes queued in the send and receive buffers respectively</p>
+<p><span class="f_Bolddefault">.ls</span> and <span class="f_Bolddefault">.lr</span> return the number of seconds since the connection last sent and last received info</p>
+<p><span class="f_Bolddefault">.mark</span> is a user storage area max. 512 bytes (see /sockmark)</p>
+<p><span class="f_Bolddefault">.type</span> returns the socket type, TCP or UDP</p>
+<p><span class="f_Bolddefault">.saddr</span> and <span class="f_Bolddefault">.sport</span> return the source address and port of the last received UDP packet</p>
+<p><span class="f_Bolddefault">.to</span> returns the number of seconds the socket has been open</p>
+<p><span class="f_Bolddefault">.wserr</span> returns the last winsock error number that occurred on a socket</p>
+<p><span class="f_Bolddefault">.wsmsg</span> returns the last winsock error message match the error number</p>
+<p><span class="f_Bolddefault">.ssl </span>returns $true for an SSL connection</p>
+<p><span class="f_Bolddefault">.pause </span>returns $true if a socket has been paused</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use a wildcard name to quickly reference matching entries. The N parameter is optional, if it is not specified it is assumed to be 1.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sockname"></a><span class="f_Bolddefault">$sockname</span></p>
+<p>$sockname is the name given to a connection to identify it. This identifier can be used in events to know which connection an event is related to.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sockerr"></a><span class="f_Bolddefault">$sockerr</span></p>
+<p>$sockerr is set to a value after each socket command/event and <span class="f_Bolddefault">must</span> be checked after each socket command and before processing an event to see if an error occurred.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sockbr"></a><span class="f_Bolddefault">$sockbr</span></p>
+<p>$sockbr is set to the number of bytes read by a /sockread command. It is used to test whether any information was in fact read from the buffer (see below for more info).</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Socket Commands and Events</span></p>
+<p>&nbsp;</p>
+<p>The following information lists associated commands and script events together for easy reference.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Listening for and Accepting incoming connections</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_socklisten"></a><span class="f_Bolddefault">/socklisten [-dp] [bindip] &lt;name&gt; [port]</span></p>
+<p>The /socklisten command listens on the specified port for connections to that port. If a port is not specified, the port is selected randomly from the range specified in the DCC Options dcc ports section.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-d</span> switch indicates that you specified an ip address as the bind address.</p>
+<p>The <span class="f_Bolddefault">-p</span> switch enables UPnP support for the listening socket, if that is available.</p>
+<p>&nbsp;</p>
+<p><a name="onsocklisten"></a><span class="f_Bolddefault">on 1:socklisten:name:commands</span></p>
+<p>The socklisten event is triggered when someone tries to connect to a port that you are listening on. If you want to accept the connection you <span class="f_Bolddefault">must</span> do it in this event using the /sockaccept command, otherwise the connection is closed.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockaccept"></a><span class="f_Bolddefault">/sockaccept &lt;name&gt;</span></p>
+<p>The /sockaccept command accepts the current connection to your listening port and assigns it a name to identify it.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockrename"></a><span class="f_Bolddefault">/sockrename &lt;name&gt; &lt;newname&gt;</span></p>
+<p>The /sockrename command assigns a new name to an existing connection.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Opening and Closing connections</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockopen"></a><span class="f_Bolddefault">/sockopen [-de64] [bindip] &lt;name&gt; &lt;address&gt; &lt;port&gt;</span></p>
+<p>The /sockopen command initiates a connection to the specified address and port. You can specify either an ip address or a named address (which will be resolved to an ip address).</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-d</span> switch means that you specified an ip address as the bind address.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-e</span> switch creates an SSL connection.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-46</span> switches are optional and specify the IPv4/IPv6 context when resolving named addresses.</p>
+<p>&nbsp;</p>
+<p><a name="onsockopen"></a><span class="f_Bolddefault">on 1:sockopen:name:commands</span></p>
+<p>The sockopen event is triggered when a /sockopen command is successful and a connection has been made.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockclose"></a><span class="f_Bolddefault">/sockclose &lt;name&gt;</span></p>
+<p>The /sockclose command closes the connection with the specified name. If you specify a wildcard name, all connections that match the wildcard are closed.</p>
+<p>&nbsp;</p>
+<p><a name="onsockclose"></a><span class="f_Bolddefault">on 1:sockclose:name:commands</span></p>
+<p>The sockclose event is triggered when a connection is closed by the remote connection (not you).</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Sending information</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockwrite"></a><span class="f_Bolddefault">/sockwrite [-tnba] &lt;name&gt; [numbytes] &lt;text|%var|&amp;binvar&gt;</span></p>
+<p>The /sockwrite command queues info to be sent on the specified connection. mIRC will then try to send that info as quickly as it can. Once it has finished sending the info, it triggers the on sockwrite event so you can send more info if you need to.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-t</span> switch, it forces mIRC to send anything beginning with a &amp; as normal text instead of interpreting it as a binary variable. The <span class="f_Bolddefault">-n</span> switch appends a $crlf to the line being sent if it is not a &amp;binvar and if it does not already have a $crlf.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch indicates that you are specifying the numbytes value which is the number of bytes you want sent.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch prevents characters in the range 0-255 from being UTF-8 encoded, as long as the line only contains characters in the range 0-255.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use a wildcard name to send the same information at once to all connections that match the wildcard.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">On error:</span> if a /sockwrite fails, it sets $sock().wserr to the error value, and triggers the on sockwrite event with $sockerr set.</p>
+<p>&nbsp;</p>
+<p><a name="onsockwrite"></a><span class="f_Bolddefault">on 1:sockwrite:name:commands</span></p>
+<p>The sockwrite event is triggered when mIRC has finished sending all of the data that you previously queued for sending or when the socket is ready for more writing.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you try to /sockwrite while there is still info queued in the send buffer, your new info will just be added to the end of the queue up to a maximum of 16384 bytes. Any attempt to queue more than that will result in an error message, so you should check how much info is currently queued by using $sock().sq (send queue) before trying to queue info on a socket.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Reading information</span></p>
+<p>&nbsp;</p>
+<p><a name="onsockread"></a><span class="f_Bolddefault">on 1:sockread:name:commands</span></p>
+<p>The sockread event is triggered when there is info waiting to be read on the specified connection. You can read this info using the /sockread command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If this event triggers but no /sockread is performed to attempt to read the buffer, it is assumed that no script exists that is handling this buffer, so it is cleared and the info it contained is lost.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockread"></a><span class="f_Bolddefault">/sockread [-fn] [numbytes] &lt;%var|&amp;binvar&gt;</span></p>
+<p>The /sockread command reads bytes from the receive buffer into the specified variable.</p>
+<p>&nbsp;</p>
+<p>If you specify a %var variable, a line of text ending with a Carriage Return/LineFeed is read into %var. The $crlf are stripped off (this may result in %var being $null if the line only consisted of $crlf).</p>
+<p>&nbsp;</p>
+<p>If you specify a &amp;binvar then [numbytes] of info is read into the binary variable. If no [numbytes] is specified it defaults to 4096 bytes.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-f</span> switch with a %var variable, this forces mIRC to fill the %var variable with whatever text is in the receive buffer, even if it does not end in a $crlf. If you attempt to use this with binary data, it will only read up to the first NULL byte.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch allows you to read a $crlf terminated line into a &amp;binvar. If the incoming line does not contain a $crlf, no bytes will be read into &amp;binvar, unless you specify the -f switch, which forces the read (same as when reading into %vars).</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> A single /sockread may not be enough to read the entire buffer. You should keep reading until $sockbr (bytes read) is set to zero. This is far faster than letting mIRC re-trigger the event. If your script does not read the whole buffer, the on sockread event is re-triggered if:</p>
+<p> &nbsp;a) you were reading into a &amp;binvar.</p>
+<p> &nbsp;b) you were reading into a %var and there is still a $crlf terminated line in the buffer waiting to be read.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Example:</span></p>
+<p>This example shows you how you should process a sockread event. The socket has already been opened and has received information, so the sockread event is triggered. The socket name is <span class="f_Bolddefault">testing</span>. There is an explanation of each step below the sample script.</p>
+<p>&nbsp;</p>
+<p>on 1:sockread:testing:{</p>
+<p> &nbsp;if ($sockerr &gt; 0) return</p>
+<p> &nbsp;:nextread</p>
+<p> &nbsp;sockread %temp</p>
+<p> &nbsp;if ($sockbr == 0) return</p>
+<p> &nbsp;if (%temp == $null) %temp = -</p>
+<p> &nbsp;echo 4 %temp</p>
+<p> &nbsp;goto nextread</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>If <span class="f_Bolddefault">$sockerr</span> is larger than zero then there is a socket error. mIRC will automatically close the socket, so all you have to do is <span class="f_Bolddefault">return</span> from the event.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">sockread %temp</span> reads a $crlf terminated line of text and stores it in %temp. If the buffer did not contain a $crlf terminated line, %temp is not filled with anything, and $sockbr returns zero, so you should just return from the event without further processing.</p>
+<p>&nbsp;</p>
+<p>If <span class="f_Bolddefault">%temp is $null</span> then that means the line consisted only of a $crlf which mIRC has automatically stripped out of the line, so only an empty line remains. In this case, I am setting %temp to a dash to represent an empty line but you can do whatever you wish here.</p>
+<p>&nbsp;</p>
+<p>I then <span class="f_Bolddefault">echo</span> the final line that was read to the status window.</p>
+<p>&nbsp;</p>
+<p>Finally, I use <span class="f_Bolddefault">goto</span> to jump back and to continue reading remaining lines in the socket's receive buffer.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Pausing a socket</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockpause"></a><span class="f_Bolddefault">/sockpause [-r] &lt;name&gt;</span></p>
+<p>The /sockpause command pauses/restarts a socket when reading incoming data.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Marking a socket</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockmark"></a><span class="f_Bolddefault">/sockmark &lt;name&gt; [text]</span></p>
+<p>The /sockmark command fills the .mark attribute of a socket with the specified info for later reference via the $sock().mark property. If you do not specify any text, the mark is cleared. The mark can hold up to 512 bytes.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use a wildcard name to set the same information at once for all connections that match the wildcard.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Listing open sockets</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_socklist"></a><span class="f_Bolddefault">/socklist [-tul] [name]</span></p>
+<p>The /socklist command lists all open sockets, or if you specify the -tul switches, it lists tcp, udp, and listening sockets respectively. You can also specify a socket name or wildcard.</p>
+<p>&nbsp;</p>
+<p><a name="udpsockets"></a><span class="f_Subheading">UDP Sockets</span></p>
+<p>UDP is a connection-less protocol, ie. you can send information via UDP to other UDP addresses without needing to connect to them first.</p>
+<p>&nbsp;</p>
+<p>UDP does <span class="f_Bolddefault">not</span> guarantee that any information you send will actually reach its destination, ie. it is not a reliable protocol. Also, be aware that UDP packets may not arrive in the same order as that in which they were sent. This means that you <span class="f_Bolddefault">must</span> perform your <span class="f_Bolddefault">own</span> checking to confirm that any data you sent actually reached its destination properly.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sockudp"></a><span class="f_Bolddefault">/sockudp [-bntkd] [bindip] &lt;name&gt; [port] &lt;ipaddress&gt; &lt;port&gt; [numbytes] [text|%var|&amp;binvar]</span></p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-t</span> switch, it forces mIRC to send anything beginning with a &amp; as normal text instead of interpreting it as a binary variable. The <span class="f_Bolddefault">-n</span> switch appends a $crlf to the line being sent if it is not a &amp;binvar and if it does not already have a $crlf.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch indicates that you are specifying the numbytes value which is the number of bytes you want sent.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-k</span> switch forces the socket to stay open, this allows it to listen for data that is sent to its port via UDP. If <span class="f_Bolddefault">-k</span> is not specified, the socket is opened, the information is sent to the specified ipaddress and port, and the socket is then closed.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-d</span> switch means that you specified an ip address as the bind address.</p>
+<p>&nbsp;</p>
+<p>If you specify a socket <span class="f_Bolddefault">name</span> that does not exist, it is created. If it does exist, the existing socket is used to send the info.</p>
+<p>&nbsp;</p>
+<p>You can also specify the local <span class="f_Bolddefault">port</span> number that you wish to use, if it is not specified, mIRC chooses one randomly.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">ipaddress</span> and <span class="f_Bolddefault">port</span> specify the destination address to which you want to send information. You can only use an IP address here.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">On error:</span> if a /sockudp fails, it sets $sock().wserr to the error value, and triggers the on sockwrite event with $sockerr set.</p>
+<p>&nbsp;</p>
+<p><a name="onudpread"></a><span class="f_Bolddefault">on 1:udpread:name:commands</span></p>
+<p>The udpread event is triggered when there is info waiting to be read on a UDP socket. You can read this info using the /sockread command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If this event triggers but no /sockread is performed to attempt to read the buffer, it is assumed that no script exists that is handling this buffer, so it is cleared and the info it contained is lost.</p>
+<p>&nbsp;</p>
+<p class="p_Subheading"><span class="f_Subheading">Other commands and identifiers</span></p>
+<p>The following network-related commands and identifiers are also available.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><a name="cmd_bindip"></a><span class="f_Bolddefault">/bindip [on|off] &lt;ipaddress&gt;</span></p>
+<p class="p_Bolddefault">This command allows you to change the bind settings in the <a href="connect_options.html">Ports</a> dialog. An adapter name can be specified instead of the IP address.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p class="p_Bolddefault"><a name="id_bindip"></a><span class="f_Bolddefault">$bindip(N|ipaddress)</span></p>
+<p>Returns the list of active network adapters. The N = 0, returns the total number of active network adapters.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> name, ip, loopback</p>
+<p>&nbsp;</p>
+<p> If an IP address is specified, returns the best network adapter for connecting to that IP address.</p>
+<p>&nbsp;</p>
+<p><a name="id_$portfree"></a><span class="f_Bolddefault">$portfree(N,[ipaddress])</span></p>
+<p>Returns $true if the specified port number is not in use, where N = port number, otherwise returns $false.</p>
+<p>&nbsp;</p>
+<p>If an IP address is specified, only the interface with that IP address is checked for used ports, otherwise all active interfaces are checked. An adapter name can also be used instead of an IP address.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><a name="id_iptype"></a><span class="f_Bolddefault">$iptype(text)</span></p>
+<p>Returns &quot;ipv4&quot; or &quot;ipv6&quot; if text is is a valid IP address format.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> compress, expand</p>
+<p>&nbsp;</p>
+<p>With IPv6 addresses, the properties .compress and .expand can be used.</p>
+
+</td></tr></table>
+
+</body>
+</html>

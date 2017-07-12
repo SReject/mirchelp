@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>File Handling</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="File Handling" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">File Handling</span></p>
+<p>&nbsp;</p>
+<p>File handling support allows you to manipulate your own files directly using scripts. You should already be an <span class="f_Bolddefault">expert</span> at writing <a href="aliases.html">Aliases</a>, <a href="popups.html">Popups</a>, and <a href="remote.html">Scripts</a> before attempting to use the commands below.</p>
+<p>&nbsp;</p>
+<p>File handles are a <span class="f_Bolddefault">limited resource</span> so it is important that you understand how these commands work before trying to use them. Files should always be closed after they have been used to make them available to other applications.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">File Handling Commands</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_fopen"></a><span class="f_Bolddefault">/fopen [-nox] &lt;name&gt; &lt;filename&gt;</span></p>
+<p>Opens the specified file and assigns a name to it for later reference. The open fails if the file does not exist. The <span class="f_Bolddefault">-n</span> switch creates the file if it does not already exist, fails if the file does exist. The <span class="f_Bolddefault">-o</span> switch creates a new file, overwrites if it exists. The <span class="f_Bolddefault">-x</span> switch opens the file for exclusive access, preventing other applications from accessing the file.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note: </span>If this command fails, the script will continue to run. See $ferr and $feof below.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_fclose"></a><span class="f_Bolddefault">/fclose &lt;name | wildcard&gt;</span></p>
+<p>Closes the file associated with this name. If you specify a wildcard, all matching names are closed.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_flist"></a><span class="f_Bolddefault">/flist [name | wildcard]</span></p>
+<p>Lists all open files, or those matching the specified name.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_fseek"></a><span class="f_Bolddefault">/fseek &lt;name&gt; &lt;position&gt;</span></p>
+<p>Sets the read/write pointer to the specified position in the file<span class="f_Bolddefault">. </span>The following switches may also be used to move the file pointer:</p>
+<p>&nbsp;</p>
+<p> -l &lt;name&gt; &lt;line number&gt;</p>
+<p> -n &lt;name&gt;</p>
+<p> -w &lt;name&gt; &lt;wildcard&gt;</p>
+<p> -r &lt;name&gt; &lt;regex&gt;</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch moves the pointer to the start of the next line.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_fwrite"></a><span class="f_Bolddefault">/fwrite [-bn] &lt;name&gt; &lt;text | &amp;binvar&gt;</span></p>
+<p>Writes text or the specified binary variable to the file. The <span class="f_Bolddefault">-b</span> switch indicates that a &amp;binvar is being specified. The <span class="f_Bolddefault">-n</span> switch appends a $crlf to the line being written.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">File Handling Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$fopen"></a><span class="f_Bolddefault">$fopen(name | N)</span></p>
+<p>Returns information about an open file.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> fname, pos, eof, err</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note: </span>the .eof and .err properties must be checked after each file access command or identifier, since file access errors will not halt a script.</p>
+<p>&nbsp;</p>
+<p><a name="id_$fread"></a><span class="f_Bolddefault">$fread(name | N)</span></p>
+<p>Returns the next $crlf delimited line.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$fread(name | N, M, &amp;binvar)</span></p>
+<p>Returns the number of bytes read into the specified binary variable, where M is the number of bytes to read.</p>
+<p>&nbsp;</p>
+<p><a name="id_$fgetc"></a><span class="f_Bolddefault">$fgetc(name | N)</span></p>
+<p>Returns the next character.</p>
+<p>&nbsp;</p>
+<p><a name="id_feoferr"></a><span class="f_Bolddefault">$feof and $ferr</span></p>
+<p>Return the results of the last file access attempt in any script, where $feof indicates the end of file was reached, and $ferr indicates there was a file error of some kind.</p>
+
+</td></tr></table>
+
+</body>
+</html>

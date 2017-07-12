@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Speech</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Speech,Speak Text" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Speech</span></p>
+<p>&nbsp;</p>
+<p>mIRC can speak the messages that you receive from other users in channels and private chats. Note that in order for this feature to work, your version of Windows must have a speech component installed.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Options</span></p>
+<p>The options dialog allows you to change the way text is spoken, such as the speed and pitch of the speaking voice.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Events</span></p>
+<p>The events dialog allows you to specify the events that you want spoken for <span class="f_Bolddefault">channel</span>, <span class="f_Bolddefault">private</span>, and <span class="f_Bolddefault">other</span> events.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Lexicon</span></p>
+<p>The lexicon dialogs allows you to replace words or characters in spoken text with other words or characters, for example you could replace &quot;<span class="f_Bolddefault">:-)&quot;</span> with the words &quot;<span class="f_Bolddefault">smiley face&quot;</span>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Agent</span></p>
+<p>The agent dialog allows you to configure the use of Microsoft Agent. An <span class="f_Bolddefault">agent</span> is an animated character that can speak text and perform actions. You can select your default agent character, the size of the character, and various display options. The <span class="f_Bolddefault">auto-hide</span> feature hides the agent whenever mIRC is <span class="f_Bolddefault">minimized</span>, though note that if agent needs to <span class="f_Bolddefault">speak</span> it will become visible again.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The agent dialog will only be visible if agent is already installed on your system. If it is not installed, you can find links to related websites and resources, as well as download information, on the <span style="font-family: 'Arial'; color: #0000ff; text-decoration: underline;"><a href="http://www.mirc.com" target="_blank" class="weblink">mIRC website</a></span>.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_speak"></a><span class="f_Subheading">The /speak command</span></p>
+<p>You can make mIRC speak text by using the following command:</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">/speak -spclu [speed] [pitch] [text]</span></p>
+<p>&nbsp;</p>
+<p>If mIRC is already speaking text then the above command will add the new text to the end of the queue.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch sets the speaking speed, which ranges from 0 to 100.</p>
+<p>The <span class="f_Bolddefault">-p</span> switch sets the speaking pitch, which ranges from 0 to 100.</p>
+<p>The <span class="f_Bolddefault">-c</span> switch clears the queue of all text</p>
+<p>The <span class="f_Bolddefault">-l</span> switch applies the lexicon settings in speech dialog</p>
+<p>The <span class="f_Bolddefault">-u</span> switch applies the option settings in speech dialog</p>
+<p>&nbsp;</p>
+<p class="p_Subheading"><a name="id_speak"></a><span class="f_Subheading">The $speak() identifier</span></p>
+<p>You can use $speak(N) to list all lines that are currently queued for speaking through the /speak command. If N = 0, returns the total number of queued lines.</p>
+
+</td></tr></table>
+
+</body>
+</html>

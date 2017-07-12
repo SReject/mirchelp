@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>DCC Resume Protocol</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="DCC Resume Protocol" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">DCC Resume Protocol</span></p>
+<p>&nbsp;</p>
+<p>User1 is sending the file.</p>
+<p>User2 is receiving the file.</p>
+<p>&nbsp;</p>
+<p>To initiate a DCC Send, User1 sends:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">PRIVMSG User2 :DCC SEND filename ipaddress port filesize</span></p>
+<p>&nbsp;</p>
+<p>Normally, if User2 accepts the DCC Send request, User2 connects to the address and port number given by User1 and the file transfer begins.</p>
+<p>&nbsp;</p>
+<p>If User2 chooses to resume a file transfer of an existing file, the following negotiation takes place:</p>
+<p>&nbsp;</p>
+<p>User2 sends:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">PRIVMSG User1 :DCC RESUME filename port position</span></p>
+<p>&nbsp;</p>
+<p>filename = the filename sent by User1.</p>
+<p>port = the port number sent by User1.</p>
+<p>position = the current size of the file that User2 has.</p>
+<p>&nbsp;</p>
+<p>User1 then responds:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">PRIVMSG User2 :DCC ACCEPT filename port position</span></p>
+<p>&nbsp;</p>
+<p>This is simply replying with the same information that User2 sent as acknowledgement.</p>
+<p>&nbsp;</p>
+<p>At this point User2 connects to User1 address and port and the transfer begins from the specified position.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Newer versions of mIRC ignore the filename since the port uniquely identifies the connection. However to remain compatible with older versions of mIRC the filename is sent as <span class="f_Bolddefault">file.ext</span> in both RESUME and ACCEPT.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Remote</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Events,Remote,Remote Scripts,Scripts" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Remote</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">remote</span> allows you to create scripts that react to IRC Server events, such as when a user joins a channel or sends you a message. This tool is the most complex part of mIRC and to use it you must already know how to use <a href="basic_irc_commands.html">Basic IRC Commands</a>, how to create <a href="aliases.html">Aliases</a>, and how to use <a href="variables.html">Variables</a> and <a href="identifiers.html">Identifiers.</a></p>
+<p>&nbsp;</p>
+<p>The remote consists of <span class="f_Bolddefault">three</span> distinct sections:</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">Users</span> section, where user addresses with assigned access levels are listed. Each User in your Users section can be assigned one or more levels. These access levels dictate which events a user will be able to access.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">Variables</span> section, where the currently active variables are listed.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">Scripts</span> section, where the scripts that you create are listed. You can load <span class="f_Bolddefault">multiple</span> scripts which work <span class="f_Bolddefault">independently</span> of each other. This means that a single IRC Server event can trigger events in <span class="f_Bolddefault">one or more</span> scripts. Scripts consist of <span class="f_Bolddefault">events</span> which can only be triggered by <span class="f_Bolddefault">users</span> who have the <span class="f_Bolddefault">required</span> access levels. You can also place <a href="aliases.html">Aliases</a> in your scripts by using the <span class="f_Bolddefault">alias</span> prefix, and <a href="popups.html">menus</a> in your scripts by using the <span class="f_Bolddefault">menu</span> prefix.</p>
+<p>&nbsp;</p>
+<p>Since <a href="access_levels.html">Access Levels</a> play an important part in the way scripts work, you should read about them carefully before proceeding. You should also take a look at remote <a href="remote_commands.html">Commands</a>, <a href="remote_identifiers.html">Identifiers</a>, and the <a href="internal_address_list.html">Internal Address List,</a> and the section on how to <a href="halting_text.html">Halt default text</a> being displayed if you want to display your own custom messages for events.</p>
+<p>&nbsp;</p>
+<p>All of the following <span class="f_Bolddefault">Events</span> use the same general format except for the <span class="f_Bolddefault">ctcp</span> and <span class="f_Bolddefault">raw</span> events. The sections below provide you with <span class="f_Bolddefault">information</span> on each event as well as <span class="f_Bolddefault">examples</span> and <span class="f_Bolddefault">tips</span> on how to use them.</p>
+<p>&nbsp;</p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table cellspacing="0" cellpadding="0" border="0" style="border: none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td valign="top" width="121" style="width:121px;"><p><a href="on_text.html">Action</a></p>
+<p><a href="on_activeoappactive.html">Active</a></p>
+<p><a href="on_agent.html">Agent</a></p>
+<p><a href="on_activeoappactive.html">AppActive</a></p>
+<p><a href="on_banounban.html">Ban</a></p>
+<p><a href="on_chatoserv.html">Chat</a></p>
+<p><a href="on_openoclose.html">Close</a></p>
+<p><a href="on_connect.html">Connect</a></p>
+<p><a href="ctcp_events.html">Ctcp</a></p>
+<p><a href="on_ctcpreply.html">CtcpReply</a></p>
+<p><a href="on_dccserver.html">DccServer</a></p>
+<p><a href="on_opodeop.html">DeHelp</a></p>
+<p><a href="on_opodeop.html">DeOp</a></p>
+<p><a href="on_opodeop.html">DeVoice</a></p>
+<p><a href="dialogs.html">Dialog</a></p>
+<p><a href="on_dns.html">Dns</a></p>
+</td>
+<td valign="top" width="121" style="width:121px;"><p><a href="on_error.html">Error</a></p>
+<p><a href="on_exit.html">Exit</a></p>
+<p><a href="on_filesentofilercvd.html">FileRcvd</a></p>
+<p><a href="on_filesentofilercvd.html">FileSent</a></p>
+<p><a href="on_filesentofilercvd.html">GetFail</a></p>
+<p><a href="on_opodeop.html">Help</a></p>
+<p><a href="on_hotlink.html">Hotlink</a></p>
+<p><a href="on_input.html">Input</a></p>
+<p><a href="on_invite.html">Invite</a></p>
+<p><a href="on_joinopart.html">Join</a></p>
+<p><a href="on_keydownoup.html">KeyDown</a></p>
+<p><a href="on_keydownoup.html">KeyUp</a></p>
+<p><a href="on_kick.html">Kick</a></p>
+<p><a href="on_loadostart.html">Load</a></p>
+<p><a href="on_logon.html">Logon</a></p>
+<p><a href="on_midiend.html">MidiEnd</a></p>
+</td>
+<td valign="top" width="121" style="width:121px;"><p><a href="on_mode.html">Mode</a></p>
+<p><a href="on_midiend.html">Mp3End</a></p>
+<p><a href="on_nick.html">Nick</a></p>
+<p><a href="on_nosound.html">NoSound</a></p>
+<p><a href="on_text.html">Notice</a></p>
+<p><a href="on_notifyounotify.html">Notify</a></p>
+<p><a href="on_opodeop.html">Op</a></p>
+<p><a href="on_openoclose.html">Open</a></p>
+<p><a href="on_joinopart.html">Part</a></p>
+<p><a href="on_pingopong.html">Ping</a></p>
+<p><a href="on_pingopong.html">Pong</a></p>
+<p><a href="on_playend.html">PlayEnd</a></p>
+<p><a href="on_quit.html">Quit</a></p>
+<p><a href="raw_events.html">Raw</a></p>
+<p><a href="on_opodeop.html">RawMode</a></p>
+<p><a href="on_filesentofilercvd.html">SendFail</a></p>
+</td>
+<td valign="top" width="121" style="width:121px;"><p><a href="on_chatoserv.html">Serv</a></p>
+<p><a href="on_mode.html">ServerMode</a></p>
+<p><a href="on_opodeop.html">ServerOp</a></p>
+<p><a href="signals.html">Signal</a></p>
+<p><a href="on_snotice.html">Snotice</a></p>
+<p><a href="on_loadostart.html">Start</a></p>
+<p><a href="on_tabcomp.html">Tabcomp</a></p>
+<p><a href="on_text.html">Text</a></p>
+<p><a href="on_topic.html">Topic</a></p>
+<p><a href="on_banounban.html">UnBan</a></p>
+<p><a href="on_unload.html">Unload</a></p>
+<p><a href="on_notifyounotify.html">Unotify</a></p>
+<p><a href="on_usermode.html">UserMode</a></p>
+<p><a href="on_opodeop.html">Voice</a></p>
+<p><a href="on_wallops.html">Wallops</a></p>
+<p><a href="on_midiend.html">WaveEnd</a></p>
+</td>
+</tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<p>Here is an <a href="example_script.html">example script</a> that shows you how you can place aliases, popups, and events in a single file making it easier to distribute your scripts to other people.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You should never load or use a script that you do not understand.</p>
+
+</td></tr></table>
+
+</body>
+</html>

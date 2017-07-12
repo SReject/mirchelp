@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on NOSOUND</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on NOSOUND" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on NOSOUND</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on NOSOUND</span> event triggers when a user sends a <a href="sound_requests.html">Sound Request</a> to play a sound and you &nbsp;do nothave that sound.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:NOSOUND:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:NOSOUND:/notice $me Oops, $nick has $filename and I do not!</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:NOSOUND:/msg $nick ! $+ $nick $filename</p>
+<p>&nbsp;</p>
+<p>This triggers when you do not have the requested sound. <span class="f_Bolddefault">$filename</span> refers to the name of the file that was requested.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This will trigger whether the <a href="sound_requests.html">Warn if sound does not exist</a> option is turned on or off.</p>
+
+</td></tr></table>
+
+</body>
+</html>

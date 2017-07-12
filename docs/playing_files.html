@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Playing Files</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Playing Files" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Playing Files</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">play</span> feature is a powerful tool that allows you to play <span class="f_Bolddefault">text</span> files to users or channels on IRC.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">play central</span> dialog lists all of the currently <span class="f_Bolddefault">queued</span> play requests, and allows you to maintain the queue. Files are played in the order in which they are queued.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_playctrl"></a>The <span class="f_Bolddefault">play central</span> dialog can be displayed with the <span class="f_Bolddefault">/playctrl</span> command.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_play"></a><span class="f_Subheading">The /play command</span></p>
+<p>&nbsp;</p>
+<p>A play request can be <span class="f_Bolddefault">added</span> to the queue by using either the <span class="f_Bolddefault">play</span> dialog or the <span class="f_Bolddefault">/play</span> command. The <span class="f_Bolddefault">play dialog</span> can be displayed by using the <span class="f_Bolddefault">/play</span> command with no parameters. It supports <span class="f_Bolddefault">most</span> of the features of the /play command itself, described below.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/play [-aescpbnx q# m# f# rl# t#] [alias] [channel/nick/stop] &lt;filename&gt; [delay]</span></p>
+<p>&nbsp;</p>
+<p>In its <span class="f_Bolddefault">simplest</span> form, you can play a text file to the current window with:</p>
+<p>&nbsp;</p>
+<p>/play c:\text\poem.txt</p>
+<p>&nbsp;</p>
+<p>This plays the file poem.txt to the current window, which must be a query or channel window, with a default delay of 1000 milliseconds, ie. 1 second. Empty lines are treated as a delay.</p>
+<p>&nbsp;</p>
+<p>If you have <a href="flood.html">flood protection</a> turned on, /play sends all lines through the flood protection feature to prevent you from <span class="f_Bolddefault">flooding</span> yourself off the server.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a </span>switch makes /play use specified alias instead of /msg or /notice.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-e</span> switch allows you to echo out the text to a window as it would be sent to the server.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch allows you to play commands to the status window while offline. If you do not specify the -s switch then you must be connected to a server to use the /play command.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch forces mIRC to interpret lines as actual commands instead of plain text.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-p</span> switch indicates that this is a priority play request and should be placed at the head of the queue for immediate playing. The current play request will be paused and will resume once this play request is finished.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch plays text in the clipboard to a window. The text is temporarily saved to a file playqN.txt, which is deleted once playing is completed.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch makes the play command use /notice instead of /msg.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-q#</span> switch specifies the maximum number of requests that can be queued. If the queue length is already larger than or equal to the specified number then the play request is ignored.</p>
+<p>&nbsp;</p>
+<p>/play -q5 c:\text\info.txt 1000</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-m#</span> switch limits the number of requests that can be queued by a specific user/channel. If the user/channel already has or exceeds the specified number of requests queued then the play request is ignored.</p>
+<p>&nbsp;</p>
+<p>/play -m1 info.txt 1000</p>
+<p>&nbsp;</p>
+<p>The above line limits each user to a maximum of one request at a time and ignores all of their other requests.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The <span class="f_Bolddefault">-q#</span> and <span class="f_Bolddefault">-m#</span> switches only apply to a /play initiated via a remote definition, not by you.</p>
+<p>&nbsp;</p>
+<p>To combine the above switches you would use:</p>
+<p>&nbsp;</p>
+<p>/play -cpq5m1 info.txt 1000</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch forces a single line to be chosen randomly from a file and played.</p>
+<p>&nbsp;</p>
+<p>/play -r action.txt 1500</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l#</span> switch forces the specified line-number to be read from a file and played.</p>
+<p>&nbsp;</p>
+<p>/play -l25 witty.txt 1500</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-f#</span> switch plays the whole file starting from the specified line.</p>
+<p>&nbsp;</p>
+<p>/play -f9 moo.txt</p>
+<p>&nbsp;</p>
+<p>For switches <span class="f_Bolddefault">-rlf</span> the first line in the file can be a single number specifying the number of lines in the file, this speeds up the process of reading the file.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-x</span> switch makes the play command treat the first line in the file as plain text, even if it is a number.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch forces mIRC to look up the specified <span class="f_Bolddefault">topic</span> in the file and play all lines under that topic. For example:</p>
+<p>&nbsp;</p>
+<p>/play -thelp1 help.txt</p>
+<p>&nbsp;</p>
+<p>In the help.txt file you would have:</p>
+<p>&nbsp;</p>
+<p>[help1]</p>
+<p>line1</p>
+<p>line2</p>
+<p>line3</p>
+<p>&nbsp;</p>
+<p>[help2]</p>
+<p>...</p>
+<p>&nbsp;</p>
+<p>mIRC will play everything after [help1] and stop when it reaches the next topic header or the end of the file.</p>
+<p>&nbsp;</p>
+<p><a name="id_$pnick"></a>You can use the <span class="f_Bolddefault">$pnick</span> identifier in commands which identifies the nick/channel to which you are currently playing.</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">stop</span> the playing of a file and clear the play queue you can use /play stop.</p>
+<p>&nbsp;</p>
+<p><a name="id_$play"></a><span class="f_Subheading">The $play identifier</span></p>
+<p>&nbsp;</p>
+<p>The $play(N) or $play(Nick,N) identifer returns information on items in the play queue.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> type, fname, topic, pos, lines, delay, status</p>
+<p>&nbsp;</p>
+<p>If you specify a <span class="f_Bolddefault">nick</span>, you can find out how many play requests a user has in the queue.</p>
+
+</td></tr></table>
+
+</body>
+</html>

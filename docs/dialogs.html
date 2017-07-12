@@ -1,0 +1,342 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Dialogs</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Custom Dialogs,Dialogs" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Dialogs</span></p>
+<p>&nbsp;</p>
+<p>mIRC allows you to create custom <span class="f_Bolddefault">Dialogs</span> which can be used to request input from a user, or to perform many other useful tasks.</p>
+<p>&nbsp;</p>
+<p>There are two types of dialog; a <span class="f_Bolddefault">modeless</span> dialog, created with the <span class="f_Bolddefault">/dialog</span> command, and a <span class="f_Bolddefault">modal</span> dialog, created with the <span class="f_Bolddefault">$dialog()</span> identifier. Both are described below.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dialog"></a><span class="f_Subheading">The /dialog command</span></p>
+<p>The /dialog command allows you to create a <span class="f_Bolddefault">modeless</span> dialog with the <span class="f_Bolddefault">-m</span> switch. This type of dialog does not halt or return a value to the calling script, and the dialog can be displayed indefinitely and used for many purposes.</p>
+<p>&nbsp;</p>
+<p> &nbsp;/dialog -mdtsonkcvie &lt;name&gt; [table] [x y w h] [text]</p>
+<p>&nbsp;</p>
+<p> &nbsp;-m &nbsp; &nbsp; &nbsp; &nbsp;create a modeless dialog using 'table'</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;/dialog -m name table</p>
+<p>&nbsp;</p>
+<p> &nbsp;-a &nbsp; &nbsp; &nbsp; &nbsp;used with -m, uses currently &nbsp;active window as the parent</p>
+<p>&nbsp;</p>
+<p> &nbsp;-x &nbsp; &nbsp; &nbsp; &nbsp;close a dialog without triggering any events</p>
+<p>&nbsp;</p>
+<p> &nbsp;-d &nbsp; &nbsp; &nbsp; &nbsp;open dialog on the desktop, used with -m</p>
+<p>&nbsp;</p>
+<p> &nbsp;-h &nbsp; &nbsp; &nbsp; &nbsp;make dialog work with active server connection</p>
+<p>&nbsp;</p>
+<p> &nbsp;-t &nbsp; &nbsp; &nbsp; &nbsp;set dialog title</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;/dialog -t name text</p>
+<p>&nbsp;</p>
+<p> &nbsp;-s &nbsp; &nbsp; &nbsp; &nbsp;set dialog size/pos</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;/dialog -s name x y w h</p>
+<p> &nbsp;-r &nbsp; &nbsp; &nbsp; &nbsp;centers dialog</p>
+<p> &nbsp;-bp &nbsp; &nbsp; &nbsp; &nbsp;interprets size as dbu or pixels</p>
+<p>&nbsp;</p>
+<p> &nbsp;-o &nbsp; &nbsp; &nbsp; &nbsp;set dialog ontop of all windows</p>
+<p> &nbsp;-n &nbsp; &nbsp; &nbsp; &nbsp;unset ontop setting</p>
+<p>&nbsp;</p>
+<p> &nbsp;-k &nbsp; &nbsp; &nbsp; &nbsp;click ok button</p>
+<p> &nbsp;-c &nbsp; &nbsp; &nbsp; &nbsp;click cancel button</p>
+<p>&nbsp;</p>
+<p> &nbsp;-v &nbsp; &nbsp; &nbsp; &nbsp;makes the dialog the active window</p>
+<p>&nbsp;</p>
+<p> &nbsp;-ie &nbsp; &nbsp; &nbsp; &nbsp;minimize/restore the dialog if created on the desktop</p>
+<p>&nbsp;</p>
+<p> &nbsp;-g &nbsp; &nbsp; &nbsp; &nbsp;renames existing dialog using &lt;name&gt; &lt;newname&gt;</p>
+<p>&nbsp;</p>
+<p>Where <span class="f_Bolddefault">name</span> is the name by which you will refer to the dialog, and <span class="f_Bolddefault">table</span> is the dialog table name used to create dialog (see below).</p>
+<p>&nbsp;</p>
+<p><a name="id_$dialog"></a><span class="f_Subheading">The $dialog() identifier</span></p>
+<p>Dialogs created with $dialog() are modal, ie. they halt the script until the dialog is closed, they return a value, and they do not allow access to other windows while the dialog is open. These types of dialogs should only be displayed for immediate user input. The $dialog() identifier works the same way as other <a href="identifiers.html">identifiers</a>:</p>
+<p>&nbsp;</p>
+<p> &nbsp;%result = $dialog(name,table[,parent])</p>
+<p>&nbsp;</p>
+<p>Where <span class="f_Bolddefault">name</span> is the name by which you will refer to the dialog, <span class="f_Bolddefault">table</span> is the dialog table name used to create dialog (see below), and <span class="f_Bolddefault">parent</span> is the parent window of the dialog, this can be a <span class="f_Bolddefault">window name</span>, or -1 = Desktop window, -2 = Main mIRC window, -3 = Currently active window, -4 = Currently active dialog, if no dialog is open, defaults to -3 behaviour.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This type of dialog cannot be called from a remote script event.</p>
+<p>&nbsp;</p>
+<p>You can also use the <span class="f_Bolddefault">$dialog(name/N)</span> identifier to list any open dialogs, where N returns the Nth open dialog. If N is zero, the total number of open dialogs is returned.</p>
+<p>&nbsp;</p>
+<p>$dialog() also supports these <span class="f_Bolddefault">properties</span>:</p>
+<p>&nbsp;</p>
+<p>x,y,w,h &nbsp; &nbsp; &nbsp; &nbsp;returns the size and position of the dialog</p>
+<p>cw,ch &nbsp; &nbsp; &nbsp; &nbsp;returns width and height of client area of dialog</p>
+<p>title &nbsp; &nbsp; &nbsp; &nbsp;returns the title of the dialog</p>
+<p>modal &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the dialog is modal, otherwise $false</p>
+<p>table &nbsp; &nbsp; &nbsp; &nbsp;returns the dialog table that the dialog is using</p>
+<p>ok &nbsp; &nbsp; &nbsp; &nbsp;returns the id of the Ok button if you specified one</p>
+<p>cancel &nbsp; &nbsp; &nbsp; &nbsp;returns the id of the Cancel button if you specified one</p>
+<p>result &nbsp; &nbsp; &nbsp; &nbsp;returns the id of the Result button if you specified one</p>
+<p>focus &nbsp; &nbsp; &nbsp; &nbsp;returns id of control that currently has focus</p>
+<p>tab &nbsp; &nbsp; &nbsp; &nbsp;returns id of tab that is currently displayed</p>
+<p>active &nbsp; &nbsp; &nbsp; &nbsp;returns $true if dialog is the active window, otherwise $false</p>
+<p>hwnd &nbsp; &nbsp; &nbsp; &nbsp;returns dialog window handle</p>
+<p>&nbsp;</p>
+<p><a name="dialogprefix"></a><span class="f_Subheading">The dialog table</span></p>
+<p>You can use the <span class="f_Bolddefault">dialog</span> prefix to create a dialog table called <span class="f_Bolddefault">name</span> in a script using this format:</p>
+<p>&nbsp;</p>
+<p>dialog [-l] name {</p>
+<p> &nbsp;title &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;</p>
+<p> &nbsp;icon &nbsp; &nbsp; &nbsp; &nbsp;filename, index</p>
+<p> &nbsp;size &nbsp; &nbsp; &nbsp; &nbsp;x y w h</p>
+<p> &nbsp;option &nbsp; &nbsp; &nbsp; &nbsp;type (dbu, pixels, notheme, disable)</p>
+<p>&nbsp;</p>
+<p> &nbsp;text &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h, style &nbsp;(right, center, nowrap)</p>
+<p> &nbsp;edit &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h, style &nbsp;(right, center, multi, pass, read, return, hsbar, vsbar, autohs, autovs, limit N, rich)</p>
+<p> &nbsp;button &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h, style &nbsp;(default, ok, cancel, flat, multi)</p>
+<p> &nbsp;check &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h, style &nbsp;(left, push, 3state)</p>
+<p> &nbsp;radio &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h, style &nbsp;(left, push)</p>
+<p> &nbsp;box &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h, style</p>
+<p> &nbsp;scroll &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h, style (top left bottom right horizontal range N N)</p>
+<p>&nbsp;</p>
+<p> &nbsp;list &nbsp; &nbsp; &nbsp; &nbsp;id, x y w h, style &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(sort, extsel, multsel, size, vsbar, hsbar, check, radio)</p>
+<p> &nbsp;combo &nbsp; &nbsp; &nbsp; &nbsp;id, x y w h, style &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(sort, edit, drop, size, vsbar, hsbar)</p>
+<p>&nbsp;</p>
+<p> &nbsp;icon &nbsp; &nbsp; &nbsp; &nbsp;id, x y w h, filename, index, style &nbsp; &nbsp;(noborder top left bottom right small large actual)</p>
+<p>&nbsp;</p>
+<p> &nbsp;link &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h</p>
+<p>&nbsp;</p>
+<p> &nbsp;tab  &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id, x y w h</p>
+<p> &nbsp;tab &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id</p>
+<p>&nbsp;</p>
+<p> &nbsp;menu &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, menuid [, menuid]</p>
+<p> &nbsp;item &nbsp; &nbsp; &nbsp; &nbsp;&quot;text&quot;, id [, menuid]</p>
+<p> &nbsp;item &nbsp; &nbsp; &nbsp; &nbsp;break, id [, menuid]</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch makes a dialog table local, so that it can only be accessed by other scripts in the same file.</p>
+<p>&nbsp;</p>
+<p>Where <span class="f_Bolddefault">&quot;text&quot;</span> is the default text for a control, <span class="f_Bolddefault">id</span> is a number that uniquely identifies a control, <span class="f_Bolddefault">x y w h</span> are the position and size of the control, and <span class="f_Bolddefault">style</span> consists of a combination of the words in brackets.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Other Styles</span></p>
+<p>In addition to the styles shown in <span class="f_Bolddefault">brackets</span> for each type of control, you can also specify these styles:</p>
+<p>&nbsp;</p>
+<p> disable &nbsp; &nbsp; &nbsp; &nbsp;disables the control</p>
+<p> hide &nbsp; &nbsp; &nbsp; &nbsp;hides the control</p>
+<p> group &nbsp; &nbsp; &nbsp; &nbsp;start of a group</p>
+<p> result &nbsp; &nbsp; &nbsp; &nbsp;identifies the control whose value will be used as the return value to the calling script when the user presses the <span class="f_Bolddefault">ok</span> button</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Variables</span></p>
+<p>If you specify a %variable name in a dialog item definition, the %variable will be set with the contents of that item when the dialog is closed.</p>
+<p>&nbsp;</p>
+<p>edit &quot;&quot;, 2, 10 10 100 20, autohs %result</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Tab control</span></p>
+<p>The first <span class="f_Bolddefault">tab</span> definition specifies the <span class="f_Bolddefault">size</span> of the tab control, and any following <span class="f_Bolddefault">tab</span> definitions add tabs to it. You can <span class="f_Bolddefault">associate</span> controls with a specific tab by using the <span class="f_Bolddefault">tab</span> style followed by the <span class="f_Bolddefault">id</span> value for a tab, as shown in the example &nbsp;below.</p>
+<p>&nbsp;</p>
+<p>dialog test {</p>
+<p> &nbsp;title &quot;mIRC&quot;</p>
+<p> &nbsp;size -1 -1 110 100</p>
+<p> &nbsp;option dbu</p>
+<p>&nbsp;</p>
+<p> &nbsp;tab &quot;m&quot;, 1, 5 5 100 90</p>
+<p> &nbsp;tab &quot;I&quot;, 2</p>
+<p> &nbsp;tab &quot;R&quot;, 3</p>
+<p> &nbsp;tab &quot;C&quot;, 4</p>
+<p>&nbsp;</p>
+<p> &nbsp;button &nbsp;&quot;m is for ... ;)&quot;, 11, 30 50 50 24, ok tab 1</p>
+<p> &nbsp;button &nbsp;&quot;I is for Internet&quot;, 12, 30 50 50 24, tab 2</p>
+<p> &nbsp;button &nbsp;&quot;R is for Relay&quot;, 13, 30 50 50 24, tab 3</p>
+<p> &nbsp;button &nbsp;&quot;C is for Chat&quot;, 14, 30 50 50 24, tab 4</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>You can use /did -fu to set the focus on a specific tab, and /did -vh to show/hide the entire tab control.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Menus</span></p>
+<p>You can add menus and submenus to custom dialogs using the <span class="f_Bolddefault">menu</span> and <span class="f_Bolddefault">item</span> prefixes:</p>
+<p>&nbsp;</p>
+<p>dialog name {</p>
+<p> &nbsp;menu &quot;text&quot;, &lt;menuid&gt; [, menuid]</p>
+<p> &nbsp;item &quot;text&quot;, &lt;id&gt; [, menuid]</p>
+<p> &nbsp;item break, &lt;id&gt; [, menuid]</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>If you <span class="f_Bolddefault">do not</span> specify a <span class="f_Bolddefault">menuid</span> for an item, it will use the <span class="f_Bolddefault">last</span> menuid that was created/used in a previous menu/item.</p>
+<p>&nbsp;</p>
+<p>For example, the following menu definition reproduces the <span class="f_Bolddefault">File menu</span> of the mIRC Editor dialog:</p>
+<p>&nbsp;</p>
+<p>dialog test {</p>
+<p> &nbsp;title &quot;mIRC&quot;</p>
+<p> &nbsp;size -1 -1 110 100</p>
+<p> &nbsp;option dbu</p>
+<p>&nbsp;</p>
+<p> &nbsp;menu &quot;&amp;File&quot;, 60</p>
+<p> &nbsp;item &quot;&amp;New&quot;, 70</p>
+<p>&nbsp;</p>
+<p> &nbsp;menu &quot;&amp;Load&quot;, 80, 60</p>
+<p> &nbsp;item &quot;&amp;Script&quot;, 90</p>
+<p> &nbsp;item break, 100</p>
+<p> &nbsp;item &quot;&amp;Users&quot;, 110</p>
+<p> &nbsp;item &quot;&amp;Variables&quot;, 120</p>
+<p>&nbsp;</p>
+<p> &nbsp;item &quot;&amp;Unload&quot;, 130, 60</p>
+<p>&nbsp;</p>
+<p> &nbsp;item break, 140</p>
+<p>&nbsp;</p>
+<p> &nbsp;item &quot;&amp;Save&quot;, 150</p>
+<p> &nbsp;item &quot;&amp;Save As...&quot;, 160</p>
+<p> &nbsp;item &quot;Save &amp;All&quot;, 170</p>
+<p>&nbsp;</p>
+<p> &nbsp;item break, 180</p>
+<p>&nbsp;</p>
+<p> &nbsp;item &quot;Save &amp;&amp; &amp;exit&quot;, 190, ok</p>
+<p> &nbsp;item &quot;&amp;Cancel&quot;, 200, cancel</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>You can use the <span class="f_Bolddefault">/did</span> command (described below) to enable/disable, check/uncheck, append, delete, insert, and overwrite a menu item.</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">add</span> an item to a menu you can use: /did -a name &lt;menuid&gt; &lt;newid&gt; &lt;text&gt;.</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">insert</span> an item you must use: /did -i name &lt;id&gt; &lt;newid&gt; &lt;text&gt; where &lt;id&gt; is the item before which you want to insert an item.</p>
+<p>&nbsp;</p>
+<p><a name="id_dbuh"></a><span class="f_Bolddefault">Dbu vs. Pixels</span></p>
+<p>The <span class="f_Bolddefault">dbu</span> option makes mIRC use dialog base units when creating the dialog, this ensures that the dialog will look the same for all users under any size display, etc. <span class="f_Bolddefault">Pixels</span> is the default however to maintain compatibility with previous scripts.</p>
+<p>&nbsp;</p>
+<p>The identifiers <span class="f_Bolddefault">$dbuw</span> and <span class="f_Bolddefault">$dbuh</span> return the dbu per pixel width and height values for the current display. This may or may not be an integer value.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Ok and Cancel buttons</span></p>
+<p>You can specify an <span class="f_Bolddefault">ok</span> and/or <span class="f_Bolddefault">cancel</span> button, and when a user clicks the ok or cancel buttons, the dialog is closed. You can prevent the dialog from closing if a user clicks the ok button by using /halt.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Default position and size</span></p>
+<p>If you specify -1 for any of the x y w h values in the size setting for the dialog, a default setting is used. To make mIRC center the dialog in a window, specify x y as -1 -1. The size setting can be over-ridden in the <span class="f_Bolddefault">init</span> event (see below) by using /dialog -s name x y w h.</p>
+<p>&nbsp;</p>
+<p><a name="ondialog"></a><a name="id_devent"></a><a name="id_$dname"></a><span class="f_Subheading">The On Dialog event</span></p>
+<p>If a user changes the state of controls in the dialog, eg. clicks on a button, types text in an edit box, etc., this triggers the on dialog script event which allows you to monitor input from the user:</p>
+<p>&nbsp;</p>
+<p> on 1:dialog:name:event:id: {</p>
+<p> &nbsp; echo $dname $devent $did</p>
+<p> }</p>
+<p>&nbsp;</p>
+<p>Where <span class="f_Bolddefault">name</span> identifies the dialog, <span class="f_Bolddefault">id</span> is the id number of the control triggering the event, and <span class="f_Bolddefault">event</span> can be:</p>
+<p>&nbsp;</p>
+<p> init &nbsp; &nbsp; &nbsp; &nbsp;just before a dialog is displayed, controls can be initialized in this event. id is zero.</p>
+<p> close &nbsp; &nbsp; &nbsp; &nbsp;when a dialog is closed.</p>
+<p> edit &nbsp; &nbsp; &nbsp; &nbsp;text in editbox or combo box changed.</p>
+<p> sclick &nbsp; &nbsp; &nbsp; &nbsp;single click in list/combo box, or check/uncheck of radio/check buttons, or click of a button.</p>
+<p> dclick &nbsp; &nbsp; &nbsp; &nbsp;double click in list/combo box.</p>
+<p> menu &nbsp; &nbsp; &nbsp; &nbsp;a menu item was selected.</p>
+<p> scroll &nbsp; &nbsp; &nbsp; &nbsp;scroll control position has changed.</p>
+<p>&nbsp;</p>
+<p>You can specify multiple <span class="f_Bolddefault">ids</span> by using commas and dashes, eg. 1-3,5,7,9,15-20.</p>
+<p>&nbsp;</p>
+<p>You can also detect <span class="f_Bolddefault">mouse events</span> that are not associated with a specific control:</p>
+<p>&nbsp;</p>
+<p> mouse &nbsp; &nbsp; &nbsp; &nbsp;mouse moved</p>
+<p> sclick &nbsp; &nbsp; &nbsp; &nbsp;left button down</p>
+<p> uclick &nbsp; &nbsp; &nbsp; &nbsp;left button up</p>
+<p> dclick &nbsp; &nbsp; &nbsp; &nbsp;double click</p>
+<p> rclick &nbsp; &nbsp; &nbsp; &nbsp;right button click</p>
+<p> drop &nbsp; &nbsp; &nbsp; &nbsp;drop click</p>
+<p>&nbsp;</p>
+<p>You can use <a href="picture_windows.html">$mouse</a> to retrieve the current mouse position.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_did"></a><span class="f_Subheading">The /did command</span></p>
+<p>The /did command allows you to <span class="f_Bolddefault">modify</span> the values of <span class="f_Bolddefault">controls</span> in a dialog, eg. changing the text in an edit control, or setting focus to a button, or deleting lines in a listbox.</p>
+<p>&nbsp;</p>
+<p> &nbsp;/did -ftebvhnmcukradiogjsl name id [n] [text | filename]</p>
+<p>&nbsp;</p>
+<p> &nbsp;-f &nbsp; &nbsp; &nbsp; &nbsp;set focus on id</p>
+<p> &nbsp;-t &nbsp; &nbsp; &nbsp; &nbsp;set id as default button</p>
+<p>&nbsp;</p>
+<p> &nbsp;-e &nbsp; &nbsp; &nbsp; &nbsp;enable id</p>
+<p> &nbsp;-b &nbsp; &nbsp; &nbsp; &nbsp;disable id</p>
+<p> &nbsp;-v &nbsp; &nbsp; &nbsp; &nbsp;make id visible</p>
+<p> &nbsp;-h &nbsp; &nbsp; &nbsp; &nbsp;hide id</p>
+<p>&nbsp;</p>
+<p> &nbsp;-n &nbsp; &nbsp; &nbsp; &nbsp;enables editbox</p>
+<p> &nbsp;-m &nbsp; &nbsp; &nbsp; &nbsp;disables editbox</p>
+<p>&nbsp;</p>
+<p> &nbsp;-c &nbsp; &nbsp; &nbsp; &nbsp;check checkbox/radiobutton list/combo line</p>
+<p> &nbsp;-u &nbsp; &nbsp; &nbsp; &nbsp;uncheck checkbox/radiobutton list/combo line</p>
+<p> &nbsp;-k &nbsp; &nbsp; &nbsp; &nbsp;works with -cu, keeps other selections in a listbox</p>
+<p>&nbsp;</p>
+<p> &nbsp;-s &nbsp; &nbsp; &nbsp; &nbsp;checks the checkbox of an item in a listcb control</p>
+<p> &nbsp;-l &nbsp; &nbsp; &nbsp; &nbsp;unchecks the checkbox of an item in a listcb control</p>
+<p>&nbsp;</p>
+<p> &nbsp;-r &nbsp; &nbsp; &nbsp; &nbsp;clear all text in id</p>
+<p> &nbsp;-a &nbsp; &nbsp; &nbsp; &nbsp;add line of text to end</p>
+<p> &nbsp;-d &nbsp; &nbsp; &nbsp; &nbsp;delete Nth line</p>
+<p> &nbsp;-i &nbsp; &nbsp; &nbsp; &nbsp;insert text at Nth line</p>
+<p> &nbsp;-o &nbsp; &nbsp; &nbsp; &nbsp;overwrite Nth line with text</p>
+<p>&nbsp;</p>
+<p> &nbsp;-g &nbsp; &nbsp; &nbsp; &nbsp;set a new icon/bmp to an icon control</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;/did -g name id [n] filename</p>
+<p>&nbsp;</p>
+<p> &nbsp;-z &nbsp; &nbsp; &nbsp; &nbsp;resets the width of horizontal scrollbar in listbox</p>
+<p>&nbsp;</p>
+<p> &nbsp;-j &nbsp; &nbsp; &nbsp; &nbsp;resets the edited setting in an editbox</p>
+<p>&nbsp;</p>
+<p>Where <span class="f_Bolddefault">name</span> identifies the dialog and <span class="f_Bolddefault">id</span> is the id number of the control you want to modify.</p>
+<p>&nbsp;</p>
+<p>If you want to modify <span class="f_Bolddefault">several</span> controls at the same time, you can specify <span class="f_Bolddefault">multiple</span> id numbers separated by commas, eg. /did -b name 2,12-16,20 etc.</p>
+<p>&nbsp;</p>
+<p>You can select a range of text in an editbox using /did -c name id [n] [start [end]]. This selects line N in editbox, and sets selection to specified range of characters.</p>
+<p>&nbsp;</p>
+<p>You can mark a <span class="f_Bolddefault">3state</span> checkbox as indeterminate by specifying both <span class="f_Bolddefault">-cu</span> switches.</p>
+<p>&nbsp;</p>
+<p>You can access the <span class="f_Bolddefault">edit control</span> in a combobox by using 0 as the N value.</p>
+<p>&nbsp;</p>
+<p>To change the <span class="f_Bolddefault">range</span> of a scrollbar control, you can use /did -z name id [min max].</p>
+<p>&nbsp;</p>
+<p><a name="id_$did"></a><span class="f_Subheading">$did(name,id)</span></p>
+<p>You can get the settings and values of controls in a dialog by using the <span class="f_Bolddefault">$did()</span> dialog id identifier with the following formats and properties as appropriate to the control to which you are referring.</p>
+<p>&nbsp;</p>
+<p> $did(name,id)</p>
+<p> $did(name,id,N)</p>
+<p>&nbsp;</p>
+<p> If used in the on dialog event, <span class="f_Bolddefault">name</span> is optional.</p>
+<p>&nbsp;</p>
+<p>The following $did() <span class="f_Bolddefault">properties</span> are supported:</p>
+<p>&nbsp;</p>
+<p> text &nbsp; &nbsp; &nbsp; &nbsp;returns line or Nth line</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;$did(id) is same as $did(id).text</p>
+<p> len &nbsp; &nbsp; &nbsp; &nbsp;returns length of line or length of Nth line</p>
+<p> lines &nbsp; &nbsp; &nbsp; &nbsp;returns number of lines</p>
+<p> sel &nbsp; &nbsp; &nbsp; &nbsp;returns Line Number of Nth selected line</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if N is 0, returns number of selected lines</p>
+<p> seltext &nbsp; &nbsp; &nbsp; &nbsp;returns selected text in an editbox or first selected item in a listbox</p>
+<p> selstart &nbsp; &nbsp; &nbsp; &nbsp;returns select start character in editbox line</p>
+<p> selend &nbsp; &nbsp; &nbsp; &nbsp;returns select end character in editbox line</p>
+<p> edited &nbsp; &nbsp; &nbsp; &nbsp;returns $true if text in editbox was changed</p>
+<p> state &nbsp; &nbsp; &nbsp; &nbsp;returns 0 = off, 1 = on, and 2 = indeterminate</p>
+<p> next &nbsp; &nbsp; &nbsp; &nbsp;returns id of next control in tab key order</p>
+<p> prev &nbsp; &nbsp; &nbsp; &nbsp;returns id of previous control in tab key order</p>
+<p> visible &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the control is visible, otherwise $false</p>
+<p> enabled &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the control is enabled, otherwise $false</p>
+<p> isid &nbsp; &nbsp; &nbsp; &nbsp;returns $true if id exists in the dialog, otherwise $false</p>
+<p> csel &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns line number of Nth checked box in a listcb control</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;if N is 0, returns number of checked lines</p>
+<p> cstate &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns 0 = off, 1 = on for item in a listcb control</p>
+<p>&nbsp;</p>
+<p>You can access the edit control in a combobox by using 0 as the N value.</p>
+<p>&nbsp;</p>
+<p><a name="id_$didwm"></a><span class="f_Subheading">$didwm(name,id,wildtext,N)</span></p>
+<p>Returns the number of the line that matches wildtext, with the search starting at line N. N is optional.</p>
+<p>&nbsp;</p>
+<p><a name="id_$didreg"></a><span class="f_Subheading">$didreg(name,id,regex,N)</span></p>
+<p>Returns the number of the line that matches the regular expression, with the search starting at line N. N is optional.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_didtok"></a><a name="id_$didtok"></a><span class="f_Subheading">$didtok(name,id,C)</span></p>
+<p>Returns a tokenized list of the items in a list/combo/edit box.</p>
+<p>&nbsp;</p>
+<p>You can use <span class="f_Bolddefault">/didtok name id C text</span> to add a tokenized list of items to a list/combo/edit box.</p>
+
+</td></tr></table>
+
+</body>
+</html>

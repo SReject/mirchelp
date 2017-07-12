@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Halting Text</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$halted,/haltdef,Halting default text" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Halting text</span></p>
+<p>&nbsp;</p>
+<p>mIRC displays its own default text for various types of IRC Server events, such as users joining or parting a channel, however you can modify or suppress this by using a script.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">The ^ event prefix</span></p>
+<p>You can prevent the default text for an event from being shown by using the ^ prefix in an event definition. This allows you to show your own custom event messages.</p>
+<p>&nbsp;</p>
+<p>on ^1:JOIN:#:echo $chan Joins: $nick | halt</p>
+<p>&nbsp;</p>
+<p>This line is triggered by a JOIN event and shows your own custom join event message, /halt prevents the normal message from being shown.</p>
+<p>&nbsp;</p>
+<p>The ^ events <span class="f_Bolddefault">do not replace</span> your existing events; your normal events are independent and are <span class="f_Bolddefault">still</span> processed whether there is a ^ event in a script or not.</p>
+<p>&nbsp;</p>
+<p>If you only want to halt the default text without /halting the entire script, you can use the <span class="f_Bolddefault">/haltdef</span> command.</p>
+<p>&nbsp;</p>
+<p>You can check if a script has already halted the default text by using the <span class="f_Bolddefault">$halted</span> identifier; it returns $true if a user has used /halt or /haltdef in a ^ event, and $false if not.</p>
+<p>&nbsp;</p>
+<p>The ^ event prefix currently works <span class="f_Bolddefault">only</span> on the following types of events: ACTION, BAN, CHAT, DEHELP, DEOP, DEVOICE, HELP, INVITE, JOIN, KICK, MODE, NICK, NOTICE, OP, OPEN, PART, PING, TEXT, UNBAN, USERMODE, VOICE, QUIT, SERV, SERVERMODE, SERVEROP, SNOTICE, TABCOMP, TOPIC, WALLOPS.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Halting the default text for an event affects how mIRC displays the most basic information about IRC events to a user, so it should be used carefully.</p>
+
+</td></tr></table>
+
+</body>
+</html>

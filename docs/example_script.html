@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Example Script</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Example Script" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Example Script</span></p>
+<p>&nbsp;</p>
+<p>The following example script shows you how you can place related aliases, popups, and events in a single file making it easier to distribute a whole script to other people.</p>
+<p>&nbsp;</p>
+<p>;Moo Script v1.0 - contains moo related functions</p>
+<p>&nbsp;</p>
+<p>;This menu definition adds a submenu to your channel popup menu</p>
+<p>&nbsp;</p>
+<p>menu channel {</p>
+<p> &nbsp;Moo</p>
+<p> &nbsp;.happily:/describe # moos happily</p>
+<p> &nbsp;.woefully:/describe # moos woefully</p>
+<p> &nbsp;.philosophically:/describe # MUs</p>
+<p> &nbsp;.colorfully:/describe # moos in several hues</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>;These add aliases for shortcuts to often used messages</p>
+<p>&nbsp;</p>
+<p>alias how /msg $1 How now brown cow?</p>
+<p>alias moo /sound moo.wav moooos</p>
+<p>&nbsp;</p>
+<p>;This adds a ctcp command which reacts to a moo ctcp from someone</p>
+<p>&nbsp;</p>
+<p>ctcp 1:moo:*:/notice $nick Sorry, I am all out of moos right now.</p>
+<p>&nbsp;</p>
+<p>;These add events which react to specific words said on a channel</p>
+<p>&nbsp;</p>
+<p>on 1:text:*moo*:#:/msg $chan okay, who let the cow loose?</p>
+<p>on 1:text:*grass*:#:/describe $chan dribbles hungrily</p>
+<p>&nbsp;</p>
+<p>;These add join and part events which react to a user joining/parting</p>
+<p>;the channel #moo</p>
+<p>&nbsp;</p>
+<p>on 1:join:#moo:{</p>
+<p> &nbsp;/msg $nick Welcome $nick to channel #moo!</p>
+<p> &nbsp;/msg $nick This is a herd-oriented channel, there are calfs present!</p>
+<p> &nbsp;/msg $nick Please refrain from profane mooing and/or bleating</p>
+<p> &nbsp;/msg $nick Mammals engaging in such acts will be promptly demooted</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>on 1:part:#moo:/msg $nick Thanks for grazing with us on #moo!</p>
+<p>&nbsp;</p>
+<p>;The following line is processed while you are doing a channels list. It</p>
+<p>;prints to the status window any channel name/topic that has the</p>
+<p>;word moo in it</p>
+<p>&nbsp;</p>
+<p>raw 322:*moo*:/echo -s $2-</p>
+
+</td></tr></table>
+
+</body>
+</html>

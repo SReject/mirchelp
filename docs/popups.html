@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Popups</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Menus,Popup Menus" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Popups</span></p>
+<p>&nbsp;</p>
+<p>mIRC allows you to create custom popup menus for the status window, query/chat windows, channel windows, the channel nickname listbox, and main menubar. To create these you must know how to use <a href="basic_irc_commands.html">Basic IRC commands</a>, how to create <a href="aliases.html">Aliases</a>, and how to use <a href="identifiers.html">Identifiers</a> and <a href="variables.html">Variables</a>.</p>
+<p>&nbsp;</p>
+<p>If you click the right mouse-button in a window, the popup menu for that window will appear and you can select menu-items which you have defined to perform certain tasks, such as opping a user or joining a channel.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>Popup menu definitions use the format:</p>
+<p>&nbsp;</p>
+<p>&lt;menuitem&gt;:&lt;commands&gt;</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Get Help:/join #irchelp</span></p>
+<p>&nbsp;</p>
+<p>The words before the &quot;:&quot; colon are the name of the menuitem. The words after the &quot;:&quot; colon are the commands that are to be performed. In this case, the menuitem you would see is &quot;Get Help&quot;. The command that would be performed if you select this menuitem would be &quot;/join #irchelp&quot;, as if you had typed it.</p>
+<p>&nbsp;</p>
+<p>The format of the commands follows precisely the same as those in normal aliases. See the <a href="aliases.html">Aliases</a> section to learn about aliases.</p>
+<p>&nbsp;</p>
+<p>To create a <span class="f_Bolddefault">Submenu</span>, use a &quot;.&quot; full stop.</p>
+<p>&nbsp;</p>
+<p>Join a Channel</p>
+<p>.Get IRC help!:/join #irchelp</p>
+<p>.Visit the folks at #friendly:/join #friendly</p>
+<p>.Who shall we join?:/join $?</p>
+<p>&nbsp;</p>
+<p>In this case, the name of the submenu is &quot;Join a Channel&quot;. All the commands following it beginning with a &quot;.&quot; are part of this submenu.</p>
+<p>&nbsp;</p>
+<p>To create <span class="f_Bolddefault">menus within a submenu</span>, you just add more full stops:</p>
+<p>&nbsp;</p>
+<p>Channels</p>
+<p>.Help</p>
+<p>..irchelp:/join #irchelp</p>
+<p>..mIRC:/join #mirc</p>
+<p>..newbies:/join #newbies</p>
+<p>.Other Channels</p>
+<p>..Visit #friendly:/join #friendly</p>
+<p>..Wibble Wobble:/join #wibble</p>
+<p>.Join?:/join #$$?=&quot;Enter a channel name:&quot;</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">separate</span> menuitems, you can use a single &quot;-&quot; dash on a line by itself.</p>
+<p>&nbsp;</p>
+<p>whois ?:/whois $?</p>
+<p>-</p>
+<p>Misc</p>
+<p>.Edit Temp:/run notepad.exe temp.txt</p>
+<p>.say?: /say $?</p>
+<p>.action?:/me $?</p>
+<p>Names</p>
+<p>.#irchelp: /names #irchelp</p>
+<p>.#friendly: /names #friendly</p>
+<p>.names ?:/names $?</p>
+<p>-</p>
+<p>channel list:/list</p>
+<p>-</p>
+<p>Join a Channel</p>
+<p>.Get IRC help!:/join #irchelp</p>
+<p>.Visit the folks at #friendly:/join #friendly</p>
+<p>.Who shall we join?:/join $?</p>
+<p>&nbsp;</p>
+<p>To use the popup menu for a channel nickname listbox, you need to select a nickname before the menu will pop up. Here is a simple nickname listbox popup menu:</p>
+<p>&nbsp;</p>
+<p>Who Is?:/whois $1</p>
+<p>-</p>
+<p>Modes</p>
+<p>.Op:/mode # +o $1</p>
+<p>.Deop:/mode # -o $1</p>
+<p>.Kick, Ban:/kick # $1 | /ban $1</p>
+<p>-</p>
+<p>DCC Send:/dcc send $1</p>
+<p>DCC Chat:/dcc chat $1</p>
+<p>-</p>
+<p>Slap!:/me slaps $1 around a bit with a large trout</p>
+<p>Query:/query $1 Hey you! hello? are you there...?</p>
+<p>&nbsp;</p>
+<p>If you want to create a popup menu item which performs <span class="f_Bolddefault">several commands</span>, you can use the { } brackets. See the <a href="aliases.html">Aliases</a> section for more information on how to use these.</p>
+<p>&nbsp;</p>
+<p>Cookie {</p>
+<p> &nbsp;if ($1 == $me) echo I give myself a cookie!</p>
+<p> &nbsp;else echo I give $1 a cookie!</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>The above menitem can be used in the channel nicknames listbox. The $1 refers to the nickname of the user you have selected in the listbox. In this case, it checks to see if I have selected my own nickname, and if so displays the first message, otherwise it displays the second message.</p>
+<p>&nbsp;</p>
+<p>The popup menus for the <span class="f_Bolddefault">Query/Chat</span> and the <span class="f_Bolddefault">MenuBar</span> work the same way as the channel listbox popup menu.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Identifiers and Variables</span></p>
+<p>Variables or identifiers that are a part of a the title of a menu definition are evaluated each time the popup appears. This allows you to create popup menus that vary in appearance. If an entire menu item evaluates to $null, it is not displayed.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Remote Scripts</span></p>
+<p>You can place <span class="f_Bolddefault">menu</span> definitions in your remote scripts by using the <span class="f_Bolddefault">menu</span> prefix.</p>
+<p>&nbsp;</p>
+<p>menu status {</p>
+<p> &nbsp;Server</p>
+<p> &nbsp;.Links:/links</p>
+<p> &nbsp;.Lusers:/lusers</p>
+<p> &nbsp;.Motd:/motd</p>
+<p> &nbsp;.Time:/time</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This definition would add a submenu to your status window popup menu.</p>
+<p>&nbsp;</p>
+<p>You can also specify channel, query, nicklist, and menubar as the menu name, and this will add menuitems to your current popup menus for each of these windows.</p>
+<p>&nbsp;</p>
+<p>menu nicklist {</p>
+<p> &nbsp;Slap</p>
+<p> &nbsp;.Haddock:/me prods $1 with a haddock</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This definition would add a submenu to your channel nickname listbox popup menu.</p>
+<p>&nbsp;</p>
+<p>You can also specify popup menus for <a href="custom_windows.html">custom windows</a> by specifying the custom window name.</p>
+<p>&nbsp;</p>
+<p>menu @test {</p>
+<p> &nbsp;dclick:/echo double-click!</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">dclick</span> item allows you to specify a command that will be performed when you double-click in a custom window listbox. You can also refer to $1 which holds the line number of the line that was double-clicked.</p>
+<p>&nbsp;</p>
+<p>You can also specify <span class="f_Bolddefault">multiple</span> window names for a menu, eg.:</p>
+<p>&nbsp;</p>
+<p>menu @dogs,@cats,@goats {</p>
+<p> &nbsp; dclick: /echo double-click in $active</p>
+<p> &nbsp; close: window -c $active</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><a name="id_menu"></a>You can use the <span class="f_Bolddefault">$menu, $menutype, and $menucontext</span> identifiers to refer to the menu that is about to pop up or that is associated with the script being performed. This allows you to modify the form of the popup based on whether it is a query, channel, etc. popup menu:</p>
+<p>&nbsp;</p>
+<p>menu query,nicklist {</p>
+<p> &nbsp; $iif($menu == nicklist,Op):/mode # +o $$1</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><a name="id_$style"></a><span class="f_Subheading">Menu Styles</span></p>
+<p>You can place a check mark or create a disabled menu item by using the <span class="f_Bolddefault">$style(N)</span> identifier, where N = 1 for checked, N = 2 for disabled, and N = 3 for both. The $style(N) identifier must be the first word in the menu definition.</p>
+<p>&nbsp;</p>
+<p>menu status {</p>
+<p> &nbsp;$iif($server == $null,$style(2)) Server Info</p>
+<p> &nbsp;.Motd:/motd</p>
+<p> &nbsp;.Time:/time</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>The above definition creates a submenu in your status window popup which is only enabled when you are connected to an IRC server.</p>
+<p>&nbsp;</p>
+<p><a name="id_$submenu"></a><span class="f_Subheading">$submenu($id($1))</span></p>
+<p>This identifier allows you to dynamically create a list of menu items, and can only be called from a popup menu definition.</p>
+<p>&nbsp;</p>
+<p>It calls <span class="f_Bolddefault">$id($1)</span>, where $id() is the name of your identifer, and where $1 = 1, and increases by 1 with each call, <span class="f_Bolddefault">adding</span> whatever is returned by $id() to the popup menu.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">value</span> that $id() returns must be a one line definition format for a popup menu.</p>
+<p>&nbsp;</p>
+<p>The iteration <span class="f_Bolddefault">ends</span> when $id() returns no value.</p>
+<p>&nbsp;</p>
+<p>menu status {</p>
+<p> &nbsp;Animal</p>
+<p> &nbsp;.$submenu($animal($1))</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>alias animal {</p>
+<p> &nbsp;if ($1 == begin) return -</p>
+<p> &nbsp;if ($1 == 1) return Cow:echo Cow</p>
+<p> &nbsp;if ($1 == 2) return Llama:echo Llama</p>
+<p> &nbsp;if ($1 == 3) return Emu:echo Emu</p>
+<p> &nbsp;if ($1 == end) return -</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">begin</span> and <span class="f_Bolddefault">end</span> values are sent to check if the item should be enclosed in separators.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You cannot use this to create nested submenus, it will only build one single submenu.</p>
+
+</td></tr></table>
+
+</body>
+</html>

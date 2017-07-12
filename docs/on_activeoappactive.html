@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on ACTIVE/APPACTIVE</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on ACTIVE,on APPACTIVE" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on ACTIVE/APPACTIVE</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on ACTIVE</span> and <span class="f_Bolddefault">on APPACTIVE</span> events trigger when a window in mIRC is activated or when its active status changes.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:ACTIVE:&lt;*#?=!@&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:ACTIVE:#mirc:/echo Channel window #mIRC has been activated</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:ACTIVE:*:echo Activated: $active De-Activated: $lactive</p>
+<p>&nbsp;</p>
+<p>The above event triggers whenever a window in mIRC is activated. The <span class="f_Bolddefault">$active</span> identifier returns the name of the currently active window, and the <span class="f_Bolddefault">$lactive</span> identifier returns the name of the window that was just de-activated. You can also use the <span class="f_Bolddefault">$activecid</span> and <span class="f_Bolddefault">$lactivecid</span>, see the <a href="multimserver.html">Multi-Server</a> section for more information.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> It is possible for either or both $active and $lactive to return $null.</p>
+<p>&nbsp;</p>
+<p>on 1:APPACTIVE:echo mIRC active status: $appactive</p>
+<p>&nbsp;</p>
+<p>The above event triggers when the active status has changed. The <span class="f_Bolddefault">$appactive</span> identifier returns $true if mIRC is active, or $false if it is not.</p>
+
+</td></tr></table>
+
+</body>
+</html>

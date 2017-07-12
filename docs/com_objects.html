@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>COM Objects</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="ActiveX,COM Objects" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">COM Objects</span></p>
+<p>&nbsp;</p>
+<p>mIRC allows you to call <span class="f_Bolddefault">COM objects</span> via scripts. You <span class="f_Bolddefault">must</span> have experience with COM objects in order to use this feature.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_comopen"></a><span class="f_Bolddefault">/comopen name progid</span></p>
+<p>This opens a COM connection to object progid eg. Excel.Application, and assigns the connection a name.</p>
+<p>&nbsp;</p>
+<p>You should check <span class="f_Bolddefault">$comerr</span> after making this call to confirm that the COM connection was successful.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_comclose"></a><span class="f_Bolddefault">/comclose name</span></p>
+<p>This closes the specified COM connection.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="cmd_comlist"></a><span class="f_Bolddefault">/comlist</span></p>
+<p>This lists all open COM connections.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_comreg"></a><span class="f_Bolddefault">/comreg -u filename</span></p>
+<p>This registers/unregisters a COM DLL with windows.</p>
+<p>&nbsp;</p>
+<p>example {</p>
+<p> &nbsp;comopen name progid</p>
+<p>&nbsp;</p>
+<p> &nbsp;; if comopen failed, maybe the DLL that came with the script is not registered</p>
+<p> &nbsp;if ($comerr) {</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;;register the DLL</p>
+<p> &nbsp; &nbsp;comreg test.dll</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;;try to open it again</p>
+<p> &nbsp; &nbsp;comopen name progid</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; still failed, halt the script</p>
+<p> &nbsp; &nbsp;if ($comerr) halt</p>
+<p> &nbsp;}</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><a name="id_comerr"></a><span class="f_Bolddefault">$comerr</span></p>
+<p>This should be checked after a call to any COM command or identifier. Returns 1 if there was an error, 0 otherwise.</p>
+<p>&nbsp;</p>
+<p><a name="id_com"></a><span class="f_Bolddefault">$com(name,member,method,type1,value1,...,typeN,valueN)</span></p>
+<p>This calls a member of an open COM connection with the specified method and parameters.</p>
+<p>&nbsp;</p>
+<p> &nbsp;name &nbsp; - connection name.</p>
+<p>&nbsp;</p>
+<p> &nbsp;member - member name.</p>
+<p>&nbsp;</p>
+<p> &nbsp;method - Combination of the following values added together:</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 = DISPATCH_METHOD</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2 = DISPATCH_PROPERTYGET</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4 = DISPATCH_PROPERTYPUT</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;8 = DISPATCH_PROPERTYPUTREF</p>
+<p>&nbsp;</p>
+<p> &nbsp;type &nbsp; - the variable type, can be: i1, i2, i4, ui1, ui2, ui4, int, uint, r4, r8, cy, date, decimal, bool, bstr, variant, dispatch, unknown, error.</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;VB equivalents are: boolean, byte, currency, date, double, integer, long, single, string, variant.</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;To make a variable by reference, use * in the type name, eg. i1*</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;To assign a name to a variable for later reference after a call, append it to the type, eg. i1* varname</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;When using a variant you must also specify the variable type after it, eg. variant bool.</p>
+<p>&nbsp;</p>
+<p> &nbsp;value &nbsp;- the value assigned to the variable type.</p>
+<p>&nbsp;</p>
+<p> &nbsp;Returns: 1 = ok, 0 = fail.</p>
+<p>&nbsp;</p>
+<p>After you have opened a COM connection or made a call to $com() you can use the following forms of $com():</p>
+<p>&nbsp;</p>
+<p><a name="id_comcall"></a><span class="f_Bolddefault">$comcall(name,alias,...)</span></p>
+<p>$comcall() uses the same format as $com() apart from the alias. It is multi-threaded so it will not halt the script and will call the specified alias once the call returns.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If $comcall() fails when calling an object and $com() does not, this means that the object is not compatible with the threading model of mIRC, so $com() must be used. You can check the $comerr value in the alias to determine if a $comcall() failed or not.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$com(name/N)</span></p>
+<p>Returns name if connection is open, or name of Nth connection. N = 0 returns number of open connections.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> progid, dispatch, unknown, result, error, errortext, argerr</p>
+<p>&nbsp;</p>
+<p>progid - object name.</p>
+<p>&nbsp;</p>
+<p>result - the value returned by the COM object member after the call.</p>
+<p>&nbsp;</p>
+<p>error &nbsp;- error value, if there was an error.</p>
+<p>&nbsp;</p>
+<p>errortext - error description associated with error.</p>
+<p>&nbsp;</p>
+<p>argerr - Nth argument that caused the error, if the error was due to an invalid variable type.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$com(name/N,varname)</span></p>
+<p>Returns value of the specified variable name.</p>
+<p>&nbsp;</p>
+<p><a name="id_comval"></a><span class="f_Bolddefault">$comval(name,N,member)</span></p>
+<p>Returns member value for the Nth instantiation of the enumerated collection in name.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Binary Variables</span></p>
+<p>The $com() identifier allows passing parameters in from, and results out to, binary variables. To pass parameters in from binary variables, prefix the variable type with &amp; to indicate the parameter is a binary variable eg. $com(name, member, method, &amp;bstr, &amp;binvar). To retrieve a result into a binary variable, use $com(name, &amp;binvar).result.</p>
+<p><span class="f_Subheading">&nbsp;</span></p>
+<p><span class="f_Highlight">Note:</span> $com() also allows you to pass/retrieve one dimensional single-byte arrays from/into binary variables.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Dispatch and Unknown</span></p>
+<p>The two variable types <span class="f_Bolddefault">dispatch</span> and <span class="f_Bolddefault">unknown</span> allow you to <span class="f_Bolddefault">pass</span> dispatch/unknown pointers as parameters in a $com() call, or <span class="f_Bolddefault">retrieve</span> dispatch/unknown pointers from a $com() call, by reference.</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">pass</span> a dispatch/unknown pointer as a parameter in $com(), specify the variable type as dispatch/unknown, and specify the name of an existing $com() connection as the value.</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">retrieve</span> a dispatch/unknown pointer through a call to $com(), specify a dispatch* item, with a variable name, as the last parameter in a $com() call, without assigning it a value. When $com() returns, mIRC will create a new $com() item with that variable name and assign it the dispatch or unknown pointer. See example script #2 below.</p>
+<p>&nbsp;</p>
+<p>In the case of retrieving an <span class="f_Bolddefault">unknown</span> pointer, mIRC will extend it to a <span class="f_Bolddefault">dispatch</span> pointer if it can, allowing you to call it directly via $com().</p>
+<p>&nbsp;</p>
+<p>You can use $com().dispatch or $com().unknown to see if a pointer exists for that $com() item.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Example Script #1</span></p>
+<p>The following script is a simple example that connects to excel and then retrieves and sets the visible property.</p>
+<p>&nbsp;</p>
+<p>excel {</p>
+<p> &nbsp;comopen excel Excel.Application</p>
+<p>&nbsp;</p>
+<p> &nbsp;if ($comerr) {</p>
+<p> &nbsp; &nbsp;echo comopen failed</p>
+<p> &nbsp; &nbsp;halt</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;; check if excel window is visible</p>
+<p>&nbsp;</p>
+<p> &nbsp;if ($com(excel,Visible,3) == 0) {</p>
+<p> &nbsp; &nbsp;echo $com failed</p>
+<p> &nbsp; &nbsp;goto finish</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;echo Visible: $com(excel).result</p>
+<p>&nbsp;</p>
+<p> &nbsp;; make excel window visible</p>
+<p>&nbsp;</p>
+<p> &nbsp;if ($com(excel,Visible,5,i4,1) == 0) {</p>
+<p> &nbsp; &nbsp;echo $com failed</p>
+<p> &nbsp; &nbsp;goto finish</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;; check visibility again</p>
+<p>&nbsp;</p>
+<p> &nbsp;if ($com(excel,Visible,3) == 0) {</p>
+<p> &nbsp; &nbsp;echo $com failed</p>
+<p> &nbsp; &nbsp;goto finish</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;echo Visible: $com(excel).result</p>
+<p>&nbsp;</p>
+<p> &nbsp;:finish</p>
+<p> &nbsp;comclose excel</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Example Script #2</span></p>
+<p>The following script retrieves information about your CPU. It displays debugging information so you can see whether a call succeeded or not, the value it returned, and whether a new COM object was created.</p>
+<p>&nbsp;</p>
+<p>cpu {</p>
+<p> &nbsp;comopen Locator WbemScripting.SWbemLocator</p>
+<p> &nbsp;if ($comerr) { echo comopen failed | halt }</p>
+<p>&nbsp;</p>
+<p> &nbsp;echo com: $com(Locator, ConnectServer, 3, dispatch* Services)</p>
+<p> &nbsp;echo result: $com(Locator).result</p>
+<p> &nbsp;echo com(0): $com(0)</p>
+<p>&nbsp;</p>
+<p> &nbsp;if ($com(Services)) {</p>
+<p> &nbsp; &nbsp;echo com: $com(Services, Get, 3, string, Win32_Processor.DeviceID='CPU0', dispatch* More)</p>
+<p> &nbsp; &nbsp;echo result: $com(Services).result</p>
+<p> &nbsp; &nbsp;echo com(0): $com(0)</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;if ($com(More)) {</p>
+<p> &nbsp; &nbsp; &nbsp;echo com: $com(More, Name, 3)</p>
+<p> &nbsp; &nbsp; &nbsp;echo result: $com(More).result</p>
+<p> &nbsp; &nbsp; &nbsp;echo com: $com(More, Caption, 3)</p>
+<p> &nbsp; &nbsp; &nbsp;echo result: $com(More).result</p>
+<p> &nbsp; &nbsp; &nbsp;echo com: $com(More, Manufacturer, 3)</p>
+<p> &nbsp; &nbsp; &nbsp;echo result: $com(More).result</p>
+<p> &nbsp; &nbsp; &nbsp;comclose More</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;comclose Services</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;comclose Locator</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Example Script #3</span></p>
+<p>The following script retrieves information about your hard drives. It does so by retrieving all drive instances in an enumerated collection and then accessing member values for each instance using the <span class="f_Bolddefault">$comval()</span> identifier.</p>
+<p>&nbsp;</p>
+<p>drives {</p>
+<p> &nbsp;comopen Locator WbemScripting.SWbemLocator</p>
+<p> &nbsp;if ($comerr) { echo comopen failed | halt }</p>
+<p>&nbsp;</p>
+<p> &nbsp;echo Com: $com(Locator,ConnectServer,3, dispatch* Services)</p>
+<p> &nbsp;echo Result: $com(Locator).result</p>
+<p> &nbsp;comclose Locator</p>
+<p>&nbsp;</p>
+<p> &nbsp;if $com(Services) {</p>
+<p> &nbsp; &nbsp;echo com: $com(Services, InstancesOf,3,string,Win32_LogicalDisk,dispatch* Instances)</p>
+<p> &nbsp; &nbsp;echo result: $com(Services).result</p>
+<p> &nbsp; &nbsp;comclose Services</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;if $com(Instances) {</p>
+<p> &nbsp; &nbsp;echo com: $com(Instances,Count,3)</p>
+<p> &nbsp; &nbsp;var %n = $com(Instances).result</p>
+<p> &nbsp; &nbsp;echo result: %n</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;var %m = 1</p>
+<p> &nbsp; &nbsp;while (%m &lt;= %n) {</p>
+<p> &nbsp; &nbsp; &nbsp;echo 4 disk: %m</p>
+<p> &nbsp; &nbsp; &nbsp;echo 3 Com: $comval(Instances, %m, Name)</p>
+<p> &nbsp; &nbsp; &nbsp;echo 3 Com: $comval(Instances, %m, FileSystem)</p>
+<p> &nbsp; &nbsp; &nbsp;echo 3 Com: $comval(Instances, %m, FreeSpace)</p>
+<p> &nbsp; &nbsp; &nbsp;echo 3 Com: $comval(Instances, %m, Description)</p>
+<p> &nbsp; &nbsp; &nbsp;inc %m</p>
+<p> &nbsp; &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;comclose instances</p>
+<p> &nbsp;}</p>
+<p>}</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

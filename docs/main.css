@@ -1,0 +1,46 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+body > .wrapper {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+#nav {
+    width: 200px;
+    flex: 0 0 none;
+    margin: 0;
+    padding: 0;
+    padding: 5px;
+    overflow-x: auto;
+}
+#nav ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+#nav div {
+    margin-left: 20px;
+}
+
+#nav a, #nav a:hover, #nav a:visited {
+    color: inherit;
+    text-decoration: none;
+    font-family: sans-serif;
+    padding: 3px;
+    display: inline-block;
+}
+#nav a.selected {
+    background-color: rgba(0,0,0,.1);
+}
+
+#content {
+    flex: 1 0 auto;
+    margin: 0;
+    padding: 0;
+    border: none;
+}

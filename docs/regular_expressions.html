@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Regular Expressions</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Regular Expressions" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Regular Expressions</span></p>
+<p>&nbsp;</p>
+<p>Regular expressions can be used to perform complicated pattern matching operations. You should already know how to use Regular expressions before using the identifiers below.</p>
+<p>&nbsp;</p>
+<p>It is beyond the scope of this help file to explain how Regular Expressions work. There are many websites on the internet that introduce regular expressions and provide examples.</p>
+<p>&nbsp;</p>
+<p><a name="id_$regex"></a><span class="f_Bolddefault">$regex([name], text, pattern)</span></p>
+<p>Returns N, the number of strings in text that matched the regular expression pattern.</p>
+<p>&nbsp;</p>
+<p>You can assign a <span class="f_Bolddefault">name</span> to a $regex() call which you can use later in $regml() to retrieve the list of matches.</p>
+<p>&nbsp;</p>
+<p>If you do not specify a <span class="f_Bolddefault">name</span>, all identifiers use a 'default' name which is overwritten with each call to $regex().</p>
+<p>&nbsp;</p>
+<p>$regml() remembers the results for the last fifty $regex() calls. Each time you do a match with $regex(), and you specify a name, that name's previous results are overwritten with the new results.</p>
+<p>&nbsp;</p>
+<p><a name="id_$regml"></a><span class="f_Bolddefault">$regml([name], N)</span></p>
+<p>This returns the Nth match returned by a call to $regex(), $regsub(), or $regsubex().</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> pos, group, match</p>
+<p>&nbsp;</p>
+<p>If N = 0, returns total number of match strings.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">pos</span> property returns a strings position in the original match text.</p>
+<p>The <span class="f_Bolddefault">group</span> property returns the capture group number</p>
+<p>The <span class="f_Bolddefault">match</span> property returns the match number in the case of a /g global match that returns multiple matches.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_regmlex"></a><span class="f_Bolddefault">$regmlex([name], M, N)</span></p>
+<p>If the /g modifier is used with a pattern, multiple results can be returned for that pattern. This identifier allows you to retrieve these results, where M is the Mth result and N is the () capture group number in that result. If N is not specified, it defaults to 1.</p>
+<p>&nbsp;</p>
+<p>This identifier supports the same properties as $regml().</p>
+<p>&nbsp;</p>
+<p><a name="id_$regsub"></a><span class="f_Bolddefault">$regsub([name], text, pattern, subtext, %var|&amp;binvar)</span></p>
+<p>Performs a regular expression match, like $regex(), and then performs a substitution using subtext.</p>
+<p>&nbsp;</p>
+<p>Returns N, the number of substitutions made, and assigns the result to %var or &amp;binvar.</p>
+<p>&nbsp;</p>
+<p><a name="id_$regsubex"></a><span class="f_Bolddefault">$regsubex([name], text, pattern, subtext, %var|&amp;binvar)</span></p>
+<p>Performs a regular expression match, like $regex(), and then performs a substitution using subtext.</p>
+<p>&nbsp;</p>
+<p>Subtext is evaluated during substitution and can be an identifier.</p>
+<p>&nbsp;</p>
+<p>Subtext can also contain special markers where \0 = number of matches, \n = match number, \t = match text, \a = all match items, and \A which is a non-spaced version of \a.</p>
+<p>&nbsp;</p>
+<p>Returns text result.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> To output results to a <span class="f_Bolddefault">%var|&amp;binvar</span>, the <span class="f_Bolddefault">[name]</span> parameter must be specified, and the identifier will return N, the same as $regsub().</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Supported Modifiers</span></p>
+<p>mIRC supports the following standard modifiers:</p>
+<p>&nbsp;</p>
+<p>g - continue after first match</p>
+<p>i - case insensitive match</p>
+<p>m - multiple lines match</p>
+<p>s - dot matches newlines</p>
+<p>x - ignore white spaces</p>
+<p>&nbsp;</p>
+<p>mIRC also supports the following modifiers:</p>
+<p>&nbsp;</p>
+<p>A - anchored - match start of string</p>
+<p>E/D - $ dollar matches only at end</p>
+<p>U - ungreedy - reverses * and *?</p>
+<p>u - enables UTF-8 and UCP</p>
+<p>X - strict escape parsing</p>
+<p>&nbsp;</p>
+<p>And the following mIRC-specific modifiers:</p>
+<p>&nbsp;</p>
+<p>S - strip bold, underline, reverse, and color control codes</p>
+<p>F - make back-references refer to () capture groups, which is how standard regex works.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If the F modifier is not used, \N back-references in patterns and N indexes in identifiers refer to the order in which matches are found, and $regml() will not include empty matches.</p>
+
+</td></tr></table>
+
+</body>
+</html>

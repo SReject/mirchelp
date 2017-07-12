@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Signals</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$signal,/signal,on SIGNAL,Signals" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Signals</span></p>
+<p>&nbsp;</p>
+<p>Signals are a simple way of triggering signal events in multiple scripts at the same time.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/signal [-n] &lt;name&gt; [parameters]</span></p>
+<p>The signal command allows you to trigger signal events in all scripts that listen for signals.</p>
+<p>&nbsp;</p>
+<p>By default the signal is triggered after all current scripts have finished executing. You can however use <span class="f_Bolddefault">-n</span> to make the script trigger immediately.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">on *:SIGNAL:name:command</span></p>
+<p>The on signal event triggers if a script has used the /signal command to send a signal to all scripts.</p>
+<p>&nbsp;</p>
+<p>The signal <span class="f_Bolddefault">name</span> can contain wildcards.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$signal</span> identifier returns the signal name that caused the signal event to trigger.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$1-</span> identifier returns the parameters that were specified in the /signal command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The script that called /signal is triggered first, and then all other scripts are triggered.</p>
+
+</td></tr></table>
+
+</body>
+</html>

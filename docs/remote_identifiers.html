@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Remote Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Remote Identifiers</span></p>
+<p>&nbsp;</p>
+<p>You can use the following identifiers in scripts to refer to values relating specifically to events. There are also quite a few other identifiers which relate only to specific events, these are described with the events themselves in other parts of the help file. There are also other <a href="identifiers.html">identifiers</a> which can be used in both remote and non-remote scripts.</p>
+<p>&nbsp;</p>
+<p><a name="id_$1-"></a><span class="f_Bolddefault">$1-</span></p>
+<p>You can use the $1 $2 ... $N identifiers to refer to individual parameters in a line. You can also use $N- to refer to parameters N and onwards, and $N-M to refer to parameters $N through to $M. So to refer to a whole line, you would use $1-.</p>
+<p>&nbsp;</p>
+<p><a name="id_$0"></a><span class="f_Bolddefault">$0</span></p>
+<p>Returns the number of space-delimited tokens in the $1- line.</p>
+<p>&nbsp;</p>
+<p><a name="id_$(...)"></a><span class="f_Bolddefault">$(...)</span></p>
+<p>This identifier can only be used in the <span class="f_Bolddefault">text match</span> section of an <span class="f_Bolddefault">event</span> definition. It allows you to create a match parameter dynamically. You can use <span class="f_Bolddefault">$1- </span>to reference the incoming line.</p>
+<p>&nbsp;</p>
+<p>on 1:TEXT:$(*hello $me $+ *):?:echo hello back!</p>
+<p>&nbsp;</p>
+<p><a name="id_$address"></a><span class="f_Bolddefault">$address</span></p>
+<p>Returns the address of the user associated with an event in the form user@host.</p>
+<p>&nbsp;</p>
+<p><a name="id_$chan"></a><span class="f_Bolddefault">$chan</span></p>
+<p>Returns the name of the channel for a specific event. For all non-channel events $chan will be $null.</p>
+<p>&nbsp;</p>
+<p><a name="id_$clevel"></a><span class="f_Bolddefault">$clevel</span></p>
+<p>Returns the matching event level for a triggered event.</p>
+<p>&nbsp;</p>
+<p><a name="id_$dlevel"></a><span class="f_Bolddefault">$dlevel</span></p>
+<p>Returns the current default user level.</p>
+<p>&nbsp;</p>
+<p><a name="id_$event"></a><span class="f_Bolddefault">$event</span></p>
+<p>Returns the name of the event that was triggered.</p>
+<p>&nbsp;</p>
+<p><a name="id_$fulladdress"></a><span class="f_Bolddefault">$fulladdress</span></p>
+<p>Returns the full address of the user triggering an event in the form nick!user@host.</p>
+<p>&nbsp;</p>
+<p><a name="id_$group"></a><span class="f_Bolddefault">$group(N/#)</span></p>
+<p>Returns the name or status of a #group in a script.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> status, name, fname</p>
+<p>&nbsp;</p>
+<p>$group(0) &nbsp; &nbsp; &nbsp; &nbsp;returns the number of groups</p>
+<p>$group(1) &nbsp; &nbsp; &nbsp; &nbsp;returns the name of the first group</p>
+<p>$group(1).status &nbsp; &nbsp; &nbsp; &nbsp;returns on or off for the first group</p>
+<p>$group(#test) &nbsp; &nbsp; &nbsp; &nbsp;returns on or off for group #test</p>
+<p>$group(#test).fname &nbsp; &nbsp; &nbsp; &nbsp;returns the script filename in which the group exists</p>
+<p>$group(3).name &nbsp; &nbsp; &nbsp; &nbsp;returns the name of the 3rd group</p>
+<p>&nbsp;</p>
+<p><a name="id_$maddress"></a><span class="f_Bolddefault">$maddress</span></p>
+<p>Returns the address that was matched for the triggered event.</p>
+<p>&nbsp;</p>
+<p><a name="id_$matchkey"></a><span class="f_Bolddefault">$matchkey</span></p>
+<p>Returns wildcard matchtext that was used in the matching remote event.</p>
+<p>&nbsp;</p>
+<p><a name="id_$mode"></a><span class="f_Bolddefault">$mode(N)</span></p>
+<p>Returns the Nth nick affected by a channel mode change.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> op, deop, ban, unban, voice, devoice, help, dehelp</p>
+<p>&nbsp;</p>
+<p>The properties can be used to specify which type of mode change you want to check.</p>
+<p>&nbsp;</p>
+<p>$mode(0).op returns the number of opped nicks</p>
+<p>$mode(1).op returns the first opped nick</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This identifier is only used in conjunction with the <a href="on_opodeop.html">on OP/DEOP</a> etc. events.</p>
+<p>&nbsp;</p>
+<p><a name="id_$nick"></a><span class="f_Bolddefault">$nick</span></p>
+<p>Returns the nickname of the user associated with an event.</p>
+<p>&nbsp;</p>
+<p><a name="id_$numeric"></a><span class="f_Bolddefault">$numeric</span></p>
+<p>Returns the numeric for the matching numeric event.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_rawbytes"></a><span class="f_Bolddefault">$rawbytes</span></p>
+<p>Returns raw server line for server events prior to any parsing/decoding</p>
+<p>&nbsp;</p>
+<p><a name="id_$rawmsg"></a><span class="f_Bolddefault">$rawmsg</span></p>
+<p>Returns raw server line for server events.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_remote"></a><span class="f_Bolddefault">$remote</span></p>
+<p>Returns a bitwise integer indicating if ctcps/events/raws are enabled.</p>
+<p>&nbsp;</p>
+<p>if ($remote &amp; 1) echo ctcps are enabled</p>
+<p>if ($remote &amp; 2) echo events are enabled</p>
+<p>if ($remote &amp; 4) echo raws are enabled</p>
+<p>&nbsp;</p>
+<p><a name="id_$script"></a><span class="f_Bolddefault">$script</span></p>
+<p>Returns the filename of the currently executing remote script.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$script(N/filename)</span></p>
+<p>Returns the filename for the Nth loaded script file. If you specify a filename, it returns $null if the file is not loaded.</p>
+<p>&nbsp;</p>
+<p>$script(0) &nbsp; &nbsp; &nbsp; &nbsp;return the number of script files loaded</p>
+<p>$script(2) &nbsp; &nbsp; &nbsp; &nbsp;returns the filename of the 2nd loaded script file</p>
+<p>$script(moo.txt) &nbsp; &nbsp; &nbsp; &nbsp;returns $null if the file is not loaded, or moo.txt if it is.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This cannot be used to reference the users or variables files.</p>
+<p>&nbsp;</p>
+<p><a name="id_$scriptdir"></a><span class="f_Bolddefault">$scriptdir</span></p>
+<p>Returns the directory of the currently executing remote script.</p>
+<p>&nbsp;</p>
+<p><a name="id_$scriptline"></a><span class="f_Bolddefault">$scriptline</span></p>
+<p>Returns line number in current script.</p>
+<p>&nbsp;</p>
+<p><a name="id_$site"></a><span class="f_Bolddefault">$site</span></p>
+<p>Returns the portion of $address after the @ for the user associated with an event in the form user@host.</p>
+<p>&nbsp;</p>
+<p><a name="id_$target"></a><span class="f_Bolddefault">$target</span></p>
+<p>Returns the target of an event.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ulevel"></a><span class="f_Bolddefault">$ulevel</span></p>
+<p>Returns the user level that was matched for the currently triggered event.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ulist"></a><span class="f_Bolddefault">$ulist(nick!userid@address,L,N)</span></p>
+<p>Returns the Nth address in the Users list that matches the specified address and level.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> info</p>
+<p>&nbsp;</p>
+<p>You can specify a wildcard address or a * to match any address in the user list. If you do not specify a full address, it completes the address with wildcards. If you do not specify N, the first matching address is returned.</p>
+<p>&nbsp;</p>
+<p>If you specify L, only matching addresses that contain the specified level are returned.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> L and N are optional, but if you specify L, you must specify N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$wildsite"></a><span class="f_Bolddefault">$wildsite</span></p>
+<p>Returns the address of the user who triggered an event in the form *!*@host.</p>
+
+</td></tr></table>
+
+</body>
+</html>

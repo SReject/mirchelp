@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on BAN/UNBAN</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$banmask,$bnick,on BAN,on UNBAN" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on BAN/UNBAN</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on BAN</span> and <span class="f_Bolddefault">on UNBAN</span> events trigger when a user on a channel is banned or unbanned.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:BAN:&lt;#[,#]&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:BAN:#mirc,#irchelp:/msg $nick Sorry but you are not allowed on $chan</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 9:BAN:#newbies:/mode $chan -o $nick | /mode $chan -b $banmask</p>
+<p>&nbsp;</p>
+<p>This triggers when someone bans a user with access level 9. The nick who did the banning is de-opped and the banmask is set again. <span class="f_Bolddefault">$banmask</span> refers to the banmask used to ban the user.</p>
+<p>&nbsp;</p>
+<p>on 1:UNBAN:#:/msg $bnick You have just been unbanned</p>
+<p>&nbsp;</p>
+<p>This triggers when any user is unbanned from any channel. <span class="f_Bolddefault">$bnick</span> refers to the banned users nickname, however this would actually only be filled if the banmask itself includes a nickname. If the banmask does not include a nickname, $bnick is $null.</p>
+<p>&nbsp;</p>
+<p>Remember that <span class="f_Bolddefault">$banmask</span> is usually a <span class="f_Bolddefault">wildcard string</span> which means that it will match both wildcard and non-wildcard user strings in your remote users section.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Comparing levels</span></p>
+<p>&nbsp;</p>
+<p>You can <span class="f_Bolddefault">compare the levels</span> of the banner and the banned by prefixing the line with &lt;,&gt;,&lt;=,=&gt;,&lt;&gt;, or =, in the following way:</p>
+<p>&nbsp;</p>
+<p>on &gt;=2:BAN:#mIRC:/msg $chan $nick banned $banmask (legal)</p>
+<p>on 1:BAN:#mIRC:/msg $chan $nick banned $banmask (illegal)</p>
+<p>&nbsp;</p>
+<p>In this situation, if the banners level is larger than or equal to the banned users level, then it is a legal ban. Otherwise, it defaults to the second ON BAN line which indicates that it is an illegal ban. Remember, this is comparing the banners and banned users levels and has nothing to do with the level 2 in the definition.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> These events only work on nicknames because the IRC server only sends the nickname of the user being banned/unbanned and not an address. Also, IP addresses will not be matched against named addresses, and banmasks ending in @* will be ignored since this can match almost any user address.</p>
+
+</td></tr></table>
+
+</body>
+</html>

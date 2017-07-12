@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>If Then Else</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="If then else,==,===,!=,&lt;,&gt;,&lt;=,&gt;=,//,\\,&amp;,isin,isincs,iswm,iswmcs,isnum,isletter,isalnum,isalpha,islower,isupper,ison,isop,ishop,isvoice,isreg,ischan,isban,isaop,isavoice,isignore,isprotect,isnotify,&amp;&amp;,||,/if" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">If-then-else statements</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">If-then-else</span> statement allows you to <span class="f_Bolddefault">compare</span> values and <span class="f_Bolddefault">execute</span> different parts of a script based on that comparison.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Basic format</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">if (v1 operator v2) { commands }</span></p>
+<p><span class="f_Bolddefault">elseif (v1 operator v2) { commands }</span></p>
+<p><span class="f_Bolddefault">else { commands }</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">( ) brackets</span> enclose <span class="f_Bolddefault">comparisons</span>, whereas the <span class="f_Bolddefault">{ } brackets</span> enclose the <span class="f_Bolddefault">commands</span> you want to be performed if a comparison is true. You must make sure that the number of <span class="f_Bolddefault">( ) and { }</span> brackets match to make sure that the correct comparisons are made, and that the correct commands are executed.</p>
+<p>&nbsp;</p>
+<p>Using brackets <span class="f_Bolddefault">speeds up</span> processing. If an alias uses <span class="f_Bolddefault">too few</span> brackets then the statement might be <span class="f_Bolddefault">ambiguous</span> and the alias will take longer to parse, might be parsed incorrectly, or might not be parsed at all.</p>
+<p>&nbsp;</p>
+<p>You can <span class="f_Bolddefault">nest</span> as many if-then-else statements as you want inside each other.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">The Operators</span></p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;== &nbsp; &nbsp; &nbsp; &nbsp;equal to</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;=== &nbsp; &nbsp; &nbsp; &nbsp;equal to (case-sensitive)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;!= &nbsp; &nbsp; &nbsp; &nbsp;not equal to</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt; &nbsp; &nbsp; &nbsp; &nbsp;less than</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&gt; &nbsp; &nbsp; &nbsp; &nbsp;larger than</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&gt;= &nbsp; &nbsp; &nbsp; &nbsp;larger than or equal to</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&lt;= &nbsp; &nbsp; &nbsp; &nbsp;smaller than or equal to</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;// &nbsp; &nbsp; &nbsp; &nbsp;v2 is a multiple of v1</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;\\ &nbsp; &nbsp; &nbsp; &nbsp;v2 is not a multiple of v1</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;&amp; &nbsp; &nbsp; &nbsp; &nbsp;bitwise comparison</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isin &nbsp; &nbsp; &nbsp; &nbsp;string v1 is in string v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isincs &nbsp; &nbsp; &nbsp; &nbsp;string v1 is in string v2 (case sensitive)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;iswm &nbsp; &nbsp; &nbsp; &nbsp;wildcard string v1 matches string v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;iswmcs &nbsp; &nbsp; &nbsp; &nbsp;wildcard string v1 matches string v2 (case sensitive)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isnum &nbsp; &nbsp; &nbsp; &nbsp;number v1 is a number in the range v2 which is in the form n1-n2 (v2 optional)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isletter &nbsp; &nbsp; &nbsp; &nbsp;letter v1 is a letter in the list of letters in v2 (v2 optional)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isalnum &nbsp; &nbsp; &nbsp; &nbsp;text contains only letters and numbers</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isalpha &nbsp; &nbsp; &nbsp; &nbsp;text contains only letters</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;islower &nbsp; &nbsp; &nbsp; &nbsp;text contains only lower case letters</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isupper &nbsp; &nbsp; &nbsp; &nbsp;text contains only upper case letters</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;ison &nbsp; &nbsp; &nbsp; &nbsp;nickname v1 is on channel v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isop &nbsp; &nbsp; &nbsp; &nbsp;nickname v1 is an op on channel v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;ishop &nbsp; &nbsp; &nbsp; &nbsp;nickname v1 is a halfop on channel v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isvoice &nbsp; &nbsp; &nbsp; &nbsp;nickname v1 has a voice on channel v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isreg &nbsp; &nbsp; &nbsp; &nbsp;nickname v1 is a normal nick on channel v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;ischan &nbsp; &nbsp; &nbsp; &nbsp;if v1 is a channel which you are on.</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isban &nbsp; &nbsp; &nbsp; &nbsp;if v1 is a banned address in <a href="nick_address_identifiers.html">internal ban list</a> on channel v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isinvite &nbsp; &nbsp; &nbsp; &nbsp;if v1 is on the invite list of channel v2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isexcept &nbsp; &nbsp; &nbsp; &nbsp;if v1 is on the except list of channel v2</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isaop &nbsp; &nbsp; &nbsp; &nbsp;if v1 is a user in your auto-op list for channel v2 (v2 optional)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isavoice &nbsp; &nbsp; &nbsp; &nbsp;if v1 is a user in your auto-voice list for channel v2 (v2 optional)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isignore &nbsp; &nbsp; &nbsp; &nbsp;if v1 is a user in your ignore list with the ignore switch v2 (v2 optional)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isprotect &nbsp; &nbsp; &nbsp; &nbsp;if v1 is a user in your protect list for channel v2 (v2 optional)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;isnotify &nbsp; &nbsp; &nbsp; &nbsp;if v1 is a user in your notify list.</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">negate</span> an operator you can prefix it with an <span class="f_Bolddefault">!</span> exclamation mark.</p>
+<p>&nbsp;</p>
+<p><a name="id_v1v2"></a><span class="f_Bolddefault">$v1 &amp; $v2</span></p>
+<p>Returns the first and second parameters of an if-then-else comparison. So, in the case of this comparison:</p>
+<p>&nbsp;</p>
+<p>if (text isin sometext) { ... }</p>
+<p>&nbsp;</p>
+<p>$v1 will return &quot;text&quot; and $v2 will return &quot;sometext&quot;.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Combining comparisons</span></p>
+<p>You can combine comparisons by using the <span class="f_Bolddefault">&amp;&amp; for AND</span> and <span class="f_Bolddefault">|| for OR</span> characters.</p>
+<p>&nbsp;</p>
+<p>number {</p>
+<p> &nbsp;if (($1 &gt; 0) &amp;&amp; ($1 &lt; 10)) {</p>
+<p> &nbsp; &nbsp;if ($1 &lt; 5) echo Number is less than five</p>
+<p> &nbsp; &nbsp;else echo Number is greater than five</p>
+<p> &nbsp;}</p>
+<p> &nbsp;else echo Number is out of bounds</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This alias checks if the number you specify, when you type /number &lt;value&gt;, lies within the required range.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">The ! not prefix</span></p>
+<p>You can use the <span class="f_Bolddefault">!</span> prefix in front of variables and identifiers in an if-then-else statement to negate a value. The following statements are equivalent.</p>
+<p>&nbsp;</p>
+<p>if (%x == $null) echo x has no value</p>
+<p>&nbsp;</p>
+<p>if (!%x) echo x has no value</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>listops {</p>
+<p> &nbsp;echo 4 * Listing Ops on #</p>
+<p> &nbsp;set %i 1</p>
+<p> &nbsp;:next</p>
+<p> &nbsp;set %nick $nick(#,%i)</p>
+<p> &nbsp;if %nick == $null goto done</p>
+<p> &nbsp;if %nick isop # echo 3 %nick is an Op!</p>
+<p> &nbsp;inc %i</p>
+<p> &nbsp;goto next</p>
+<p> &nbsp;:done</p>
+<p> &nbsp;echo 4 * End of Ops list</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This alias lists the Ops on the current channel. It does this the hard way since we could just use $opnick() instead but using $nick() serves as an example of how <span class="f_Bolddefault">isop</span> can be used and how <span class="f_Bolddefault">$null</span> is returned once we reach the end of the list.</p>
+<p>&nbsp;</p>
+<p>GiveOps {</p>
+<p> &nbsp;%i = 0</p>
+<p> &nbsp;%nicks = &quot;&quot;</p>
+<p> &nbsp;:nextnick</p>
+<p> &nbsp;inc %i</p>
+<p> &nbsp;if ($snick(#,%i) == $null) { if ($len(%nicks) &gt; 0) mode # +oooo %nicks | halt }</p>
+<p> &nbsp;%nicks = %nicks $snick(#,%i)</p>
+<p> &nbsp;if (4 // %i) { mode # +oooo %nicks | %nicks = &quot;&quot; }</p>
+<p> &nbsp;goto nextnick</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This is a popup definition which Ops the nicknames which are selected in the current channel nicknames listbox.</p>
+<p>&nbsp;</p>
+<p>on 1:ctcpreply:PING* {</p>
+<p> &nbsp;if ($2 == $null) halt</p>
+<p> &nbsp;else {</p>
+<p> &nbsp; &nbsp;%pt = $ctime - $2</p>
+<p> &nbsp; &nbsp;if (%pt &lt; 0) set %pt 0</p>
+<p> &nbsp; &nbsp;if (%pt &lt; 5) echo 4 [PING reply] $nick is too close for comfort</p>
+<p> &nbsp; &nbsp;elseif (%pt &lt; 20) echo 4 [PING reply] $nick is at just about the right distance</p>
+<p> &nbsp; &nbsp;else echo 4 [PING reply] Earth to $nick earth to $nick</p>
+<p> &nbsp;}</p>
+<p> &nbsp;halt</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This intercepts a ping reply and prints out a message based on how far away the person is.</p>
+
+</td></tr></table>
+
+</body>
+</html>

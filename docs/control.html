@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Control</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Control" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Control</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">Control</span> dialog performs functions related to channel and user control.</p>
+<p>&nbsp;</p>
+<p><a name="auto-oplist"></a><span class="f_Subheading">Auto-Op</span></p>
+<p>If a user joins a channel where you have Ops and that user's address is listed in the auto-op list, they will be given Op status. You can add an address to the list in the following format:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">nick!userid@host,#channel1,#channel2</span></p>
+<p>&nbsp;</p>
+<p>On IRC, user addresses are specified in the format:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">nick!userid@host</span></p>
+<p>&nbsp;</p>
+<p>So if my nickname is <span class="f_Bolddefault">nick</span> and my address is <span class="f_Bolddefault">user@mirc.com</span> then to put me in your list, you would use:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">nick!user@mirc.com</span></p>
+<p>&nbsp;</p>
+<p>If I change nicknames a lot, then you would use:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">*!user@mirc.com</span></p>
+<p>&nbsp;</p>
+<p>If I change my nickname and userid a lot, then:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">*!*@mirc.com</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_aop"></a><a name="id_aop"></a><span class="f_Subheading">The /aop command</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/aop [-lrw] &lt;on|off|nick|address&gt; [#channel1,#channel2,...] [type] [network]</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch indicates that the address is to be removed.</p>
+<p>The <span class="f_Bolddefault">-l</span> switch displays the list of auto-op addresses that match the specified switches.</p>
+<p>The <span class="f_Bolddefault">-w</span> switch makes the auto-op apply to any network.</p>
+<p>&nbsp;</p>
+<p>If you do <span class="f_Bolddefault">not</span> specify a <span class="f_Bolddefault">type</span> then only the users nickname is used. If you specify a type then the users address is looked up via the server.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$aop</span> identifier returns $true if auto-op is enabled, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$aop(address|N)</span> identifier returns any matching address in the list, or the Nth address. The <span class="f_Bolddefault">.type</span> property returns the list of channels. The <span class="f_Bolddefault">.network</span> property returns the associated network, if any.</p>
+<p>&nbsp;</p>
+<p><a name="auto-voicelist"></a><a name="cmd_avoice"></a><a name="id_avoice"></a><span class="f_Subheading">Auto-Voice</span></p>
+<p>The <span class="f_Bolddefault">auto-voice</span> list works in exactly the same way as the auto-op list. The <span class="f_Bolddefault">/avoice</span> command, which uses the same format as <span class="f_Bolddefault">/aop</span>, can be used to add or remove users to your auto-voice list.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$avoice</span> identifier returns $true if auto-voice is enabled, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$avoice(address|N)</span> identifier returns any matching address in the list, or the Nth address. The <span class="f_Bolddefault">.type</span> property returns the list of channels.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Random delay auto-op/voice</span></p>
+<p>This option introduces a random 1 to 7 seconds delay in the auto-op/voice routine. This is to prevent channel windows from filling up with mode notifications whenever a nickname is in the auto-op/voice list of several users. If at the end of the random delay the user has already been opped/voiced then mIRC does not perform an op/voice.</p>
+<p>&nbsp;</p>
+<p><a name="ignorelist"></a><a name="cmd_ignore"></a><a name="id_ignore"></a><span class="f_Subheading">Ignore</span></p>
+<p>This feature allows you to ignore various types of messages from users. You can either choose to ignore a user completely, or to ignore only specific messages from a user.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">nick!userid@host,private,invite,ctcp</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">The /ignore command</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/ignore [-lrpcntikdwxu#] &lt;on|off|nick|address&gt; [type] [network]</span></p>
+<p>&nbsp;</p>
+<p>Where p = private, c = channel, n = notice, t = ctcp, i = invite, k = control codes, d = DCCs.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-u#</span> switch specifies a delay in seconds after which the ignore is automatically removed.</p>
+<p>The <span class="f_Bolddefault">-r</span> switch indicates that the address is to be removed.</p>
+<p>The <span class="f_Bolddefault">-x</span> switch indicates that this address should be excluded from ignores.</p>
+<p>The <span class="f_Bolddefault">-l</span> switch displays the list of ignore addresses that match the specified switches.</p>
+<p>The <span class="f_Bolddefault">-w</span> switch makes the ignore apply to any network.</p>
+<p>&nbsp;</p>
+<p>If you do <span class="f_Bolddefault">not</span> specify a type then only the users nickname is used. If you specify a type then the users address is looked up via the server.</p>
+<p>&nbsp;</p>
+<p>You can clear the ignore list by specifying <span class="f_Bolddefault">-r</span> with no address.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you have a /query window open with someone, private messages from them will not be ignored even if their address matches an ignore address.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$ignore</span> identifier returns $true if ignore is enabled, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$ignore(address|N)</span> identifier returns any matching address in the list, or the Nth address. The <span class="f_Bolddefault">.type</span> property returns the ignore method. The <span class="f_Bolddefault">.network</span> property returns the associated network, if any. The <span class="f_Bolddefault">.secs</span> property returns the time left before the ignore is removed.</p>
+<p>&nbsp;</p>
+<p><a name="protectlist"></a><a name="cmd_protect"></a><a name="id_protect"></a><span class="f_Subheading">Protect</span></p>
+<p>If you are on a channel and you have channel Op status, any users that match the nicknames in the protect list will be automatically protected. mIRC does this by kicking or de-opping anyone who tries to kick or de-op your protected users. You can add an address to the list using the following format:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">nickname,#channel1,#channel2</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This option is usually limited to using <span class="f_Bolddefault">nicknames</span> because of the way IRC servers work, however you can specify an address, and if the user is in your <a href="internal_address_list.html">Internal Address List</a>, they will be protected by address.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">The /protect command</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/protect [-rw] &lt;on|off|nick|address&gt; [#channel1,#channel2,...] [type] [network]</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch indicates that the address is to be removed.</p>
+<p>The <span class="f_Bolddefault">-l</span> switch displays the list of protect addresses.</p>
+<p>The <span class="f_Bolddefault">-w</span> switch makes the protect apply to any network.</p>
+<p>&nbsp;</p>
+<p>If you do <span class="f_Bolddefault">not</span> specify a type then only the users nickname is used. If you specify a type then the users address is looked up via the server.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$protect</span> identifier returns $true if protect is enabled, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$protect(address|N)</span> identifier returns any matching address in the list, or the Nth address. The <span class="f_Bolddefault">.type</span> property returns the list of channels. The <span class="f_Bolddefault">.network</span> property returns the associated network, if any.</p>
+
+</td></tr></table>
+
+</body>
+</html>

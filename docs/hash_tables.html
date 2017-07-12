@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Hash Tables</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Hash tables" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Hash Tables</span></p>
+<p>&nbsp;</p>
+<p>Hash tables allow you to efficiently store large amounts of information which can be quickly referenced and retrieved later on.</p>
+<p>&nbsp;</p>
+<p>A hash table can be created, freed, referenced, or modified using the following commands and identifiers.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_hmake"></a><span class="f_Bolddefault">/hmake -s &lt;name&gt; &lt;N&gt;</span></p>
+<p>Creates a new hash table with N slots.</p>
+<p>&nbsp;</p>
+<p>A hash table can store an <span class="f_Bolddefault">unlimited</span> number of items regardless of the N you choose, however the bigger N is, the faster it will work, depending on the number of items stored.</p>
+<p>&nbsp;</p>
+<p>eg. if you expect that you will be storing <span class="f_Bolddefault">1000</span> items in the table, a table of N set to <span class="f_Bolddefault">100</span> is quite sufficient.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch makes the command display the result.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_hfree"></a><span class="f_Bolddefault">/hfree -sw &lt;name&gt;</span></p>
+<p>Frees an existing hash table.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-w</span> switch indicates that <span class="f_Bolddefault">name</span> is a wildcard, all matching tables are freed.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_hadd"></a><span class="f_Bolddefault">/hadd -smbczuN &lt;name&gt; &lt;item&gt; [text | &amp;binvar]</span></p>
+<p>Adds an item to an existing hash table.</p>
+<p>&nbsp;</p>
+<p>If the item you are adding already exists, the old item is replaced.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-m</span> switch makes /hadd create the hash table if it does not already exist.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-uN</span> switch unsets the item after N seconds.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> indicates that you are adding a &amp;binvar item to the hash table.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch treats the &amp;binvar as text and chops it at the first null value.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-z</span> switch decreases hash item once per second until it reaches zero and then unsets it.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">/hinc</span> and <span class="f_Bolddefault">/hdec</span> commands use the same parameters as <span class="f_Bolddefault">/hadd</span> and increase or decrease the number value of an item.</p>
+<p>&nbsp;</p>
+<p>When used with /hinc or /hdec, the <span class="f_Bolddefault">-c</span> switch increases or decreases the value once per second.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_hdel"></a><span class="f_Bolddefault">/hdel -sw &lt;name&gt; &lt;item&gt;</span></p>
+<p>Deletes an item from a hash table.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-w</span> switch indicates that <span class="f_Bolddefault">item</span> is a wildcard, all matching items are freed.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_hload"></a><span class="f_Bolddefault">/hload -sbni &lt;name&gt; &lt;filename&gt;</span> [section]</p>
+<p><span class="f_Bolddefault">/hsave -sbniau &lt;name&gt; &lt;filename&gt;</span> [section]</p>
+<p>Load or save a table to/from a file.</p>
+<p>&nbsp;</p>
+<p>These load/save <span class="f_Bolddefault">plain text</span> to a text file, with item and data on <span class="f_Bolddefault">separate</span> lines. $cr and $lf characters are <span class="f_Bolddefault">stripped</span> from text when saving as plain text.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch loads or saves binary files. $cr and $lf are preserved when saving as binary files.</p>
+<p>&nbsp;</p>
+<p>You can use <span class="f_Bolddefault">-n</span> to load or save files as data only, with no items. When loading with <span class="f_Bolddefault">-n</span> each line of data is assigned an N item value, starting at N = 1.</p>
+<p>&nbsp;</p>
+<p>/hsave also supports <span class="f_Bolddefault">-a</span> to append to an existing file instead of overwriting it.</p>
+<p>&nbsp;</p>
+<p>By default /hsave excludes items that are in the /hadd -uN unset list, the <span class="f_Bolddefault">-u</span> switch forces it to include the unset items.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch treats the file as an <span class="f_Bolddefault">ini file</span>. You can specify an optional <span class="f_Bolddefault">section</span> name after the filename.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> /hload does not create the table, it must already have been created by /hmake.</p>
+<p>&nbsp;</p>
+<p><a name="id_$hget"></a><span class="f_Bolddefault">$hget(name/N)</span></p>
+<p>Returns name of a hash table if it exists, or returns the name of the Nth hash table.</p>
+<p>&nbsp;</p>
+<p>Properties: size</p>
+<p>&nbsp;</p>
+<p>$hget(moo).size &nbsp; returns the N size of table, as specified in /hmake</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$hget(name/N, item)</span></p>
+<p>Returns the data associated with an item in the specified hash table.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> unset</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">unset</span> property returns the time remaining before an item is unset.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$hget(name/N, item, &amp;binvar)</span></p>
+<p>Assigns the contents of an item to a &amp;binvar.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$hget(name/N, N).item</span></p>
+<p>This allows you to reference the table as an index from 0 to N, in order to look up the Nth item in the table.</p>
+<p>&nbsp;</p>
+<p>If N is zero, returns the total number of items in the table.</p>
+<p>&nbsp;</p>
+<p>You can also reference the Nth data value directly with $hget().data.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This method is provided as a convenience, it is not an efficient way to use the hash table.</p>
+<p>&nbsp;</p>
+<p><a name="id_$hfind"></a><span class="f_Bolddefault">$hfind(name/N, text, N, M, @window | command)</span></p>
+<p>Searches table for the Nth item name which matches text. Returns item name.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> data</p>
+<p>&nbsp;</p>
+<p>If you specify the .data property, searches for a matching data value.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">M</span> is optional, and can be:</p>
+<p>&nbsp;</p>
+<p> &nbsp;n &nbsp; &nbsp; &nbsp; &nbsp;normal text comparison (default if M is not specified)</p>
+<p> &nbsp;w &nbsp; &nbsp; &nbsp; &nbsp;text is wildcard text</p>
+<p> &nbsp;W &nbsp; &nbsp; &nbsp; &nbsp;hash table item/data is wildcard text</p>
+<p> &nbsp;r &nbsp; &nbsp; &nbsp; &nbsp;text is regular expression</p>
+<p> &nbsp;R &nbsp; &nbsp; &nbsp; &nbsp;hash table item/data is regular expression</p>
+<p>&nbsp;</p>
+<p>If you specify a custom @window name (with a listbox), the custom @window listbox will be filled with the results.</p>
+<p>&nbsp;</p>
+<p>If you specify a command, it will be performed on every item that is found. You can use $1- to refer to the item, eg. //echo 1 result: $hfind(name, *, 0, w, echo $1-)</p>
+<p>&nbsp;</p>
+<p>If you use /halt in the command/alias, this halts the search.</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

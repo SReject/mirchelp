@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Identd</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Identd" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Identd</span></p>
+<p>&nbsp;</p>
+<p>mIRC can act as an <span class="f_Bolddefault">identd server</span> and will send the specified <span class="f_Bolddefault">User ID</span> and <span class="f_Bolddefault">System</span> as identification. This server will be more useful to some people than others. In general it is better to leave it active as some systems might refuse a connection if there is no reply to an identd request.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Enable Identd Server</span></p>
+<p>Check/uncheck this to turn the identd server on or off</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">User ID</span></p>
+<p>This can be your account or user name on your system. For most people this will be the User ID portion of their email address (the text before the @ sign). Valid characters for a User ID are: <span class="f_Bolddefault">. 0-9 A-Z _ - a-z</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">System</span></p>
+<p>This identifies your operating system. For all intents and purposes, replying with a value other than UNIX would not be very useful for most people.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Port</span></p>
+<p>This should usually be 113.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Show Identd requests</span></p>
+<p>This displays any identd requests sent to your identd server if it is turned on.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Enable only when connecting</span></p>
+<p>This turns the identd server on <span class="f_Bolddefault">only</span> when you are connecting to an IRC server. The moment an identd request is received and replied to, or the moment you connect to the IRC server and see the MOTD, the identd server is turned off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This server will reply to <span class="f_Bolddefault">all</span> identd queries sent to the specified port ie. it is not limited to replying to an IRC server for mIRC. If you have turned on the identd server and it is not replying to identd queries then it is probable that the type of internet account you have is preventing mIRC from replying, or that another program is running which has control of the identd port.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Use ID from email address</span></p>
+<p>Makes mIRC use the User ID from your <a href="connect.html">email address</a> in identd replies.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_identd"></a><span class="f_Subheading">The /identd command</span></p>
+<p>You can also use the <span class="f_Bolddefault">/identd [on|off] [userid]</span> command to change the above settings.</p>
+
+</td></tr></table>
+
+</body>
+</html>

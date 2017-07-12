@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on CONNECT</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on CONNECT,on CONNECTFAIL,on DISCONNECT" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on CONNECT</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on CONNECT</span> event triggers when mIRC connects to an IRC Server right after the MOTD is displayed.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:CONNECT:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:CONNECT:/join #new2irc</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on DISCONNECT</span> event uses the same format as above and triggers when you quit or are disconnected from an IRC Server.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on CONNECTFAIL</span> event uses the same as above and triggers when a connection attempt (including all retries) has failed. <span class="f_Bolddefault">$1- </span>is set to the connect error message.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:CONNECT:/echo Connected to $server at $time with nickname $nick</p>
+<p>&nbsp;</p>
+<p>This triggers after mIRC connects to a server.</p>
+<p>&nbsp;</p>
+<p>on 1:DISCONNECT:/echo Disconnected from $server at $time with nickname $nick</p>
+<p>&nbsp;</p>
+<p>This triggers when mIRC is disconnected from a server.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>DCC Socks5 Protocol</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="DCC Socks5 Protocol" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">DCC Socks5 Protocol</span></p>
+<p>&nbsp;</p>
+<p>mIRC uses a <span class="f_Bolddefault">passive</span> protocol to establish DCC connections when a client is behind a SOCKS5 firewall.</p>
+<p>&nbsp;</p>
+<p>The method will work with SOCKS5 firewalls that both:</p>
+<p>&nbsp;</p>
+<p> &nbsp;i) Support listening/binding to a port of Zero for an incoming connection.</p>
+<p> &nbsp;ii) Assign outgoing connections an IP address that is the same as the SOCKS firewall IP address.</p>
+<p>&nbsp;</p>
+<p>The DCC Send/Chat CTCP messages are extended by adding an extra number to the end of the message which uniquely identifies the negotiation, and a port of Zero is specified to indicate that this is a passive connection request. All other fields are identical to a standard DCC Send/Chat message.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">DCC Chat Passive Protocol</span></p>
+<p>Client A, initiating the DCC Chat, sends the passive connection request below to Client B. The port is set to zero, and the id number is a unique integer identifying the connection:</p>
+<p>&nbsp;</p>
+<p> &nbsp;DCC CHAT nickname address port id</p>
+<p>&nbsp;</p>
+<p>If Client A is behind a firewall, the address is the ip address of its SOCKS firewall.</p>
+<p>&nbsp;</p>
+<p>Client B receives the message and sets up a listening socket, and sends the IP address and port back to Client A, specifying the id number that identifies Client A's request:</p>
+<p>&nbsp;</p>
+<p> &nbsp;DCC CHAT nickname address port id</p>
+<p>&nbsp;</p>
+<p>If Client B is behind a SOCKS5 firewall, it requests a listening socket from the SOCKS5 firewall and specifies Client A's IP address as the binding address.</p>
+<p>&nbsp;</p>
+<p>Client A then proceeds to connect to this address to chat. If Client A is behind a SOCKS firewall, it sends a connection request to it.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">DCC Send Passive Protocol</span></p>
+<p>Client A, initiating the DCC Send, sends the passive connection request below to Client B. The port is set to zero, and the id number is a unique integer identifying the connection:</p>
+<p>&nbsp;</p>
+<p> &nbsp;DCC SEND filename address port filesize id</p>
+<p>&nbsp;</p>
+<p>If Client A is behind a firewall, the address is the ip address of its SOCKS firewall.</p>
+<p>&nbsp;</p>
+<p>Client B receives the message and sets up a listening socket, and sends the IP address and port back to Client A, specifying the id number that identifies Client A's request:</p>
+<p>&nbsp;</p>
+<p> &nbsp;DCC SEND filename address port filesize id</p>
+<p>&nbsp;</p>
+<p>If Client B is behind a SOCKS5 firewall, it requests a listening socket from the SOCKS5 firewall and specifies Client A's IP address as the binding address.</p>
+<p>&nbsp;</p>
+<p>Client A then proceeds to connect to this address to begin the transfer. If Client A is behind a SOCKS firewall, it sends a connection request to it.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The DCC Resume and Accept protocols in mIRC are also extended by adding the id number to the end of the CTCP message, but otherwise work in exactly the same way.</p>
+
+</td></tr></table>
+
+</body>
+</html>

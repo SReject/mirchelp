@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Ctcp Events</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Ctcp Events,CTCP prefix" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Ctcp Events</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">CTCP</span> stands for <span class="f_Bolddefault">Client-To-Client-Protocol</span> which is a special type of communication between IRC Clients. By creating CTCP events, you can make your mIRC react to commands or requests from other users. CTCP events use the format:</p>
+<p>&nbsp;</p>
+<p>ctcp &lt;level&gt;:&lt;matchtext&gt;:&lt;*|#|?&gt;:&lt;commands&gt;</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">level</span> is the access level required to access this event, the <span class="f_Bolddefault">matchtext</span> is the actual CTCP being sent, the <span class="f_Bolddefault">*#?</span> specify whether to react to any message, to channel messages, or to private messages respectively, and the <span class="f_Bolddefault">commands</span> are the commands that will be performed if this event triggers successfully.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>The following examples should give you an idea of how to create simple CTCP events.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">A Basic CTCP event</span></p>
+<p>&nbsp;</p>
+<p>ctcp 1:help:*:/msg $nick help yourself!</p>
+<p>&nbsp;</p>
+<p>The above ctcp event would react to a <span class="f_Bolddefault">/ctcp yournick help</span> message either in a channel or private message. Since it has access level 1, this means that any user can access it because 1 is the lowest access level.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Giving Op status to a friend</span></p>
+<p>&nbsp;</p>
+<p>=5:*!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>ctcp 5:opme:?:/mode $2 +o $nick</p>
+<p>ctcp 5:inviteme:?:/invite $nick $2</p>
+<p>&nbsp;</p>
+<p>These definitions would allow the above level 5 user to send you the ctcp <span class="f_Bolddefault">/ctcp yournick opme #mIRC</span> and if you are on an Op on channel #mIRC, the above script would automatically Op him. The user can also send you the ctcp <span class="f_Bolddefault">/ctcp yournick inviteme #mIRC</span>, and you would invite him to channel #mIRC.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> By giving the user access level =5, the user is limited only to level 5 events. If I had given the user access level 5, then the user would be able to access all events which have access level 5 <span class="f_Bolddefault">and</span> below.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Changing a standard CTCP reply</span></p>
+<p>&nbsp;</p>
+<p>ctcp 1:ping:?:/notice $nick Ouch! | /halt</p>
+<p>&nbsp;</p>
+<p>This will react to the standard ping CTCP and will reply with &quot;Ouch!&quot;. The /halt at the end of the line prevents the standard ping reply from being sent. If you do not use the /halt, the standard reply to PING will be sent.</p>
+<p>&nbsp;</p>
+<p>ctcp 1:time:?:/notice $nick The time here is around $time | /halt</p>
+<p>&nbsp;</p>
+<p>This will react to the standard time CTCP and will reply with the above message. Again, the /halt prevents the standard time reply from being sent.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You cannot prevent the standard version reply from being sent.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Controlling your mIRC remotely</span></p>
+<p>&nbsp;</p>
+<p>100:*!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>ctcp 100:quit:?:/notice $nick Okay boss, I am quitting... see you later! | /quit</p>
+<p>&nbsp;</p>
+<p>The above definition shows how you can give yourself a high access level to access the quit event, and you can tell your mIRC to quit IRC from another IRC Client.</p>
+<p>&nbsp;</p>
+<p>ctcp 100:send:?:/dcc send $nick $1-</p>
+<p>&nbsp;</p>
+<p>This definition allows you to ask your mIRC to send you whatever file you specify to the IRC Client you are using from another location, for example by using the ctcp <span class="f_Bolddefault">/ctcp yournick send homework.txt</span>.</p>
+<p>&nbsp;</p>
+<p>ctcp 100:*:?:$1-</p>
+<p>&nbsp;</p>
+<p>This event definition allows you to execute any command remotely. So if you send a <span class="f_Bolddefault">/ctcp yournick echo Hi!</span>, your script will execute the command <span class="f_Bolddefault">echo Hi!</span>. This is a potentially dangerous event definition since if you allow anyone else to access it, they will be able to perform any command they want on your computer.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Wildcards and Variables</span></p>
+<p>&nbsp;</p>
+<p>ctcp 1:*help*:#:/notice $nick I can see that you need some help</p>
+<p>&nbsp;</p>
+<p>By using the <span class="f_Bolddefault">* and ? wildcard characters</span>, you can match any incoming text. So if a user sends you a ctcp which has the word help in it anywhere, the above notice will be sent.</p>
+<p>&nbsp;</p>
+<p>ctcp 1:%password:?:/notice $nick Your access has been authorized</p>
+<p>&nbsp;</p>
+<p>By using <a href="variables.html">Variables</a> in the matchtext section, you can change the value of %password whenever you want without having to change the event definition. So if you set %password to the value &quot;moo&quot; and someone sends you a &quot;moo&quot; ctcp, it will match %variable and the notice will the above message will be sent.</p>
+
+</td></tr></table>
+
+</body>
+</html>

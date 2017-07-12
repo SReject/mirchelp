@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on OP/DEOP</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$hnick,$modefirst,$modelast,$opnick,$vnick,on DEHELP,on DEOP,on DEVOICE,on HELP,on OP,on RAWMODE,on SERVEROP,on VOICE" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on OP/DEOP</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on OP</span> and <span class="f_Bolddefault">on DEOP</span> events trigger when a user on a channel is opped or deopped.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:OP:&lt;#[,#]&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:OP:#mirc,#irchelp:/msg $opnick Please do not abuse your Op status</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on VOICE/DEVOICE</span> and <span class="f_Bolddefault">on HELP/DEHELP</span> events use the same format and trigger when a user is voiced/devoiced or helped/dehelped respectively.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on SERVEROP</span> event also uses the same format and triggers when a user is opped by a <span class="f_Bolddefault">server</span>.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on RAWMODE</span> event triggers independently of these events and allows you to parse the raw mode line yourself.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 9:OP:#:/mode $chan -o $opnick</p>
+<p>on 9:VOICE:#:/mode $chan -v $vnick</p>
+<p>on 9:HELP:#:/mode $chan -h $hnick</p>
+<p>&nbsp;</p>
+<p>This triggers when a user with access level 9 is opped/voiced/helped on any channel. <span class="f_Bolddefault">$opnick</span> refers to the nickname of the person being opped/deopped, <span class="f_Bolddefault">$vnick</span> the person being voiced/devoiced, and <span class="f_Bolddefault">$hnick</span> the person being helped/dehelped.</p>
+<p>&nbsp;</p>
+<p>on 1:DEOP:#beginner:/mode $chan +o $opnick</p>
+<p>&nbsp;</p>
+<p>This triggers when any Op is deopped on channel #beginner.</p>
+<p>&nbsp;</p>
+<p>on 1:SERVEROP:#:/mode $chan -o $opnick</p>
+<p>&nbsp;</p>
+<p>This triggers when an irc server ops a user on any channel. You immediately deop them.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$modefirst</span> and <span class="f_Bolddefault">$modelast</span> identifiers return $true or $false depending on whether the event is the first or last to trigger.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Comparing levels</span></p>
+<p>&nbsp;</p>
+<p>You can <span class="f_Bolddefault">compare the levels</span> of the opper and the opped by prefixing the line with &lt;,&gt;,&lt;=,=&gt;,&lt;&gt;, or =, in the following way:</p>
+<p>&nbsp;</p>
+<p>on &gt;=1:DEOP:#mIRC:/msg $chan $nick deopped $opnick (legal)</p>
+<p>on 1:DEOP:#mIRC:/msg $chan $nick deopped $opnick (illegal)</p>
+<p>&nbsp;</p>
+<p>In this situation, if the deoppers level is larger than or equal to the deopped users level, then it is a legal deop. Otherwise, it defaults to the second line which indicates that it is an illegal deop. Remember, this is comparing the oppers and opped users levels and has nothing to do with the level 2 in the definition.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> These events only work on nicknames because the IRC server only sends the nickname of the user being affected and not their address.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">on RAWMODE</span></p>
+<p>&nbsp;</p>
+<p>on @1:RAWMODE:#:/echo $chan Raw mode line: $nick set $1-</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on RAWMODE</span> event allows you to parse the raw mode change yourself, the raw mode text is in $1-.</p>
+<p>&nbsp;</p>
+<p>You can use the <a href="remote_identifiers.html">$mode(N)</a> identifier with these events to list the nicks that are being affected.</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

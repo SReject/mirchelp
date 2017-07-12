@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Commands</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Remote Commands" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Remote Commands</span></p>
+<p>&nbsp;</p>
+<p>The following commands are used to modify settings in scripts and in the remote section.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ctcps"></a><span class="f_Subheading">General Commands</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/ctcps [on|off]</span></p>
+<p>This switches processing of ctcp events on/off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/events [on|off]</span></p>
+<p>This switches processing of named events on/off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/dlevel &lt;level&gt;</span></p>
+<p>This changes the default user level to the specified level.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/raw [on|off]</span></p>
+<p>This switches processing of numeric events on/off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/remote [on|off]</span></p>
+<p>This switches processing of all scripts on/off.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_enable"></a><span class="f_Subheading">Group Commands</span></p>
+<p>These commands allow to turn groups on and off in remote scripts. You can find out about groups in the <a href="access_levels.html">Access Levels</a> section.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/enable &lt;group1 group2 ... groupN&gt;</span></p>
+<p>This enables the specified groups in all scripts.</p>
+<p>&nbsp;</p>
+<p>/enable #one #two #three</p>
+<p>&nbsp;</p>
+<p>You can also specify a wildcard to enable all matching groups:</p>
+<p>&nbsp;</p>
+<p>/enable #help*</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/disable &lt;group1 group2 ... groupN&gt;</span></p>
+<p>This disables the specified groups in all scripts.</p>
+<p>&nbsp;</p>
+<p>/disable #one #two #three</p>
+<p>&nbsp;</p>
+<p>You can also specify a wildcard to disable all matching groups:</p>
+<p>&nbsp;</p>
+<p>/disable #help*</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/groups [-e|d]</span></p>
+<p>This displays a list of either all, enabled, or disabled groups in your scripts.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">User and Level Commands</span></p>
+<p>You can use the following three commands to add and remove users to the users list, as well as to add and remove levels from existing users.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_auser"></a><span class="f_Bolddefault">/auser [-a] &lt;levels&gt; &lt;nick|address&gt; [info]</span></p>
+<p>This adds the specified nick/address exactly as it is given to the users list with the specified levels. If you specify [-a], then if the user already exists, the specified levels are added to the current levels the user has. Remember, if the first level is not preceded by an equal sign then it is a general access level.</p>
+<p>&nbsp;</p>
+<p>/auser 1,2,3 Nick</p>
+<p>&nbsp;</p>
+<p>This adds this nick with these access levels to the user list (replacing an existing user of the same name).</p>
+<p>&nbsp;</p>
+<p>/auser -a 1,2,3 Nick</p>
+<p>&nbsp;</p>
+<p>This adds the specified levels to this user. If the user does not exist, it is created.</p>
+<p>&nbsp;</p>
+<p>/auser -a =1,2,3 Nick</p>
+<p>&nbsp;</p>
+<p>This looks like the above command, however the =1 is very important. The =1 means that the initial general access level is <span class="f_Bolddefault">not</span> replaced. If you had used 1 then the initial access level would be replaced.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">info</span> parameter allows you to append text to the entry that is added to the users list, you can reference this later with the <a href="remote_identifiers.html">$ulist()</a> identifier.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_flush"></a><span class="f_Bolddefault">/flush [-l] [levels]</span></p>
+<p>This clears the remote user list of nickname definitions that are no longer valid.</p>
+<p>&nbsp;</p>
+<p>/flush 1,2,3</p>
+<p>&nbsp;</p>
+<p>For each nick in the remote user list that matches the specified levels mIRC checks to see if that nick is on any of the channels that you are currently on. If not, the nick definition is removed from the remote user list. If you do not specify levels then mIRC clears all nicks from the remote user list that do not exist on channels you are on.</p>
+<p>&nbsp;</p>
+<p>You can use the <span class="f_Bolddefault">-l</span> switch to remove only the specified levels from entries in the user list, instead of removing the entries.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_guser"></a><span class="f_Bolddefault">/guser [-a] &lt;levels&gt; &lt;nick&gt; [type] [info]</span></p>
+<p>This works the same as the /auser command except that it looks up address of the specified nick and adds it to the user list. It does this by doing a /userhost on the given nickname, and returning an address in the format specified by type. If no type is specified then a default address format is selected.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">info</span> parameter allows you to append text to the entry that is added to the users list, you can reference this later with the <a href="remote_identifiers.html">$ulist()</a> identifier.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_iuser"></a><span class="f_Bolddefault">/iuser &lt;nick | address&gt; [info]</span></p>
+<p>This allows you to set or remove the <span class="f_Bolddefault">info</span> appended to a user list entry.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ruser"></a><span class="f_Bolddefault">/ruser [levels] &lt;nick | address&gt; [type]</span></p>
+<p>If used without specifying levels, this removes the specified user from the user list. If you specify levels then these levels are removed from the current access levels of this user. If all a user's levels have been removed, the user is removed. If you specify a type then the users address is looked up with a /userhost and any users in the users list matching this address are removed.</p>
+<p>&nbsp;</p>
+<p>/ruser Nick</p>
+<p>/ruser 1,2,3 Nick</p>
+<p>/ruser 1,2,3 Nick 1</p>
+<p>&nbsp;</p>
+<p>If you use /ruser Nick! (with an exclamation mark at the end), it removes all users with an address beginning with Nick!.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_rlevel"></a><span class="f_Bolddefault">/rlevel [-r] &lt;levels&gt;</span></p>
+<p>This removes all users from the remote users list with the specified general access level.</p>
+<p>&nbsp;</p>
+<p>/rlevel 20</p>
+<p>/rlevel =10</p>
+<p>&nbsp;</p>
+<p>If the -r option is specified, then this applies to all the access levels for a user (not just the first general access level). Any matching levels are removed. If a user has no more levels left then the user is also removed.</p>
+<p>&nbsp;</p>
+<p>/rlevel -r 1,5,7,8</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ulist"></a><span class="f_Bolddefault">/ulist [&lt;|&gt;] &lt;level&gt;</span></p>
+<p>This lists users which have the specified access levels.</p>
+<p>&nbsp;</p>
+<p>/ulist &lt;10 &nbsp; &nbsp;lists users with access levels less than or equal to 10</p>
+<p>/ulist &gt;5 &nbsp; &nbsp; &nbsp;lists users with access levels larger than or equal to 5</p>
+<p>/ulist 4 &nbsp; &nbsp; &nbsp; &nbsp;lists users with access level 4</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Note:</span> The /guser and /ruser commands do a /userhost on a nick to find the nick's address, thus they are delayed commands since they need to wait for a reply from the server. mIRC tries to get around this delay by maintaining its own <a href="internal_address_list.html">Internal Address List</a> which will speed things up in certain situations.</p>
+
+</td></tr></table>
+
+</body>
+</html>

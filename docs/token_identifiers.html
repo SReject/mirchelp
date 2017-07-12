@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Token Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Token Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Token Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$addtok"></a><span class="f_Bolddefault">$addtok(text,token,C)</span></p>
+<p>Adds a token to the end of text but only if it is not already in text.</p>
+<p>&nbsp;</p>
+<p>$addtok(a.b.c,d,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.c.d</p>
+<p>$addtok(a.b.c.d,c,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.c.d</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">C</span> parameter is the ascii value of the character separating the tokens.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $addtokcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$deltok"></a><span class="f_Bolddefault">$deltok(text,N-N2,C)</span></p>
+<p>Deletes the Nth token from text.</p>
+<p>&nbsp;</p>
+<p>$deltok(a.b.c.d,3,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.d</p>
+<p>$deltok(a.b.c.d,2-3,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.d</p>
+<p>&nbsp;</p>
+<p>You can specify a negative value for N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$findtok"></a><span class="f_Bolddefault">$findtok(text,token,N,C)</span></p>
+<p>Returns the position of the Nth matching token in text.</p>
+<p>&nbsp;</p>
+<p>$findtok(a.b.c.d,c,1,46) &nbsp; &nbsp; &nbsp; &nbsp;returns 3</p>
+<p>$findtok(a.b.c.d,e,1,46) &nbsp; &nbsp; &nbsp; &nbsp;returns $null</p>
+<p>&nbsp;</p>
+<p>If you specify <span class="f_Bolddefault">zero</span> for N, it returns the total number of matching tokens.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $findtokcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$gettok"></a><span class="f_Bolddefault">$gettok(text,N,C)</span></p>
+<p>Returns the Nth token in text.</p>
+<p>&nbsp;</p>
+<p>$gettok(a.b.c.d.e,3,46) &nbsp; &nbsp; &nbsp; &nbsp;returns c</p>
+<p>$gettok(a.b.c.d.e,9,46) &nbsp; &nbsp; &nbsp; &nbsp;returns $null</p>
+<p>&nbsp;</p>
+<p>You can also specify a range of tokens:</p>
+<p>&nbsp;</p>
+<p>$gettok(a.b.c.d.e,2-,46) &nbsp; &nbsp; &nbsp; &nbsp;returns 2nd token onwards b.c.d.e</p>
+<p>$gettok(a.b.c.d.e,2-4,46) &nbsp; &nbsp; &nbsp; &nbsp;returns tokens 2 through 4 b.c.d</p>
+<p>&nbsp;</p>
+<p>You can specify a negative value for N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$instok"></a><span class="f_Bolddefault">$instok(text,token,N,C)</span></p>
+<p>Inserts token into the Nth position in text, even if it already exists in text.</p>
+<p>&nbsp;</p>
+<p>$instok(a.b.d,c,3,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.c.d</p>
+<p>$instok(a.b.d,c,9,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.d.c</p>
+<p>&nbsp;</p>
+<p>You can specify a negative value for N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$istok"></a><span class="f_Bolddefault">$istok(text,token,C)</span></p>
+<p>Returns $true if token exists, otherwise returns $false.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $istokcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$matchtok"></a><span class="f_Bolddefault">$matchtok(tokens,string,N,C)</span></p>
+<p>Returns tokens that contain the specified string.</p>
+<p>&nbsp;</p>
+<p>$matchtok(one two three, e, 0, 32) returns 2</p>
+<p>$matchtok(one two three, e, 2, 32) returns three</p>
+<p>&nbsp;</p>
+<p>If you specify <span class="f_Bolddefault">zero</span> for N, it returns the total number of matching tokens.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $matchtokcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$numtok"></a><span class="f_Bolddefault">$numtok(text,C)</span></p>
+<p>Returns number of tokens in text.</p>
+<p>&nbsp;</p>
+<p><a name="id_$puttok"></a><span class="f_Bolddefault">$puttok(text,token,N,C)</span></p>
+<p>Overwrites the Nth token in text with a new token.</p>
+<p>&nbsp;</p>
+<p>$puttok(a.b.c.d,e,2,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.e.c.d</p>
+<p>&nbsp;</p>
+<p>You can specify a negative value for N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$remtok"></a><span class="f_Bolddefault">$remtok(text,token,N,C)</span></p>
+<p>Removes the Nth matching token from text. If N = 0, applies to all matching items.</p>
+<p>&nbsp;</p>
+<p>$remtok(a.b.c.d,b,1,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.c.d</p>
+<p>$remtok(a.b.c.d,e,1,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.c.d</p>
+<p>$remtok(a.c.c.d,c,1,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.c.d</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $remtokcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$reptok"></a><span class="f_Bolddefault">$reptok(text,token,new,N,C)</span></p>
+<p>Replaces the Nth matching token in text with a new token. If N = 0, applies to all matching items.</p>
+<p>&nbsp;</p>
+<p>$reptok(a.b.c.d,b,e,1,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.e.c.d</p>
+<p>$reptok(a.b.c.d,f,e,1,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.c.d</p>
+<p>$reptok(a.b.a.c,a,e,2,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.e.c</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $reptokcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sorttok"></a><span class="f_Bolddefault">$sorttok(text,C,ncra)</span></p>
+<p>Sorts the tokens in text.</p>
+<p>&nbsp;</p>
+<p>$sorttok(e.d.c.b.a,46) &nbsp; &nbsp; &nbsp; &nbsp;returns a.b.c.d.e</p>
+<p>$sorttok(1.3.5.2.4,46,nr) &nbsp; &nbsp; &nbsp; &nbsp;returns 5.4.3.2.1</p>
+<p>&nbsp;</p>
+<p>The default is an alphabetic sort, however you can specify n = numeric sort, c = channel nick prefix sort, r = reverse sort, a = alphanumeric sort.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $sorttokcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$wildtok"></a><span class="f_Bolddefault">$wildtok(tokens,wildstring,N,C)</span></p>
+<p>Returns the Nth token that matches the wildcard string.</p>
+<p>&nbsp;</p>
+<p>$wildtok(one two three, t*, 0, 32) returns 2</p>
+<p>$wildtok(one two three, t*e, 1, 32) returns three</p>
+<p>&nbsp;</p>
+<p>If you specify <span class="f_Bolddefault">zero</span> for N, it returns the total number of matching tokens.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $wildtokcs() is the case-sensitive version.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on PING/PONG</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on PING,on PONG" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on PING/PONG</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on PING</span> event triggers when a server sends you a PING message to see if you are still connected.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on PONG</span> even triggers when you receive a PONG reply from the server after sending it a ping.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:PING:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:PING:/echo -s $nick sent me a PING</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:PING:/notice $me Wake up! The server is PINGing you: $1-</p>
+<p>&nbsp;</p>
+<p>This triggers when the server pings you. The <span class="f_Bolddefault">$1-</span> parameters hold the ping message.</p>
+<p>&nbsp;</p>
+<p>on 1:PONG:echo pong reply: $1-</p>
+<p>&nbsp;</p>
+<p>This triggers when the server replies to your ping.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You cannot use this to intercept /pings to your own nickname, this is used internally by mIRC.</p>
+
+</td></tr></table>
+
+</body>
+</html>

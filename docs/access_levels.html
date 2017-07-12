@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Levels</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Access levels,Levels,Remote Levels" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Access Levels</span></p>
+<p>&nbsp;</p>
+<p>Access levels are assigned both to a user and to an event and serve to limit a user's access to only certain events.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">default access level</span> is 1 for users that are not listed in the Users list. All users can access level 1 events. The higher a user's access level is, the more events that user can access. You can change the default user level to allow unlisted users to access more commands.</p>
+<p>&nbsp;</p>
+<p><a name="userlist"></a><span class="f_Subheading">User List</span></p>
+<p>In the Users section you can specify a <span class="f_Bolddefault">list of users</span> and their access levels using the format:</p>
+<p>&nbsp;</p>
+<p>&lt;level1,level2,...,levelN&gt;:&lt;useraddress&gt;</p>
+<p>&nbsp;</p>
+<p>3,5,6:nick!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">first</span> level is a general access level, which means that the user can access all levels equal to or less than 3. All the <span class="f_Bolddefault">other</span> levels are levels that an event must specifically have to allow a user to access it.</p>
+<p>&nbsp;</p>
+<p>If you want to <span class="f_Bolddefault">force</span> the first access level to be a specific level instead of a general access level, you can prefix it with an equal sign.</p>
+<p>&nbsp;</p>
+<p>=3,5,6:nick!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>Now this user has access specifically to level 3, 5, and 6 event and to no other events.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Event Format</span></p>
+<p>In general the format of an event is:</p>
+<p>&nbsp;</p>
+<p>&lt;prefix&gt; &lt;level&gt;:&lt;event&gt;:&lt;window&gt;:&lt;commands&gt;</p>
+<p>&nbsp;</p>
+<p>ctcp 1:HELP:*:/msg $nick No help is available for level 1 users</p>
+<p>&nbsp;</p>
+<p>The above ctcp command can be accessed by all users because it is a level 1 command. So if a user with nickname goat sends you a /ctcp yournick HELP, your script will send them the above reply.</p>
+<p>&nbsp;</p>
+<p>Only the <span class="f_Bolddefault">highest level</span> matching event is triggered for a user.</p>
+<p>&nbsp;</p>
+<p><a name="namedlevels"></a><span class="f_Subheading">Named Levels</span></p>
+<p>You can also used <span class="f_Bolddefault">named levels</span> which work the same way as a specific level but are easier to understand and read than a number.</p>
+<p>&nbsp;</p>
+<p>friend:nick!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>on @friend:JOIN:#mIRC:/mode $chan +o $nick</p>
+<p>&nbsp;</p>
+<p>This treats the word <span class="f_Bolddefault">friend</span> as a specific access level and matches the user with the event, and because the user is your friend, you give him ops.</p>
+<p>&nbsp;</p>
+<p><a name="eventprefixes"></a><a name="prefixes"></a><span class="f_Subheading">Event Prefixes</span></p>
+<p>You can limit access to an event by specifying a special prefix which determines how an event is processed or triggered by users.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The me prefix</span></p>
+<p>You can limit an event to trigger only to your actions by using the me prefix. For example, the following event will only trigger when you join a channel:</p>
+<p>&nbsp;</p>
+<p>on me:*:JOIN:#:/msg # Hello to one and all!</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">The + prefix</span></p>
+<p>You can limit an event to users with a specific access level by using the + prefix.</p>
+<p>&nbsp;</p>
+<p>10:nick!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>ctcp +5:HELP:*:/msg $nick You have accessed a level +5 event</p>
+<p>&nbsp;</p>
+<p>The above user cannot access this ctcp event even though he has an access level higher than 5 because the event is limited only to level 5 users.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The * prefix</span></p>
+<p>You can allow any user to trigger an event regardless of their access level by using the * prefix.</p>
+<p>&nbsp;</p>
+<p>on *:TEXT:help:#:/msg $nick you have accessed a * level event</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The ! prefix</span></p>
+<p>You can prevent an event from being triggered if it was initiated by you by using the ! prefix.</p>
+<p>&nbsp;</p>
+<p>ctcp !2:HELP:*:/msg $nick You have accessed a level 2 event</p>
+<p>&nbsp;</p>
+<p>You would be unable to access the above event regardless of your access level.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The @ prefix</span></p>
+<p>You can limit events to being executed only when you have Ops on a channel by using the @ prefix.</p>
+<p>&nbsp;</p>
+<p>10:nick!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>on @2:JOIN:#mIRC:/mode $chan +o $nick</p>
+<p>&nbsp;</p>
+<p>When the above user joins channel #mIRC and you have Ops on #mIRC, the associated /mode command will be executed, in this case giving the user Ops. If you do not have Ops, the event will not trigger.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The &amp; prefix</span></p>
+<p>You can prevent an event from being triggered if a previous script used <span class="f_Bolddefault">/halt</span> or <span class="f_Bolddefault">/haltdef</span> to halt the display of default text for an event by using the &amp; prefix.</p>
+<p>&nbsp;</p>
+<p>on &amp;1:TEXT:*:?:/echo this event will not trigger if $halted is true</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The $ prefix</span></p>
+<p>Indicates that the matchtext section of a definition contains a regular expression.</p>
+<p>&nbsp;</p>
+<p>on $*:TEXT:m/regular expression/switches:#:/echo message: $1-</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">m</span> and the <span class="f_Bolddefault">switches</span> are optional. The // are required. If switches are used they must be standard PCRE switches, otherwise the match will fail. You can use switch <span class="f_Bolddefault">S</span> to strip control codes from $1-.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">The = suffix</span></p>
+<p>You can prevent users with higher access levels from accessing <span class="f_Bolddefault">all</span> lower access level events by using the = suffix.</p>
+<p>&nbsp;</p>
+<p>10:nick!user@mirc.com</p>
+<p>&nbsp;</p>
+<p>ctcp 2:HELP:*:/msg $nick You have accessed a level 2 event</p>
+<p>ctcp 5:HELP:*:=</p>
+<p>&nbsp;</p>
+<p>The above user cannot access any of these events because the level 5 event prevents him from accessing all HELP events with access levels lower than 5.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The ! suffix</span></p>
+<p>You can prevent commands for a certain event level from being processed by using the ! suffix.</p>
+<p>&nbsp;</p>
+<p>ctcp 5:PING:*:echo PING!</p>
+<p>ctcp 5:*:*:!</p>
+<p>&nbsp;</p>
+<p>The ! at the end of the line tells the remote to halt any further processing of level 5 commands.</p>
+<p>&nbsp;</p>
+<p><a name="groups"></a><span class="f_Subheading">Groups</span></p>
+<p>You can create separate groups in scripts by using the # hash prefix.</p>
+<p>&nbsp;</p>
+<p>#group1 on</p>
+<p>...</p>
+<p>[ list of events ]</p>
+<p>...</p>
+<p>#group1 end</p>
+<p>&nbsp;</p>
+<p>You can use the <a href="remote_commands.html">/enable and /disable</a> commands to enable or disable groups. A group that is disabled will be ignored when processing events. A disabled group looks like this:</p>
+<p>&nbsp;</p>
+<p>#group1 off</p>
+<p>...</p>
+<p>[ list of events ]</p>
+<p>...</p>
+<p>#group1 end</p>
+<p>&nbsp;</p>
+<p>You cannot have groups within groups.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Order of definitions</span></p>
+<p>Many of the prefixes and controls are sensitive to numerical order of the definitions. The safest thing is to order your definitions starting with the lowest access levels first and increasing numerically down the list, this makes it easier to keep track of which events should trigger first.</p>
+
+</td></tr></table>
+
+</body>
+</html>

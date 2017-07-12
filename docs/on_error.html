@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on ERROR</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on ERROR" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on ERROR</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on ERROR</span> event triggers when an IRC Server sends an ERROR message, this usually occurs on a disconnection.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:ERROR:&lt;matchtext&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:ERROR:*server full*:/echo Try another server!</p>
+<p>&nbsp;</p>
+<p>For an explanation of <span class="f_Bolddefault">matchtext</span> see the <a href="on_text.html">on TEXT</a> event.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:ERROR:*banned*:/echo I am banned from this server *mumble*!</p>
+<p>&nbsp;</p>
+<p>This triggers when you try to connect to a server and it tells you that you are banned. The <span class="f_Bolddefault">$1-</span> parameters refer to the full error message.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This event is not related to any kind of error reporting in mIRC itself.</p>
+
+</td></tr></table>
+
+</body>
+</html>

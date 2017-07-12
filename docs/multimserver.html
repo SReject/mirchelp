@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Multi-Server</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Multi-Server" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Multi-server</span></p>
+<p>&nbsp;</p>
+<p>mIRC allows you to <a href="connect.html">connect</a> to more than one IRC server at a time. This means that scripts need to be multi-server aware in order to behave correctly when a user is connected to more than one server. The following <span class="f_Bolddefault">commands</span> and <span class="f_Bolddefault">identifiers</span> allow a script to handle multiple server connections.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Identifiers</span></p>
+<p>&nbsp;</p>
+<p>Each <span class="f_Bolddefault">new server window</span> that is created is assigned a <span class="f_Bolddefault">connection id</span>.</p>
+<p>&nbsp;</p>
+<p>Each <span class="f_Bolddefault">window</span> that is created, such as a channel or query window, is associated with the <span class="f_Bolddefault">connection id</span> of the server where that window was opened.</p>
+<p>&nbsp;</p>
+<p><a name="id_$cid"></a><span class="f_Bolddefault">$cid</span></p>
+<p>Returns the server <span class="f_Bolddefault">connection id</span> for the current script.</p>
+<p>&nbsp;</p>
+<p>Some window identifiers have their own <span class="f_Bolddefault">connection id</span> counterpart, such as <span class="f_Bolddefault">$activecid</span> and <span class="f_Bolddefault">$lactivecid</span>.</p>
+<p>&nbsp;</p>
+<p>Most <a href="window_identifiers.html">window</a> related identifiers also have a <span class="f_Bolddefault">.cid</span> property.</p>
+<p>&nbsp;</p>
+<p><a name="id_$scid"></a><span class="f_Bolddefault">$scid(N)[.id]</span></p>
+<p>Returns the connection id, where N is a $cid value.</p>
+<p>&nbsp;</p>
+<p>If N = 0, returns total number of open server windows.</p>
+<p>&nbsp;</p>
+<p>If you specify a <span class="f_Bolddefault">property</span> which is an identifier, it returns the value of that identifier for that connection. This also works for <span class="f_Bolddefault">custom</span> identifiers.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The property cannot use brackets.</p>
+<p>&nbsp;</p>
+<p><a name="id_$scon"></a><span class="f_Bolddefault">$scon(N)[.id]</span></p>
+<p>Returns the connection id, where N is the Nth connection.</p>
+<p>&nbsp;</p>
+<p>If N = 0, returns total number of open server windows.</p>
+<p>&nbsp;</p>
+<p>If you specify a <span class="f_Bolddefault">property</span> which is an identifier, it returns the value of that identifier for that connection. This also works for <span class="f_Bolddefault">custom</span> identifiers.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The property cannot use brackets.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_scid"></a><span class="f_Subheading">Commands</span></p>
+<p>&nbsp;</p>
+<p>Scripts can be made to perform commands on specific server connections by using <span class="f_Bolddefault">/scid</span> and <span class="f_Bolddefault">/scon</span>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/scid &lt;-rsatM | N&gt; [command]</span></p>
+<p>Changes the active connection for a script to connection id N, where N is a $cid value.</p>
+<p>&nbsp;</p>
+<p>All commands <span class="f_Bolddefault">after</span> the /scid command will be performed on the new connection id.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch resets the connection id to the original id for that script.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">command</span> parameter, the connection id is set only for <span class="f_Bolddefault">that</span> command.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">/scon</span> command works in exactly the same way, except that N represents the <span class="f_Bolddefault">Nth</span> connection, not a connection id value.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> and <span class="f_Bolddefault">-tM</span> switches can only be used if you specify a command.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch performs the command on all connection ids.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-tM</span> switch limits the command to being performed only on servers with a certain connection status, where M is an or'd value of 1 = server connected, 2 = not connected, 4 = connecting, 8 = not connecting. The command is only performed if M matches the connect status of the connection id.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> makes any called commands or identifiers show their results.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you use a command that contains $identifiers, and you want the identifiers to be evaluated in the target connection, you must pass them as $!identifier to prevent them from being evaluated first in the current connection.</p>
+
+</td></tr></table>
+
+</body>
+</html>

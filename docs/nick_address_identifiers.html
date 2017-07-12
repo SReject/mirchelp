@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Nick and Address Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Internal Ban List,Nick and Address Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Nick and Address Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$address"></a><span class="f_Bolddefault">$address(nickname,type)</span></p>
+<p>Searches the Internal Address List for the address associated with the specified nickname. You must read about the <a href="internal_address_list.html">IAL</a> before you use this identifier.</p>
+<p>&nbsp;</p>
+<p>$address(nick,1) &nbsp;returns *!*user@host</p>
+<p>&nbsp;</p>
+<p>If the Internal Address List does not contain a matching nickname, the identifier returns $null.</p>
+<p>&nbsp;</p>
+<p>See <span class="f_Bolddefault">$mask()</span> for a list of types.</p>
+<p>&nbsp;</p>
+<p><a name="id_$anick"></a><span class="f_Bolddefault">$anick</span></p>
+<p>Returns your alternate nickname.</p>
+<p>&nbsp;</p>
+<p><a name="id_$comchan"></a><span class="f_Bolddefault">$comchan(nick,N)</span></p>
+<p>Returns the names of channels which both you and nick are on.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Properties:</span> op, help, voice</p>
+<p>&nbsp;</p>
+<p>$comchan(nick,0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the total number of common channels</p>
+<p>$comchan(nick,1) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the first common channel name</p>
+<p>$comchan(nick,1).op &nbsp; &nbsp; &nbsp; &nbsp;returns $true if you are an op on the channel</p>
+<p>&nbsp;</p>
+<p><a name="id_$ial"></a><span class="f_Bolddefault">$ial</span></p>
+<p>Returns $true or $false depending on whether the <a href="internal_address_list.html">IAL</a> is on or off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$ial(nick/mask,N)</span></p>
+<p>Returns the Nth address matching mask in the <a href="internal_address_list.html">IAL</a>.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ialchan"></a><span class="f_Bolddefault">$ialchan(nick/mask,#,N)</span></p>
+<p>Returns the Nth address on the specified channel matching mask in the <a href="internal_address_list.html">IAL</a>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> pnick</p>
+<p>&nbsp;</p>
+<p><a name="id_$ibl"></a><span class="f_Bolddefault">$ibl(#channel,N)</span></p>
+<p><span class="f_Bolddefault">$iel(#channel,N)</span></p>
+<p><span class="f_Bolddefault">$iil(#channel,N)</span></p>
+<p>Returns Nth item in the internal ban/exception/invite list, or if N is 0 returns total number of items in that list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> by, date, ctime</p>
+<p>&nbsp;</p>
+<p>$ibl(#mirc,1) &nbsp; &nbsp; &nbsp; &nbsp;returns the first address in the ban list</p>
+<p>$ibl(#mirc,1).by &nbsp; &nbsp; &nbsp; &nbsp;returns the address of the user who set the ban</p>
+<p>$ibl(#mirc,1).date &nbsp; &nbsp; &nbsp; &nbsp;returns the date when the user set the ban</p>
+<p>$ibl(#mirc,1).ctime &nbsp; &nbsp; &nbsp; &nbsp;returns $ctime format for ban date</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> See <a href="window_identifiers.html">$chan()</a> for more information.</p>
+<p>&nbsp;</p>
+<p><a name="id_$level"></a><span class="f_Bolddefault">$level(address)</span></p>
+<p>Finds a matching address in the remote users list and returns its corresponding levels list.</p>
+<p>&nbsp;</p>
+<p>$level(*!*@mirc.com) &nbsp;returns =5,10,20,21,32</p>
+<p>&nbsp;</p>
+<p><a name="id_$link"></a><span class="f_Bolddefault">$link(N)</span></p>
+<p>Returns the Nth item listed in the server Links window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> addr, ip, level, info</p>
+<p>&nbsp;</p>
+<p>$link(0) &nbsp;returns the total number of links in the links window</p>
+<p>$link(1) &nbsp;returns the Nth server address in the links window</p>
+<p>&nbsp;</p>
+<p><a name="id_$mask"></a><span class="f_Bolddefault">$mask(address,type)</span></p>
+<p>Returns address with a mask specified by type.</p>
+<p>&nbsp;</p>
+<p>$mask(nick!user@mirc.com,1) &nbsp;returns *!*user@mirc.com</p>
+<p>$mask(nick!user@mirc.com,2) &nbsp;returns *!*@mirc.com</p>
+<p>&nbsp;</p>
+<p>The available types are:</p>
+<p>&nbsp;</p>
+<p> &nbsp;0: *!user@host</p>
+<p> &nbsp;1: *!*user@host</p>
+<p> &nbsp;2: *!*@host</p>
+<p> &nbsp;3: *!*user@*.host</p>
+<p> &nbsp;4: *!*@*.host</p>
+<p> &nbsp;5: nick!user@host</p>
+<p> &nbsp;6: nick!*user@host</p>
+<p> &nbsp;7: nick!*@host</p>
+<p> &nbsp;8: nick!*user@*.host</p>
+<p> &nbsp;9: nick!*@*.host</p>
+<p>&nbsp;</p>
+<p>You can also specify a type of 10 to 19 which correspond to masks 0 to 9, but instead of using a * wildcard to replace portions of the host, mIRC uses ? wildcards to replace the numbers in the address.</p>
+<p>&nbsp;</p>
+<p>This standard set of masks is also used in other identifiers and commands.</p>
+<p>&nbsp;</p>
+<p><a name="id_$me"></a><span class="f_Bolddefault">$me</span></p>
+<p>Returns your current nickname.</p>
+<p>&nbsp;</p>
+<p><a name="id_$mnick"></a><span class="f_Bolddefault">$mnick</span></p>
+<p>Returns your main nickname.</p>
+<p>&nbsp;</p>
+<p><a name="id_$nick"></a><span class="f_Bolddefault">$nick(#,N/nick,aohvr,aohvr)</span></p>
+<p>Returns Nth nickname in the channels nickname listbox on channel #.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> color, pnick, idle</p>
+<p>&nbsp;</p>
+<p>$nick(#mIRC,0) &nbsp;returns the total number of nicknames on #mIRC</p>
+<p>$nick(#mIRC,1) &nbsp;returns the 1st nickname on #mIRC</p>
+<p>&nbsp;</p>
+<p>Both <span class="f_Bolddefault">aohvr</span> parameters are optional. The first specifies which nicks you would like included, and the second specifies the nicks you would like excluded, where:</p>
+<p>&nbsp;</p>
+<p> &nbsp; a = all nicks, o = ops, h = halfops, v = voiced, r = regular</p>
+<p>&nbsp;</p>
+<p>$nick(#mIRC,1,o) &nbsp;return the first op on #mIRC</p>
+<p>$nick(#mIRC,0,a,o) &nbsp;return the total number of nicks not including ops on #mIRC</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">pnick</span> property returns the nickname in a .@%+nick format.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">idle</span> property returns the time the user has been idle on the specified channel, ie. the time since the user last sent a message to the channel.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> See the $prefix identifier for more information.</p>
+<p class="p_Bolddefault"><span class="f_Subheading">&nbsp;</span></p>
+<p><a name="id_nickmode"></a><span class="f_Bolddefault">$nickmode</span></p>
+<p class="p_Subheading">Returns the channel nickname modes supported by the current server.</p>
+<p>&nbsp;</p>
+<p><a name="id_$notify"></a><span class="f_Bolddefault">$notify</span></p>
+<p class="p_Subheading">Returns $true or $false depending on whether the notify list is on or off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$notify(N/nick)</span></p>
+<p>Returns the Nth nickname in your <a href="notify_list.html">Notify</a> list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> ison, note, sound, whois, addr, network</p>
+<p>&nbsp;</p>
+<p>$notify(0) &nbsp; &nbsp; &nbsp; &nbsp;returns the number of nicknames in your notify list.</p>
+<p>$notify(3) &nbsp; &nbsp; &nbsp; &nbsp;returns the 3rd nickname in your notify list.</p>
+<p>$notify(3).ison &nbsp; &nbsp; &nbsp; &nbsp;returns $true if this user is on IRC, $false if not.</p>
+<p>$notify(goat) &nbsp; &nbsp; &nbsp; &nbsp;returns the Nth position of nickname goat in the notify list</p>
+<p>&nbsp;</p>
+<p><a name="id_$snicks"></a><span class="f_Bolddefault">$snicks</span></p>
+<p>Returns a string of the currently selected nicknames in the active channel listbox in the form:</p>
+<p>&nbsp;</p>
+<p>nick1,nick2,nick3,...,nickN</p>
+<p>&nbsp;</p>
+<p><a name="id_$snick"></a><span class="f_Bolddefault">$snick(#,N)</span></p>
+<p>Returns the Nth selected nickname in the channel listbox on channel #.</p>
+<p>&nbsp;</p>
+<p>$snick(#mIRC,0) &nbsp; &nbsp;returns the total number of selected nicknames on #mIRC</p>
+<p>$snick(#mIRC,1) &nbsp; &nbsp;returns the 1st selected nickname on #mIRC</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Note:</span> If the N parameter is not specified, it returns a line containing all selected nicknames.</p>
+<p>&nbsp;</p>
+<p><a name="id_$snotify"></a><span class="f_Bolddefault">$snotify</span></p>
+<p>Returns the currently selected nickname in the notify list box.</p>
+<p>&nbsp;</p>
+<p><a name="id_$trust"></a><span class="f_Bolddefault">$trust(N)</span></p>
+<p>Returns the Nth item in the dcc trust list, or if N is 0 returns total number of items in list.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on FILESENT/FILERCVD</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$filename,on FILERCVD,on FILESENT,on GETFAIL,on SENDFAIL" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on FILESENT/FILERCVD</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on FILESENT</span> and <span class="f_Bolddefault">on FILERCVD</span> events trigger when a dcc send or dcc get succeeds.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:FILESENT:&lt;filename[,filename]&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:FILESENT:*.txt:/msg $nick I have successfully sent you the $filename text file</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on SENDFAIL</span> and <span class="f_Bolddefault">on GETFAIL</span> events use the same format as above, and trigger when a dcc send or dcc get fails.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:FILESENT:*.txt,*.ini:/echo Sent $filename to $nick $address</p>
+<p>&nbsp;</p>
+<p>This triggers when a dcc send succeeds in sending a .txt or .ini file to a user. <span class="f_Bolddefault">$filename</span> refers to the filename that was transmitted.</p>
+<p>&nbsp;</p>
+<p>on 1:FILERCVD:*.txt,*.ini:/echo Received $filename from $nick | /run notepad.exe $filename</p>
+<p>&nbsp;</p>
+<p>This triggers when a dcc get succeeds in getting a .txt or .ini file from a user.</p>
+<p>&nbsp;</p>
+<p>on 1:SENDFAIL:*.txt:/echo I failed to send the text file $filename to $nick</p>
+<p>&nbsp;</p>
+<p>This triggers when a dcc send failed to send a .txt file to a user.</p>
+<p>&nbsp;</p>
+<p>on 1:GETFAIL:*.zip:/echo I failed to get the zip file $filename from $nick</p>
+<p>&nbsp;</p>
+<p>This triggers when a dcc get failed to get a .zip file from a user.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> you can use <span class="f_Bolddefault">$send(-1)</span> or <span class="f_Bolddefault">$get(-1)</span> to refer to the dcc associated with these events.</p>
+
+</td></tr></table>
+
+</body>
+</html>

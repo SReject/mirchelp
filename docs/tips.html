@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Tips</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Balloons,Tips" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Tips</span></p>
+<p>&nbsp;</p>
+<p>Tips are <span class="f_Bolddefault">text balloons</span> that pop up near the <span class="f_Bolddefault">Windows tray</span> to notify you of various events such as incoming messages or users in your notify list coming on or leaving IRC. Tips only appear when mIRC is <span class="f_Bolddefault">not</span> the active application and are <span class="f_Bolddefault">hidden</span> the moment mIRC becomes active.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">Events</span></p>
+<p>Tips can be enabled for channel, private, and other events.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">Queue Size</span></p>
+<p>This setting limits the maximum number of queued tips. If a new tip is added to the queue while the queue is full, the oldest tip is removed. New tips are queued until older tips time-out. Tips time-out at a slower rate if they are not at the head of the queue.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">Display Time</span></p>
+<p>Each tip is displayed for <span class="f_Bolddefault">at least</span> the number of seconds specified in the tips dialog. For tips with long messages, display time is automatically extended based on the size of the message.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">Hide tips when full screen application is active</span></p>
+<p>Tips can be set to be <span class="f_Bolddefault">hidden</span> whenever a full screen application becomes active. This applies to both game and non-game applications.</p>
+<p><span class="f_Subheading">&nbsp;</span></p>
+<p><span class="f_Subheading">Tips Commands and Identifiers</span></p>
+<p class="p_Bolddefault"><span class="f_Subheading">&nbsp;</span></p>
+<p class="p_Bolddefault"><a name="cmd_tips"></a><span class="f_Bolddefault">/tips [on|off]</span></p>
+<p class="p_Subheading">Turns tips on or off.</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">&nbsp;</span></p>
+<p class="p_Bolddefault"><a name="id_tips"></a><span class="f_Bolddefault">$tips</span></p>
+<p class="p_Subheading">Returns $true or $false depending on whether tips are on or off.</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">&nbsp;</span></p>
+<p class="p_Bolddefault"><a name="id_tip"></a><span class="f_Bolddefault">$tip(name,title,text,delay,iconfn,iconpos,alias,wid)</span></p>
+<p class="p_Bolddefault">Allows you to create scripted tips that are independent of normal tip events. Returns Nth position of tip if it was successfully created, zero if not.</p>
+<p class="p_Subheading">&nbsp;</p>
+<p class="p_Subheading">name - name of the tip</p>
+<p class="p_Subheading">title - title</p>
+<p class="p_Subheading">text - text</p>
+<p class="p_Subheading">delay - from 3 to 60 seconds</p>
+<p class="p_Subheading">iconfn - icon filename</p>
+<p class="p_Subheading">iconpos - icon position in filename</p>
+<p class="p_Subheading">alias - alias to perform when tip is double-clicked</p>
+<p class="p_Subheading">wid - id of window to which tip belongs</p>
+<p class="p_Subheading">&nbsp;</p>
+<p class="p_Subheading">name, title, text are required.</p>
+<p class="p_Subheading">delay, iconfn, iconpos, alias, and wid can be $null.</p>
+<p class="p_Subheading">&nbsp;</p>
+<p class="p_Subheading"><span class="f_Bolddefault">$tip(name/N)</span></p>
+<p class="p_Subheading">Returns properties for the specified tip.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">Properties: </span>name, title, text, delay, iconfn, iconpos, alias, wid</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">&nbsp;</span></p>
+<p class="p_Bolddefault"><a name="cmd_tip"></a><span class="f_Bolddefault">/tip &lt;-ct&gt; &lt;name/N&gt; [text]</span></p>
+<p class="p_Subheading">Manipulates an existing tip, where <span class="f_Bolddefault">-c </span>closes the tip and <span class="f_Bolddefault">-t</span> changes the text of the tip.</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">&nbsp;</span></p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">Other features</span></p>
+<p>Right-clicking in a tip pauses the time-out for all tips.</p>
+<p>&nbsp;</p>
+<p>Left-clicking in a tip while pressing the shift key closes that tip.</p>
+<p>&nbsp;</p>
+<p>Double-clicking in a tip triggers the alias if one is defined, or opens the associated window if not.</p>
+<p>&nbsp;</p>
+<p>A tip automatically fits the text into it and will at most widen to quarter of your screen width.</p>
+<p>&nbsp;</p>
+<p>If window id is not specified, the tip belongs to the status window of the currently active connection.</p>
+<p>&nbsp;</p>
+<p>A tip is closed if the window it belongs to is made active or is closed or if mIRC is made active and the tip belongs to an MDI window. This does not apply if you are using $tip() to create and manage your own tips.</p>
+<p>&nbsp;</p>
+<p>The <a href="highlight.html">Highlight</a> dialog in the Address Book also supports tips.</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

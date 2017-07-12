@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on PARSELINE</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$parseline,$parsetype,$parseutf,/parseline,on PARSELINE" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on PARSELINE</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on PARSELINE</span> event triggers before incoming/outgoing server lines are received/sent and allows a script to modify them.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:PARSELINE:&lt;in|out|*&gt;:matchtext:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on *:PARSELINE:*:*:echo $parsetype $parseline</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The /parseline command</span></p>
+<p>The incoming/outgoing server line can be modified using the following command:</p>
+<p>&nbsp;</p>
+<p>/parseline -iotbqpnuN [text|&amp;binvar]</p>
+<p>&nbsp;</p>
+<p>-i or -o = required to specify an in/out line.</p>
+<p>&nbsp;</p>
+<p>-t or -b = required to specify text or &amp;binvar.</p>
+<p>&nbsp;</p>
+<p>-q = add a new line to the end of the in/out queue. It can be used inside and outside the PARSELINE event. New lines are processed after the script/event exits.</p>
+<p>&nbsp;</p>
+<p>-p = use with -q to indicate that the new line should trigger the PARSELINE event.</p>
+<p>&nbsp;</p>
+<p>-n = add a CRLF to the end of the line if it does not have one.</p>
+<p>&nbsp;</p>
+<p>-uN = where N is 0 or 1 and either disables or enables UTF-8 encoding/decoding for the line.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Notes: </span>A script must check $parseutf to know whether mIRC will be UTF-8 encoding/decoding a line. For outgoing lines, if $parseutf is $true, after the PARSELINE event, mIRC will UTF-8 encode the line before sending it to the server. You can prevent this by using -u0. For incoming lines, if $parseutf is $true, after the PARSELINE event, mIRC will UTF-8 decode the line before processing it. You can prevent this by using -u0.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Warning:</span> This feature should only be used, for example, to support features and/or protocols that mIRC does not already support, not to modify standard lines. mIRC maintains internal states based on incoming and outgoing lines. If lines are modified, mIRC may not work correctly. </p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>; This example converts incoming/outgoing lines to upper case</p>
+<p>on *:PARSELINE:*:*:{</p>
+<p> &nbsp;echo PARSELINE: $parsetype : $parseutf : $parseline</p>
+<p>&nbsp;</p>
+<p> &nbsp;if ($parsetype == in) {</p>
+<p> &nbsp; &nbsp;var %pl = $parseline</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; UTF decode the line ourselves</p>
+<p> &nbsp; &nbsp;if ($parseutf) %pl = $utfdecode(%pl)</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; Convert the line to upper case</p>
+<p> &nbsp; &nbsp;%pl = $upper(%pl)</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; Replace the current incoming line with our line</p>
+<p> &nbsp; &nbsp;; We use -u0 to prevent mIRC from UTF decoding the line as we have already done that</p>
+<p> &nbsp; &nbsp;parseline -itu0 %pl</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; The line will only be processed after our script returns</p>
+<p> &nbsp; &nbsp;return</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;if ($parsetype == out) {</p>
+<p> &nbsp; &nbsp;var %pl = $parseline</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; Convert line to upper case</p>
+<p> &nbsp; &nbsp;%pl = $upper(%pl)</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; UTF encode the line ourselves</p>
+<p> &nbsp; &nbsp;if ($parseutf) %pl = $utfencode(%pl)</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; Replace the current outgoing line with our line</p>
+<p> &nbsp; &nbsp;; We use -u0 to prevent mIRC from UTF encoding the line as we have already done that</p>
+<p> &nbsp; &nbsp;parseline -otu0 %pl</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;; The line will only be processed after our script returns</p>
+<p> &nbsp; &nbsp;return</p>
+<p> &nbsp;}</p>
+<p>&nbsp;</p>
+<p> &nbsp;; The original incoming/outgoing line will be processed as normal</p>
+<p>}</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

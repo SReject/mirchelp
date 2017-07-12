@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on NOTIFY/UNOTIFY</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on NOTIFY,on UNOTIFY" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on NOTIFY/UNOTIFY</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on NOTIFY</span> and <span class="f_Bolddefault">on UNOTIFY</span> events trigger when a user in your <a href="address_book.html">notify list</a> joins or leaves IRC.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:NOTIFY:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:NOTIFY:/msg $nick Hiya! :)</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:NOTIFY:/msg $nick Hi! I am in #mIRC_Lounge, come over!</p>
+<p>&nbsp;</p>
+<p>This triggers when a user in your notify list joins IRC.</p>
+<p>&nbsp;</p>
+<p>on 1:UNOTIFY:/notice $me $nick just left IRC *sniff*</p>
+<p>&nbsp;</p>
+<p>This triggers when a user in your notify list leaves IRC.</p>
+
+</td></tr></table>
+
+</body>
+</html>

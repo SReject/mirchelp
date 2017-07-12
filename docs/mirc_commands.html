@@ -1,0 +1,789 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>mIRC Commands</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Commands,mIRC Commands" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">mIRC Commands</span></p>
+<p>&nbsp;</p>
+<p>The following commands are mostly unique to mIRC, though some are only modifications or extensions of standard IRC commands.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ajinvite"></a><span class="f_Bolddefault">/ajinvite [on | off]</span></p>
+<p>Turns auto-join on invite on or off.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_alias"></a><span class="f_Bolddefault">/alias [filename] &lt;aliasname&gt; &lt;command&gt;</span></p>
+<p>Adds, removes, replaces aliases; it is limited to single line aliases and will not affect multiple line definitions.</p>
+<p>&nbsp;</p>
+<p>/alias /moo /me moos!</p>
+<p>&nbsp;</p>
+<p>This will replace the first matching alias with the new command. To remove an existing aliases:</p>
+<p>&nbsp;</p>
+<p>/alias /moo</p>
+<p>&nbsp;</p>
+<p>To add an alias to a specific alias file, you would use:</p>
+<p>&nbsp;</p>
+<p>/alias moo.txt /moo /me moos!</p>
+<p>&nbsp;</p>
+<p>If you do not specify a filename, it defaults to using the first filename in which the alias exists, or if it does not exist then it uses the first loaded aliases file.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_amsg"></a><span class="f_Bolddefault">/amsg &lt;message&gt;</span></p>
+<p>This and the <span class="f_Bolddefault">/ame</span> command send the specified message or action to all open channel windows.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_anick"></a><span class="f_Bolddefault">/anick &lt;nickname&gt;</span></p>
+<p>Changes your alternate nickname.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_autojoin"></a><span class="f_Bolddefault">/autojoin [-nsdN]</span></p>
+<p>Can be used in the <a href="on_connect.html">on CONNECT</a> event or <a href="connect_options.html">Perform</a> section to delay or prevent autojoining of channels</p>
+<p>&nbsp;</p>
+<p>Where -n = join now, -s = skip autojoin, -dN = delay autojoin for N seconds.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note: </span>This also affects the rejoining of open channel windows during a reconnect.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_background"></a><span class="f_Bolddefault">/background [-abemsgdluhcfnrtpx] [window] [filename]</span></p>
+<p>Changes the background picture setting for a window. This can also be changed via a windows <a href="system_menu.html">System Menu</a>.</p>
+<p>&nbsp;</p>
+<p> &nbsp; -a = active window</p>
+<p> &nbsp; -m = main mIRC window</p>
+<p> &nbsp; -s = status window</p>
+<p> &nbsp; -d = single message window</p>
+<p>&nbsp;</p>
+<p> &nbsp; -e = set as default</p>
+<p>&nbsp;</p>
+<p> &nbsp; -cfnrtp = center, fill, normal, stretch, tile, photo</p>
+<p>&nbsp;</p>
+<p> &nbsp; -l = toolbar</p>
+<p> &nbsp; -u = toolbar buttons</p>
+<p> &nbsp; -h = switchbar</p>
+<p> &nbsp; -b = treebar</p>
+<p>&nbsp;</p>
+<p>You can right-click in the toolbar/switchbar to pop up a menu for changing these settings. Toolbar buttons can use RGB Color <span class="f_Bolddefault">255,0,255</span> for transparency, the BMP must be of the same form as that in mIRC resources. It should be a 16 or 256 color BMP.</p>
+<p>&nbsp;</p>
+<p> &nbsp; -x = no background picture</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The <span class="f_Bolddefault">window</span> name should only be specified if none of the window switches are specified. The <span class="f_Bolddefault">filename</span> does not need to be specified if you are only changing the display method.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ban"></a><span class="f_Bolddefault">/ban [-kruNbeIq] [#channel] &lt;nickname|address&gt; [type]</span></p>
+<p>Bans someone from the current channel using their address. To do this, it first does a /userhost on the nickname to retrieve the address and then does a /mode # +b.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-k</span> switch, mIRC performs a ban/kick combination on the nickname.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-uN</span> switch, mIRC pauses N seconds before removing the ban.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-r</span> switch, /ban <span class="f_Bolddefault">removes</span> the ban of the specified type for that nickname, eg. /ban -r nick 2</p>
+<p>&nbsp;</p>
+<p>If you do not specify a ban type, then mIRC uses the whole nick!*user@host to do the ban. If you are banning an IP address then a wild card replaces the last number of the IP address. If you are on the channel then the #channel specification is not necessary.</p>
+<p>&nbsp;</p>
+<p>If you specify a wildcard address it is used as-is, if you specify a full address then the type mask is applied to it.</p>
+<p>&nbsp;</p>
+<p>For a list of ban types see the <a href="nick_address_identifiers.html">$mask</a> identifier.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-beIq</span> switches apply the command to the ban/except/invite/quiet list. If none of these switches are used, it applies only to the ban list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This command uses the <a href="internal_address_list.html">IAL</a> maintained by mIRC.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_beep"></a><span class="f_Bolddefault">/beep &lt;number&gt; &lt;delay&gt;</span></p>
+<p>Beeps a number of times with a delay.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_channel"></a><span class="f_Bolddefault">/channel [#channel]</span></p>
+<p>Pops up the channel central window for the channel window you are currently in. You can also specify a #channel name to open the channel central for a channel you have already joined but which is not the active window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_clear"></a><span class="f_Bolddefault">/clear [-sghlc] [windowname]</span></p>
+<p>Clears the buffer of the current window. If you specify a window name, that window's buffer will be cleared.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch clears the status window.</p>
+<p>The <span class="f_Bolddefault">-l</span> switch clears the side-listbox in a <a href="custom_windows.html">custom</a> window.</p>
+<p>The <span class="f_Bolddefault">-c</span> switch clears the click history in a <a href="picture_windows.html">picture</a> window.</p>
+<p>The <span class="f_Bolddefault">-h</span> switch clears the editbox command history for a window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_clearall"></a><span class="f_Bolddefault">/clearall [-snqmtgua]</span></p>
+<p>Clears the buffers of the specified windows, where s = status, n = channel, q = query, m = message window, t = chat, u = custom, a = all windows on all connections.</p>
+<p>&nbsp;</p>
+<p>If no switches are specified all windows are cleared.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_clipboard"></a><span class="f_Bolddefault">/clipboard [-an] &lt;text&gt;</span></p>
+<p>Copies the specified text to the clipboard. The <span class="f_Bolddefault">-a</span> switch makes it append the text to any existing text in the clipboard. The <span class="f_Bolddefault">-n</span> switch appends a $crlf to the text.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_close"></a><span class="f_Bolddefault">/close [-axicdfgklmnstu@] [nick|window] ... [nick|window]</span></p>
+<p>Closes windows of the specified type, matching the specified nicknames, where c = chat, f = fserve, g = get, s = send, m = query, d = single message window, t = status window, l = channels list, k = links list, n = notify list, u = urls list, @ = custom windows and window id values.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch applies the command to all server connections.</p>
+<p>The <span class="f_Bolddefault">-x</span> switch applies the command to the current server connection.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch closes only non-connected status windows or inactive chat/fserve/send/get windows.</p>
+<p>&nbsp;</p>
+<p>If no nick or window names are given, all windows of the specified type are closed.</p>
+<p>&nbsp;</p>
+<p>You can specify the Nth window for -cfgs by appending a number, eg. /close -s4 nick, would close the 4th open dcc send to nick.</p>
+<p>&nbsp;</p>
+<p>You can also use a <span class="f_Bolddefault">wildcard</span> as the window name and all matching windows will be closed.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_color"></a><span class="f_Bolddefault">/color [-lrs] &lt;name&gt; &lt;index&gt;</span></p>
+<p>Allows you to change the color settings for items in the <a href="change_colors.html">Colors dialog</a>.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch reloads the color settings from the mirc.ini file.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch resets the Nth color in the 16 color palette to its default RGB value, with /color -r &lt;N&gt;. To change the color of the Nth color in the 16 color palette to a new value, you can use /color &lt;index&gt; &lt;rgb&gt;</p>
+<p>&nbsp;</p>
+<p>To change the color of a text item in the color dialog, you can specify the name of the item, eg. Normal text, along with a new palette index.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch changes the active scheme, with /color -s &lt;scheme name&gt;</p>
+<p>&nbsp;</p>
+<p><a name="cmd_copy"></a><span class="f_Bolddefault">/copy -ao &lt;filename&gt; &lt;filename&gt;</span></p>
+<p>Copies a file to another filename or directory. You can also use wildcards for the source filename, and a directory name for the destination. The <span class="f_Bolddefault">-o</span> switch overwrites a file if it exists. The <span class="f_Bolddefault">-a</span> switch appends the first file to the second one.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_creq"></a><span class="f_Bolddefault">/creq [+m|-m] [ask | auto | ignore]</span></p>
+<p>This is the command line equivalent of setting the DCC Chat request radio buttons in the dcc options dialog (see <a href="mirc_commands.html#CMD_sreq">/sreq</a> below). The +m|-m switch turns the minimize setting on|off.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ctcpreply"></a><span class="f_Bolddefault">/ctcpreply &lt;nick&gt; &lt;ctcp&gt; [message]</span></p>
+<p>Sends a reply to a ctcp query.</p>
+<p>&nbsp;</p>
+<p>/ctcpreply goat HELP no help available.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_debug"></a><span class="f_Bolddefault">/debug [-cinpt] [N] [on | off | @window | filename] [identifier]</span></p>
+<p>Outputs raw server messages, both incoming and outgoing, to a debug.log file, or a custom @window.</p>
+<p>&nbsp;</p>
+<p>/debug -n @moo, opens a custom @window minimized</p>
+<p>/debug -c off, turns off debugging and closes the associated custom @window</p>
+<p>/debug -pt, wraps or timestamps messages</p>
+<p>/debug N @moo, uses color N for messages</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i </span>switch calls the specified identifier before a debug line is logged. The return value of the identifier is used as the debug line.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$debug</span> identifier returns the name of debug file or @window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> /debug works independently for each server connection.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_describe"></a><span class="f_Bolddefault">/describe &lt;nick|channel&gt; &lt;message&gt;</span></p>
+<p>Sends an action to the specified nickname or channel.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_disconnect"></a><span class="f_Bolddefault">/disconnect</span></p>
+<p>Forces a disconnect from a server. This is different from the /quit command which sends a quit message to the server and waits for the server to disconnect you.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dll"></a><span class="f_Bolddefault">/dll &lt;name.dll&gt; &lt;procname&gt; [data]</span></p>
+<p>This allows you to call routines in a <a href="dll.html">DLL</a> designed to work with mIRC.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dns"></a><span class="f_Bolddefault">/dns [-46ch] [nick|address]</span></p>
+<p>Resolves an address. If mIRC sees a &quot;.&quot; in the name you specify it assumes it is an address and tries to resolve it. Otherwise it assumes it is a nickname and performs a /userhost to find the user's address and then resolves it. If you specify an IP address, it looks up the host name.</p>
+<p>&nbsp;</p>
+<p>You can queue multiple /dns requests, and you can view the current queue by using /dns with no parameters.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-46</span> switches make /dns return results for IPv4, IPv6, or both types of addresses.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch clears all currently queued DNS requests, except for the one currently in progress.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-h</span> switch forces /dns to treat the parameter as a hostname.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> /dns can also parse a nick!user@host format and extract the nick for lookup or the host for resolution.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dqwindow"></a><span class="f_Bolddefault">/dqwindow [on|off|show|hide|min]</span></p>
+<p>Manipulates the single message window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ebeeps"></a><span class="f_Bolddefault">/ebeeps [on | off]</span></p>
+<p>Enables or disables the sounds in the <a href="sounds.html">Sounds</a> dialog.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_echo"></a><span class="f_Bolddefault">/echo [color] [-cdeghiNtsaqlbfnmr] [color name] [#channel|[=]nick] &lt;text&gt;</span></p>
+<p>Prints text in the specified window using the specified color (0 to 15).</p>
+<p>&nbsp;</p>
+<p>/echo 3 #mIRC Testing</p>
+<p>&nbsp;</p>
+<p>would print &quot;Testing&quot; in the color green in channel window #mIRC, assuming it is already open.</p>
+<p>&nbsp;</p>
+<p>If a channel/nickname is not specified, the <span class="f_Bolddefault">-s</span> switch echoes to the status window, the <span class="f_Bolddefault">-d</span> switch echoes to the single message window, and the <span class="f_Bolddefault">-a</span> switch echoes to the currently active window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-e</span> switch encloses the line in line separators.</p>
+<p>The <span class="f_Bolddefault">-iN</span> switch indents the wrapped line by N characters.</p>
+<p>The <span class="f_Bolddefault">-h</span> switch forces lines to hard-wrap so resizing the window does not change the line.</p>
+<p>The <span class="f_Bolddefault">-tN</span> switch prefixes the line with a timestamp if global time stamping is on or timestamping is on for that window. N is optional and is the UTC value to use for the timestamp.</p>
+<p>The <span class="f_Bolddefault">-q</span> switch makes it not display the text if called from an alias using the . prefix.</p>
+<p>The <span class="f_Bolddefault">-l</span> switch makes it apply the <a href="highlight.html">highlight</a> settings to the line that is displayed.</p>
+<p>The <span class="f_Bolddefault">-bf</span> switches make it apply the beep/flash settings in the window it is echoing to.</p>
+<p>The <span class="f_Bolddefault">-n</span> switch prevents the echo from highlighting the window switchbar icon.</p>
+<p>The <span class="f_Bolddefault">-m</span> switch indicates that the line should be treated as a user message, not an event.</p>
+<p>The <span class="f_Bolddefault">-g</span> switch prevents the line from being logged to the log file.</p>
+<p>The <span class="f_Bolddefault">-r</span> switch applies the strip settings in the <a href="messages.html">messages</a> dialog.</p>
+<p>The <span class="f_Bolddefault">-c</span> switch uses the specified color name from the colors dialog.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This text is only displayed in your own window, it is not sent to the server, no one else can see it.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_editbox"></a><span class="f_Bolddefault">/editbox [-saf[N]nopbNeNvqN] [window] &lt;text&gt;</span></p>
+<p>Fills the editbox of the current window with the specified text.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch specifies the Status window.</p>
+<p>The <span class="f_Bolddefault">-a</span> switch specifies the Active window.</p>
+<p>&nbsp;</p>
+<p>To specify a dcc chat window, prefix the nickname with an <span class="f_Bolddefault">=</span> equal sign.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-f[N]</span> switch where N = 1 sets focus and N = 2 uses editbox with focus</p>
+<p>The <span class="f_Bolddefault">-p</span> switch indicates that a space should be appended to text.</p>
+<p>The <span class="f_Bolddefault">-n</span> switch fills the editbox and presses the enter key in the editbox.</p>
+<p>The <span class="f_Bolddefault">-o</span> switch applies the command to the second editbox in a channel window.</p>
+<p>The <span class="f_Bolddefault">-bNeN</span> switches set the start and end of the selection in the editbox.</p>
+<p>The <span class="f_Bolddefault">-v</span> switch prevents the editbox contents from being changed.</p>
+<p>The <span class="f_Bolddefault">-qN</span> switch enables/disables/toggles the second editbox.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_emailaddr"></a><span class="f_Bolddefault">/emailaddr &lt;address&gt;</span></p>
+<p>Changes the email address in the Connect dialog.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_exit"></a><span class="f_Bolddefault">/exit [-nr]</span></p>
+<p>Close down mIRC and exit.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch disables the exit confirmation dialog.</p>
+<p>The <span class="f_Bolddefault">-r</span> switch restarts mIRC.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_filter"></a><span class="f_Bolddefault">/filter [-asdfhNkwxnpriocteubglLz] [n-n2] [c s] &lt;infile | dialog id&gt; &lt;outfile | dialog id | alias&gt; [alias] &lt;matchtext&gt;</span></p>
+<p>This command scans lines of text in a window or file and if any of them contain matchtext, they are written out to another window or file which you can then use.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">infile</span> can be a filename or a window name (custom or normal). The <span class="f_Bolddefault">outfile</span> can be a filename or a custom window name. You should specify the <span class="f_Bolddefault">-fw</span> switches if the names are ambiguous eg.</p>
+<p>&nbsp;</p>
+<p>/filter -ff in.txt out.txt *mirc*</p>
+<p>&nbsp;</p>
+<p>This indicates that both are filenames, and:</p>
+<p>&nbsp;</p>
+<p>/filter -wf #in.txt #out.txt *help*</p>
+<p>&nbsp;</p>
+<p>indicates that the first is actually a window name, and the second is a filename.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch <span class="f_Bolddefault">sorts</span> filtered lines by calling the optional <span class="f_Bolddefault">[alias]</span>. The alias is passed two lines in $1 and $2, it must compare these and return -1, 0, or 1 to indicate relative sort order of these lines to each other.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-x</span> switch excludes matching lines.</p>
+<p>The <span class="f_Bolddefault">-n</span> switch prefixes lines with a line number.</p>
+<p>The <span class="f_Bolddefault">-s</span> switch makes the status window the infile.</p>
+<p>The <span class="f_Bolddefault">-d</span> switch makes the single message window the infile.</p>
+<p>The <span class="f_Bolddefault">-p</span> switch wraps the text output in a custom window.</p>
+<p>The <span class="f_Bolddefault">-hN</span> switch indents wrapped text N characters when the -p switch is used.</p>
+<p>The <span class="f_Bolddefault">-r</span> switch specifies the range of lines <span class="f_Bolddefault">n to n2</span> for filtering.</p>
+<p>The <span class="f_Bolddefault">-b</span> switch strips <a href="control_codes.html">BURK</a> codes when matching text.</p>
+<p>The <span class="f_Bolddefault">-g</span> switch indicates that matchtext is a <a href="regular_expressions.html">regular expression</a>.</p>
+<p>The <span class="f_Bolddefault">-z </span>switch retains line colors when filtering between custom windows.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-k </span>switch indicates that you have specified an &lt;alias&gt; as the output instead of a window name. The alias will be called with the result of each filtered line.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch indicates that you have provided a [dialog id] <a href="dialogs.html">custom dialog</a> control as the input.</p>
+<p>The <span class="f_Bolddefault">-o</span> switch indicates that you have provided a [dialog id] <a href="dialogs.html">custom dialog</a> control as the output.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch clears the output window/file before writing to it.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch sorts the output based on [c s], column C using character S as the columns separator.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-e</span> specifies a descending sort, and <span class="f_Bolddefault">-u</span> a numeric sort.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch filters from the side-listbox in the first window, and <span class="f_Bolddefault">-L</span> filters to the side-listbox in the second window.</p>
+<p>&nbsp;</p>
+<p>You can filter blank lines by specifying $crlf for the matchtext.</p>
+<p>&nbsp;</p>
+<p><a name="id_$filtered"></a>This command also fills the <span class="f_Bolddefault">$filtered</span> identifier with the number of matches found, if any.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If the input and output are the same window/file, mIRC will process the request correctly.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_findtext"></a><span class="f_Bolddefault">/findtext -n &lt;text&gt;</span></p>
+<p>This searches active window for the specified text (same as <a href="key_combinations.html">Control+F</a>).</p>
+<p>&nbsp;</p>
+<p><a name="cmd_flash"></a><span class="f_Bolddefault">/flash [-bNwNrN] [window] &lt;text&gt;</span></p>
+<p>This flashes the specified window/icon but <span class="f_Bolddefault">only</span> if mIRC is not the active application.</p>
+<p>&nbsp;</p>
+<p>If you specify a text message, it will be displayed in the mIRC window titlebar.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-bN</span> switch makes mIRC beep N times.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-wN</span> switch makes mIRC play the Flash sound specified in the <a href="sounds.html">Event Beeps</a> section N times.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-rN</span> switch makes mIRC repeat the flash N times.</p>
+<p>&nbsp;</p>
+<p>In all cases, if N is not specified the flash/sound continues indefinitely.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_flushini"></a><span class="f_Bolddefault">/flushini &lt;filename&gt;</span></p>
+<p>Flushes the specified INI file to the hard disk. INI files are cached in memory, so you may want to do this to make sure that your INI is updated properly.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_font"></a><span class="f_Bolddefault">/font [-asbidz|window] &lt;fontsize&gt; &lt;fontname&gt;</span></p>
+<p>This allows you to change the font for the current window. If no parameters are specified, the font dialog pops up, otherwise the specified parameters are used.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch applies the setting to the active window, <span class="f_Bolddefault">-s</span> to the status window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch makes the font bold and the <span class="f_Bolddefault">-i</span> switch makes it italic.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-d</span> switch makes the font the default for that type of window, eg. for all channels, or all chats.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-z</span> switch clears all font settings and sets all windows to the specified font. If no font is specified, all windows are set to default font settings.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you use a negative number for the font size, it will match the size of fonts in the font dialog.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_fullname"></a><span class="f_Bolddefault">/fullname &lt;name&gt;</span></p>
+<p>Changes the full name in the connect dialog.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_help"></a><span class="f_Bolddefault">/help [keyword]</span></p>
+<p>Brings up the section in the mIRC help file which matches the specified keyword.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_hop"></a><span class="f_Bolddefault">/hop [-cn] [#channel] [message]</span></p>
+<p>Parts the current channel and joins a new one. If no new channel is specified, it parts and rejoins the current channel without closing the window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch cycles the specified channel by parting and rejoining it.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch minimizes the channel window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_join"></a><span class="f_Bolddefault">/join [-inx] &lt;#channel&gt;</span></p>
+<p>This is a standard IRC command for joining a channel.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch makes you join the channel to which you were last invited.</p>
+<p>The <span class="f_Bolddefault">-n</span> and <span class="f_Bolddefault">-x</span> switches minimize/maximize the channel window when you join it.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_linesep"></a><span class="f_Bolddefault">/linesep [-s|window]</span></p>
+<p>Prints the line separator selected in the Options dialog in the specified window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_links"></a><span class="f_Bolddefault">/links [-nx]</span></p>
+<p>Retrieves the servers to which your current server is linked.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> and <span class="f_Bolddefault">-x</span> switches minimize/maximize the window when it opens.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_load"></a><span class="f_Bolddefault">/load &lt;-a|-pscqnm|-ruvsN&gt; &lt;filename&gt;</span></p>
+<p>Loads the specified alias, popup, or script.</p>
+<p>&nbsp;</p>
+<p>/load -a aliases.ini &nbsp; &nbsp; &nbsp; &nbsp;loads an aliases file</p>
+<p>&nbsp;</p>
+<p>/load -ps status.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a status window popup</p>
+<p>/load -pc status.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a channel popup</p>
+<p>/load -pq status.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a query popup</p>
+<p>/load -pn status.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a nickname list popup</p>
+<p>/load -pm status.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a menubar popup</p>
+<p>&nbsp;</p>
+<p>/load -ru users.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a users file</p>
+<p>/load -rv vars.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a variables file</p>
+<p>/load -rs script.ini &nbsp; &nbsp; &nbsp; &nbsp;loads a scripts file</p>
+<p>&nbsp;</p>
+<p>If you try to load a file that is already loaded, its contents are updated and its position in the alias/script processing order is maintained.</p>
+<p>&nbsp;</p>
+<p>You can also use the <span class="f_Bolddefault">/reload</span> command with the same parameters to reload a file without triggering the on start/load events in the script being loaded.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">N</span> with /load -rsN, this loads/reloads the script into the Nth position in the script list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can only load one section at a time.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_loadbuf"></a><span class="f_Bolddefault">/loadbuf [lines] [-apirsglecNnomt&lt;topic&gt;] &lt;window | dialog id&gt; &lt;filename&gt;</span></p>
+<p>Loads the specified number of lines from the end of the file of filename into the specified window.</p>
+<p>&nbsp;</p>
+<p>/loadbuf 20 @test info.txt</p>
+<p>&nbsp;</p>
+<p>This loads the last 20 lines of info.txt into custom window @test.</p>
+<p>&nbsp;</p>
+<p>/loadbuf 10-40 @test info.txt</p>
+<p>&nbsp;</p>
+<p>This loads lines 10 to 40 of info.txt into custom window @test.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch loads the text into the active window.</p>
+<p>The <span class="f_Bolddefault">-p</span> switch forces lines of text to wrap when added to the window.</p>
+<p>The <span class="f_Bolddefault">-i</span> switch makes sure that lines are indented if they wrap.</p>
+<p>The <span class="f_Bolddefault">-r</span> switch clears the contents of the output window.</p>
+<p>The <span class="f_Bolddefault">-s</span> switch applies the command to the status window.</p>
+<p>The <span class="f_Bolddefault">-l</span> switch applies the command to the side-listbox in a custom window.</p>
+<p>The <span class="f_Bolddefault">-e</span> switch evaluates variables and identifiers in the line being read.</p>
+<p>The <span class="f_Bolddefault">-cN</span> switch specifies the default color for lines.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch logs the loaded text to a log file, if logging is enabled for that window. The <span class="f_Bolddefault">-m</span> switch indicates that the text is already timestamped.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-o</span> switch indicates that you have specified [dialog id] parameters instead of a window name in order to load text into a <a href="dialogs.html">custom dialog</a> control.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch loads the text under the [topic] section in an INI or plain text file.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_localinfo"></a><span class="f_Bolddefault">/localinfo -uhp [host] [ip]</span></p>
+<p>Looks up and sets your <a href="local.html">Local</a> settings. The <span class="f_Bolddefault">-u</span> switch performs a /userhost lookup, the <span class="f_Bolddefault">-h</span> switch performs a normal lookup, and the <span class="f_Bolddefault">-p</span> switch performs a UPnP lookup through your router, if that is available. If you wish, you can also specify the hostname and IP address values manually.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_log"></a><span class="f_Bolddefault">/log &lt;on|off&gt; &lt;window&gt; [-f filename]</span></p>
+<p>Turns logging on and off for a window, if you specify a filename the logs file dialog is not popped up.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="cmd_logview"></a><span class="f_Bolddefault">/logview &lt;filename&gt;</span></p>
+<p>Displays a text file in mIRC using the same method as the Log Files dialog.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_menubar"></a><span class="f_Bolddefault">/menubar &lt;on|off&gt;</span></p>
+<p>Changes the menubar display state. The <span class="f_Bolddefault">$menubar</span> identifier can be used to determine its state.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_mdi"></a><span class="f_Bolddefault">/mdi -act</span></p>
+<p>Allows you to arrange icons, and cascade/tile windows.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_mkdir"></a><span class="f_Bolddefault">/mkdir &lt;dirname&gt;</span></p>
+<p>Creates the specified directory.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_mnick"></a><span class="f_Bolddefault">/mnick &lt;nickname&gt;</span></p>
+<p>Changes your main nickname.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_nick"></a><span class="f_Bolddefault">/nick &lt;nickname&gt;</span></p>
+<p>Changes your nickname.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_noop"></a><span class="f_Bolddefault">/noop</span></p>
+<p>Performs no operation, parameters are evaluated as with a normal command.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_omsg"></a><span class="f_Bolddefault">/omsg [#channel] &lt;message&gt;</span></p>
+<p>This and the <span class="f_Bolddefault">/onotice</span> command sends the specified message to all channel ops on a channel. You must be a channel operator to use these commands. If the #channel is not specified, then the current channel is used.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_partall"></a><span class="f_Bolddefault">/partall [message]</span></p>
+<p>Parts all of the channels you are currently on. On certain IRC Servers, you can also specify a message.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_pdcc"></a><span class="f_Bolddefault">/pdcc [on | off]</span></p>
+<p>If turned on, tries to speed up dcc sends by sending packets ahead of acks.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_perform"></a><span class="f_Bolddefault">/perform [on|off]</span></p>
+<p>Enables or disables the <a href="connect_options.html">Perform</a> form section.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_play"></a><span class="f_Bolddefault">/play [-escpbnx q# m# f# rl# t#] [channel/nick/stop] &lt;filename&gt; [delay]</span></p>
+<p>This <a href="playing_files.html">plays</a> a text file to a user or a channel.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_pop"></a><span class="f_Bolddefault">/pop &lt;delay&gt; [#channel] &lt;nickname&gt;</span></p>
+<p>Performs a delayed op on a nickname. The purpose of this command is to prevent a channel window filling up with op mode changes whenever several users have the same nickname in their auto-op section.</p>
+<p>&nbsp;</p>
+<p>mIRC will pause around &lt;delay&gt; seconds before performing the op. If &lt;delay&gt; is zero, it does an immediate op. Before performing the op it checks if the user is already opped. If you do not specify the #channel, the current channel is assumed.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_pvoice"></a><span class="f_Bolddefault">/pvoice &lt;delay&gt; [#channel] &lt;nickname&gt;</span></p>
+<p>Works the same way as the /pop command except that voices a user.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_qmsg"></a><span class="f_Bolddefault">/qmsg &lt;message&gt;</span></p>
+<p>This and the <span class="f_Bolddefault">/qme </span>command send the specified message or action to all open query windows.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_query"></a><span class="f_Bolddefault">/query [-n] &lt;nick&gt; [message]</span></p>
+<p>Opens a query window to the specified nickname. If a message is provided, it is sent.</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">-n</span> switch is specified, the window is opened in a minimized state.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_queryrn"></a><span class="f_Bolddefault">/queryrn &lt;nick&gt; &lt;newnick&gt;</span></p>
+<p>Changes the nickname of an open query window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_raw"></a><span class="f_Bolddefault">/raw [-qn] &lt;command&gt;</span></p>
+<p>Sends the specified command directly to the server. You <span class="f_Bolddefault">must</span> know the correct raw format of the command you are sending.</p>
+<p>&nbsp;</p>
+<p>/raw PRIVMSG nickname :Hello there!</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-q</span> switch makes the command work quietly without printing what it is sending.</p>
+<p>The <span class="f_Bolddefault">-n</span> switch prevents characters in the range 0-255 from being UTF-8 encoded, as long as the line contains characters only in the range 0-255. If there are characters outside 0-255, the whole line is UTF-8 encoded.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This command does the same thing as <span class="f_Bolddefault">/quote</span> in other IRC clients.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_remini"></a><span class="f_Bolddefault">/remini &lt;inifile&gt; &lt;section&gt; [item]</span></p>
+<p>Deletes whole sections or single items in an INI file.</p>
+<p>&nbsp;</p>
+<p>/remini my.ini DDE ServerStatus</p>
+<p>&nbsp;</p>
+<p>This would delete the ServerStatus item, and:</p>
+<p>&nbsp;</p>
+<p>/remini my.ini DDE</p>
+<p>&nbsp;</p>
+<p>Would delete the DDE section.</p>
+<p>&nbsp;</p>
+<p>See the /writeini command below for a related example.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Warning:</span> Do not use this command to modify any of the INI files currently being used by mIRC.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_remove"></a><span class="f_Bolddefault">/remove [-b] &lt;filename&gt;</span></p>
+<p>Deletes the specified file.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch deletes the file and moves it to the recycle bin.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_rename"></a><span class="f_Bolddefault">/rename &lt;filename&gt; &lt;newfilename&gt;</span></p>
+<p>Renames a file, can also be used to move a file from one directory to another.</p>
+<p><span class="f_Highlight">&nbsp;</span></p>
+<p><span class="f_Highlight">Note:</span> This can also be used to rename directories.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_resetidle"></a><span class="f_Bolddefault">/resetidle [seconds]</span></p>
+<p>This resets the <a href="time_date_identifiers.html">$idle</a> identifier to zero or to the number of seconds you specify.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_rmdir"></a><span class="f_Bolddefault">/rmdir &lt;dirname&gt;</span></p>
+<p>Deletes the specified directory.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If the directory contains files, it cannot be deleted.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_run"></a><span class="f_Bolddefault">/run [-hnp] &lt;filename&gt; [parameters]</span></p>
+<p>Runs the specified program with parameters.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-h</span> switch attempts to hide the window of the application being run.</p>
+<p>The <span class="f_Bolddefault">-n</span> switch minimizes the window of the application being run.</p>
+<p>The <span class="f_Bolddefault">-p</span> switch sets the working path to the path of the application being run.</p>
+<p>&nbsp;</p>
+<p>You can enclose the filename or parameters in quotes if you need to. If you specify a <span class="f_Bolddefault">non-executable</span> file, mIRC tries to open it with the application associated with that file.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_save"></a><span class="f_Bolddefault">/save &lt;-pscqnm|-ruv&gt; &lt;filename&gt;</span></p>
+<p>Saves the specified popup or remote users/variables file. &nbsp; &nbsp; </p>
+<p>&nbsp;</p>
+<p>/save -ps status.ini &nbsp; &nbsp; &nbsp; &nbsp;saves the status popup to status.ini</p>
+<p>/save -pn nick.ini &nbsp; &nbsp; &nbsp; &nbsp;saves the nickname list popup to nick.ini</p>
+<p>&nbsp;</p>
+<p>/save -ru users.ini &nbsp; &nbsp; &nbsp; &nbsp;saves the user list to users.ini</p>
+<p>/save -rv vars.ini &nbsp; &nbsp; &nbsp; &nbsp;saves the variables list to vars.ini</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can only save one section at a time.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_savebuf"></a><span class="f_Bolddefault">/savebuf [-sgaol] [lines] &lt;window | dialog id&gt; &lt;filename&gt;</span></p>
+<p>Saves the specified number of lines from the end of the buffer of the specified window into the specified filename.</p>
+<p>&nbsp;</p>
+<p>/savebuf 20 @test info.txt</p>
+<p>&nbsp;</p>
+<p>This saves the last 20 lines in custom window @test to info.txt.</p>
+<p>&nbsp;</p>
+<p>/savebuf 10-40 @test info.txt</p>
+<p>&nbsp;</p>
+<p>This saves lines 10 to 40 in custom window @test to info.txt.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch saves the status window buffer, and the <span class="f_Bolddefault">-a</span> switch makes it append the text to the end of a file instead of overwriting it.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-o</span> switch indicates that you have specified [dialog id] parameters instead of a window name in order to save text from a custom dialog control.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch saves the contents of the side listbox, if there is one.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_saveini"></a><span class="f_Bolddefault">/saveini</span></p>
+<p>Updates all mIRC-related INI files with the current settings.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_say"></a><span class="f_Bolddefault">/say &lt;message&gt;</span></p>
+<p>This sends a message to the current channel or query window. So &quot;/say Hello there&quot; would be the same as just typing &quot;Hello there&quot;.</p>
+<p><span class="f_Highlight">&nbsp;</span></p>
+<p><span class="f_Highlight">Note:</span> You cannot use this command in the remote section. Use /msg #channel &lt;message&gt; instead.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_server"></a><span class="f_Bolddefault">/server [-46emnstarpfocz] &lt;server/group&gt; [port] [password] [-i nick anick email name] [-jn #channel pass] [-l method]</span></p>
+<p>Connects you to a server, first disconnecting you from the current server.</p>
+<p>&nbsp;</p>
+<p>/server irc.undernet.org 6667 mypassword</p>
+<p>&nbsp;</p>
+<p>If you type /server with no parameters, mIRC will connect to the last server you used. If you use the server command while still connected, you will be disconnected with your normal quit message and will then connect to the specified server.</p>
+<p>&nbsp;</p>
+<p>You can also use /server N which connects to the Nth server in the server list in the connect dialog.</p>
+<p>&nbsp;</p>
+<p>You can also use /server group which will cycle through all the servers in the server list which have that group name until it connects to one of them.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-46</span> switches make /server connect to either IPv4, IPv6, or both types of addresses.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-e</span> switch initiates a secure connection to an SSL capable server. Alternatively you can prefix the <span class="f_Bolddefault">port number </span>with a plus sign, eg. +7001.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch initiates a secure connection to a STARTTLS capable server. Alternatively you can prefix the <span class="f_Bolddefault">port number </span>with a star sign, eg. *7001.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch sets the logon method which can be: pass, sasl, external, msg, or nickserv.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-m</span> switch creates a new server window for that connection and connects to the server. The <span class="f_Bolddefault">-n</span> switch does the same thing but does not connect to the server.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-pfoc</span> switches prevent perform, popup favorites folder, autojoin channels, and the on connect event when you connect to a server.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-z</span> switch minimizes the new server window.</p>
+<p>&nbsp;</p>
+<p>If you specify any of the <span class="f_Bolddefault">-sar</span> switches, the format of the command becomes:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/server -sar [server] [-p port] [-g group] [-w password] [-d description]</span></p>
+<p>&nbsp;</p>
+<p> &nbsp;-s sorts the servers list</p>
+<p> &nbsp;-a adds a server. If it exists, it is updated</p>
+<p> &nbsp;-r removes a server</p>
+<p>&nbsp;</p>
+<p>mIRC tries to find a match for either the server <span class="f_Bolddefault">address</span> or the <span class="f_Bolddefault">description</span> in the existing servers list. You can also specify <span class="f_Bolddefault">none</span> for -g -w and -d to clear the current setting.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_showmirc"></a><span class="f_Bolddefault">/showmirc -mnrstxoplf</span></p>
+<p>Manipulates the display of the main mIRC window, where -n = minimize, -r = restore, -s = show, -t = tray, -x = maximize, -o = on top, -p = not on top, -m = minimize according to tray settings, -f = full screen.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch can be used with the <span class="f_Bolddefault">-nt</span> switches to lock mIRC.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sline"></a><span class="f_Bolddefault">/sline [-a|r] &lt;#channel&gt; &lt;N|nick&gt;</span></p>
+<p>Selects or de-selects lines in a channel nickname listbox. It can select either the Nth nickname in a listbox, or a specified nickname.</p>
+<p>&nbsp;</p>
+<p>If you do not specify any switches, any existing selections in the listbox are cleared. If you specify the <span class="f_Bolddefault">-a</span> switch then the specified is selected without affecting the selection states of other lines. If you specify the <span class="f_Bolddefault">-r</span> switch then the specified item is de-selected.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_speak"></a><span class="f_Bolddefault">/speak &lt;text&gt;</span></p>
+<p>Speaks the specified text, see the <a href="speech.html">Speech</a> section for more information.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_splay"></a><span class="f_Bolddefault">/splay [-cwmpq] &lt;filename&gt;</span></p>
+<p>Plays the specified sound, see the <a href="playing_sounds.html">Playing Sounds</a> section.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sreq"></a><span class="f_Bolddefault">/sreq [+m|-m] [ask | auto | ignore]</span></p>
+<p>This is the command line equivalent of setting the DCC Send request radio buttons in the dcc options dialog (see <a href="mirc_commands.html#CMD_creq">/creq</a> above). The +m|-m switch turns the minimize setting on|off.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_strip"></a><span class="f_Bolddefault">/strip [+-burc]</span></p>
+<p>Turns control code stripping options in Options dialog on/off.</p>
+<p>&nbsp;</p>
+<p>/strip +bur-c</p>
+<p>&nbsp;</p>
+<p>would turn bold, underline, reverse stripping <span class="f_Bolddefault">on</span>, and turn color stripping <span class="f_Bolddefault">off</span>.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_switchbar"></a><span class="f_Bolddefault">/switchbar &lt;on|off&gt;</span></p>
+<p>Changes the menubar display state. The <span class="f_Bolddefault">$switchbar</span> identifier can be used to determine its state.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_timer"></a><span class="f_Bolddefault">/timer[N/name] [-cdeomhipr] [time] &lt;repetitions&gt; &lt;interval&gt; &lt;command&gt;</span></p>
+<p>Activates the specified timer to perform the specified command at a specified interval, and optionally at a specified time.</p>
+<p>&nbsp;</p>
+<p>If you are not connected to a server and you start a timer, it defaults to being an offline timer which means it will continue to run whether you are connected to a server or not.</p>
+<p>&nbsp;</p>
+<p>If you are connected to a server and you start a timer, it defaults to being an online timer, which means that if you disconnect from the server, it will be turned off. You can specify the <span class="f_Bolddefault">-o</span> switch to force it to be an offline timer.</p>
+<p>&nbsp;</p>
+<p>/timer1 0 20 /ame is AWAY!</p>
+<p>&nbsp;</p>
+<p>Timer1 will repeat an all channel action every 20 seconds until you stop the timer.</p>
+<p>&nbsp;</p>
+<p>If you specify a delay of 0 seconds, the timer will trigger immediately after the calling script ends.</p>
+<p>&nbsp;</p>
+<p>/timer5 10 60 /msg #games For more info on the latest games do /msg GaMeBoT info</p>
+<p>&nbsp;</p>
+<p>Timer5 will repeat this message to channel #games every sixty seconds and stop after 10 times.</p>
+<p>&nbsp;</p>
+<p>/timer9 14:30 1 1 /say It is now 2:30pm</p>
+<p>&nbsp;</p>
+<p>This will wait until 2:30pm and will then announce the time once and stop.</p>
+<p>&nbsp;</p>
+<p>To see a list of active timers type /timers. To see the setting for timer1 type /timer1. To deactivate timer1 type /timer1 off. To deactivate all timers type /timers off. If you are activating a new timer you do not need to specify the timer number, just use:</p>
+<p>&nbsp;</p>
+<p>/timer 10 20 /ame I am not here!</p>
+<p>&nbsp;</p>
+<p>And mIRC will allocate the first free timer it finds to this command.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-c</span> switch, this makes mIRC &quot;catch up&quot; a timer by executing it more than once during one interval if the real-time interval is not matching your requested interval.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-m</span> or <span class="f_Bolddefault">-h</span> switch, this indicates that the interval delay is in milliseconds.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The <span class="f_Bolddefault">-h</span> switch creates a high-resolution multimedia timer. This type of timer should <span class="f_Bolddefault">only</span> be used in critical timer situations since it uses system resources heavily.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-d</span> switch ensures that a timer and any subsequent timers using the -d switch are triggered in that order.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-e</span> switch, this executes the command associated with the specified timer name, also works if you specify a wildcard name.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ltimer"></a>The <span class="f_Bolddefault">$ltimer</span> identifier returns the number of the timer that was just started by the /timer command.</p>
+<p>&nbsp;</p>
+<p>Instead of using a number you can also specify a <span class="f_Bolddefault">name</span> for a timer.</p>
+<p>&nbsp;</p>
+<p>/timershow 0 10 echo -a $nick $server $time</p>
+<p>&nbsp;</p>
+<p>You can force identifiers to be re-evaluated when used in a /timer command by using the format $!me or $!time.</p>
+<p>&nbsp;</p>
+<p>If you wish to turn off a range of timers, you can use a wildcard for the number, for example:</p>
+<p>&nbsp;</p>
+<p>/timer3? off</p>
+<p>&nbsp;</p>
+<p>Will turn off all timers from 30 to 39.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-pr</span> switches pause and resume a timer respectively.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch makes a timer dynamically associate with whatever happens to be the active connection. If a server window is closed, the timer is associated with the next available server window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_timestamp"></a><span class="f_Bolddefault">/timestamp [-fgs|a|e] [on|off|default] [windowname]</span></p>
+<p>Turns timestamping of events <span class="f_Bolddefault">on</span> or <span class="f_Bolddefault">off</span>. If you specify <span class="f_Bolddefault">default</span>, uses the global <a href="messages.html">timestamp</a> setting.</p>
+<p>&nbsp;</p>
+<p> &nbsp;-s = for status window</p>
+<p> &nbsp;-a = for active window</p>
+<p> &nbsp;-e = for every window</p>
+<p>&nbsp;</p>
+<p>If a windowname is not specified, then the global timstamp switch is turned on or off.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-f</span> switch allows you to set the event <a href="messages.html">timestamp</a> format, eg. /timestamp -f [HH:nn]</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-g</span> switch allows you to set the logging <a href="messages.html">timestamp</a> format.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_titlebar"></a><span class="f_Bolddefault">/titlebar [@window] &lt;text&gt;</span></p>
+<p>Sets the main application titlebar. If you specify a custom @window name, then the titlebar for that custom window is changed.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_tnick"></a><span class="f_Bolddefault">/tnick &lt;nickname&gt;</span></p>
+<p>Changes your nickname to a temporary nickname, without affecting your main or alternate nicknames.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_tokenize"></a><span class="f_Bolddefault">/tokenize &lt;c&gt; &lt;text&gt;</span></p>
+<p>Fills the $1 $2 ... $N identifiers with tokens in &lt;text&gt; separated by character &lt;c&gt;, eg.:</p>
+<p>&nbsp;</p>
+<p>/tokenize 44 a,b c,d,e</p>
+<p>&nbsp;</p>
+<p>The above command would set $1 = a, $2 = b c, $3 = d, $4 = e</p>
+<p>&nbsp;</p>
+<p><a name="cmd_toolbar"></a><span class="f_Bolddefault">/toolbar &lt;on|off&gt;</span></p>
+<p>Changes the toolbar display state. The <span class="f_Bolddefault">$toolbar</span> identifier can be used to determine its state.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_treebar"></a><span class="f_Bolddefault">/treebar &lt;on|off&gt;</span></p>
+<p>Changes the treebar display state. The <span class="f_Bolddefault">$treebar</span> identifier can be used to determine its state.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_unload"></a><span class="f_Bolddefault">/unload &lt;-a|-nrs&gt; &lt;filename&gt;</span></p>
+<p>Unloads the specified alias or remote script file.</p>
+<p>&nbsp;</p>
+<p>/unload -a aliases.ini &nbsp; &nbsp; &nbsp; &nbsp;unloads the alias.ini file</p>
+<p>/unload -rs script.ini &nbsp; &nbsp; &nbsp; &nbsp;unloads the script.ini file</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch prevents a script from having the <a href="on_unload.html">on unload</a> event triggered.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can only unload one script at a time.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_updatenl"></a><span class="f_Bolddefault">/updatenl</span></p>
+<p>Usually the channel nicknames list and IAL in a kick/part/quit script event are updated after the script finishes, this command updates them immediately.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_url"></a><span class="f_Bolddefault">/url [on | off | show | hide | -dranils] [[N | mark ] | address]</span></p>
+<p>Show or hides the URL list window, and allows you to modify the current list of addresses in it.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch deletes the Nth item, or all items that match the <span class="f_Bolddefault">mark</span> you specify.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-an</span> switches allow you to open a browser window to an address, where -a = activate browser, and -n = use a new browser window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-ils </span>switches allow you to insert an item, load, and save the list, respectively.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_winhelp"></a><span class="f_Bolddefault">/winhelp &lt;filename&gt; [key]</span></p>
+<p>Opens a help file with the specified search key.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_write"></a><span class="f_Bolddefault">/write [-cidnalNsNwNrNmN] &lt;filename&gt; [text]</span></p>
+<p>Writes lines to a text file. For example:</p>
+<p>&nbsp;</p>
+<p>/write store.txt This line will be appended to the end of file <span class="f_Bolddefault">store.txt</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch clears the file completely before writing to it, so it allows you to start with a clean slate.</p>
+<p>&nbsp;</p>
+<p>/write -c c:\info.txt This file will be erased and have this line written to it</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-lN</span> switch specifies the line number where the text is to be written.</p>
+<p>&nbsp;</p>
+<p>/write -l5 c:\info.txt This line will overwrite the 5th line in the file</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch indicates that the text should be inserted at the specified line instead of overwriting it. If you do not specify any text then a blank line is inserted. If you do not specify a line number then a blank line is added to the end of the file.</p>
+<p>&nbsp;</p>
+<p>/write -il5 c:\info.txt This line will be inserted at the 5th line in the file</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-d</span> switch deletes a line in the file. If you do not specify a line number then the last line in the file is deleted.</p>
+<p>&nbsp;</p>
+<p>/write -dl5 c:\info.txt</p>
+<p>&nbsp;</p>
+<p>The above command will delete the 5th line in the file.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-sN</span> switch scans a file for the line beginning with the specified text and performs the operation on that line.</p>
+<p>&nbsp;</p>
+<p>/write -dstest c:\info.txt</p>
+<p>&nbsp;</p>
+<p>This will scan file info.txt for a line beginning with the word &quot;test&quot; and if found, deletes it.</p>
+<p>&nbsp;</p>
+<p>If you do not specify any switches then the text is just added to the end of the file.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-wN</span> switch scans a file for the line containing the specified wildcard text and performs the operation on that line. The <span class="f_Bolddefault">-rN </span>switch implies a regex match. The scan text can be enclosed in quotes if it contains spaces.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-mN</span> switch changes how CRLFs are written to the end of a file, where N = 0 is the default behaviour, N = 1 adds CRLF to end of file if it is not already there before writing a line, and N = 2 never adds CRLF to end of file before writing a line.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch indicates that mIRC should append the line of text you specified to the existing text of the specified line.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch prevents it from adding a $crlf to the end of the text.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You cannot use this command to write to an INI file. If you do so, you will most likely corrupt the INI file.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_writeini"></a><span class="f_Bolddefault">/writeini -n &lt;inifile&gt; &lt;section&gt; &lt;item&gt; &lt;value&gt;</span></p>
+<p>Writes to files in the standard INI file format.</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">-n</span> switch is specified, mIRC will attempt to write to the .ini file even if it is larger than 64k.</p>
+<p>&nbsp;</p>
+<p>A part of the mirc.ini file looks like this:</p>
+<p>&nbsp;</p>
+<p>[DDE]</p>
+<p>ServerStatus=on</p>
+<p>ServiceName=mirc</p>
+<p>&nbsp;</p>
+<p>You could achieve this with /writeini by using:</p>
+<p>&nbsp;</p>
+<p>/writeini my.ini DDE ServerStatus on</p>
+<p>/writeini my.ini DDE ServiceName mirc</p>
+<p>&nbsp;</p>
+<p>You can delete whole sections or items by using the /remini command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Warning:</span> Do not use this command to modify any of the INI files that mIRC is currently using.</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

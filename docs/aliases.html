@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Aliases</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Aliases" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Aliases</span></p>
+<p>&nbsp;</p>
+<p>mIRC allows you to create aliases and scripts to speed up your IRC session or to perform repetitive functions more easily. To create aliases you must know some <a href="basic_irc_commands.html">Basic IRC commands</a>.</p>
+<p>&nbsp;</p>
+<p>Aliases can be called from the <span class="f_Bolddefault">command line</span>, from <span class="f_Bolddefault">other aliases</span>, and from <span class="f_Bolddefault">popup</span> and <span class="f_Bolddefault">remote</span> scripts. An alias <span class="f_Bolddefault">cannot</span> call itself recursively mainly because this seems to cause more problems for users than it solves.</p>
+<p>&nbsp;</p>
+<p><a name="id_string"></a><span class="f_Subheading">Examples</span></p>
+<p>The following examples show you how to create aliases that perform simple functions.</p>
+<p>&nbsp;</p>
+<p>/gb /join #gb</p>
+<p>&nbsp;</p>
+<p>If you now type <span class="f_Bolddefault">/gb</span> this is the same as typing <span class="f_Bolddefault">/join #gb</span>.</p>
+<p>&nbsp;</p>
+<p>/j /join $1</p>
+<p>&nbsp;</p>
+<p>We have now added a <span class="f_Bolddefault">parameter</span> string. If we type <span class="f_Bolddefault">/j #gb</span> this is the same as typing <span class="f_Bolddefault">/join #gb</span>. The <span class="f_Bolddefault">$1</span> refers to the first parameter in the line that you supply.</p>
+<p>&nbsp;</p>
+<p>/yell /me $2 $1</p>
+<p>&nbsp;</p>
+<p>If you now type <span class="f_Bolddefault">/yell There! Hello</span> the action command will be <span class="f_Bolddefault">/me Hello There!</span> The number after <span class="f_Bolddefault">$</span> specifies the number of the parameter in the string that you entered.</p>
+<p>&nbsp;</p>
+<p>/jj /join $?</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">question mark</span> indicates that you should be asked to fill in this parameter. The parameter you supply will be inserted in the line at that point. So if you type <span class="f_Bolddefault">/jj</span> a dialog will pop up asking you for the channel you want to join. If you enter <span class="f_Bolddefault">#gb</span> then the final command will be <span class="f_Bolddefault">/join #gb</span>.</p>
+<p>&nbsp;</p>
+<p>/jj /join #$1</p>
+<p>&nbsp;</p>
+<p>the <span class="f_Bolddefault"># sign</span> indicates that the parameter you specify should be <span class="f_Bolddefault">prefixed</span> with a hash indicating that it is a <span class="f_Bolddefault">channel</span>.</p>
+<p>&nbsp;</p>
+<p>/jj /join $?=&quot;Enter channel to join:&quot;</p>
+<p>&nbsp;</p>
+<p>This does the same thing but now the dialog will have the &quot;Enter channel to join:&quot; line displayed inside it.</p>
+<p>&nbsp;</p>
+<p>/aw /away $?=&quot;Enter away message:&quot; | /say $!</p>
+<p>&nbsp;</p>
+<p><a name="id_exclaim"></a>This is similar to the line above except for the addition of the <span class="f_Bolddefault">$!</span> parameter. This refers to the text you <span class="f_Bolddefault">just</span> typed into the parameter box. ie. the away message. This saves you having to type the same message twice.</p>
+<p>&nbsp;</p>
+<p>/give /me gives $$1 a $$2</p>
+<p>&nbsp;</p>
+<p><a name="id_double"></a>The <span class="f_Bolddefault">double $$</span> means that this command will <span class="f_Bolddefault">only</span> be executed if a parameter is specified. If you specify only one parameter in the above command it will <span class="f_Bolddefault">not</span> be executed. You can also do <span class="f_Bolddefault">$$?1</span> or <span class="f_Bolddefault">$?1</span> which means try to fill this value with parameter one if it exists. If parameter one &nbsp;does notexist, ask for it. In the first case the parameter is necessary for the command to be executed, in the second case it is not.</p>
+<p>&nbsp;</p>
+<p>/slap /me slaps $1 around with $2-</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$2-</span> indicates that everything following and including <span class="f_Bolddefault">parameter 2</span> should be appended to the command line. if you type <span class="f_Bolddefault">/slap sheepy a large trout</span> the final line will be <span class="f_Bolddefault">/me slaps sheepy around with a large trout</span>.</p>
+<p>&nbsp;</p>
+<p>You can also specify <span class="f_Bolddefault">$2-5</span> which means use only parameters 2 to 5.</p>
+<p>&nbsp;</p>
+<p>/laugh /me laughs at $1's joke</p>
+<p>&nbsp;</p>
+<p>Anything appended to a <span class="f_Bolddefault">$</span> parameter is appended to the final parameter. So if in the above example we type <span class="f_Bolddefault">/laugh goat</span> the final command would be <span class="f_Bolddefault">/me laughs at goat's joke</span>.</p>
+<p>&nbsp;</p>
+<p>/silly /say Hel $+ lo th $+ ere $+ !</p>
+<p>&nbsp;</p>
+<p><a name="id_plus"></a>Parameters are normally separated by a space. To make mIRC <span class="f_Bolddefault">combine</span> parameters you can use the <span class="f_Bolddefault">$+</span> identifier. The above line will say <span class="f_Bolddefault">Hello there!</span>.</p>
+<p>&nbsp;</p>
+<p>/p /part #</p>
+<p>&nbsp;</p>
+<p><a name="id_hash"></a>The <span class="f_Bolddefault"># sign</span> refers to the <span class="f_Bolddefault">channel</span> you are currently on. So if you are on channel #blah, and you type <span class="f_Bolddefault">/p</span> then mIRC replaces the # sign with #blah, and the final command is <span class="f_Bolddefault">/part #blah</span>.</p>
+<p>&nbsp;</p>
+<p>/op /mode # +o $1</p>
+<p>&nbsp;</p>
+<p>To op someone you can now just type <span class="f_Bolddefault">/op goat</span> instead of the whole /mode command.</p>
+<p>&nbsp;</p>
+<p>/dop /mode # -ooo $1 $2 $3</p>
+<p>&nbsp;</p>
+<p>You can now deop three users by typing <span class="f_Bolddefault">/dop goat dog cat</span>.</p>
+<p>&nbsp;</p>
+<p>For <span class="f_Bolddefault">multiple commands</span> you should use a <span class="f_Bolddefault">|</span> character (the shifted character usually under the \ key). So to write an alias that kicks and bans someone:</p>
+<p>&nbsp;</p>
+<p>/dkb /kick # $1 | /mode # +b $1</p>
+<p>&nbsp;</p>
+<p><a name="evaluationbrackets"></a><span class="f_Subheading">The [ ] evaluation brackets</span></p>
+<p>If you want greater control over the order of evaluation of identifiers, you can use the <span class="f_Bolddefault">[ ] brackets</span>. Identifiers within these brackets will be evaluated first, from left to right. You can <span class="f_Bolddefault">nest</span> brackets.</p>
+<p>&nbsp;</p>
+<p>/say % [ $+ [ $1 ] ]</p>
+<p>&nbsp;</p>
+<p>You can also <span class="f_Bolddefault">force</span> a previously evaluated identifier to be re-evaluated by using extra [ ] brackets.</p>
+<p>&nbsp;</p>
+<p>/set %x %y</p>
+<p>/set %y Hiya!</p>
+<p>/echo [ [ %x ] ]</p>
+<p>&nbsp;</p>
+<p><a name="brackets"></a><span class="f_Subheading">The { } brackets</span></p>
+<p>You can create <span class="f_Bolddefault">multi-line</span> scripts by using the <span class="f_Bolddefault">{ } brackets</span>. This allows you to create an alias which performs several commands.</p>
+<p>&nbsp;</p>
+<p>/poem {</p>
+<p> &nbsp;/msg $1 The Wendigo, the Wendigo,</p>
+<p> &nbsp;/msg $1 Its eyes are ice and indigo...</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">The If-then-else statement</span></p>
+<p>You can use <a href="if_then_else.html">if-then-else</a> statements to decide which parts of your script executes based on the evaluation of a comparison.</p>
+<p>&nbsp;</p>
+<p>/number {</p>
+<p> &nbsp;if ($1 == 1) echo One</p>
+<p> &nbsp;elseif ($1 == 2) echo Two</p>
+<p> &nbsp;else echo Unknown number!</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This creates an alias which tests if the parameter you supplied is the number 1 or the number 2.</p>
+<p>&nbsp;</p>
+<p>For more information, see the <a href="if_then_else.html">if-then-else</a> section.</p>
+<p>&nbsp;</p>
+<p><a name="gotoloops"></a><a name="cmd_goto"></a><span class="f_Subheading">The Goto command</span></p>
+<p>The /goto command allows you to <span class="f_Bolddefault">jump</span> from one point in a script to another point.</p>
+<p>&nbsp;</p>
+<p>/number {</p>
+<p> &nbsp;if ($1 == 1) goto one</p>
+<p> &nbsp;elseif ($1 == 2) goto two</p>
+<p> &nbsp;else goto unknown</p>
+<p> &nbsp;:one</p>
+<p> &nbsp;echo One</p>
+<p> &nbsp;halt</p>
+<p> &nbsp;:two</p>
+<p> &nbsp;echo Two</p>
+<p> &nbsp;halt</p>
+<p> &nbsp;:unknown</p>
+<p> &nbsp;echo Unknown number!</p>
+<p> &nbsp;halt</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>Using a <span class="f_Bolddefault">goto</span> incorrectly could lead to an <span class="f_Bolddefault">infinite loop</span>. You can <span class="f_Bolddefault">break</span> out of a currently running script by pressing <span class="f_Bolddefault">Control+Break</span>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> I did not prefix the above commands with the <span class="f_Highlight">/</span> command prefix. This is because the command prefix is really only needed when entering a command on the command line. In scripts, all lines are assumed to start with a command, so you do not need to use the / command prefix.</p>
+<p>&nbsp;</p>
+<p><a name="errorhandling"></a><a name="cmd_reseterror"></a><a name="id_error"></a><span class="f_Subheading">Error handling</span></p>
+<p>Script errors can be caught by adding an <span class="f_Bolddefault">:error</span> goto point to your script. When an error occurs, the script will jump to :error and continue running. <span class="f_Bolddefault">$error</span> returns the error message.</p>
+<p>&nbsp;</p>
+<p>You can reset the error with <span class="f_Bolddefault">/reseterror</span>. If you do not reset the error, it will propagate backwards to any calling aliases until an :error is found and will halt the script as usual.</p>
+<p><span class="f_Subheading">&nbsp;</span></p>
+<p><a name="whileloops"></a><a name="cmd_while"></a><a name="cmd_break"></a><a name="cmd_continue"></a><span class="f_Subheading">While Loops</span></p>
+<p>Repeats a loop containing a set of commands while the expression in brackets is true.</p>
+<p>&nbsp;</p>
+<p>var %i = 1</p>
+<p>while (%i &lt;= 10) {</p>
+<p> &nbsp;echo 2 %i</p>
+<p> &nbsp;inc %i</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>The expression in brackets uses the same format as an <a href="if_then_else.html">if-then-else</a> statement.</p>
+<p>&nbsp;</p>
+<p>Multiple while loops can be embedded. You can use <span class="f_Bolddefault">/break</span> to break out of the current loop, and <span class="f_Bolddefault">/continue</span> to jump to the beginning of the loop.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_return"></a><span class="f_Subheading">The Return command</span></p>
+<p>The /return command halts a currently executing script and allows the calling routine to continue processing.</p>
+<p>&nbsp;</p>
+<p>You can also optionally specify a return value which will be stored in the $result identifier. The $result can then be used in the calling routine.</p>
+<p>&nbsp;</p>
+<p>/return [value]</p>
+<p>&nbsp;</p>
+<p><a name="cmd_halt"></a><span class="f_Subheading">The Halt command</span></p>
+<p>The /halt command halts a script and prevents any further processing. You can use this in <a href="halting_text.html">remote scripts</a> to prevent mIRC from replying to normal ctcp messages, or in aliases to halt an alias, and any calling aliases, completely.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Identifiers and Variables</span></p>
+<p>An <span class="f_Bolddefault">Identifier</span> returns the value of a built-in mIRC variable. For example, $time would return the current time. Whenever mIRC finds an identifier in your command, it replaces it with the <span class="f_Bolddefault">current</span> value of that identifier.</p>
+<p>&nbsp;</p>
+<p>For a list of identifiers, see the <a href="identifiers.html">Identifiers</a> section.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Variables</span> are identifiers whose values you can create and change yourself and use later in your scripts.</p>
+<p>&nbsp;</p>
+<p>For more information on variables, see the <a href="variables.html">Variables</a> section.</p>
+<p>&nbsp;</p>
+<p><a name="customidentifiers"></a><span class="f_Subheading">Custom Identifiers</span></p>
+<p>A custom identifier is just an <span class="f_Bolddefault">alias</span> which returns a value, and you can use that aliases name with an identifier prefix.</p>
+<p>&nbsp;</p>
+<p>For example, create an /add alias such as:</p>
+<p>&nbsp;</p>
+<p>add {</p>
+<p> &nbsp;%x = $1 + $2</p>
+<p> &nbsp;return %x</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>And then use it in a command:</p>
+<p>&nbsp;</p>
+<p>//echo Total is: $add(1,2)</p>
+<p>&nbsp;</p>
+<p>You can supply as many parameters as you want, ie. $add(1,2,...,N).</p>
+<p>&nbsp;</p>
+<p><a name="id_prop"></a>You can also use the <span class="f_Bolddefault">$prop</span> identifier to refer to your own custom properties:</p>
+<p>&nbsp;</p>
+<p>add {</p>
+<p> &nbsp;%x = $1 + $2</p>
+<p> &nbsp;if ($prop == negative) return $calc(-1 * %x)</p>
+<p> &nbsp;return %x</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>//echo Total is: $add(1,2).negative</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Built-in identifiers of the same name have priority.</p>
+<p>&nbsp;</p>
+<p><a name="aliasprefix"></a><span class="f_Subheading">Remote Scripts</span></p>
+<p>You can add aliases to <a href="remote.html">remote scripts</a> by using the <span class="f_Bolddefault">alias</span> prefix and then entering your alias as usual.</p>
+<p>&nbsp;</p>
+<p>alias add {</p>
+<p> &nbsp;%x = $1 + $2</p>
+<p> &nbsp;return %x</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>This is the same custom identifier as above, except it uses the <span class="f_Bolddefault">alias</span> prefix.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-l</span> switch in the alias definition, the alias becomes accessible only by commands in the same script and invisible to the command line and other scripts.</p>
+<p>&nbsp;</p>
+<p>alias -l add {</p>
+<p> &nbsp;%x = $1 + $2</p>
+<p> &nbsp;return %x</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><a name="functionkeys"></a><span class="f_Subheading">Function Key support</span></p>
+<p>You can <span class="f_Bolddefault">redefine</span> function keys to perform certain commands, just like aliases. For example:</p>
+<p>&nbsp;</p>
+<p>/F1 /say Hello!</p>
+<p>/sF2 /query $1</p>
+<p>/cF3 /ctcp $1 version</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">s</span> and <span class="f_Bolddefault">c</span> prefixes for <span class="f_Bolddefault">Shift</span> key and <span class="f_Bolddefault">Control</span> key respectively.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> A function key will behave <span class="f_Bolddefault">differently</span> depending on the window in which it is used. For example, when using it in a <span class="f_Bolddefault">query window</span> the $1 parameter refers to the selected users nickname. If you are on a <span class="f_Bolddefault">channel</span> and the <span class="f_Bolddefault">nickname listbox</span> is active then the function key will work on the selected nicknames. If the listbox is <span class="f_Bolddefault">not</span> active, the function key will just work on the channel.</p>
+<p>&nbsp;</p>
+<p><a name="commandprefixes"></a><span class="f_Subheading">Command prefixes</span></p>
+<p>If you are executing a command from the command line ie. by typing it into an editbox, you can <span class="f_Bolddefault">force</span> mIRC to <span class="f_Bolddefault">evaluate</span> identifiers in that command by prefixing it with two <span class="f_Bolddefault">//</span> instead of one /. For example:</p>
+<p>&nbsp;</p>
+<p>/echo My nickname is $me</p>
+<p>&nbsp;</p>
+<p>Would print out &quot;My nickname is $me&quot; and would not evaluate the $me.</p>
+<p>&nbsp;</p>
+<p>//echo My nickname is $me</p>
+<p>&nbsp;</p>
+<p>Would print out &quot;My nickname is somenick&quot; if your nickname was somenick.</p>
+<p>&nbsp;</p>
+<p>If you want to force a command to perform <span class="f_Bolddefault">quietly</span> ie. without printing out any information, then you can prefix it with a &quot;.&quot; full stop. For example:</p>
+<p>&nbsp;</p>
+<p>/ignore somenick</p>
+<p>&nbsp;</p>
+<p>Would print out information telling you that you are now ignoring &quot;somenick&quot;. If you do not want this information to be displayed, then you can use:</p>
+<p>&nbsp;</p>
+<p>/.ignore somenick</p>
+<p>&nbsp;</p>
+<p>If you want to perform a command without it being processed as an <span class="f_Bolddefault">alias</span>, you can prefix it with a ! exclamation mark.</p>
+<p>&nbsp;</p>
+<p><a name="comments"></a><span class="f_Subheading">Comments</span></p>
+<p>You can add <span class="f_Bolddefault">comments</span> to your scripts by using the <span class="f_Bolddefault">; semi-colon</span> at the start of a line, or <span class="f_Bolddefault">/* </span>and <span class="f_Bolddefault">*/ </span>to enclose text.</p>
+<p>&nbsp;</p>
+<p>;This is a comment</p>
+<p>&nbsp;</p>
+<p>/*</p>
+<p>This is a comment</p>
+<p>*/</p>
+<p>&nbsp;</p>
+<p>You can place comments anywhere in a script, they are ignored during processing.</p>
+<p>&nbsp;</p>
+<p><a name="id_and"></a><span class="f_Subheading">The $&amp; identifier</span></p>
+<p>This identifier allows you to break up a single line into multiple lines which are combined when the script is performed, so you can edit long commands more easily:</p>
+<p>&nbsp;</p>
+<p>longline {</p>
+<p> &nbsp;echo This is an example of a long $&amp;</p>
+<p> &nbsp;line that has been split into multiple lines $&amp;</p>
+<p> &nbsp;to make it easier to edit</p>
+<p>}</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

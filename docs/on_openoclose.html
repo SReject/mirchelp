@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on OPEN/CLOSE</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on CLOSE,on OPEN" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on OPEN/CLOSE</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on OPEN</span> and <span class="f_Bolddefault">on CLOSE</span> events trigger for various events relating to the opening and closing of a window of different types of windows. In the case of dcc sessions, they trigger when a dcc connection has opened or closed.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:OPEN|CLOSE:&lt;?|@|=|!|*&gt;:&lt;matchtext&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:CLOSE:?:echo -s closed $target query window</p>
+<p>&nbsp;</p>
+<p>For an explanation of <span class="f_Bolddefault">matchtext</span> see the <a href="on_text.html">on TEXT</a> event.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on ^1:OPEN:?:*:if ($nick == goat) halt</p>
+<p>&nbsp;</p>
+<p>The above open event is an example of a <a href="halting_text.html">^ prefix event</a>, which allows you to halt events. In this example, if the incoming message is from a user with the nickname goat, the query window is prevented from opening by using the /halt command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you halt an on ^open event triggered by an incoming private message, no on TEXT/ACTION events are triggered.</p>
+<p>&nbsp;</p>
+<p>on 1:OPEN:?:*:/echo -s Just opened $target query window</p>
+<p>&nbsp;</p>
+<p>The above example triggers just <span class="f_Bolddefault">after</span> a query window is opened.</p>
+<p>&nbsp;</p>
+<p>on 1:OPEN:?:*hello*:/echo -s $nick just said hello!</p>
+<p>&nbsp;</p>
+<p>This example triggers if the message which trigger on OPEN contained the word <span class="f_Bolddefault">hello</span>. This allows you to react to user message in on OPEN instead of waiting for on TEXT to trigger.</p>
+<p>&nbsp;</p>
+<p>on 1:CLOSE:?:/echo -s you just closed $target query window</p>
+<p>&nbsp;</p>
+<p>This triggers when you close a query window.</p>
+<p>&nbsp;</p>
+<p>on 1:OPEN:=:/msg =$nick Hi! I will be with you in a second...</p>
+<p>&nbsp;</p>
+<p>This triggers when a dcc chat connection is first established. The equal sign in <span class="f_Bolddefault">=$nick</span> is required to send the reply as a dcc chat message.</p>
+<p>&nbsp;</p>
+<p>on 1:CLOSE:=:/notice $me $nick just left the discussion!</p>
+<p>&nbsp;</p>
+<p>This triggers when a dcc chat session ends, or when you close your chat window manually.</p>
+<p>&nbsp;</p>
+<p>on 1:OPEN:!:/msg =$nick Welcome to my fileserver!</p>
+<p>on 1:CLOSE:!:/echo -s $nick just ended her fileserver session</p>
+<p>&nbsp;</p>
+<p>These trigger when a dcc filserver session is first established and when it is closed.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> DCC events react to all users level 1 and above because of the way DCCs work.</p>
+<p>&nbsp;</p>
+<p>on 1:CLOSE:@:/echo -s Just closed $target custom window</p>
+<p>&nbsp;</p>
+<p>The above triggers when a custom window is closed. The OPEN event does not trigger for custom windows.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> These events do not trigger for any other types of windows. Channel windows are handled by the <a href="on_joinopart.html">on JOIN/PART</a> events.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Agents</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Agent Scripts" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Agents</span></p>
+<p>&nbsp;</p>
+<p>mIRC supports Microsoft Agent either through scripting or through the <a href="speech.html">Agents</a> section in the options dialog. An <span class="f_Bolddefault">agent</span> is an animated character that can speak text and perform actions.</p>
+<p>&nbsp;</p>
+<p>You can find links to related websites and resources, as well as download information, on the <span style="font-family: 'Arial'; color: #0000ff; text-decoration: underline;"><a href="http://www.mirc.com" target="_blank" class="weblink">mIRC website</a></span>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Agent commands</span></p>
+<p>&nbsp;</p>
+<p>The following commands allow you to manipulate agents, to make them speak, play animations, and more.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gload"></a><span class="f_Bolddefault">/gload &lt;-h&gt; &lt;name&gt; &lt;filename | N | default&gt;</span></p>
+<p>You must use /gload to load an agent before you can use it.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">name</span> you give an agent is the name you will use to refer to it in all of the other commands and identifiers.</p>
+<p>&nbsp;</p>
+<p>You can load an agent either by specifying its <span class="f_Bolddefault">filename</span>, if you know it, or by loading the <span class="f_Bolddefault">Nth</span> installed agent on your system, or by specifying <span class="f_Bolddefault">default</span>, which will load the default agent for your system.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-h</span> switch, mIRC will hide the agent whenever mIRC is minimized. You can also use the <span class="f_Bolddefault">-h</span> switch with the other agent commands to prevent them from popping the agent when mIRC is minimized and has the <span class="f_Bolddefault">-h</span> setting.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You cannot load more than one of the <span class="f_Bolddefault">same</span> agent. You can however load as many <span class="f_Bolddefault">different</span> agents as you want.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gunload"></a><span class="f_Bolddefault">/gunload &lt;name&gt;</span></p>
+<p>This unloads the specified agent. The <span class="f_Bolddefault">name</span> is the name you gave your agent when you loaded it with /gload, not the filename of the agent.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gshow"></a><span class="f_Bolddefault">/gshow &lt;name&gt; [x y]</span></p>
+<p>This shows an agent in its most recent or default position, or at the specified x y position.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ghide"></a><span class="f_Bolddefault">/ghide &lt;name&gt;</span></p>
+<p>This hides an agent.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gmove"></a><span class="f_Bolddefault">/gmove &lt;name&gt; &lt;x&gt; &lt;y&gt; [speed]</span></p>
+<p>This moves an agent to the &lt;x&gt; and &lt;y&gt; position on your screen. If a speed is not specified, it uses a default speed. If you specify a speed of 0, it moves instantly to the new position.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gsize"></a><span class="f_Bolddefault">/gsize &lt;name&gt; &lt;w&gt; &lt;h&gt;</span></p>
+<p>This resizes an agent to the specified width and height.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gtalk"></a><span class="f_Bolddefault">/gtalk -kwlu &lt;name&gt; &lt;text | &lt;wavefile | text&gt;&gt;</span></p>
+<p>This makes an agent speak the specified text.</p>
+<p>&nbsp;</p>
+<p>If you want the agent to <span class="f_Bolddefault">think</span> the text in a balloon without speaking it, you can use the <span class="f_Bolddefault">-k</span> switch.</p>
+<p>&nbsp;</p>
+<p>If you want the agent to play a <span class="f_Bolddefault">wave</span> sound file, you can use the <span class="f_Bolddefault">-w</span> switch, and specify a wave <span class="f_Bolddefault">filename</span>. You should also specify <span class="f_Bolddefault">text</span> after the filename, the agent will show it in a balloon while playing the wave sound.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch applies the lexicon settings in the lexicon dialog to the text.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-u</span> switch applies the speech settings in the speech options dialog.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gplay"></a><span class="f_Bolddefault">/gplay &lt;name&gt; &lt;anim | N&gt; [timeout]</span></p>
+<p>This makes an agent play one of its animations.</p>
+<p>&nbsp;</p>
+<p>You can either specify the name <span class="f_Bolddefault">anim</span> of an animation, if you know it, or ask it to play the <span class="f_Bolddefault">Nth</span> animation.</p>
+<p>&nbsp;</p>
+<p>Some animations are <span class="f_Bolddefault">looping</span> animations, which repeat continuously, and prevent an agent from doing anything else until you <span class="f_Bolddefault">/gstop</span> the agent. The <span class="f_Bolddefault">[timeout]</span> value allows you to specify a timeout for an animation after which it is <span class="f_Bolddefault">automatically</span> stopped, and the agent will then perform any <span class="f_Bolddefault">remaining</span> queued requests. If you do not specify a timeout value, the default is <span class="f_Bolddefault">5 seconds</span>. If no play or talk requests are pending, the looping animation continues beyond the timeout until there are.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gpoint"></a><span class="f_Bolddefault">/gpoint &lt;name&gt; &lt;x y&gt;</span></p>
+<p>This makes an agent point towards the specified &lt;x&gt; &lt;y&gt; screen position.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gstop"></a><span class="f_Bolddefault">/gstop -c &lt;name&gt; [talk play]</span></p>
+<p>This stops an agent from doing what it is currently doing, and removes all queued requests for the agent.</p>
+<p>&nbsp;</p>
+<p>If you wish to only stop the <span class="f_Bolddefault">current</span> action, you can use the <span class="f_Bolddefault">-c</span> switch.</p>
+<p>&nbsp;</p>
+<p>If you wish to stop only <span class="f_Bolddefault">talk</span> or only <span class="f_Bolddefault">play</span> requests, you can specify talk or play.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gopts"></a><span class="f_Bolddefault">/gopts -bieqnh &lt;name&gt; &lt;on off size pace hide nosize nopace nohide langid&gt;</span></p>
+<p>This sets various options relating to how the agent behaves.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch turns balloons <span class="f_Bolddefault">on</span> or <span class="f_Bolddefault">off</span>. You can also specify <span class="f_Bolddefault">size</span> to make the balloons fit the text being spoken, <span class="f_Bolddefault">pace</span> to display text word by word as it is being spoken, and <span class="f_Bolddefault">hide</span> to hide the balloons when no text is being spoken.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch turns idle effects <span class="f_Bolddefault">on</span> or <span class="f_Bolddefault">off</span>.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-e</span> switch turns sound effects <span class="f_Bolddefault">on</span> or <span class="f_Bolddefault">off</span>.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch allows you to set a language id, where <span class="f_Bolddefault">langid</span> is the hex id value.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-h</span> switch turns the auto-hide feature <span class="f_Bolddefault">on</span> or <span class="f_Bolddefault">off</span> (see /gload for more info).</p>
+<p>&nbsp;</p>
+<p><a name="cmd_gqreq"></a><span class="f_Bolddefault">/gqreq &lt;on | off&gt;</span></p>
+<p>By default mIRC queues all requests and plays them one after the other to ensure that even if you use multiple agents at the same time, all messages will be heard, and all agents will act in the order that you requested. You can turn queuing on/off on the fly.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Agent Identifiers</span></p>
+<p>&nbsp;</p>
+<p>The following identifiers allow you to access information about an agent that is currently loaded.</p>
+<p>&nbsp;</p>
+<p><a name="id_agentver"></a><span class="f_Bolddefault">$agentver</span></p>
+<p>Returns the version of the Agent installed on your system, 0 if not installed.</p>
+<p>&nbsp;</p>
+<p><a name="id_agentstat"></a><span class="f_Bolddefault">$agentstat</span></p>
+<p>Returns 1 if Agent is ready, or 0 if busy or speaking.</p>
+<p>&nbsp;</p>
+<p><a name="id_agentname"></a><span class="f_Bolddefault">$agentname</span></p>
+<p>Returns the name of the agent in an <a href="on_agent.html">on AGENT</a> event.</p>
+<p>&nbsp;</p>
+<p><a name="id_agent"></a><span class="f_Bolddefault">$agent(N).char</span></p>
+<p>Returns the filename of the Nth available agent installed on your system.</p>
+<p>&nbsp;</p>
+<p>If you specify 0, returns total number of installed agents.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$agent(name)</span></p>
+<p>Returns information about a currently loaded agent.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> name, fname, visible, x, y, w, h, ow, oh, speed, pitch, idle, effects, active, langid, balloon, hide</p>
+<p>&nbsp;</p>
+<p>name &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;the name you gave to this agent</p>
+<p>fname &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;the filename of the agent or default</p>
+<p>visible &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns $true or $false</p>
+<p>x,y,w,h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;left/top position, width/height.</p>
+<p>ow, oh &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;original width/height</p>
+<p>speed &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;speaking speed</p>
+<p>pitch &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;speaking pitch</p>
+<p>idle &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if idle behaviour is on or off</p>
+<p>effects &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if sound effects are on or off</p>
+<p>active &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if this agent is active/topmost</p>
+<p>langid &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;language id of system</p>
+<p>balloon &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;current setting: on off size pace hide</p>
+<p>hide &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns auto-hide setting</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$agent(name,N)</span></p>
+<p>Returns information on animations and queued lines for an agent.</p>
+<p>&nbsp;</p>
+<p>Properties: anim, line</p>
+<p>&nbsp;</p>
+<p>anim &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the names of the animations available for this agent.</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;If you specify N, returns the name of the Nth animation.</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;If you specify 0, returns the total number of animations.</p>
+<p>&nbsp;</p>
+<p>line &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the list of lines currently queued for talking for this character.</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;If you specify N, returns the Nth line.</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;If you specify 0, returns total number queued lines.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Tags in spoken text</span></p>
+<p>You can use tags in &lt;text&gt; in /gtalk which may be recognized by the text-to-speech engine, these are a few:</p>
+<p>&nbsp;</p>
+<p>\spd=n\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;set speed of spoken text</p>
+<p>\pit=n\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;set pitch of spoken text</p>
+<p>\vol=n\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;set volume of spoken text</p>
+<p>\chr=&quot;text&quot;\ &nbsp; &nbsp; &nbsp; &nbsp;where text is normal, monotone, or whisper</p>
+<p>\ctx=&quot;text&quot;\ &nbsp; &nbsp; &nbsp; &nbsp;where text is address, email, unknown</p>
+<p>\emp\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;emphasize next word</p>
+<p>\pau=n\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;pause speech nnn milliseconds</p>
+<p>\rst\ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;reset settings to default</p>
+<p>&nbsp;</p>
+<p><a name="id_notags"></a><span class="f_Bolddefault">$notags(text)</span></p>
+<p>Removes the above tags from text. Only tags that are valid and correctly written as above are removed.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Playing Sounds</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Mp3,Ogg,Playing Sounds,Wma" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Playing Sounds</span></p>
+<p>&nbsp;</p>
+<p>mIRC supports the playing of various types of sounds with the following commands and identifiers.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_splay"></a><span class="f_Bolddefault">/splay -cwmpq [filename | stop | pause | resume | seek | skip] [pos]</span></p>
+<p>Plays the specified sound, which can be a .wav, .mid, or .mp3 file.</p>
+<p>&nbsp;</p>
+<p>Where switch w = wave, m = midi, p = mp3, and q = queue for playing.</p>
+<p>&nbsp;</p>
+<p>If you do not specify a folder, the sound folders in the <a href="sound_requests.html">Sound Requests</a> dialog are searched.</p>
+<p>&nbsp;</p>
+<p>You can use <span class="f_Bolddefault">stop</span> to stop a currently playing sound, eg. /splay stop, or /splay -w stop, to stop just wave files.</p>
+<p>&nbsp;</p>
+<p>You can use <span class="f_Bolddefault">pause</span>, <span class="f_Bolddefault">resume</span>, and <span class="f_Bolddefault">seek</span> with mp3s.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">pos</span> value when playing an mp3, eg. /splay llama.mp3 1000, mIRC will play the mp3 starting at that position.</p>
+<p>&nbsp;</p>
+<p>You can also <span class="f_Bolddefault">seek</span> to a position in an mp3 while it is being played with eg. /splay seek 1000</p>
+<p>&nbsp;</p>
+<p>To <span class="f_Bolddefault">skip</span> the currently playing sound, you can use /splay -wmp skip</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-q</span> switch allows you to queue sounds for playing after the current sound ends.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch allows you to clear the play queue except for the currently playing sound.</p>
+<p>&nbsp;</p>
+<p>When a sound finishes playing, it triggers a <a href="on_midiend.html">sound event</a>.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_vol"></a><span class="f_Bolddefault">/vol -wmpvuN [volume]</span></p>
+<p>Sets the volume on your system for waves, midis, and mp3s (same as waves)</p>
+<p>&nbsp;</p>
+<p>If you use the <span class="f_Bolddefault">-v</span> switch, this sets the master volume on your system.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">volume</span> value can range from 0 to 65535.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-uN</span> switch sets the mute setting, where N = 1 is on, N = 2 is off.</p>
+<p>&nbsp;</p>
+<p><a name="id_$vol"></a><span class="f_Bolddefault">$vol(wave | midi | song | master)</span></p>
+<p>Gets the current volume for the specified sound setting</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> mute</p>
+<p>&nbsp;</p>
+<p>$vol(wave).mute &nbsp; &nbsp;returns the mute setting for wave sounds</p>
+<p>&nbsp;</p>
+<p><a name="id_inwave"></a><span class="f_Bolddefault">$inwave, $inmidi, $insong</span></p>
+<p>Return $true if the specified sound type is playing, $false otherwise.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> fname, pos, length, pause</p>
+<p>&nbsp;</p>
+<p>$insong.fname &nbsp; &nbsp;returns the filename of the currently playing song</p>
+<p>&nbsp;</p>
+<p><a name="id_$sound"></a><span class="f_Bolddefault">$sound(type)</span></p>
+<p>Returns the directory specified in the <a href="sound_requests.html">Sound Requests</a> section of the Options dialog, where <span class="f_Bolddefault">type</span> can be wave, midi, mp3, wma, or ogg.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$sound(filename)</span></p>
+<p>Returns either the directory for that file type, as above, or information about the file. The following properties will return values based on the file type.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> album, title, artist, year, comment, genre, track, length, version, bitrate, vbr, sample, mode, copyright, private, crc, .id3, .tag, .tags.</p>
+<p>&nbsp;</p>
+<p>If you want to retrieve the <span class="f_Bolddefault">id3v2</span> values, you can use the .tag and .tags properties:</p>
+<p>&nbsp;</p>
+<p>showtags {</p>
+<p> &nbsp;if ($1- == $null) { echo 2 -e * /showtags: please specify filename, eg. /showtags file.mp3 | halt }</p>
+<p> &nbsp;echo 1 id3: $sound($1-).id3</p>
+<p> &nbsp;echo 1 tags: $sound($1-).tags</p>
+<p> &nbsp;var %n = $sound($1-,0).tag</p>
+<p> &nbsp;while (%n &gt; 0) {</p>
+<p> &nbsp; &nbsp;echo 1 tag: $sound($1-,%n).tag</p>
+<p> &nbsp; &nbsp;dec %n</p>
+<p> &nbsp;}</p>
+<p>}</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

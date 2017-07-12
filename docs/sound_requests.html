@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Requests</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Sound Requests" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Sound Requests</span></p>
+<p>&nbsp;</p>
+<p>Sound requests allow users to share the experience of playing sounds together. When someone uses the <span class="f_Bolddefault">/sound</span> command on a channel, all users on the channel who have that same sound will hear it play.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Accept sound requests</span></p>
+<p>If this option is turned on, mIRC will listen for <span class="f_Bolddefault">/sound</span> requests from other users.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">On sound request...</span></p>
+<p>If a sound is already playing and a new sound request is received, you can either have mIRC halt the currently playing sound and play the new sound, or you can choose to have mIRC ignore the new sound.</p>
+<p>&nbsp;</p>
+<p>mIRC can also <span class="f_Bolddefault">warn</span> you if a user has requested a sound that you do not have so that you can then ask the user for that sound.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Listen for !nick file get requests</span></p>
+<p>If someone sends you a message starting with an exclamation mark prefixing your nickname mIRC will assume that they are requesting a sound file from you and will search your sounds directory for the file. If it finds it, it dcc sends it to the user.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Send !nick file as private message</span></p>
+<p>If this option is turned off and you send the message !nick file to a channel, everyone on the channel will see it. if you prefer not to crowd the channel with these messages, you can turn this option on and the user will receive the message privately.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Locations of sound files</span></p>
+<p>Whenever a sound is requested, mIRC will look in these directories and all of their <span class="f_Bolddefault">subdirectories</span> for it. These directories are also searched when you use the <a href="mirc_commands.html#CMD_splay">/splay</a> command.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_sound"></a><span class="f_Subheading">The /sound command</span></p>
+<p>You can send a sound request to another user using the /sound command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/sound [on|off|nick/channel] &lt;file.wav|file.mid|file.mp3&gt; &lt;message&gt;</span></p>
+<p>&nbsp;</p>
+<p>If a <span class="f_Bolddefault">nick/channel</span> is not specified, the message is sent to the current channel or query window.</p>
+<p>&nbsp;</p>
+<p>The sound file must end in <span class="f_Bolddefault">.wav, .mid, or .mp3</span>, and may be located in the default sounds directory or in any of the subdirectories in the sounds directory. You do not need to specify a directory for the filename unless the file is not in the sounds directory.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">message</span> is optional, if you do provide one it appears exactly like an action command.</p>
+
+</td></tr></table>
+
+</body>
+</html>

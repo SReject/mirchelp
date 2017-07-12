@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Basic IRC Commands</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Basic IRC Commands,IRC Commands" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Basic IRC Commands</span></p>
+<p>&nbsp;</p>
+<p>IRC commands allow you to perform specific functions on IRC, such as maintaining control of a channel and the users on it. The following list of <span class="f_Bolddefault">basic IRC commands</span> will help you get started. There are also other <a href="mirc_commands.html">mIRC Commands</a> that you can look at later.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">General Commands</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_away"></a><span class="f_Bolddefault">/away [message]</span></p>
+<p>Leaves a message indicating that you are currently not paying attention to IRC. When someone sends you a message, they will automatically see your away message. Using /AWAY with no message marks you as no longer being away and removes your previous message.</p>
+<p>&nbsp;</p>
+<p>example: &nbsp;/away Off to get something to eat, back in a moment.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_invite"></a><span class="f_Bolddefault">/invite nickname #channel</span></p>
+<p>Invites a nickname to a channel that you are on.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_join"></a><span class="f_Bolddefault">/join #channel</span></p>
+<p>Joins the specified channel.</p>
+<p>&nbsp;</p>
+<p>example: &nbsp;/join #irchelp</p>
+<p>&nbsp;</p>
+<p>This will make you join the #irchelp channel. Once on a channel, anything you type will be seen by all the users on this channel. The #irchelp channel is very useful, so say hello and then ask any questions you want. If the channel you specified does not exist, a channel with that name will be created for you.</p>
+<p>&nbsp;</p>
+<p>Some channels may also have keys ie. a password, which you need to specify when using the /join command. </p>
+<p>&nbsp;</p>
+<p>example: &nbsp;/join #irchelp trout</p>
+<p>&nbsp;</p>
+<p>This will make you join the #irchelp channel using &quot;trout&quot; as the password.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_list"></a><span class="f_Bolddefault">/list [#channel] [-MIN #] [-MAX #]</span></p>
+<p>Lists currently available channels. You can also tell mIRC to show only channels with a minimum and a maximum number of people. If you specify a #channel then mIRC will only list information for that channel. If you specify wildcards, eg. *mirc* then mIRC will list all channels that contain the word <span class="f_Bolddefault">mirc</span> in them.</p>
+<p>&nbsp;</p>
+<p>example: &nbsp; &nbsp; &nbsp; &nbsp;/list</p>
+<p>example: &nbsp; &nbsp; &nbsp; &nbsp;/list -min 5 -max 20</p>
+<p>example: &nbsp; &nbsp; &nbsp; &nbsp;/list #mirc</p>
+<p>example: &nbsp; &nbsp; &nbsp; &nbsp;/list *mirc*</p>
+<p>&nbsp;</p>
+<p><a name="cmd_me"></a><span class="f_Bolddefault">/me message</span></p>
+<p>Sends an action message to the current channel or query window. To send an action message to a <span class="f_Bolddefault">specific</span> channel or nickname, see the <a href="mirc_commands.html#CMD_describe">/describe</a> command.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_msg"></a><span class="f_Bolddefault">/msg nickname message</span></p>
+<p>Sends a private message to nickname without opening a query window.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_nick"></a><span class="f_Bolddefault">/nick nickname</span></p>
+<p>Changes your nickname to a new nickname.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_notice"></a><span class="f_Bolddefault">/notice nickname message</span></p>
+<p>Sends a private message to nickname without opening a query window for either you or them.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_part"></a><span class="f_Bolddefault">/part #channel</span></p>
+<p>Leaves a channel that you are on.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_query"></a><span class="f_Bolddefault">/query nickname message</span></p>
+<p>Opens a query window to this nickname and sends them a private message.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_quit"></a><span class="f_Bolddefault">/quit [message]</span></p>
+<p>Disconnects you from IRC and will give the optional message as the reason for your departure. (this message only appears to people who are on the same channels as you).</p>
+<p>&nbsp;</p>
+<p><a name="cmd_topic"></a><span class="f_Bolddefault">/topic #channel newtopic</span></p>
+<p>Changes the topic for a channel that you are on.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_whois"></a><span class="f_Bolddefault">/whois nickname</span></p>
+<p>Shows you information about a nickname.</p>
+<p><span class="f_Subheading">&nbsp;</span></p>
+<p><span class="f_Subheading">Channel and User Commands</span></p>
+<p>If you have Op status, the following commands give you control over both a channel and the users on it.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_kick"></a><span class="f_Bolddefault">/kick #channel nickname</span></p>
+<p>Kicks a nickname off a channel that you are on.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_mode"></a><span class="f_Bolddefault">/mode #channel|nickname [[+|-]modechars [parameters]]</span></p>
+<p>This is a powerful command that gives channel operators control of a channel and the users on it.</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Channel modes</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;------------------------</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;ModeChar &nbsp; &nbsp; &nbsp; &nbsp;Effects on channels</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;~~~~~~~~ &nbsp; &nbsp; &nbsp; &nbsp;~~~~~~~~~~~~~~~~~~~</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;b &lt;person&gt; &nbsp; &nbsp; &nbsp; &nbsp;ban somebody, &lt;person&gt; in &quot;nick!user@host&quot; form</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;channel is invite-only</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;l &lt;number&gt; &nbsp; &nbsp; &nbsp; &nbsp;channel is limited, &lt;number&gt; users allowed max</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;m &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;channel is moderated, (only chanops can talk)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;n &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;external /MSGs to channel are not allowed</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;o &lt;nickname&gt; &nbsp; &nbsp; &nbsp; &nbsp;makes &lt;nickname&gt; a channel operator</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;p &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;channel is private</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;channel is secret</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;t &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;topic limited, only chanops may change it</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;k &lt;key&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;set secret key for a channel</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;User modes</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;-------------------</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;ModeChar &nbsp; &nbsp; &nbsp; &nbsp;Effects on nicknames</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;~~~~~~~~ &nbsp; &nbsp; &nbsp; &nbsp;~~~~~~~~~~~~~~~~~~~~</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;makes you invisible to anybody that does</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;not know the exact spelling of your nickname</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;o &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;IRC-operator status, can only be set</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;by IRC-ops with OPER</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;s &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;receive server notices</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp;v &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;gives a user a voice on a moderated channel</p>
+<p>&nbsp;</p>
+<p>Here a few examples of the MODE command:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">To give someone op status:</span> &nbsp; &nbsp;/mode #channelname +o nickname</p>
+<p>&nbsp;</p>
+<p>Giving someone op status means giving them control over the channel and the users on it. Give this out sparingly and to people you trust.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">To op several people:</span> &nbsp; /mode #channelname +ooo nick1 nick2 nick3</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">To de-op someone:</span> &nbsp; &nbsp;/mode #channelname -o nickname</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">To ban someone:</span> &nbsp;/mode #channelname +b nickname (or user address)</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">To unban someone:</span> &nbsp;/mode #channelname -b nickname (or user address)</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">To make a channel invite only:</span> &nbsp;/mode #channelname +i</p>
+<p>&nbsp;</p>
+<p>You must now <span class="f_Bolddefault">invite</span> a user for them to be able to join your channel.</p>
+
+</td></tr></table>
+
+</body>
+</html>

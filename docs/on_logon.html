@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on LOGON</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on LOGON" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on LOGON</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on LOGON</span> event triggers before and after mIRC sends the standard PASS, NICK, and USER messages to the server.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:LOGON:*:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:LOGON:*:/echo Logged on to server</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on ^*:LOGON:*:echo Logging on to $network $server</p>
+<p>&nbsp;</p>
+<p>Triggers <span class="f_Bolddefault">before</span> mIRC sends the standard logon messages to the server. If you /halt this event, mIRC will not send the standard logon messages, allowing you to send your own messages.</p>
+<p>&nbsp;</p>
+<p>on *:LOGON:*:echo Logged on to $network $server</p>
+<p>&nbsp;</p>
+<p>Triggers <span class="f_Bolddefault">after</span> mIRC has sent the standard logon messages.</p>
+
+</td></tr></table>
+
+</body>
+</html>

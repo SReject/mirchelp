@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Voice Commands</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Voice Control" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Voice Commands</span></p>
+<p>&nbsp;</p>
+<p>If you have <span class="f_Bolddefault">Speech Recognition</span> software installed, mIRC can be made to listen to <span class="f_Bolddefault">voice commands</span> through scripting.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_vcmd"></a><span class="f_Bolddefault">/vcmd -lc &lt;on | off | sleep&gt;</span></p>
+<p>This turns voice command listening <span class="f_Bolddefault">on</span> or <span class="f_Bolddefault">off</span>, or you can temporarily turn off listening by specifying <span class="f_Bolddefault">sleep</span>.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch clears the commands list.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch lists the commands in your commands list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Your SR software may have very large speech files or dictionaries which could make it slow to load/unload and/or process your speech.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_vcadd"></a><span class="f_Bolddefault">/vcadd &lt;command1,command2,...&gt;</span></p>
+<p>This adds voice commands to the commands list.</p>
+<p>&nbsp;</p>
+<p>Commands should consist of at least <span class="f_Bolddefault">two words</span> and should be sufficiently <span class="f_Bolddefault">distinct</span> from other commands to make it easier for your SR software to match the words you speak to commands in your commands list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Adding or removing commands can be done on the fly, however if your SR software is slow at updating the commands list, it could cause short pauses in mIRC.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_vcrem"></a><span class="f_Bolddefault">/vcrem &lt;command1,command2,...&gt;</span></p>
+<p>This removes commands from the commands list.</p>
+<p>&nbsp;</p>
+<p><a name="id_$vcmdver"></a><span class="f_Bolddefault">$vcmdver</span></p>
+<p>Returns the version of your installed SR software, or $null if not installed.</p>
+<p>&nbsp;</p>
+<p><a name="id_$vcmdstat"></a><span class="f_Bolddefault">$vcmdstat</span></p>
+<p>Returns 0 if not available, 1 if currently off, 2 if ignoring commands, 3 if listening for a command.</p>
+<p>&nbsp;</p>
+<p><a name="id_$vcmd"></a><span class="f_Bolddefault">$vcmd(N)</span></p>
+<p>Returns the Nth item in your commands list.</p>
+<p>&nbsp;</p>
+<p><a name="onvcmd"></a><span class="f_Bolddefault">The on VCMD event</span></p>
+<p>If the SR software matches a word you have spoken to a word in your commands list, it triggers the on VCMD event:</p>
+<p>&nbsp;</p>
+<p> &nbsp;on 1:VCMD:&lt;matchtext&gt;:&lt;*/#/?/@&gt;:/echo 3 Recognized: $1-</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Example Script</span></p>
+<p>&nbsp;</p>
+<p>alias vctest {</p>
+<p> &nbsp;if ($vcmdver == $null) halt</p>
+<p> &nbsp;vcmd -c on</p>
+<p> &nbsp;vcadd connect Dalnet, connect Efnet, connect Undernet, connect IRCnet</p>
+<p> &nbsp;vcadd Part Channel, Disconnect, List Commands, Moo Cow</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>on 1:vcmd:connect*:*:server $2</p>
+<p>on 1:vcmd:part channel:*:if ($active ischan) part $active</p>
+<p>on 1:vcmd:disconnect:*:quit</p>
+<p>on 1:vcmd:list commands:*:vcmd -l</p>
+<p>on 1:vcmd:moo cow:*:splay moo.wav</p>
+<p>on 1:vcmd:*:*:echo You said: $1-</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Drag Drop</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Drag Drop" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Drag Drop</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">Drag Drop</span> feature allows you to <span class="f_Bolddefault">pick up files</span> from other programs eg. a file manager, and <span class="f_Bolddefault">drop</span> them on either <span class="f_Bolddefault">Message</span> or <span class="f_Bolddefault">Channel</span> windows. Depending on the type of file you drop onto a window, a different action will be performed according to the commands you have defined for that file type.</p>
+<p>&nbsp;</p>
+<p>You can define different actions for different types of files by <span class="f_Bolddefault">associating a command</span> with <span class="f_Bolddefault">a file ending</span>.</p>
+<p>&nbsp;</p>
+<p>For example, if you wanted to mIRC to <span class="f_Bolddefault">read</span> a text file to another user whenever you drop files ending in <span class="f_Bolddefault">.txt</span> then you might make an association such as:</p>
+<p>&nbsp;</p>
+<p>*.txt:/play $1 $2-</p>
+<p>&nbsp;</p>
+<p>In this case, <span class="f_Bolddefault">$1</span> stands for the name of the user or channel where the file has been dropped, and <span class="f_Bolddefault">$2-</span> stands for the name of the file that was dropped. The <a href="mirc_commands.html#CMD_play">/play</a> command would send each line in the specified text file to the user.</p>
+<p>&nbsp;</p>
+<p>You can also have different aliases executed for the same file type depending on whether you hold down the <span class="f_Bolddefault">shift key</span> or not when you drop the file.</p>
+<p>&nbsp;</p>
+<p>Currently the <span class="f_Bolddefault">default</span> settings for dropping files with <span class="f_Bolddefault">no shift key</span> pressed are:</p>
+<p>&nbsp;</p>
+<p>*.wav:/sound $1 $2-</p>
+<p>*.*:/dcc send $1 $2-</p>
+<p>&nbsp;</p>
+<p>Which means that if you drop a Wave file, it will be played with the <a href="sound_requests.html#CMD_sound">/sound</a> command, and if you drop any other type of file it will initiate a <a href="send_receive_files.html">dcc send</a> to that user.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">default</span> settings for dropping files with the <span class="f_Bolddefault">shift key</span> held down are:</p>
+<p>&nbsp;</p>
+<p>*.*:/dcc send $1 $2-</p>
+<p>&nbsp;</p>
+<p>Which is the same as above, initiating a dcc send to the active user.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you drop a file which has a space in it, it is enclosed in &quot;&quot; quotes.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on LOAD/START</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on LOAD,on START" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on LOAD/START</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on LOAD</span> event triggers the first time a script file is loaded.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:LOAD:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:LOAD:/echo mIRC Script Loaded!</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on START</span> event uses the same format, and triggers the first time a script is loaded and every time after that when mIRC is run.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:LOAD:/echo Performing one-time initialization for this script!</p>
+<p>&nbsp;</p>
+<p>Triggers the first time a script is loaded. The purpose of this event is to perform a one-time initialization of settings.</p>
+<p>&nbsp;</p>
+<p>on 1:START:/echo Performing regular initialization for this script!</p>
+<p>&nbsp;</p>
+<p>Triggers the first time a script is loaded, and each time after that when a script is loaded when mIRC is run. The purpose of this event is to perform general initialization settings.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> When a file is loaded in the remote dialog, its initialization sections are not run until after the dialog is closed. Only <span class="f_Bolddefault">one</span> of each of these events is allowed in a script.</p>
+
+</td></tr></table>
+
+</body>
+</html>

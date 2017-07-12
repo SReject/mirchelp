@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Send and Receive Files</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Sending and Receiving Files" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Send and Receive Files</span></p>
+<p>&nbsp;</p>
+<p>The ability to Send and Receive files is one of the most useful features of mIRC since it allows you to share all kinds of information with other people on IRC.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Warning:</span> If you have never shared files before, please read the <a href="accepting_files.html">Accepting Files on IRC</a> section so as to be aware of the <span class="f_Bolddefault">dangers</span> of accepting files from others before you start.</p>
+<p>&nbsp;</p>
+<p>On IRC, a method called DCC Send and DCC Get is used to connect <span class="f_Bolddefault">directly</span> to another IRC client to <span class="f_Bolddefault">Send</span> and <span class="f_Bolddefault">Get</span> files, instead of going through the IRC network. The IRC network is used only to initiate the DCC Send request.</p>
+<p>&nbsp;</p>
+<p><a name="dccsend"></a><span class="f_Subheading">DCC Send</span></p>
+<p>DCC Send allows you to send a file to another user. You can do this by clicking on the DCC Send toolbar button to open the DCC Send dialog. You can then enter the nickname of the user, select the file you want to send, and click on the Send button.</p>
+<p>&nbsp;</p>
+<p>mIRC will then tell the user that you want to send them a file. The user then has to accept your send request, at which point the file transfer will begin.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> DCC Send needs to use your IP address to initiate a connection with another client. If you are having trouble initiating a connection then your IP address might be wrong. See the <a href="local.html">Local</a> section for more information.</p>
+<p>&nbsp;</p>
+<p><a name="dccget"></a><span class="f_Subheading">DCC Get</span></p>
+<p>Whenever someone tries to DCC Send a file to you, mIRC pops up the DCC Get and asks you if you want to accept the file. If you choose to <span class="f_Bolddefault">accept</span> the file, mIRC will ask the sender to begin the file transfer, at which point you should begin receiving the file.</p>
+<p>&nbsp;</p>
+<p><a name="dccresume"></a><span class="f_Subheading">DCC Resume</span></p>
+<p>This feature allows you to resume DCC transfers that failed to complete.</p>
+<p>&nbsp;</p>
+<p>If a user tries to send you a file that already exists in your get directory then you will be shown a warning that the file exists. You then have the option to either overwrite, resume, or rename the file.</p>
+<p>&nbsp;</p>
+<p>If you select overwrite then the whole file will be downloaded from the beginning and any existing file of the same name will be erased.</p>
+<p>&nbsp;</p>
+<p>If you select resume then mIRC will attempt to negotiate a transfer resume to get the remaining part of the file. It will append this to the portion of the file you already have.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">DCC Options</span></p>
+<p>You can also find other DCC related settings in the <a href="dcc.html">DCC</a> dialog which can affect how file transfers behave.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dccsend"></a><span class="f_Subheading">The /dcc send command</span></p>
+<p>The /dcc send command can also be used to initiate a DCC Send to the specified nickname. The format of the command is:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/dcc send [-clmn] &lt;nick&gt; &lt;file1&gt; [file2] ... [fileN]</span></p>
+<p>&nbsp;</p>
+<p>If you specify more than one filename, multiple dcc send sessions to the specified user are initiated.</p>
+<p>&nbsp;</p>
+<p>If you specify a wildcard filename, then the DCC Send dialog will display files matching the wildcard.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch makes the dcc window close automatically once the transfer has finished.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l </span>switch limits the transfer rate to the max cps limit specified in the <a href="dcc.html">DCC Fileserver</a>.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-m</span> switch makes the dcc window minimize automatically.</p>
+<p><span class="f_Highlight">&nbsp;</span></p>
+<p>The <span class="f_Bolddefault">-n</span> switch allows the transfer rate to exceed the max cps limit specified in the <a href="dcc.html">DCC Fileserver</a>.</p>
+<p><span class="f_Highlight">&nbsp;</span></p>
+<p><span class="f_Highlight">Note:</span> If you want to connect to a DCC Server you can specify an IP Address and port instead of the nickname, eg. /dcc send ipaddress:port</p>
+
+</td></tr></table>
+
+</body>
+</html>

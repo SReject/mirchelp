@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Other Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Other Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Other Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$plus"></a><span class="f_Bolddefault">$+(n1,...,nN)</span></p>
+<p>Combines all of the specified parameters, the same as using $+ in between each item.</p>
+<p>&nbsp;</p>
+<p><a name="id_$question"></a><span class="f_Bolddefault">$?*!=&quot;message&quot;</span></p>
+<p>Prompts the user for input and returns the result.</p>
+<p>&nbsp;</p>
+<p>//echo $?=&quot;What is your name?&quot;</p>
+<p>&nbsp;</p>
+<p>If the user enters their name in the editbox and presses the OK button, $? will return whatever the user entered. If the user clicks on the Cancel button, $? returns nothing.</p>
+<p>&nbsp;</p>
+<p>//echo $?*=&quot;What is your password?&quot;</p>
+<p>&nbsp;</p>
+<p>In this case the $?* makes any text that the user types into the editbox appear as ***** characters to prevent anyone seeing what is being entered.</p>
+<p>&nbsp;</p>
+<p>//echo $?!=&quot;Shall I continue?&quot;</p>
+<p>&nbsp;</p>
+<p>In this case, a Yes/No dialog pops up. If the user clicks on Yes, $true is returned, otherwise $false is returned.</p>
+<p>&nbsp;</p>
+<p>The input dialog is extended vertically to display the whole message if it is very long. You can also make text appear on different lines by using the $crlf identifier to separate the lines, eg.</p>
+<p>&nbsp;</p>
+<p>//echo $?=&quot;This is on the first line. $crlf $+ And this is on the 2nd line.&quot;</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This identifier cannot be used in a script event. One way around this is to use a /timer to initiate an input request after the script ends.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ansi2mirc"></a><span class="f_Bolddefault">$ansi2mirc(text)</span></p>
+<p>Returns text with the ANSI codes converted into mIRC color codes.</p>
+<p>&nbsp;</p>
+<p><a name="id_$away"></a><span class="f_Bolddefault">$away</span></p>
+<p>Returns the value <span class="f_Bolddefault">$true</span> or <span class="f_Bolddefault">$false</span> depending on whether you are marked as away or not.</p>
+<p>&nbsp;</p>
+<p>You can also use <span class="f_Bolddefault">$awaymsg</span> and <span class="f_Bolddefault">$awaytime</span> to return your current away settings.</p>
+<p>&nbsp;</p>
+<p><a name="id_$cb"></a><span class="f_Bolddefault">$cb</span></p>
+<p>Returns the clipboard contents.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$cb(N)</span></p>
+<p>Returns $crlf delimited lines from text currently in the clipboard.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> len</p>
+<p>&nbsp;</p>
+<p>$cb(0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the number of lines in the clipboard</p>
+<p>$cb(0).len &nbsp; &nbsp; &nbsp; &nbsp;return the total length of all lines in the clipboard</p>
+<p>$cb(1) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns line 1 from the clipboard</p>
+<p>$cb(1).len &nbsp; &nbsp; &nbsp; &nbsp;returns the length of line 1</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a name="id_$chantypes"></a><span class="f_Bolddefault">$chantypes</span></p>
+<p>mIRC supports numeric 005 token CHANTYPES, and can handle a dynamic set of channel prefixes. $chantypes returns the list of channel prefixes which can be joined. When <span class="f_Bolddefault">not connected</span> to a server, mIRC uses a default $chantypes value of CHANTYPES=#&amp;.</p>
+<p>&nbsp;</p>
+<p><a name="id_$chanmodes"></a><span class="f_Bolddefault">$chanmodes</span></p>
+<p>mIRC supports numeric 005 token CHANMODES, and can handle a dynamic set of channel modes. The $chanmodes identifier returns the list of supported channel modes. When <span class="f_Bolddefault">not connected</span> to a server, mIRC uses a default $chanmodes value of CHANMODES=bIe,k,l.</p>
+<p>&nbsp;</p>
+<p><a name="id_$cmdbox"></a><span class="f_Bolddefault">$cmdbox</span></p>
+<p>Returns $true if a command or script was initiated via the command editbox in a channel window.</p>
+<p>&nbsp;</p>
+<p><a name="id_$cmdline"></a><span class="f_Bolddefault">$cmdline</span></p>
+<p>Returns the command line that was passed to mIRC when it was first run.</p>
+<p>&nbsp;</p>
+<p><a name="id_$color"></a><span class="f_Bolddefault">$color(name/N)</span></p>
+<p>Returns the Nth color index of the specified color name eg. $color(action text). If you do not specify the full name the first partial match is returned eg. $color(action)</p>
+<p>&nbsp;</p>
+<p>If you specify an N value, returns the RGB value for the Nth color box.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> dd</p>
+<p>&nbsp;</p>
+<p>$color(action).dd &nbsp; &nbsp; &nbsp; &nbsp;returns number in double-digit format</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_comchar"></a><span class="f_Bolddefault">$comchar</span></p>
+<p>Returns the command prefix character.</p>
+<p>&nbsp;</p>
+<p><a name="id_$cr"></a><span class="f_Bolddefault">$cr</span></p>
+<p>Returns the <span class="f_Bolddefault">carriage return</span> character, the same as $chr(13).</p>
+<p>&nbsp;</p>
+<p><a name="id_$creq"></a><span class="f_Bolddefault">$creq</span></p>
+<p>Returns current <a href="mirc_commands.html#CMD_creq">/creq</a> settings in the DCC Options chat section dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$crlf"></a><span class="f_Bolddefault">$crlf</span></p>
+<p>Returns a carriagereturn/linefeed combination.</p>
+<p>&nbsp;</p>
+<p><a name="id_$dccignore"></a><span class="f_Bolddefault">$dccignore</span></p>
+<p>Returns $true if ignore types is turned on in the <a href="dcc.html">DCC</a> Folders dialog, otherwise returns $false.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$dccignore(N/filename)</span></p>
+<p>Returns the Nth item in the dcc ignore types editbox in the DCC Folders dialog.</p>
+<p>&nbsp;</p>
+<p>If n is zero, returns number of items in list, otherwise returns Nth item in list. If a filename is specified, returns $true if it matches item in list, otherwise $false.</p>
+<p>&nbsp;</p>
+<p><a name="id_$dccport"></a><span class="f_Bolddefault">$dccport</span></p>
+<p>Returns the port being used by the DCC Server.</p>
+<p>&nbsp;</p>
+<p><a name="id_$dll"></a><span class="f_Bolddefault">$dll(name.dll,procname,data)</span></p>
+<p>Returns the value resulting from a call to a <a href="dll.html">DLL</a> designed to work with mIRC.</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">&nbsp;</span></p>
+<p class="p_Bolddefault"><a name="id_ebeeps"></a><span class="f_Bolddefault">$ebeeps</span></p>
+<p>Returns $true if sounds are enabled in the Sounds dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$editbox"></a><span class="f_Bolddefault">$editbox(window,N)</span></p>
+<p>Returns the text in the editbox of the specified window. If N = 1, returns the text in the second editbox in a channel window, if it is open.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> selstart, selend</p>
+<p>&nbsp;</p>
+<p><a name="id_$emailaddr"></a><span class="f_Bolddefault">$emailaddr</span></p>
+<p>Returns the email address specified in the Connect dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$eval"></a><span class="f_Bolddefault">$eval(text,N)</span></p>
+<p>Evaluates the contents of text N times. If N is not specified, the default is N = 1. If N is zero, text is not evaluated.</p>
+<p>&nbsp;</p>
+<p>This allows you to recursively evaluate identifiers and variables in a line of text.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_envvar"></a><span class="f_Bolddefault">$envvar(name|N)</span></p>
+<p>Returns environment variables. If N is zero, returns total number of environment variables.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">Properties:</span> name, value</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_exiting"></a><span class="f_Bolddefault">$exiting</span></p>
+<p>Returns 0, or 1 if mIRC is in the process of exiting, and 2 if mIRC is exiting and restarting.</p>
+<p>&nbsp;</p>
+<p><a name="id_font"></a><span class="f_Bolddefault">$font(N/Name)</span></p>
+<p>Returns the list of available fonts on the system.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">Properties:</span> size, pitch, type</p>
+<p>&nbsp;</p>
+<p><a name="id_$fullname"></a><span class="f_Bolddefault">$fullname</span></p>
+<p>Returns the full name specified in the Connect dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$hash"></a><span class="f_Bolddefault">$hash(text,B)</span></p>
+<p>Returns a hash number based on text where B is the number of bits to use when calculating the hash number.</p>
+<p>&nbsp;</p>
+<p><a name="id_$highlight"></a><span class="f_Bolddefault">$highlight</span></p>
+<p>Returns $true if highlighting is turned on in the <a href="highlight.html">Highlight</a> dialog, otherwise returns $false.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$highlight(N/text)</span></p>
+<p>Returns the Nth line in the highlight listbox, or if text is specified, returns the properties for the highlight line that matches text.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> text, color, sound, flash, message, nicks, regex, cs</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_hmac"></a><span class="f_Bolddefault">$hmac(text|&amp;binvar|filename, key, hash, N)</span></p>
+<p>Returns an HMAC (keyed-Hash Message Authentication Code) based on the supplied key where hash = md5, sha1 (default), sha256, sha384, or sha512, and N = 0 for plain text (default), 1 for &amp;binvar, 2 for filename.</p>
+<p>&nbsp;</p>
+<p><a name="id_$host"></a><span class="f_Bolddefault">$host</span></p>
+<p>Returns your Local host name.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_hotp"></a><span class="f_Bolddefault">$hotp(key, count, hash, digits)</span></p>
+<p>Returns an HOTP (HMAC-based One-Time Password) based on the specified parameters.</p>
+<p>&nbsp;</p>
+<p>The key is required and can be in a hex format of 40/64/128 chars, base32 format of 16/24/32 chars, or plain text. It can also be in a Google Authenticator format ie. lowercase with spaces.</p>
+<p>&nbsp;</p>
+<p>The count is required, and hash and digits are optional and default to sha1 and 6.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_$iif"></a><span class="f_Bolddefault">$iif(C,T,F)</span></p>
+<p>Returns T or F depending on whether the evaluation of the Conditional C is true or false.</p>
+<p>&nbsp;</p>
+<p>$iif(1 == 2, yes, no) &nbsp;returns &quot;no&quot;</p>
+<p>&nbsp;</p>
+<p>$iif() returns F if the conditional returns zero, $false, or $null. For any other value $iif() returns T.</p>
+<p>&nbsp;</p>
+<p>If you do not specify the F parameter, $iif returns a T value if the condition is true, and returns nothing if it is false.</p>
+<p>&nbsp;</p>
+<p>$iif(1 == 2, yes) &nbsp;returns nothing</p>
+<p>&nbsp;</p>
+<p>You can find out more about conditionals in the <a href="if_then_else.html">if-then-else</a> section.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ifmatch"></a><span class="f_Bolddefault">$ifmatch</span></p>
+<p>Returns the first parameter of matching <a href="if_then_else.html">if-then-else</a> comparison.</p>
+<p>&nbsp;</p>
+<p>In the case of this comparison:</p>
+<p>&nbsp;</p>
+<p>if (text isin sometext) { ... }</p>
+<p>&nbsp;</p>
+<p>$ifmatch returns &quot;text&quot;</p>
+<p>&nbsp;</p>
+<p><a name="id_$ignore"></a><span class="f_Bolddefault">$ignore(N/address)</span></p>
+<p>Returns the Nth address in the ignore list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> type, secs</p>
+<p>&nbsp;</p>
+<p>$ignore(0) &nbsp; &nbsp; &nbsp; &nbsp;returns the total number of addresses in the ignore list</p>
+<p>$ignore(1) &nbsp; &nbsp; &nbsp; &nbsp;returns the 1st address in the ignore list</p>
+<p>$ignore(2).type &nbsp; &nbsp; &nbsp; &nbsp;returns the ignore flags for the 2nd address in the ignore list</p>
+<p>$ignore(2).secs &nbsp; &nbsp; &nbsp; &nbsp;returns number of seconds until ignore is removed if /ignore -uN was used</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you specify an address, the first matching address in the ignore list is returned.</p>
+<p>&nbsp;</p>
+<p><a name="id_$inpaste"></a><span class="f_Bolddefault">$inpaste</span></p>
+<p>Returns $true if a user typed <span class="f_Bolddefault">Control+V</span> or <span class="f_Bolddefault">Shift+Insert</span> to paste text into an editbox, mainly useful when processing an <a href="on_input.html">on INPUT</a> event.</p>
+<p>&nbsp;</p>
+<p><a name="id_$input"></a><span class="f_Bolddefault">$input(prompt,options,window,title,text)</span></p>
+<p>Prompts the user for input and returns the result.</p>
+<p>&nbsp;</p>
+<p>The input dialog is extended vertically to display the prompt message if it is very long. You can also make text in the prompt message appear on different lines by using the $crlf identifier to separate lines.</p>
+<p>&nbsp;</p>
+<p>Options can be a combination of the following:</p>
+<p>&nbsp;</p>
+<p>e - show input editbox</p>
+<p>p - show input password editbox</p>
+<p>o - ok button</p>
+<p>y - yes no buttons</p>
+<p>n - yes no cancel buttons</p>
+<p>r - retry cancel buttons</p>
+<p>v - return $ok, $yes, $no, $cancel for buttons</p>
+<p>g - right-align buttons</p>
+<p>b - disables buttons for a second when dialog is displayed</p>
+<p>f - return $no/$cancel for edit/combo boxes if no/cancel is pressed</p>
+<p>&nbsp;</p>
+<p>By default, buttons return $true or $null, same as $?. If there is an input editbox, the ok/yes buttons always return the contents of the editbox.</p>
+<p>&nbsp;</p>
+<p>iqwh - show the info, question, warning, and halt icons respectively.</p>
+<p>d - play system sound associated with icon.</p>
+<p>&nbsp;</p>
+<p>s - indicates that <span class="f_Bolddefault">window</span> name has been specified</p>
+<p>a - activate dialog</p>
+<p>u - use current active window as parent window</p>
+<p>&nbsp;</p>
+<p>kN - an N second timeout value. On timing out, $timeout is returned if <span class="f_Bolddefault">v</span> is specified, no value if <span class="f_Bolddefault">e</span> is specified, and $false otherwise.</p>
+<p>&nbsp;</p>
+<p>m - indicates that multiple text parameters have been specified. They will be displayed in a combobox. The first text item is the default item (a reference to an item in the list), the rest are the items in the list.</p>
+<p>&nbsp;</p>
+<p>window - name of the window to be used as parent window.</p>
+<p>&nbsp;</p>
+<p>title - the titlebar text.</p>
+<p>&nbsp;</p>
+<p>text - the default text placed in the input editbox.</p>
+<p>&nbsp;</p>
+<p>The options, window, title, and text are optional parameters.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This identifier cannot be used in a script event. One way around this is to use a /timer to initiate an input request after the script ends.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ip"></a><span class="f_Bolddefault">$ip</span></p>
+<p>Returns your IP address.</p>
+<p>&nbsp;</p>
+<p><a name="id_$isalias"></a><span class="f_Bolddefault">$isalias(name,[N])</span></p>
+<p>Returns $true if the specified name is an alias command that exists in your aliases or scripts.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> fname, alias, ftype</p>
+<p>&nbsp;</p>
+<p>$isalias(join) &nbsp; &nbsp; &nbsp; &nbsp;returns $true if you have an alias for /join</p>
+<p>$isalias(join).fname &nbsp; &nbsp; &nbsp; &nbsp;returns the filename in which the alias exists</p>
+<p>$isalias(join).alias &nbsp; &nbsp; &nbsp; &nbsp;returns the alias definition for /join</p>
+<p>$isalias(join).ftype &nbsp; &nbsp; &nbsp; &nbsp;returns alias or remote</p>
+<p><span class="f_Highlight">&nbsp;</span></p>
+<p><span class="f_Highlight">Note:</span> The N parameter is optional and returns the Nth line in a multi-line alias when used with the .alias property.</p>
+<p>&nbsp;</p>
+<p><a name="id_$isid"></a><span class="f_Bolddefault">$isid</span></p>
+<p>Returns $true if an alias was called as an identifier, otherwise $false.</p>
+<p>&nbsp;</p>
+<p><a name="id_$lf"></a><span class="f_Bolddefault">$lf</span></p>
+<p>Returns the <span class="f_Bolddefault">linefeed</span> character, the same as $chr(10).</p>
+<p>&nbsp;</p>
+<p><a name="id_$lock"></a><span class="f_Bolddefault">$lock(item/#/N)</span></p>
+<p>Returns $true or $false for the lock settings on items in the <a href="lock.html">Lock</a> dialog.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> startup, send, get, chat, query, fserve, channels, tray, tips</p>
+<p>&nbsp;</p>
+<p>You can also use $lock(N) where N returns the Nth channel in the limit channels listbox, or you can specify a channel name instead of N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$locked"></a><span class="f_Bolddefault">$locked</span></p>
+<p>Returns $true if mIRC is currently locked.</p>
+<p>&nbsp;</p>
+<p><a name="id_$md5"></a><span class="f_Bolddefault">$md5(text|&amp;binvar|filename,[N])</span></p>
+<p>Returns md5 hash value for the specified data, where N = 0 for plain text (default), 1 for &amp;binvar, 2 for filename.</p>
+<p>&nbsp;</p>
+<p><a name="id_$modespl"></a><span class="f_Bolddefault">$modespl</span></p>
+<p>mIRC supports numeric 005 token MODES.</p>
+<p>&nbsp;</p>
+<p>$modespl returns the <span class="f_Bolddefault">maximum</span> number of parameters allowed per /mode, eg. if $modespl is equal to 5, you can use /mode +ooooo to set five modes at a time.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_msgtags"></a><span class="f_Bolddefault">$msgtags</span></p>
+<p>mIRC removes @ prefixed tags (IRCv3 message tags) from incoming server messages and stores them in the $msgtags identifier.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">$msgtags(tag|N)</span></p>
+<p>Returns the individual tags listed in the $msgtags identifier, where N = 0 returns number of tags.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">Properties:</span> tag, key</p>
+<p>&nbsp;</p>
+<p><a name="id_$network"></a><span class="f_Bolddefault">$network</span></p>
+<p>Returns the name of the IRC network you are currently connected to.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Note:</span> It may not be possible to get this info if a network does not provide it.</p>
+<p>&nbsp;</p>
+<p><a name="id_$os"></a><span class="f_Bolddefault">$os</span></p>
+<p>Returns the version number of the operating system. The reply can be XP, 2003, 2003R2, Vista, 2008, 7, 2008R2, 8, 2012, 8.1, 2012R2, 10, or 2016.</p>
+<p>&nbsp;</p>
+<p><a name="id_$passivedcc"></a><span class="f_Bolddefault">$passivedcc</span></p>
+<p>Returns $true if passive dcc is enabled in the DCC Options dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$port"></a><span class="f_Bolddefault">$port</span></p>
+<p>Returns the <span class="f_Bolddefault">port number</span> of the server to which you are currently connected.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_$portable"></a><span class="f_Bolddefault">$portable</span></p>
+<p>Returns $true or $false depending on whether mIRC was run as <a href="command_line.html">portable</a>.</p>
+<p>&nbsp;</p>
+<p><a name="id_$prefix"></a><span class="f_Bolddefault">$prefix</span></p>
+<p>mIRC supports numeric 005 token PREFIX, and can handle a dynamic set of channel nickname prefixes.</p>
+<p>&nbsp;</p>
+<p>$prefix returns the list of channel nickname prefixes ie. op, halfop, voice, etc. that are supported on a server.</p>
+<p>&nbsp;</p>
+<p>When <span class="f_Bolddefault">not connected</span> to a server, mIRC uses a default $prefix value of PREFIX=(ohv)@%+.</p>
+<p>&nbsp;</p>
+<p><a name="id_$result"></a><span class="f_Bolddefault">$result</span></p>
+<p>Stores the number value returned to a calling routine by the <span class="f_Bolddefault">/return</span> command.</p>
+<p>&nbsp;</p>
+<p><a name="id_$server"></a><span class="f_Bolddefault">$server</span></p>
+<p>Returns the name of the server to which you are currently connected.</p>
+<p>&nbsp;</p>
+<p>If you are not currently connected to a server, it returns $null.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$server(N/address,[group])</span></p>
+<p>Returns the address of the Nth server in your irc servers list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> desc, port, group, pass, method</p>
+<p>&nbsp;</p>
+<p>$server(0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the total number of servers in the servers list</p>
+<p>$server(2) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the address of the 2nd server</p>
+<p>$server(2).desc &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the description of the 2nd server</p>
+<p>$server(3).port &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the port(s) of the 3rd server</p>
+<p>&nbsp;</p>
+<p>If you specify an irc server address and it is in your servers list, returns its associated info.</p>
+<p>&nbsp;</p>
+<p>If you specify the group parameter, returns only servers in that group. If N = 0, returns total servers in group.</p>
+<p>&nbsp;</p>
+<p><a name="id_$serverip"></a><span class="f_Bolddefault">$serverip</span></p>
+<p>Returns server IP address.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_servertarget"></a><span class="f_Bolddefault">$servertarget</span></p>
+<p>Returns the address specified in the /server command whether you are connected to the server or not.</p>
+<p>&nbsp;</p>
+<p><a name="id_sha1"></a><span class="f_Bolddefault">$sha1(text|&amp;binvar|filename,[N])</span></p>
+<p>Returns sha1 hash value for the specified data, where N = 0 for plain text (default), 1 for &amp;binvar, 2 for filename.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can also use $sha256(), $sha384(), and $sha512() to generate the corresponding hashes using the above &nbsp;format.</p>
+<p>&nbsp;</p>
+<p><a name="id_$show"></a><span class="f_Bolddefault">$show</span></p>
+<p>Returns $false if a command is prefixed with a . to make it quiet, otherwise returns $true.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sreq"></a><span class="f_Bolddefault">$sreq</span></p>
+<p>Returns current <a href="dcc.html">/sreq</a> settings in the DCC Options send section dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_ssl"></a><span class="f_Bolddefault">$ssl</span></p>
+<p>Returns $true if the current server connection is using SSL.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_sslcert"></a><span class="f_Bolddefault">$sslcertsha1, $sslcertsha256</span></p>
+<p>Return fingerprint of client certificate in currently loaded private key file.</p>
+<p>&nbsp;</p>
+<p><a name="id_sslready"></a><span class="f_Bolddefault">$sslready</span></p>
+<p>Returns $true if mIRC is ready to make secure connections using SSL.</p>
+<p>&nbsp;</p>
+<p><a name="id_sslother"></a><span class="f_Bolddefault">$sslversion</span>, <span class="f_Bolddefault">$ssldll</span>, <span class="f_Bolddefault">$ssllibdll</span></p>
+<p>Return information regarding the version and file locations of the SSL library being used.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_starting"></a><span class="f_Bolddefault">$starting</span></p>
+<p>Returns 0, or 1 if mIRC is in the process of starting up.</p>
+<p>&nbsp;</p>
+<p><a name="id_$status"></a><span class="f_Bolddefault">$status</span></p>
+<p>Returns server connection status.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This returns <span class="f_Bolddefault">closing</span> during the <a href="on_connect.html">on DISCONNECT</a> event if the status window being closed is the cause of the disconnection.</p>
+<p>&nbsp;</p>
+<p><a name="id_$titlebar"></a><span class="f_Bolddefault">$titlebar</span></p>
+<p>Returns the text in the mIRC titlebar, set by the <a href="mirc_commands.html">/titlebar</a> command.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_totp"></a><span class="f_Bolddefault">$totp(key, time, hash, digits, timestep)</span></p>
+<p>Returns a TOTP (Time-based One-time Password) based on the specified parameters.</p>
+<p>&nbsp;</p>
+<p>The key is required and can be in a hex format of 40/64/128 chars, base32 format of 16/24/32 chars, or plain text. It can also be in a Google Authenticator format ie. lowercase with spaces.</p>
+<p>&nbsp;</p>
+<p>The time, hash, digits, and timestep are optional and default to $ctime, sha1, 6, and 30.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_unsafe"></a><span class="f_Bolddefault">$unsafe(text)</span></p>
+<p>This identifier is designed to be used with, for example, external user input in commands that may evaluate text later on, such as /timer commands. It delays evaluation of text for one level of evaluation.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_$url"></a><span class="f_Bolddefault">$url</span></p>
+<p>Returns the <span class="f_Bolddefault" style="font-weight: normal;">currently active</span> URL in your web browser.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">$url(N)</span></p>
+<p>Returns the Nth address in your URL list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> desc, group</p>
+<p>&nbsp;</p>
+<p>$url(0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the total number of items in the URL list</p>
+<p>$url(2) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the address of the 2nd item in the list</p>
+<p>$url(2).desc &nbsp; &nbsp; &nbsp; &nbsp;returns the description of the 2nd item in the list</p>
+<p>$url(3).group &nbsp; &nbsp; &nbsp; &nbsp;returns the group of the 3rd item in the list</p>
+<p>&nbsp;</p>
+<p><a name="id_$usermode"></a><span class="f_Bolddefault">$usermode</span></p>
+<p>Returns your current usermode on the irc server.</p>
+<p>&nbsp;</p>
+<p><a name="id_$version"></a><span class="f_Bolddefault">$version</span></p>
+<p>Returns the version of mIRC that is being used.</p>
+
+</td></tr></table>
+
+</body>
+</html>

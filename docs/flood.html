@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Flood</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Flood" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Flood</span></p>
+<p>&nbsp;</p>
+<p>Flood protection attempts to prevent you from <span class="f_Bolddefault">flooding</span> a server with messages sent in <span class="f_Bolddefault">response</span> to requests from other users via CTCP or a script.</p>
+<p>&nbsp;</p>
+<p>Flooding usually results in your being <span class="f_Bolddefault">disconnected</span> from IRC servers since they place a limit on how much information you can send at one time.</p>
+<p>&nbsp;</p>
+<p>mIRC will count the number of bytes you send to a server, and will initiate a flood check if you exceed a certain maximum number of bytes.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Trigger flood check after...</span></p>
+<p>This is the number of bytes at which mIRC should check if it might be flooding the server or not. Setting this greater than 500 bytes is not too helpful since that might be the maximum amount a server allows. The lower the number, the more sensitive mIRC will be, and the slower it will reply. Default 400.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Max. lines in buffer</span></p>
+<p>The maximum number of lines mIRC will buffer.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Max. lines per person</span></p>
+<p>The maximum number of messages a user can have in the buffer.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Ignore person for...</span></p>
+<p>How long to ignore a user who has exceeded their maximum number of buffered messages. If zero, no ignore is done.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Enable protection for...</span></p>
+<p>This enables flood protection for ctcp replies, whois requests, and query windows.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Queue Op commands</span></p>
+<p>If this is enabled, the MODE and KICK commands are also queued in the flood queue.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Queue own messages</span></p>
+<p>If this is enabled, all of your own messages, such as notice and private messages, are queued in the flood queue.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Show status updates</span></p>
+<p>Displays the flood queue status a) when there is a new item in the queue, b) every 10 seconds, if the queue status changed, and c) when the queue becomes empty.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_flood"></a><span class="f_Subheading">The /flood command</span></p>
+<p>This command allows you to turn flood protection on or off and to change the above settings. Typing /flood with no parameters gives you the current flood status. You can type <span class="f_Bolddefault">/flood on</span> to turn flood protection on with the default settings.</p>
+<p>&nbsp;</p>
+<p>/flood [+c|-c] [on|off|clear] &lt;bytes&gt; &lt;maxlines&gt; &lt;maxmessages&gt; &lt;ignoretime&gt;</p>
+<p>&nbsp;</p>
+<p>/flood 200 10 2 30</p>
+<p>&nbsp;</p>
+<p>Here mIRC will check for flooding if it has sent 200 or more characters to the server, will buffer a maximum of 10 lines and ignore the rest, will only allow each user 2 buffered lines, and will ignore a user for 30 seconds if that user exceeded the maximum number of buffered messages.</p>
+<p>&nbsp;</p>
+<p>You can also use <span class="f_Bolddefault">+c</span> or <span class="f_Bolddefault">-c</span> to enable or disable the ctcp flood protection.</p>
+<p>&nbsp;</p>
+<p>The flood protection method also performs intelligent queuing in order to satisfy the maximum number of users as quickly as possible, so that no single user can hog the queue.</p>
+
+</td></tr></table>
+
+</body>
+</html>

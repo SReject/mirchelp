@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>DLL Support</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$dll,$dllcall,/dll,DLL Support" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">DLL Support</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">/dll</span> and <span class="f_Bolddefault">$dll()</span> features allow you to make calls to <span class="f_Bolddefault">DLLs</span> designed to work with mIRC. The <span class="f_Bolddefault">main</span> reason you would want to do this is that processing information in a DLL can be far <span class="f_Bolddefault">faster</span> than doing so in a script, so for <span class="f_Bolddefault">intensive</span> data processing a DLL would be more efficient.</p>
+<p>&nbsp;</p>
+<p>Note that mIRC also supports calling <a href="com_objects.html">COM objects</a>, for calling non-standard DLLs.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Warning:</span> do not use DLLs from sources you do not trust. See the <a href="accepting_files.html">Accepting Files</a> section for information on the dangers of accepting and using files from the internet.</p>
+<p>&nbsp;</p>
+<p> &nbsp;/dll &lt;filename&gt; &lt;procname&gt; [data]</p>
+<p> &nbsp;$dll(filename, procname, data)</p>
+<p> &nbsp;$dllcall(filename, alias, procname, data)</p>
+<p>&nbsp;</p>
+<p>The above open a DLL, call the procname routine, and send it the specified data. The only difference is that $dll() can return a value, like all other identifiers.</p>
+<p>&nbsp;</p>
+<p>$dllcall() is multi-threaded so it will not halt the script and will call the specified alias once the call returns.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Technical notes</span></p>
+<p>This section contains <span class="f_Bolddefault">technical</span> information for <span class="f_Bolddefault">programmers</span> who want to create DLLs for use with mIRC.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">routine</span> in the DLL being called must be of the form:</p>
+<p>&nbsp;</p>
+<p>int __stdcall procname(HWND mWnd, HWND aWnd, char *data, char *parms, BOOL show, BOOL nopause)</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">mWnd</span> is the handle to the main mIRC window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">aWnd</span> is the handle of the window in which the command is being issued, this might not be the currently active window if the command is being called by a remote script.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">data</span> is the information that you wish to send to the DLL. On return, the DLL can fill this variable with the command it wants mIRC to perform if any.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">parms</span> is filled by the DLL on return with parameters that it wants mIRC to use when performing the command that it returns in the data variable.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The data and parms variables can each hold 900 chars maximum.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">show</span> is FALSE if the . prefix was specified to make the command quiet, or TRUE otherwise.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">nopause</span> is TRUE if mIRC is in a critical routine and the DLL must not do anything that pauses processing in mIRC, eg. the DLL should not pop up a dialog.</p>
+<p>&nbsp;</p>
+<p>The DLL can return an <span class="f_Bolddefault">integer</span> to indicate what it wants mIRC to do:</p>
+<p>&nbsp;</p>
+<p> &nbsp;0 means that mIRC should /halt processing</p>
+<p>&nbsp;</p>
+<p> &nbsp;1 means that mIRC should continue processing</p>
+<p>&nbsp;</p>
+<p> &nbsp;2 means that it has filled the data variable with a command which it wants mIRC to perform, and has filled parms with the parameters to use, if any, when performing the command.</p>
+<p>&nbsp;</p>
+<p> &nbsp;3 means that the DLL has filled the data variable with the result that $dll() as an identifier should return.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You may need to create a .def file with the procedure names exported when compiling your DLL.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Keeping a DLL Loaded after a call</span></p>
+<p>By default a DLL is unloaded immediately after you make the /dll or $dll() call. You can keep a DLL loaded by including a <span class="f_Bolddefault">LoadDll()</span> routine in your DLL, which mIRC calls the first time you load the DLL:</p>
+<p>&nbsp;</p>
+<p> &nbsp;void __stdcall LoadDll(LOADINFO*);</p>
+<p>&nbsp;</p>
+<p> &nbsp;typedef struct {</p>
+<p> &nbsp; &nbsp;DWORD &nbsp;mVersion;</p>
+<p> &nbsp; &nbsp;HWND &nbsp; mHwnd;</p>
+<p> &nbsp; &nbsp;BOOL &nbsp; mKeep;</p>
+<p> &nbsp; &nbsp;BOOL &nbsp; mUnicode;</p>
+<p> &nbsp;} LOADINFO;</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">mVersion</span> contains the mIRC version number in the low and high words.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">mHwnd</span> contains the window handle to the main mIRC window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">mKeep</span> is set to TRUE by default, indicating that mIRC will keep the DLL loaded after the call. You can set mKeep to FALSE to make mIRC unload the DLL after the call (which is how previous mIRCs worked).</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">mUnicode</span> indicates that text is in unicode as opposed to ansi.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Unloading a DLL</span></p>
+<p>You can <span class="f_Bolddefault">unload</span> a loaded DLL by using the <span class="f_Bolddefault">-u</span> switch:</p>
+<p>&nbsp;</p>
+<p> &nbsp;/dll -u &lt;filename&gt;</p>
+<p>&nbsp;</p>
+<p>You can browse the list of loaded DLLs by using:</p>
+<p>&nbsp;</p>
+<p> &nbsp;$dll(N/filename) &nbsp; returns the Nth loaded DLL</p>
+<p>&nbsp;</p>
+<p>mIRC will <span class="f_Bolddefault">automatically</span> unload a DLL if it is not used for ten minutes, or when mIRC exits.</p>
+<p>&nbsp;</p>
+<p>You can also define an <span class="f_Bolddefault">UnloadDll()</span> routine in your DLL which mIRC will call when unloading a DLL to allow it to clean up.</p>
+<p>&nbsp;</p>
+<p> &nbsp;int __stdcall UnloadDll(int mTimeout);</p>
+<p>&nbsp;</p>
+<p> &nbsp;The <span class="f_Bolddefault">mTimeout</span> value can be:</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;0 &nbsp; UnloadDll() is being called due to a DLL being unloaded with /dll -u.</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;1 &nbsp; UnloadDll() is being called due to a DLL not being used for ten minutes. The UnloadDll() routine can return 0 to keep the DLL loaded, or 1 to allow it to be unloaded.</p>
+<p>&nbsp;</p>
+<p> &nbsp; &nbsp;2 &nbsp; UnloadDll() is being called due to a DLL being unloaded when mIRC exits.</p>
+
+</td></tr></table>
+
+</body>
+</html>

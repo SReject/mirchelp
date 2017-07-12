@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on INPUT</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$ctrlenter,on INPUT" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on INPUT</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on INPUT</span> event triggers when you enter text in an editbox and press enter.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:INPUT:&lt;*#?=!@&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:INPUT:#mIRC:/echo You entered the text &quot; $1- &quot; in the #mIRC window</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:INPUT:#:/echo I just mumbled &quot; $1- &quot; in a channel</p>
+<p>&nbsp;</p>
+<p>Triggers when you enter text in an editbox in a channel window and press enter. The <span class="f_Bolddefault">$1-</span> parameters refer to the text that you entered. If you <a href="aliases.html">/halt</a> this event, you can prevent mIRC itself from processing your message.</p>
+<p>&nbsp;</p>
+<p>on 1:INPUT:?:/echo I just mumbled &quot; $1- &quot; in a query window</p>
+<p>on 1:INPUT:=:/echo I just mumbled &quot; $1- &quot; in a dcc chat</p>
+<p>on 1:INPUT:!:/echo I just mumbled &quot; $1- &quot; in a fileserver</p>
+<p>&nbsp;</p>
+<p>You can also specify a specific channel/window name instead of *#?=!@.</p>
+<p>&nbsp;</p>
+<p>You can use the <span class="f_Bolddefault">$ctrlenter</span> identifier to test whether Control+Enter was pressed when the user entered the text.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use commands such as /say with on INPUT and they will send the message to the window in which you are typing, however most commands/events do not work this way and require you to specify the actual destination of a message.</p>
+
+</td></tr></table>
+
+</body>
+</html>

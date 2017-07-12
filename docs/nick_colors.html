@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Nick Colors</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Nick Colors" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Nick Colors</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">Nick colors</span> section allows you to assign <span class="f_Bolddefault">colors</span> to <span class="f_Bolddefault">nicknames</span>, which are then highlighted with their assigned colors in the channel nicknames list, and in any messages that those nicks send to channel or query windows.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Adding a Nick</span></p>
+<p>The <span class="f_Bolddefault">Add Nick</span> dialog is far simpler than it appears. You must select a <span class="f_Bolddefault">Nick color</span> from the color listbox, and <span class="f_Bolddefault">one</span> other item in the <span class="f_Bolddefault">Apply</span> section.</p>
+<p>&nbsp;</p>
+<p>For example, you could select the color <span class="f_Bolddefault">red</span> and enter a nickname in the <span class="f_Bolddefault">Nick or Address</span> editbox. This would highlight that specific nickname in the color red in the channel nickname listbox, and in messages that this user sends to channel or query windows.</p>
+<p>&nbsp;</p>
+<p>The settings in the <span class="f_Bolddefault">Apply</span> section are <span class="f_Bolddefault">cumulative</span>. This means that if you enter a nickname, and enter a channel mode, only users matching this nickname <span class="f_Bolddefault">and</span> having this channel mode will be highlighted.</p>
+<p>&nbsp;</p>
+<p>The nick color list uses the first match it finds for any event, so you must <span class="f_Bolddefault">prioritize</span> the order of the items in the list yourself.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can specify %vars or $identifiers as the nick.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Commands and Identifiers</span></p>
+<p>The nick color list can be modified and referenced by using the /cnick command and the $cnick() identifier.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_cnick"></a><span class="f_Bolddefault">/cnick -rfaniovpylNmNsN [nick[!user@host]|on|off] [color] [modes] [levels]</span></p>
+<p>This allows you to modify the items in the nick color list.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">r</span> switch removes the specified nick or address from the list.</p>
+<p>&nbsp;</p>
+<p>You can use <span class="f_Bolddefault">/cnick -r nick/N</span> to remove first item that matches nick in the nick color list or the Nth item in the nick color list.</p>
+<p>&nbsp;</p>
+<p>To add or refer to an item as <span class="f_Bolddefault">Any nick</span> you can use the <span class="f_Bolddefault">*</span> character as the nick.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">f</span> switch forces the addition of a new entry instead of updating an existing one.</p>
+<p>The <span class="f_Bolddefault">a</span> switch sets the Any Mode option.</p>
+<p>The <span class="f_Bolddefault">n</span> switch sets the No Mode option.</p>
+<p>The <span class="f_Bolddefault">iovpy</span> switches set the ignore, op, voice, protect, and notify list options respectively.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">lN</span> switch sets the idle time.</p>
+<p>The <span class="f_Bolddefault">mN</span> switch sets the highlight method, 0, 1, or 2.</p>
+<p>The <span class="f_Bolddefault">sN </span>switch sorts the item into the Nth position in the list.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">color</span> item is the color you want to assign to the nick.</p>
+<p>The <span class="f_Bolddefault">modes</span> item is the list of modes required for that item to match, eg. @%+</p>
+<p>The <span class="f_Bolddefault">levels</span> item makes mIRC search your <a href="access_levels.html">User List</a> for a matching level and address.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> /cline over-rides the nick color list. You can use <span class="f_Bolddefault">/cline -r</span> to reset a nick to default color to make the nick color list apply to a nick.</p>
+<p>&nbsp;</p>
+<p><a name="id_$cnick"></a><span class="f_Bolddefault">$cnick(N/nick, M)</span></p>
+<p>Returns Nth nick in nick color list, or if nick is specified returns Nth position of item in list that matches nick. If nick does not match any items, returns zero.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> color, modes, levels, method, anymode, nomode, ignore, op, voice, protect, notify, idle</p>
+<p>&nbsp;</p>
+<p>To get a nick's color, you can use <span class="f_Bolddefault">$cnick(nick).color</span>. If nick does not match any items in the list, returns 'Normal Text' color, or if M = 1, returns 'Listbox text&quot; color. M is optional.</p>
+
+</td></tr></table>
+
+</body>
+</html>

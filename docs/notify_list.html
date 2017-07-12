@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Notify</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Notify List" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Notify List</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">notify list</span> is like a buddy list, it notifies you when someone in your list <span class="f_Bolddefault">comes on</span> or <span class="f_Bolddefault">leaves</span> the IRC network that you are on.</p>
+<p>&nbsp;</p>
+<p>The notify list works differently depending on the IRC network you are using. On some networks the notify list is updated once every minute or so, while on other networks it is updated immediately.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Adding a User</span></p>
+<p>To add a user you can open the Address Book, select the Notify tab, press the Add button, and enter the following information.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Nickname</span></p>
+<p>The nickname of a user that you want notify to look for.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Note</span></p>
+<p>An optional note or reminder that will appear next to the users nickname.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Play sounds</span></p>
+<p>The sounds that you want played when the user joins or leaves IRC.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Perform /whois</span></p>
+<p>This option makes mIRC perform a <span class="f_Bolddefault">/whois</span> on the user when they join IRC to look up their address. You should only use this option if you really need to, if you use it with too many nicknames then the IRC server might disconnect you for flooding.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Add/Update/Delete</span></p>
+<p>To add or delete users from the list. After you make a change to the settings of an existing user, you must click the <span class="f_Bolddefault">Update</span> button.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Notify display options</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Pop up notify window on connect</span></p>
+<p>This will pop up the notify list window when you connect to an irc server.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Show notifies only in notify window</span></p>
+<p>This will make mIRC display notifies only in the notify window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Show notifies in active window</span></p>
+<p>The default is to show notifies in the status window, however checking this option will also show notifications in the current active window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Display address and time</span></p>
+<p>On IRC networks that support this feature, mIRC will display the nicknames address and time online.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_notify"></a><span class="f_Subheading">The /notify command</span></p>
+<p>You can also add/remove nicknames from the notify list by using the /notify command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/notify [-shrln] &lt;on|off|nickname&gt; [network|address] [note]</span></p>
+<p>&nbsp;</p>
+<p>You can turn notify on and off by typing <span class="f_Bolddefault">/notify on or off</span> respectively.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-sh</span> switches can be used to <span class="f_Bolddefault">show or hide</span> the notify list window respectively</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch removes the specified nickname from your notify list.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch displays your notify list.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch indicates that the network or server address has been specified.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">note</span> is optional and allows you to specify a little note for each nickname.</p>
+<p>&nbsp;</p>
+<p>If you prefix a nickname with a <span class="f_Bolddefault">+</span> sign then mIRC will do a <span class="f_Bolddefault">/whois</span> on the nickname as part of the notify. However, if you do this on too many nicknames then the IRC server might disconnect you for flooding, so it is best to use it only if you really need to.</p>
+<p>&nbsp;</p>
+<p>You can manually force mIRC to update the notify list by typing <span class="f_Bolddefault">/notify</span> with no parameters.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Note:</span> Some IRC networks might let you use a full address instead of just a nickname, the only way to see if it works is to try it out.</p>
+
+</td></tr></table>
+
+</body>
+</html>

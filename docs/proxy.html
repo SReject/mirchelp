@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Proxy</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Firewall,Proxy,Socks4,Socks5" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Proxy</span></p>
+<p>&nbsp;</p>
+<p>mIRC can connect to an IRC Server through a <span class="f_Bolddefault">Socks4</span> or <span class="f_Bolddefault">Socks5 firewall</span>, or through a <span class="f_Bolddefault">Proxy</span>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Connection</span></p>
+<p>You can choose to enable proxy support for <span class="f_Bolddefault">server</span> connections, <span class="f_Bolddefault">DCC</span> connections, or <span class="f_Bolddefault">both</span>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Protocol</span></p>
+<p>You can select either Socks4, Socks5, or Proxy. Socks4 and Proxy are limited in functionality and only allow server connections.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> mIRC uses a passive protocol to establish <span class="f_Bolddefault">DCC</span> connections when a client is behind a <span class="f_Bolddefault">Socks5</span> firewall. This will <span class="f_Bolddefault">not</span> work with older versions of mIRC or other IRC clients because no standard exists. You can find out more about the protocol <a href="dcc_socks5_protocol.html">here</a>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Hostname</span></p>
+<p>The address of your firewall server, can be either a named address or an IP address.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">User ID</span></p>
+<p>Can be the account or user name on your system. For most people this will be the User ID portion of their email address (the text before the @ sign).</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Password</span></p>
+<p>The password required to access the firewall.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you are connecting via a proxy, and you enter a password, mIRC only supports http proxy <span class="f_Bolddefault">basic</span> authorization.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Port</span></p>
+<p>This is usually 1080 for Socks firewalls.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Exception masks</span></p>
+<p>If you have the firewall enabled but would like to connect to some servers directly, you can enter their addresses here. Wildcards may be used. Any server addresses which match the exception masks will not use the firewall.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_proxy"></a><span class="f_Subheading">The /proxy command</span></p>
+<p>This command allows you to change the above firewall settings.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/proxy [-cmN[+|-]d] [on|off] &lt;server&gt; &lt;port&gt; &lt;userid&gt; &lt;password&gt;</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch clears the userid and password values.</p>
+<p>The <span class="f_Bolddefault">-mN</span> switch set the connection type, where N is 4 or 5 for Socks4 or Socks5, or p for proxy.</p>
+<p>The <span class="f_Bolddefault">+|-d</span> switch turns DCCs through a firewall on or off.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>File and Directory Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="File and Directory Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">File and Directory Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$abook"></a><span class="f_Bolddefault">$abook(nick,N)</span></p>
+<p>Returns information about nicknames listed in the <a href="address_book.html">address book</a>.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> nick, info, email, website, picture, noteN</p>
+<p>&nbsp;</p>
+<p>Allowed formats: $abook(nick) $abook(N) $abook(nick,N) where nick can also be a wildcard.</p>
+<p>&nbsp;</p>
+<p><a name="id_$alias"></a><span class="f_Bolddefault">$alias(N/filename)</span></p>
+<p>Returns the filename for the Nth loaded alias file. If you specify a filename, it returns $null if the file is not loaded.</p>
+<p>&nbsp;</p>
+<p>$alias(0) &nbsp; &nbsp; &nbsp; &nbsp;return the number of alias files loaded</p>
+<p>$alias(2) &nbsp; &nbsp; &nbsp; &nbsp;returns the filename of the 2nd loaded alias file</p>
+<p>$alias(moo.txt) &nbsp; &nbsp; &nbsp; &nbsp;returns $null if the file is not loaded, or moo.txt if it is.</p>
+<p>&nbsp;</p>
+<p><a name="id_$crc"></a><span class="f_Bolddefault">$crc(text|&amp;binvar|filename,[N])</span></p>
+<p>Returns the CRC checksum of the specified item, where N = 0 for plain text, 1 for &amp;binvar, 2 for filename (default).</p>
+<p>&nbsp;</p>
+<p><a name="id_$disk"></a><span class="f_Bolddefault">$disk(path|N)</span></p>
+<p>Returns information about the specified hard disk, where N = 0 for total available drives, and N &gt; 0 to access each drive.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> type, free, label, size, unc, path</p>
+<p>&nbsp;</p>
+<p>$disk(c:) &nbsp;returns $true if drive c: exists, otherwise $false</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">unc</span> property returns the path for a network drive.</p>
+<p>&nbsp;</p>
+<p><a name="id_$exists"></a><span class="f_Bolddefault">$exists(file/dir)</span></p>
+<p>Returns $true if a file or dir exists and $false if it does not.</p>
+<p>&nbsp;</p>
+<p>$exists(c:\mirc\mirc.exe) &nbsp;returns $true or $false.</p>
+<p>&nbsp;</p>
+<p><a name="id_$file"></a><span class="f_Bolddefault">$file(filename)</span></p>
+<p>Returns information about the specified file.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> size, ctime, mtime, atime, shortfn, longfn, attr, sig, version</p>
+<p>&nbsp;</p>
+<p>$file(mirc.exe).size &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the file size</p>
+<p>$file(mirc.exe).ctime &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns creation time</p>
+<p>$file(mirc.exe).mtime &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns last modification time</p>
+<p>$file(mirc.exe).atime &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns last access time</p>
+<p>&nbsp;</p>
+<p><a name="id_$filtered"></a><span class="f_Bolddefault">$filtered</span></p>
+<p>Returns the number of lines that were filtered when using the <a href="mirc_commands.html#CMD_filter">/filter</a> command.</p>
+<p>&nbsp;</p>
+<p><a name="id_$finddir"></a><span class="f_Bolddefault">$finddir(dir,wildcard,N,depth,@window | command)</span></p>
+<p>Searches the specified directory and its subdirectories for the Nth directory name matching the wildcard specification and returns the full path and directory if it is found.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> shortfn</p>
+<p>&nbsp;</p>
+<p>$finddir(c:\,mirc*,1) &nbsp;returns the first directory name beginning with &quot;mirc&quot;</p>
+<p>&nbsp;</p>
+<p>If you specify a custom @window (with a listbox) instead of the N parameter, mIRC will fill the custom @window listbox with the results.</p>
+<p>&nbsp;</p>
+<p>If you specify a command, the command is performed on every directory that is found. You can use $1- to refer to the directory name, eg. //echo 1 $finddir($mircdir,*.*,0,echo $1-)</p>
+<p>&nbsp;</p>
+<p>If you use /halt in the command/alias, this halts the search.</p>
+<p>&nbsp;</p>
+<p>If you specify a depth, mIRC will only search N directories deep for matching filenames.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$finddirn</span> identifier returns the Nth position of directory that was found.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Both the depth and @window/command parameters are optional.</p>
+<p>&nbsp;</p>
+<p><a name="id_$findfile"></a><span class="f_Bolddefault">$findfile(dir,wildcard,N,depth,@window | command)</span></p>
+<p>Searches the specified directory and its subdirectories for the Nth filename matching the wildcard file specification and returns the full path and filename if it is found.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> shortfn</p>
+<p>&nbsp;</p>
+<p>$findfile(c:\mirc,*.exe,1) &nbsp;returns c:\mirc\mirc.exe</p>
+<p>&nbsp;</p>
+<p>If you specify a custom @window name (with a listbox), the custom @window listbox will be filled with the results.</p>
+<p>&nbsp;</p>
+<p>If you specify a command, it will be performed on every filename that is found. You can use $1- to refer to the filename, eg. //echo 1 $findfile($mircdir,*.*,0,echo $1-)</p>
+<p>&nbsp;</p>
+<p>If you use /halt in the command/alias, this halts the search.</p>
+<p>&nbsp;</p>
+<p>If you specify a depth, mIRC will only search N directories deep for matching filenames.</p>
+<p>&nbsp;</p>
+<p>You can specify multiple wildcards by separating them with semi-colons, eg. *.exe;*.txt;*.hlp.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">$findfilen</span> identifier returns the Nth position of file that was found.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Both the depth and @window/command parameters are optional.</p>
+<p>&nbsp;</p>
+<p><a name="id_$getdir"></a><span class="f_Bolddefault">$getdir</span></p>
+<p>Returns the DCC Get directory specified in the DCC Options dialog.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$getdir(filespec)</span></p>
+<p>Returns the DCC Get directory for the specified file type.</p>
+<p>&nbsp;</p>
+<p>$getdir(*.txt) &nbsp;returns c:\mirc\text\ (for example)</p>
+<p>&nbsp;</p>
+<p><a name="id_$ini"></a><span class="f_Bolddefault">$ini(file,topic/N,item/N)</span></p>
+<p>Returns the name/Nth position of the specified topic/item in an ini/text file.</p>
+<p>&nbsp;</p>
+<p>$ini(mirc.ini,0) &nbsp;returns total number of topics in mirc.ini</p>
+<p>$ini(mirc.ini,1) &nbsp;returns name of 1st topic in mirc.ini</p>
+<p>$ini(mirc.ini,help) returns Nth position of topic help if it exists, or returns 0 if it does not exist</p>
+<p>&nbsp;</p>
+<p>The item/N parameter is optional. If you specify N = 0, it returns the total number of topics/items.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The behaviour of this identifier varies across versions, where either 0 or $null may be returned for a non-existent item.</p>
+<p>&nbsp;</p>
+<p><a name="id_$isdir"></a><span class="f_Bolddefault">$isdir(dirname)</span></p>
+<p>Returns $true if the specified directory exists, otherwise $false.</p>
+<p>&nbsp;</p>
+<p><a name="id_$isfile"></a><span class="f_Bolddefault">$isfile(filename)</span></p>
+<p>Returns $true if the specified file exists, otherwise $false.</p>
+<p>&nbsp;</p>
+<p><a name="id_$lines"></a><span class="f_Bolddefault">$lines(filename)</span></p>
+<p>Returns the total number of lines in the specified text file.</p>
+<p>&nbsp;</p>
+<p>$lines(c:\irc\kicks.txt) &nbsp;returns the total number of lines in c:\irc\kicks.txt</p>
+<p>&nbsp;</p>
+<p><a name="id_$logdir"></a><span class="f_Bolddefault">$logdir</span></p>
+<p>Returns the Logs directory as specified in the Logging section of the Options dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$longfn"></a><span class="f_Bolddefault">$longfn(filename)</span></p>
+<p>Returns long version of a short filename.</p>
+<p>&nbsp;</p>
+<p><a name="id_$mididir"></a><span class="f_Bolddefault">$mididir</span></p>
+<p>Returns the Midi directory specified in the Sound Requests section of the Options dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$mircdir"></a><span class="f_Bolddefault">$mircdir</span></p>
+<p>Returns the directory where mIRC stores its settings, such as mirc.ini, and other files and folders.</p>
+<p>&nbsp;</p>
+<p><a name="id_$mircexe"></a><span class="f_Bolddefault">$mircexe</span></p>
+<p>Returns the full path and filename of the mIRC executable file.</p>
+<p>&nbsp;</p>
+<p><a name="id_$mircini"></a><span class="f_Bolddefault">$mircini</span></p>
+<p>Returns the name of the main .ini file, usually mirc.ini.</p>
+<p>&nbsp;</p>
+<p><a name="id_mklogfn"></a><span class="f_Bolddefault">$mklogfn(filename)</span></p>
+<p>Returns the filename format that the logging feature uses. Appends date to filename if you have the dated logfiles option turned on in the logging dialog.</p>
+<p>&nbsp;</p>
+<p>You can also use $mknickfn(nickname) to fix a nickname for use as a filename, and $mkfn(filename) to fix a filename, both of which may replace/remove invalid characters.</p>
+<p>&nbsp;</p>
+<p><a name="id_$msfile"></a><span class="f_Bolddefault">$msfile(dir,title,oktext)</span></p>
+<p>Displays the multiple select file dialog and returns N, the number of selected files. $msfile(N) returns each file. If too many files are selected, $msfile() returns -1. Title and oktext are optional.</p>
+<p>&nbsp;</p>
+<p><a name="id_$nofile"></a><span class="f_Bolddefault">$nofile(filename)</span></p>
+<p>Returns the path in filename without the actual filename.</p>
+<p>&nbsp;</p>
+<p><a name="id_$nopath"></a><span class="f_Bolddefault">$nopath(filename)</span></p>
+<p>Returns filename without a path if it has one.</p>
+<p>&nbsp;</p>
+<p>$nopath(c:\mirc\mirc.exe) &nbsp;returns mirc.exe</p>
+<p>&nbsp;</p>
+<p><a name="id_$read"></a><span class="f_Bolddefault">$read(filename, [ntswrp], [matchtext], [N])</span></p>
+<p>Returns a single line of text from a file.</p>
+<p>&nbsp;</p>
+<p>This identifier works in conjunction with the <a href="mirc_commands.html#CMD_write">/write</a> command.</p>
+<p>&nbsp;</p>
+<p>//echo $read(funny.txt)</p>
+<p>&nbsp;</p>
+<p>Reads a random line from the file funny.txt.</p>
+<p>&nbsp;</p>
+<p>//echo $read(funny.txt, 24)</p>
+<p>&nbsp;</p>
+<p>Reads line 24 from the file funny.txt.</p>
+<p>&nbsp;</p>
+<p>//kick # $1 $read(kicks.txt)</p>
+<p>&nbsp;</p>
+<p>Reads a random kick line from kicks.txt and uses it in the kick command.</p>
+<p>&nbsp;</p>
+<p>//echo $read(info.txt, s, mirc)</p>
+<p>&nbsp;</p>
+<p>Scans the file info.txt for a line beginning with the word <span class="f_Bolddefault">mirc</span> and returns the text following the match value.</p>
+<p>&nbsp;</p>
+<p>//echo $read(help.txt, w, &nbsp;*help*)</p>
+<p>&nbsp;</p>
+<p>Scans the file help.txt for a line matching the wildcard text *help*. The <span class="f_Bolddefault">r </span>switch implies a regex match.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">s</span>, <span class="f_Bolddefault">w,</span> or <span class="f_Bolddefault">r </span>switches, you can also specify the <span class="f_Bolddefault">N</span> value to specify the line you wish to start searching from in the file, eg.:</p>
+<p>&nbsp;</p>
+<p>//echo $read(versions.txt, w, *mirc*, 100)</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">n</span> switch is specified then the line read in will not be evaluated and will be treated as plain text.</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">p</span> switch is specified, command | separators are treated as such instead of as plain text.</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">first line</span> in the file is a <span class="f_Bolddefault">number</span>, it must represent the <span class="f_Bolddefault">total number of lines</span> in the file. If you specify N = 0, mIRC returns the value of the first line if it is a number.</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">t</span> switch is specified then mIRC will treat the first line in the file as plain text, even if it is a number.</p>
+<p>&nbsp;</p>
+<p><a name="id_$readn"></a><span class="f_Bolddefault">$readn</span></p>
+<p>Returns the line number that was matched in a previous call to $read(). If no match was found, $readn is set to zero.</p>
+<p>&nbsp;</p>
+<p><a name="id_$readini"></a><span class="f_Bolddefault">$readini(filename, [np], section, item)</span></p>
+<p>Returns a single line of text from an ini file</p>
+<p>&nbsp;</p>
+<p>This identifier works in conjunction with the <a href="mirc_commands.html#CMD_writeini">/writeini</a> command.</p>
+<p>&nbsp;</p>
+<p>//echo $readini(mirc.ini, mIRC, nick)</p>
+<p>&nbsp;</p>
+<p>Reads your nickname from the mirc.ini file.</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">n</span> switch is specified then the line read in will not be evaluated and will be treated as plain text.</p>
+<p>&nbsp;</p>
+<p>If the <span class="f_Bolddefault">p</span> switch is specified, command | separators are treated as such instead of as plain text.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sdir"></a><span class="f_Bolddefault">$sdir(dir,title)</span></p>
+<p>Displays the select folder dialog and returns the selected folder. <span class="f_Bolddefault">Title</span> is optional. The <span class="f_Bolddefault">dir </span>can include a wildcard as a dir mask.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sfile"></a><span class="f_Bolddefault">$sfile(dir,title,oktext)</span></p>
+<p>Displays the select file dialog and returns the selected filename. <span class="f_Bolddefault">Title</span> and <span class="f_Bolddefault">oktext</span> are optional. The <span class="f_Bolddefault">dir </span>can include a wildcard as a file mask.</p>
+<p>&nbsp;</p>
+<p><a name="id_$shortfn"></a><span class="f_Bolddefault">$shortfn(filename)</span></p>
+<p>Returns short version of a long filename.</p>
+<p>&nbsp;</p>
+<p><a name="id_sysdir"></a><span class="f_Bolddefault">$sysdir(item)</span></p>
+<p>Returns system folders for the current user where item can be profile, desktop, documents, downloads, music, pictures, and videos.</p>
+
+</td></tr></table>
+
+</body>
+</html>

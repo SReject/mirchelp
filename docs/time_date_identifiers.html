@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Time and Date Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Time and Date Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Time and Date Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$asctime"></a><span class="f_Bolddefault">$asctime(N,format)</span></p>
+<p>Returns the time and date in text format associated with the $ctime time value.</p>
+<p>&nbsp;</p>
+<p>$asctime(793947600) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the default text format for this time value</p>
+<p>$asctime(hh:nn:ss) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the current time in this format</p>
+<p>$asctime(793947600,dd/mm/yy) &nbsp; &nbsp; &nbsp; &nbsp;returns the date for this time value</p>
+<p>&nbsp;</p>
+<p>The identifiers $time(), $date(), and $gmt() can also be used with the format specification below.</p>
+<p>&nbsp;</p>
+<p>The format parameter is <span class="f_Bolddefault">optional</span>, if it is not provided, a default format is used. The format can be a combination of the following items:</p>
+<p>&nbsp;</p>
+<div style="text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table cellspacing="0" cellpadding="0" border="0" style="border: none; border-spacing:0px;">
+<tr style="text-align:left;vertical-align:top;">
+<td valign="top" width="115" style="width:115px;"><p>Year</p>
+<p>&nbsp;</p>
+<p>Month</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Day</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Hours</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Minutes</p>
+<p>&nbsp;</p>
+<p>Seconds</p>
+<p>&nbsp;</p>
+<p>AM/PM</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Ordinal</p>
+<p>Timezone</p>
+</td>
+<td valign="top" width="115" style="width:115px;"><p>yy</p>
+<p>yyyy</p>
+<p>m</p>
+<p>mm</p>
+<p>mmm</p>
+<p>mmmm</p>
+<p>d</p>
+<p>dd</p>
+<p>ddd</p>
+<p>dddd</p>
+<p>h</p>
+<p>hh</p>
+<p>H</p>
+<p>HH</p>
+<p>n</p>
+<p>nn</p>
+<p>s</p>
+<p>ss</p>
+<p>t</p>
+<p>tt</p>
+<p>T</p>
+<p>TT</p>
+<p>oo</p>
+<p>z</p>
+<p>zz</p>
+<p>zzz</p>
+</td>
+<td valign="top" width="115" style="width:115px;"><p>99</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">1999</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">1</p>
+<p>01</p>
+<p>Jan</p>
+<p>January</p>
+<p>1</p>
+<p>01</p>
+<p>Mon</p>
+<p>Monday</p>
+<p>5</p>
+<p>05</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">13</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">13</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">1</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">01</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">1</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">01</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">a/p</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">am/pm</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">A/P</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">AM/PM</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">st/nd/rd/th</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">+0</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">+0000</p>
+<p style="text-indent: -27px; margin: 0px 0px 0px 27px;">+0000 GMT</p>
+</td>
+</tr>
+</table>
+</div>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can specify both the N and format parameters, or only one or the other.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ctime"></a><span class="f_Bolddefault">$ctime</span></p>
+<p>Returns total number of seconds elapsed since 00:00:00 GMT, January 1, 1970 based on your system time.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">$ctime(text)</span></p>
+<p>Returns the number of seconds elapsed since 00:00:00 GMT, January 1, 1970 based on the date that you specify.</p>
+<p>&nbsp;</p>
+<p>$ctime(January 1 1970 00:00:00)</p>
+<p>$ctime(3rd August 1987 3:46pm)</p>
+<p>$ctime(21/4/72 1:30:37)</p>
+<p>$ctime(Wed 1998-3-27 21:16)</p>
+<p>&nbsp;</p>
+<p><a name="id_$ctimer"></a><span class="f_Bolddefault">$ctimer</span></p>
+<p>Returns name of <a href="mirc_commands.html#CMD_timer">/timer</a> that triggered the current script.</p>
+<p>&nbsp;</p>
+<p><a name="id_$date"></a><span class="f_Bolddefault">$date</span></p>
+<p>Returns the current date in day/month/year format.</p>
+<p>&nbsp;</p>
+<p>For the date in US format you can use $adate.</p>
+<p>&nbsp;</p>
+<p><a name="id_$day"></a><span class="f_Bolddefault">$day</span></p>
+<p>Returns the name of the current day ie. Monday, Tuesday, etc.</p>
+<p>&nbsp;</p>
+<p><a name="id_$daylight"></a><span class="f_Bolddefault">$daylight</span></p>
+<p>Returns seconds offset if daylight savings is in effect, and 0 if not.</p>
+<p>&nbsp;</p>
+<p><a name="id_$duration"></a><span class="f_Bolddefault">$duration(seconds,N)</span></p>
+<p>Returns the specified number of seconds in a week/day/hour/minute/second format.</p>
+<p>&nbsp;</p>
+<p>The N parameter is optional. If N = 2, the result does not include the seconds value. If N = 3, the result is in hh:nn:ss format.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This identifier can also take its own output and change it back into seconds.</p>
+<p>&nbsp;</p>
+<p><a name="id_$fulldate"></a><span class="f_Bolddefault">$fulldate</span></p>
+<p>Returns the current date in the format: Wed Jun 26 21:41:02 1996</p>
+<p>&nbsp;</p>
+<p><a name="id_$gmt"></a><span class="f_Bolddefault">$gmt</span></p>
+<p>Returns the current GMT time value in $ctime format.</p>
+<p>&nbsp;</p>
+<p><a name="id_$idle"></a><span class="f_Bolddefault">$idle</span></p>
+<p>Returns your current idle time (same time as that returned by a ctcp finger).</p>
+<p>&nbsp;</p>
+<p><a name="id_$logstamp"></a><span class="f_Bolddefault">$logstamp</span></p>
+<p>Returns the current time based on the logging timestamp format as defined in the <a href="logging.html">logging</a> dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$logstampfmt"></a><span class="f_Bolddefault">$logstampfmt</span></p>
+<p>Returns the logging timestamp format as defined in the <a href="logging.html">logging</a> dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ltimer"></a><span class="f_Bolddefault">$ltimer</span></p>
+<p>Returns the number of the last timer that was started by the <a href="mirc_commands.html#CMD_timer">/timer</a> command.</p>
+<p>&nbsp;</p>
+<p><a name="id_$online"></a><span class="f_Bolddefault">$online</span></p>
+<p>Returns the number of seconds elapsed in the <a href="online_timer.html">Timer</a> dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ticks"></a><span class="f_Bolddefault">$ticks</span></p>
+<p>Returns the number of ticks since your operating system was first started.</p>
+<p>&nbsp;</p>
+<p><a name="id_$time"></a><span class="f_Bolddefault">$time</span></p>
+<p>Returns the current time in hour:minute:second format.</p>
+<p>&nbsp;</p>
+<p><a name="id_$timer"></a><span class="f_Bolddefault">$timer(N/name)</span></p>
+<p>Returns the timer id of the <span class="f_Bolddefault">Nth</span> timer in the timers list. You can also specify a timer <span class="f_Bolddefault">name</span> instead of a number. This identifier works in conjunction with the <a href="mirc_commands.html#CMD_timer">/timer</a> command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> com, time, reps, delay, type, secs, mmt, anysc, wid, cid, hwnd, pause</p>
+<p>&nbsp;</p>
+<p>$timer(0) &nbsp; &nbsp; &nbsp; &nbsp;returns the number of active timers</p>
+<p>$timer(1) &nbsp; &nbsp; &nbsp; &nbsp;returns the timer id of the 1st timer in the list</p>
+<p>$timer(1).com &nbsp; &nbsp; &nbsp; &nbsp;returns the command for the 1st timer in the list</p>
+<p>$timer(3).type &nbsp; &nbsp; &nbsp; &nbsp;returns online/offline status for the 3rd timer in the list</p>
+<p>$timer(3).secs &nbsp; &nbsp; &nbsp; &nbsp;returns number of seconds left before timer is triggered</p>
+<p>$timer(3).mmt &nbsp; &nbsp; &nbsp; &nbsp;returns $true if timer is a multimedia timer</p>
+<p>$timer(3).anysc &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the /timer -i switch was specified</p>
+<p>&nbsp;</p>
+<p><a name="id_$timestamp"></a><span class="f_Bolddefault">$timestamp</span></p>
+<p>Returns the current time based on the event timestamp format as defined in the <a href="messages.html">message</a> dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$timestampfmt"></a><span class="f_Bolddefault">$timestampfmt</span></p>
+<p>Returns the event timestamp format as defined in the <a href="messages.html">message</a> dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$timezone"></a><span class="f_Bolddefault">$timezone</span></p>
+<p>This returns your current timezone setting in seconds.</p>
+<p>&nbsp;</p>
+<p><a name="id_$uptime"></a><span class="f_Bolddefault">$uptime(mirc | server | system, N)</span></p>
+<p>Returns uptime in milliseconds for specified item.</p>
+<p>&nbsp;</p>
+<p>N is optional, N = 1 returns same format as $duration(), N = 2 returns same format as $duration() but without seconds, and N = 3 returns seconds instead of milliseconds.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>DCC</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Chat,DCC,DCC Chat,DCC Get,DCC Send,DCC Resume,Get,Resume,Send" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">DCC</span></p>
+<p>&nbsp;</p>
+<p>DCC allows you to connect <span class="f_Bolddefault">directly</span> to another IRC client, instead of going through the IRC Network, to <span class="f_Bolddefault">Send</span> and <span class="f_Bolddefault">Get</span> files, and to <span class="f_Bolddefault">Chat</span> privately over a more secure connection.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">On Send request</span></p>
+<p>This option determines how mIRC behaves when someone tries to send you a file. By default, mIRC will pop up a dialog asking you if you want to accept the file, however if you select the <span class="f_Bolddefault">Auto-get file</span> option then mIRC will automatically accept the file. If you select <span class="f_Bolddefault">Ignore All</span> then all incoming dcc send requests are ignored.</p>
+<p>&nbsp;</p>
+<p>If you choose to <span class="f_Bolddefault">accept</span> the file, mIRC will ask the sender to begin the file transfer, at which point you should begin receiving the file.</p>
+<p>&nbsp;</p>
+<p>If someone tries to send you a file that already exists in your get directory then you will be shown a warning that the file exists. You then have the option to either overwrite the file, resume the transfer, or rename the file.</p>
+<p>&nbsp;</p>
+<p>If you choose to overwrite the file then the whole file will be downloaded from the beginning and any existing file of the same name is erased.</p>
+<p>&nbsp;</p>
+<p>If you select resume then mIRC will attempt to negotiate a transfer resume to get the remaining part of the file.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">If Auto-get and File exists</span></p>
+<p>In the case where you have turned on the Auto-get file option, and you already have a file of the same name in your download folder, you have the option of mIRC popping up a dialog to ask if you want to accept the file, or to automatically resume or overwrite the existing file.</p>
+<p>&nbsp;</p>
+<p><a name="trustedusers"></a><a name="cmd_dcctrust"></a><span class="f_Bolddefault">Trusted Users</span></p>
+<p>This section allows you to add a list of trusted nicknames, addresses, or user levels, from which mIRC will automatically accept dcc sends.</p>
+<p>&nbsp;</p>
+<p>You can also use the <span class="f_Bolddefault">/dcc trust [-r] &lt;on | off | nick | address | level&gt;</span> command to change the trust list.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Please read about the dangers of <a href="accepting_files.html">Accepting Files on IRC</a> before you accept files.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">On Chat request</span></p>
+<p>This option determines how mIRC behaves if someone sends you a chat request. By default, mIRC will pop up a dialog asking you if you would like to accept the chat request, however you can make mIRC automatically accept the chat request, or just ignore all incoming chat requests. </p>
+<p>&nbsp;</p>
+<p><a name="cmd_dccnick"></a>The <span class="f_Bolddefault">/dcc nick -sgcf &lt;oldnick&gt; &lt;newnick&gt;</span> command allows you to change the nickname associated with a dcc send/get/chat/fserve and is used in the dcc remote event definition.</p>
+<p>&nbsp;</p>
+<p><a name="dccoptions"></a><span class="f_Subheading">DCC Options</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">On completion</span></p>
+<p>When a file transfer is completed, or a chat session ends, you can make mIRC close the window automatically, as well as beep to audibly indicate the end of a dcc session. The beep options depend on the settings in the <a href="sounds.html">Event Beeps</a> dialog.</p>
+<p>&nbsp;</p>
+<p><a name="time-outdelays"></a><span class="f_Bolddefault">Time-out in seconds</span></p>
+<p>When a user sends you a Send or Chat request, a dialog pops up and waits for you to accept or decline. The Get/Chat Dialog time out value determines how long the dialog will wait for your reply before it closes.</p>
+<p>&nbsp;</p>
+<p>During a file transfer mIRC will wait the number of seconds specified in the Send/Get Transfer Time Out settings for a response from the other client before closing the connection.</p>
+<p>&nbsp;</p>
+<p>The Fileserver Time Out determines how long a user in a Fileserver session can remain idle before mIRC closes the connection.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Max Sends</span></p>
+<p>This limits the number of simultaneous remotely initiated DCC Sends mIRC will handle.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This applies to users who request a DCC Send remotely ie. via a script file or via the DCC Server, not if you initiate a DCC manually.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">Show Warning</span></p>
+<p>Displays the incoming file warning.</p>
+<p>&nbsp;</p>
+<p><a name="passivedccs"></a><a name="cmd_dccpassive"></a><span class="f_Bolddefault">Passive DCCs</span></p>
+<p>Initiates passive DCC sends and chats, which might help if you are having trouble sending or chatting to other users.</p>
+<p>&nbsp;</p>
+<p>You can also use the <span class="f_Bolddefault">/dcc passive [on | off]</span> command to enable or disable passive dcc connections.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Minimize Sends</span></p>
+<p>If enabled, dcc send windows will be minimized automatically.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Fill Spaces</span></p>
+<p>Replaces spaces in long filenames with an underscore character. For more information read <a href="long_file_names.html">this</a>.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="packetsize"></a><span class="f_Bolddefault">Packet Size</span></p>
+<p>The number of bytes that mIRC will send to another client in one packet.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="cmd_dccreject"></a><a name="cmd_dccget"></a><span class="f_Subheading">DCC Folders</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">DCC Get Folders</span></p>
+<p>This allows you to specify dcc get directories where received files will be placed according to their extension. Files which do not match any of the extensions you specify are placed in the default get directory.</p>
+<p>&nbsp;</p>
+<p>If you specify a <span class="f_Bolddefault">command</span> to be performed when a file is downloaded, the <span class="f_Bolddefault">$1-</span> identifier refers to the filename.</p>
+<p>&nbsp;</p>
+<p>You can manually redirect an incoming dcc send to a specific folder with <span class="f_Bolddefault">/dcc get &lt;folder&gt;</span>. You can use <span class="f_Bolddefault">/dcc reject</span> to reject the dcc send. Both of these commands must be called from within the <a href="ctcp_events.html">CTCP</a> event or the <a href="on_dccserver.html">on DCCSERVER</a> send event. $filename returns name of file.</p>
+<p>&nbsp;</p>
+<p><a name="ignorefiletypes"></a><a name="cmd_dccignore"></a><span class="f_Subheading">DCC Ignore</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Accepting or Ignoring files</span></p>
+<p>This allows you to specify the types of files that you want mIRC to accept or ignore automatically when someone tries to send you a file.</p>
+<p>&nbsp;</p>
+<p>You can also use <span class="f_Bolddefault">/dcc ignore [on | off | accept | ignore]</span> to turn this feature on or off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Turn ignore back on</span></p>
+<p>This option turns dcc ignore back on after a while if you <span class="f_Bolddefault">manually</span> turned it off temporarily in order to accept a file.</p>
+<p>&nbsp;</p>
+<p><a name="dccfileserver"></a><span class="f_Subheading">DCC Fileserver</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Max. Fileservers</span></p>
+<p>This limits the number of fileserver sessions that can be open simultaneously.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Max. Gets per user</span></p>
+<p>This limits the number of simultaneous DCC Gets a user can request.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Total Max. Cps</span></p>
+<p>This limits the maximum cps used by all dcc sends being sent by a fileserver.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">/dcc maxcps &lt;N&gt;</span> command can be used to changed the Max Cps value on the fly.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This setting is also applied to /dcc sends initiated in a script that responds to a server event. You can override this by using <span class="f_Bolddefault">/dcc send -n</span> which applies no cps limit.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Root folder</span></p>
+<p>This specifies the root directory that a user will see when they first enter a fileserver initiated via the DCC Server. The user will be able to access all files and directories within this root directory.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Welcome text file</span></p>
+<p>This specifies the welcome text file that will be sent to a user when they first connect to a fileserver.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Show fileserver warning</span></p>
+<p>If this option is checked, the fileserver warning is displayed whenever the /fserve command is used to initiate a fileserver session. To learn more about fileservers see the <a href="file_server.html">File Server</a> section.</p>
+<p>&nbsp;</p>
+<p><a name="dccserver"></a><span class="f_Subheading">DCC Server</span></p>
+<p>&nbsp;</p>
+<p>The mIRC <span class="f_Bolddefault">DCC Server</span> listens for direct connections to your IP address from other <span class="f_Bolddefault">mIRC</span> clients.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Enable DCC Server</span></p>
+<p>This turns the DCC Server on or off.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Listen on Port</span></p>
+<p>The DCC Server listens on port 59 by default, however you can change this to another port number.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Listen for...</span></p>
+<p>You can have the DCC Server listen for only certain types of connections, such as DCC Sends, Chats, or Fileserver requests. For example, if you turn off the DCC Chat listen option, the DCC Server will ignore any chat requests.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Perform DNS lookup</span></p>
+<p>When someone connects to your DCC Server only their IP address is available for identification. If you check the DNS lookup switch, mIRC will perform a /dns on the IP address to try to resolve it to a named address.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> It can take anything from a second to more than minute to resolve an address depending on network conditions, and sometimes it may not resolve at all.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dccserver"></a><span class="f_Subheading">The /dccserver command</span></p>
+<p>You can change the settings of the DCC Server from the command line using:</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/dccserver [+|-scf] [on|off] [port]</span></p>
+<p>&nbsp;</p>
+<p>You can Send/Chat to the DCC Server using the DCC Send/Chat dialogs and specifying an <span class="f_Bolddefault">IP address</span> instead of a nickname.</p>
+<p>&nbsp;</p>
+<p>From the command line, you can use /dcc [send|chat|fserve] with an IP Address instead of a nickname to initiate a connection to the DCC Server.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> /dcc fserve only works for IP address connections and does not work via IRC.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">Technical specifications</span></p>
+<p>For a technical explanation of how various DCC protocols are implemented in mIRC see the pages <a href="dcc_server_protocol.html">Server</a>, <a href="dcc_resume_protocol.html">Resume</a>, <a href="dcc_socks5_protocol.html">Socks5</a>, and <a href="long_file_names.html">Long File Names</a>.</p>
+
+</td></tr></table>
+
+</body>
+</html>

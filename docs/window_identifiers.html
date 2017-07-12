@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Window Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Window Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Window Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$active"></a><span class="f_Bolddefault">$active</span></p>
+<p>Returns the full name of the currently active window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This identifier also has a <a href="multimserver.html">multi-server</a> counterpart.</p>
+<p>&nbsp;</p>
+<p><a name="id_$activewid"></a><span class="f_Bolddefault">$activewid</span></p>
+<p>Returns window id for the currently active window.</p>
+<p>&nbsp;</p>
+<p><a name="id_$appactive"></a><span class="f_Bolddefault">$appactive</span></p>
+<p>Returns <span class="f_Bolddefault">$true</span> if mIRC is the active application, otherwise it returns <span class="f_Bolddefault">$false</span>.</p>
+<p>&nbsp;</p>
+<p><a name="id_$appstate"></a><span class="f_Bolddefault">$appstate</span></p>
+<p>Returns the display state of the mIRC window: minimized, maximized, full, normal, hidden, or tray.</p>
+<p>&nbsp;</p>
+<p><a name="id_$chan"></a><span class="f_Bolddefault">$chan(N/#)</span></p>
+<p>Returns information on channels that you are currently on.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> topic, mode, key, limit, ial, logfile, stamp, status, inwho, wid, cid, hwnd, ibl, iel, iil, idle</p>
+<p>&nbsp;</p>
+<p>If you specify a number N, the Nth channel name is returned.</p>
+<p>&nbsp;</p>
+<p>$chan(0) &nbsp; &nbsp; &nbsp; &nbsp;returns the number of channels you are on</p>
+<p>$chan(2) &nbsp; &nbsp; &nbsp; &nbsp;returns the name of the 2nd channel you are on</p>
+<p>$chan(2).key &nbsp;returns the key of the 2nd channel you are on</p>
+<p>&nbsp;</p>
+<p>$chan(4).ial returns $true if <a href="internal_address_list.html">Internal Address List</a> contains addresses of all users on this channel, $false if it does not.</p>
+<p>&nbsp;</p>
+<p>$chan(4).inwho returns $true if you sent a /who #channel to the server to fill the IAL with addresses from that channel, and the /who is still in progress.</p>
+<p>&nbsp;</p>
+<p>$chan(1).ibl/iel/iil return $true if mIRC has already seen a <span class="f_Bolddefault">/mode +b/e/I</span> and has a ban/exception/invite list for the channel, $false otherwise. If in the process of retrieving a list, return $inmode. See the <a href="nick_address_identifiers.html">$ibl()</a> identifier for more information.</p>
+<p>&nbsp;</p>
+<p>If you specify a channel name, information on that channel is returned but only if you are on that channel.</p>
+<p>&nbsp;</p>
+<p>$chan(#mIRC).mode &nbsp;returns the mode of channel #mIRC</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">status</span> property returns the value joining, joined, or kicked.</p>
+<p>&nbsp;</p>
+<p><a name="id_$chat"></a><span class="f_Bolddefault">$chat(N/nick[,N])</span></p>
+<p>Returns the name of the Nth open dcc chat window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> ip, status, logfile, stamp, wid, cid, hwnd, idle</p>
+<p>&nbsp;</p>
+<p>$chat(0) &nbsp; &nbsp; returns the total number of open dcc chats</p>
+<p>$chat(1) &nbsp; &nbsp; returns the nickname of the 1st dcc chat window</p>
+<p>$chat(2).ip &nbsp;returns the ip address of the 2nd open dcc chat window</p>
+<p>&nbsp;</p>
+<p>If you specify a nick and N, it will return info on the Nth window for that nick.</p>
+<p>&nbsp;</p>
+<p><a name="id_compact"></a><span class="f_Bolddefault">$compact</span></p>
+<p>Returns the normal/compact status of the main mIRC window.</p>
+<p>&nbsp;</p>
+<p><a name="id_dqwindow"></a><span class="f_Bolddefault">$dqwindow</span></p>
+<p>Returns the state of the single message window. When used in on TEXT/ACTION events, it also returns opening/writing/written states.</p>
+<p>&nbsp;</p>
+<p>echo State: $iif($dqwindow &amp; 1,enabled,not enabled)</p>
+<p>echo State: $iif($dqwindow &amp; 2,open,not open)</p>
+<p>echo State: $iif($dqwindow &amp; 4,opening,not opening)</p>
+<p>echo State: $iif($dqwindow &amp; 8,writing,not writing)</p>
+<p>echo State: $iif($dqwindow &amp; 16,written,not written)</p>
+<p>&nbsp;</p>
+<p><a name="id_fserv"></a><span class="f_Bolddefault">$fserve(N/nick,[N])</span></p>
+<p>Returns the name of the Nth open fileserver window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> ip, status, cd</p>
+<p>&nbsp;</p>
+<p>$fserve(0) &nbsp; &nbsp; &nbsp; returns the total number of open fserves</p>
+<p>$fserve(1) &nbsp; &nbsp; &nbsp; returns the nickname of the 1st fserve</p>
+<p>$fserve(1).cd &nbsp;returns the current directory of the 1st fserve</p>
+<p>&nbsp;</p>
+<p>If you specify a nick and N, it will return info on the Nth window for that nick.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><a name="id_fullscreen"></a><span class="f_Bolddefault">$fullscreen</span></p>
+<p>Returns 1 if an application is currently running in full screen mode, 0 if not. This applies to both game and non-game applications.</p>
+<p>&nbsp;</p>
+<p><a name="id_$get"></a><span class="f_Bolddefault">$get(N/nick,[N])</span></p>
+<p>Returns the nickname and filename of the Nth open dcc get window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> ip, status, file, path, size, rcvd, cps, pc, secs, done, resume, wid, cid, hwnd, idle</p>
+<p>&nbsp;</p>
+<p>$get(0) &nbsp; &nbsp; &nbsp; &nbsp; returns the total number of open dcc gets</p>
+<p>$get(2) &nbsp; &nbsp; &nbsp; &nbsp; returns the nickname of the 2nd dcc get</p>
+<p>$get(2).rcvd &nbsp;returns the number of bytes received for the 2nd dcc get</p>
+<p>$get(2).cps &nbsp; returns the character per second rate for the 2nd dcc get</p>
+<p>$get(3).pc &nbsp; &nbsp; returns the percent complete of transfer for the 3rd dcc get</p>
+<p>$get(1).secs &nbsp;returns the number seconds connection has been open</p>
+<p>$get(1).done &nbsp;returns $true if transfer was successful, $false otherwise</p>
+<p>$get(1).resume &nbsp; &nbsp; &nbsp; &nbsp;returns resume position if file was resumed</p>
+<p>&nbsp;</p>
+<p>If you specify a nick and N, it will return info on the Nth window for that nick.</p>
+<p>&nbsp;</p>
+<p>$get(1).status returns &quot;sent&quot; and &quot;failed&quot; if a transfer has been sent successfully or failed.</p>
+<p>&nbsp;</p>
+<p><a name="id_$lactive"></a><span class="f_Bolddefault">$lactive</span></p>
+<p>Returns full window name of the last active window.</p>
+<p>&nbsp;</p>
+<p><a name="id_$lactivewid"></a><span class="f_Bolddefault">$lactivewid</span></p>
+<p>Returns window id for the last active window.</p>
+<p>&nbsp;</p>
+<p><a name="id_$query"></a><span class="f_Bolddefault">$query(N/nick)</span></p>
+<p>Returns the nickname of the Nth open query window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> addr, logfile, stamp, wid, cid, hwnd, idle</p>
+<p>&nbsp;</p>
+<p>$query(0) &nbsp;returns the total number of open query windows</p>
+<p>$query(2) &nbsp;returns the name of the 2nd open query window</p>
+<p>&nbsp;</p>
+<p>$query(N).addr &nbsp;returns the address of the Nth query, however note that this address is not available until after the user has sent you a message, and that this address <span class="f_Bolddefault">might not</span> be correct.</p>
+<p>&nbsp;</p>
+<p><a name="id_$send"></a><span class="f_Bolddefault">$send(N/nick[,N])</span></p>
+<p>Returns the nickname and filename of the Nth open dcc send window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> ip, status, file, path, size, sent, lra, cps, pc, secs, done, resume, wid, cid, hwnd, idle</p>
+<p>&nbsp;</p>
+<p>$send(0) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the total number of open dcc sends</p>
+<p>$send(2) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;returns the nickname of the 2nd dcc send</p>
+<p>$send(2).sent &nbsp; &nbsp; returns the number of bytes sent for the 2nd dcc send</p>
+<p>$send(2).lra &nbsp; &nbsp; &nbsp; returns the last received ack for the 2nd dcc send</p>
+<p>$send(3).pc &nbsp; &nbsp; &nbsp; returns the percent complete of transfer for the 3rd dcc send</p>
+<p>$send(3).status &nbsp;returns active, inactive, or waiting for the 3rd dcc send</p>
+<p>$send(1).secs &nbsp; &nbsp;returns the number seconds connection has been open</p>
+<p>$send(1).done &nbsp; &nbsp;returns $true if transfer was successful, $false otherwise</p>
+<p>$send(1).resume &nbsp; &nbsp; &nbsp; &nbsp;returns resume position if file was resumed</p>
+<p>&nbsp;</p>
+<p>If you specify a nick and N, it will return info on the Nth window for that nick.</p>
+<p>&nbsp;</p>
+<p><a name="id_$wid"></a><span class="f_Bolddefault">$wid</span></p>
+<p>Returns window id for current script.</p>
+
+</td></tr></table>
+
+</body>
+</html>

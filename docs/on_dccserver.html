@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on DCCSERVER</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on DCCSERVER" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on DCCSERVER</span></p>
+<p>&nbsp;</p>
+<p>This event triggers when someone tries to connect to your <a href="dcc.html">DCC Server</a>. The purpose of this event is to allow you to monitor connections and to prevent someone from connecting to your server by using /halt.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:DCCSERVER:&lt;Chat|Send|Fserve&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:DCCSERVER:Send:echo $nick $address wants to send you $filename</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:DCCSERVER:Chat:/echo $nick $address wants to chat with you!</p>
+<p>&nbsp;</p>
+<p>on 1:DCCSERVER:Send:if (.exe isin $filename) /halt</p>
+<p>&nbsp;</p>
+<p>The above event checks triggers when someone wants to send you a file, and if the file they are sending ends in .exe, it cancels the send by using the /halt command.</p>
+
+</td></tr></table>
+
+</body>
+</html>

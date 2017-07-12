@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on DNS</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$dns,on DNS" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on DNS</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on DNS</span> event triggers when a <a href="mirc_commands.html#CMD_dns">/dns</a> query either succeeds or fails.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:DNS:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:DNS:/notice $me Resolved: $raddress</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:DNS:{</p>
+<p> &nbsp;var %n = $dns(0)</p>
+<p> &nbsp;echo 4 Found %n addresses</p>
+<p> &nbsp;while (%n &gt; 0) {</p>
+<p> &nbsp; &nbsp;echo 4 dns: $dns(%n) nick: $dns(%n).nick addr: $dns(%n).addr ip: $dns(%n).ip</p>
+<p> &nbsp; &nbsp;dec %n</p>
+<p> &nbsp;}</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This event is also triggered if you try to /dns a nickname, and the nickname is not on IRC.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">The $dns(N) identifier</span></p>
+<p>This identifier can be used only in the on DNS event, and returns the address that was resolved and any associated IP addresses.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> nick, addr, ip</p>
+<p>&nbsp;</p>
+<p>$dns(N) without a property returns the address being resolved.</p>
+<p>&nbsp;</p>
+<p>You can use N = 0 to return the <span class="f_Bolddefault">number</span> of addresses found.</p>
+<p>&nbsp;</p>
+<p>You can use $dns(0).nick/addr/ip to reference properties if an address could not be resolved.</p>
+
+</td></tr></table>
+
+</body>
+</html>

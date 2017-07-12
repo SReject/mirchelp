@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on CHAT/SERV</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="$cd,=$nick,on CHAT,on SERV" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on CHAT/SERV</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on CHAT</span> and <span class="f_Bolddefault">on SERV</span> events trigger when a message is sent to a dcc chat or dcc fserve window.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:CHAT:&lt;matchtext&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:CHAT:*help*:/msg $nick what is the problem?</p>
+<p>&nbsp;</p>
+<p>For an explanation of <span class="f_Bolddefault">matchtext</span> see the <a href="on_text.html">on TEXT</a> event.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:CHAT:boo!:/msg =$nick Boo back at ya!</p>
+<p>&nbsp;</p>
+<p>This triggers when someone in a dcc chat window says boo! The equal sign in <span class="f_Bolddefault">=$nick</span> is required to send the reply as a dcc chat message. If no equal sign is used, the message is sent as a private irc server message.</p>
+<p>&nbsp;</p>
+<p>on 1:SERV:bye:/msg =$nick Thanks for using my fileserver, bye!</p>
+<p>&nbsp;</p>
+<p>This triggers when a user in a dcc fileserver session says the word bye to quit the fileserver. You can also refer to the <span class="f_Bolddefault">$cd</span> identifier to reference the current directory a fileserve is in.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> These events react to <span class="f_Bolddefault">all</span> users level 1 and above because of the way dcc chat works.</p>
+
+</td></tr></table>
+
+</body>
+</html>

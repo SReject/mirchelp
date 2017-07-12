@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Binary Files</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Binary files,Binary variables" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Binary Files</span></p>
+<p>&nbsp;</p>
+<p>mIRC allows you to read and write <span class="f_Bolddefault">binary files</span>, and to modify binary variables, by using the following commands and identifiers.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_bread"></a><span class="f_Bolddefault">/bread [-ta] &lt;filename&gt; &lt;S&gt; &lt;N&gt; &lt;&amp;binvar&gt;</span></p>
+<p>This reads N bytes starting at the Sth byte position in the file and stores the result in the binary variable &amp;binvar.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch reads data up to the next CR/LF.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch disables UTF-8 encoding of characters in the range 0-255, as long as the line contains no characters &gt; 255.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_bwrite"></a><span class="f_Bolddefault">/bwrite [-ta] &lt;filename&gt; &lt;S&gt; [N] &lt;text|%var|&amp;binvar&gt;</span></p>
+<p>This writes N bytes from the specified text, %var, or &amp;binvar, to the file starting a the Sth byte position. Any existing information at this position in the file is overwritten.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch interprets the data value as plain text and does not evaluate &amp;binvar variables.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch disables UTF-8 encoding of characters in the range 0-255, as long as the line contains no characters &gt; 255.</p>
+<p><span class="f_Highlight">&nbsp;</span></p>
+<p><span class="f_Highlight">Note:</span> If S is -1, the bytes are appended to the end of the file. If N is -1, all of the specified data is written to the file.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_bset"></a><span class="f_Bolddefault">/bset [-ta] &lt;&amp;binvar&gt; &lt;N&gt; &lt;asciivalue&gt; [asciivalue ... asciivalue]</span></p>
+<p>This sets the Nth byte in binary variable &amp;binvar to the specified ascii value.</p>
+<p>&nbsp;</p>
+<p>If you try to /bset a variable that does not exist, it is created and zero filled up to N bytes. If &amp;binvar exists and you specify an N position beyond its current size, it is extended to N bytes.</p>
+<p>&nbsp;</p>
+<p>If you specify <span class="f_Bolddefault">multiple</span> asciivalues, they are copied to successive positions after byte position N.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch indicates that /bset should treat the values as plain text and copy them directly into &amp;binvar.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-a</span> switch disables UTF-8 encoding of characters in the range 0-255, as long as the line contains no characters &gt; 255.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_bunset"></a><span class="f_Bolddefault">/bunset &lt;&amp;binvar&gt; [&amp;binvar ... &amp;binvar]</span></p>
+<p>This unsets the specified list of &amp;binvars.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_bcopy"></a><span class="f_Bolddefault">/bcopy [-zc] &lt;&amp;binvar&gt; &lt;N&gt; &lt;&amp;binvar&gt; &lt;S&gt; &lt;M&gt;</span></p>
+<p>This copies M bytes from position S in the second &amp;binvar to the first &amp;binvar at position N. This can also be used to copy overlapping parts of a &amp;binvar to itself.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-z</span> switch, the bytes in the second &amp;binvar that were copied are zero-filled after the copy.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-c</span> switch, the first &amp;binvar is chopped to length N + M.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If M is -1, all of the bytes from position S onwards are copied.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_breplace"></a><span class="f_Bolddefault">/breplace &lt;&amp;binvar&gt; &lt;oldvalue&gt; &lt;newvalue&gt; [oldvalue newvalue...]</span></p>
+<p>This replaces all matching ascii values in &amp;binvar with new values.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_btrunc"></a><span class="f_Bolddefault">/btrunc &lt;filename&gt; &lt;bytes&gt;</span></p>
+<p>This truncates/extends a file to the specified length.</p>
+<p>&nbsp;</p>
+<p><a name="id_bvar"></a><span class="f_Bolddefault">$bvar(&amp;binvar,N,M)</span></p>
+<p>Returns M ascii values starting from the Nth byte</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> text, word, nword, long, nlong</p>
+<p>&nbsp;</p>
+<p>$bvar(&amp;v,0) &nbsp; &nbsp; &nbsp; &nbsp;returns the length of the binary variable</p>
+<p>$bvar(&amp;v,1) &nbsp; &nbsp; &nbsp; &nbsp;returns ascii value at position N</p>
+<p>$bvar(&amp;v,5,3) &nbsp; &nbsp; &nbsp; &nbsp;returns ascii values from 5 to 8</p>
+<p>$bvar(&amp;v,5,3).text &nbsp; &nbsp; &nbsp; &nbsp;returns plain text from 5 to 8 up to the first zero character</p>
+<p>&nbsp;</p>
+<p>The word, nword, long, and nlong properties return values in host or network byte order.</p>
+<p>&nbsp;</p>
+<p><a name="id_bfind"></a><span class="f_Bolddefault">$bfind(&amp;binvar, N, M)</span></p>
+<p>Searches a &amp;binvar for a matching value, starting from position N. M can be a character value, ie. 0 to 255, or text. The search is case-insensitive.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> text</p>
+<p>&nbsp;</p>
+<p>$bfind(&amp;test, 1, mirc) &nbsp; &nbsp; &nbsp; &nbsp;finds &quot;mirc&quot; starting from pos 1</p>
+<p>$bfind(&amp;test, 5, 32) &nbsp; &nbsp; &nbsp; &nbsp;finds char 32 (a space) from pos 5</p>
+<p>$bfind(&amp;test, 1, 87 65 86) &nbsp; &nbsp; &nbsp; &nbsp;finds WAV from pos 1</p>
+<p>&nbsp;</p>
+<p>You can use $bfind().text to force a text search if the search text is a number.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Notes on &amp;binvar binary variables</span></p>
+<p>Binary variables have no size limit, limited only by available memory, and are automatically destroyed when a script finishes processing.</p>
+
+</td></tr></table>
+
+</body>
+</html>

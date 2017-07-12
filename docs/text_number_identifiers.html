@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Text and Number Identifiers</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Text and Number Identifiers" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Text and Number Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$abs"></a><span class="f_Bolddefault">$abs(N)</span></p>
+<p>Returns the absolute value of number N.</p>
+<p>&nbsp;</p>
+<p>$abs(5) &nbsp; returns 5</p>
+<p>$abs(-1) &nbsp;returns 1</p>
+<p>&nbsp;</p>
+<p><a name="id_$and"></a><span class="f_Bolddefault">$and(A,B)</span></p>
+<p>Returns A binary and B.</p>
+<p>&nbsp;</p>
+<p><a name="id_$asc"></a><span class="f_Bolddefault">$asc(C)</span></p>
+<p>Returns the ascii number of the character C.</p>
+<p>&nbsp;</p>
+<p>$asc(A) &nbsp;returns 65</p>
+<p>$asc(*) &nbsp; returns 42</p>
+<p>&nbsp;</p>
+<p><a name="id_$base"></a><span class="f_Bolddefault">$base(N,inbase,outbase,zeropad,precision)</span></p>
+<p>Converts number N from inbase to outbase. The last two parameters are optional.</p>
+<p>&nbsp;</p>
+<p>$base(15,10,16) &nbsp; &nbsp; &nbsp; &nbsp;returns F</p>
+<p>$base(1.5,10,16) &nbsp; &nbsp; &nbsp; &nbsp;returns 1.8</p>
+<p>$base(2,10,16,3) &nbsp; &nbsp; &nbsp; &nbsp;returns 002</p>
+<p>&nbsp;</p>
+<p><a name="id_$biton"></a><span class="f_Bolddefault">$biton(A,N)</span></p>
+<p>Returns the A value with the Nth bit turned on.</p>
+<p>&nbsp;</p>
+<p><a name="id_$bitoff"></a><span class="f_Bolddefault">$bitoff(A,N)</span></p>
+<p>Returns the A value with the Nth bit turned off.</p>
+<p>&nbsp;</p>
+<p><a name="id_$bytes"></a><span class="f_Bolddefault">$bytes(N,bkmgt3d)</span></p>
+<p>Returns comma formatted file-size.</p>
+<p>&nbsp;</p>
+<p>Properties: suf</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">bkmgt</span> options return the result as bytes, kilobytes, etc.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">.suf</span> property appends the b, k, M, G, T suffixes to the result.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">3</span> option returns a result in 3 digit format.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">d</span> option retains decimal point values.</p>
+<p>&nbsp;</p>
+<p><a name="id_$calc"></a><span class="f_Bolddefault">$calc(operations)</span></p>
+<p>Returns the result of the specified operations. This identifiers allows you to perform multiple operations easily. For example:</p>
+<p>&nbsp;</p>
+<p>$calc(3.14159 * (2 ^ %x % 3) - ($ticks / (10000 + 1)))</p>
+<p>&nbsp;</p>
+<p><a name="id_$ceil"></a><span class="f_Bolddefault">$ceil(N)</span></p>
+<p>Returns N rounded to the next highest integer.</p>
+<p>&nbsp;</p>
+<p><a name="id_$chr"></a><span class="f_Bolddefault">$chr(N)</span></p>
+<p>Returns the character with ascii number N.</p>
+<p>&nbsp;</p>
+<p>$chr(65) &nbsp;returns A</p>
+<p>$chr(42) &nbsp;returns *</p>
+<p>&nbsp;</p>
+<p><a name="id_$compress"></a><span class="f_Bolddefault">$compress(file|&amp;bvar, blN)</span></p>
+<p><span class="f_Bolddefault">$decompress(file|&amp;bvar)</span></p>
+<p>Compresses the specified file or binary variable. The result is raw compressed data.</p>
+<p>&nbsp;</p>
+<p>Where <span class="f_Bolddefault">b</span> indicates a binary variable in the first parameter, and <span class="f_Bolddefault">lN </span>sets a compression level of 1 to 6 (default is 6). Returns 1 for success, 0 for failure.</p>
+<p>&nbsp;</p>
+<p><a name="id_cos"></a><span class="f_Bolddefault">$cos(N), $cosh(N), $acos(N)</span></p>
+<p>Return the cosine, hyperbolic cosine, and arccosine of N.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> deg</p>
+<p>&nbsp;</p>
+<p><a name="id_$count"></a><span class="f_Bolddefault">$count(string,substring,substring2,...,substringN)</span></p>
+<p>Returns the number of times substring occurs in string.</p>
+<p>&nbsp;</p>
+<p>$count(hello,el) &nbsp;returns 1</p>
+<p>$count(hello,l) &nbsp; &nbsp;returns 2</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> $countcs() is the case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$encode"></a><span class="f_Bolddefault">$encode(%var | &amp;binvar, amubt, N)</span></p>
+<p><span class="f_Bolddefault">$decode(%var | &amp;binvar, amubt, N)</span></p>
+<p>Encode or decode text in %vars or &amp;binvars using Uuencode or Mime.</p>
+<p>&nbsp;</p>
+<p>The second parameter consists of switches, where a = base32, m = mime, u = uucode (default), b = &amp;binvar, and t = text (default).</p>
+<p>&nbsp;</p>
+<p>The final encoded line is made up of 60-character chunks. You can specify N if you want mIRC to return the Nth chunk. N = 0 returns the total number of chunks in the line.</p>
+<p>&nbsp;</p>
+<p>If encoding/decoding a &amp;binvar, the identifiers return the actual number of characters written to the &amp;binvar. Note that encoding uses 33% more storage space.</p>
+<p>&nbsp;</p>
+<p>The last two parameters are optional, default to uuencode, and N = 1.</p>
+<p>&nbsp;</p>
+<p><a name="id_$floor"></a><span class="f_Bolddefault">$floor(N)</span></p>
+<p>Returns N rounded to the next lowest integer.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_hypot"></a><span class="f_Bolddefault">$hypot(N,M)</span></p>
+<p>Returns the length of the hypotenuse.</p>
+<p>&nbsp;</p>
+<p><a name="id_$int"></a><span class="f_Bolddefault">$int(N)</span></p>
+<p>Returns the integer part of a floating point number with no rounding.</p>
+<p>&nbsp;</p>
+<p>$int(3.14159) &nbsp;returns 3</p>
+<p>&nbsp;</p>
+<p><a name="id_intersect"></a><span class="f_Bolddefault">$intersect(x1,y1,x2,y2,x3,y3,x4,y4,method)</span></p>
+<p>Returns the point at which two lines/rays intersect.</p>
+<p>&nbsp;</p>
+<p>The method parameter is optional. If not specified, two lines are compared. If specified, it can be lr, rl, rr = line/ray, ray/line, ray/ray.</p>
+<p>&nbsp;</p>
+<p><a name="id_$isbit"></a><span class="f_Bolddefault">$isbit(A,N)</span></p>
+<p>Returns 1 if the Nth bit in number A is turned on.</p>
+<p>&nbsp;</p>
+<p><a name="id_$islower"></a><span class="f_Bolddefault">$islower(text)</span></p>
+<p>Returns $true if text is all lower case.</p>
+<p>&nbsp;</p>
+<p><a name="id_$isupper"></a><span class="f_Bolddefault">$isupper(text)</span></p>
+<p>Returns $true if text is all upper case.</p>
+<p>&nbsp;</p>
+<p><a name="id_$left"></a><span class="f_Bolddefault">$left(text,N)</span></p>
+<p>Returns the N left characters of text.</p>
+<p>&nbsp;</p>
+<p>$left(goodbye,4) &nbsp;returns good</p>
+<p>&nbsp;</p>
+<p>If N is a negative value, it returns all but N characters.</p>
+<p>&nbsp;</p>
+<p><a name="id_$len"></a><span class="f_Bolddefault">$len(text)</span></p>
+<p>Returns the length of text.</p>
+<p>&nbsp;</p>
+<p>$len(#mIRC) &nbsp;returns 5</p>
+<p>&nbsp;</p>
+<p><a name="id_log"></a><span class="f_Bolddefault">$log(N), $log10(N)</span></p>
+<p>Returns the natural and common logarithms of N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$longip"></a><span class="f_Bolddefault">$longip(address)</span></p>
+<p>Converts an IP address into a long value and vice-versa.</p>
+<p>&nbsp;</p>
+<p>$longip(158.152.50.239) &nbsp;returns 2660774639</p>
+<p>$longip(2660774639) &nbsp; &nbsp; &nbsp; returns 158.152.50.239</p>
+<p>&nbsp;</p>
+<p><a name="id_$lower"></a><span class="f_Bolddefault">$lower(text)</span></p>
+<p>Returns text in lowercase.</p>
+<p>&nbsp;</p>
+<p>$lower(HELLO) &nbsp;returns hello</p>
+<p>&nbsp;</p>
+<p><a name="id_$mid"></a><span class="f_Bolddefault">$mid(text,S,N)</span></p>
+<p>Returns N characters starting at position S in text.</p>
+<p>&nbsp;</p>
+<p>$mid(othello,3,4) &nbsp;returns hell</p>
+<p>&nbsp;</p>
+<p>If N is zero, it returns the number of characters from S to the end of the line.</p>
+<p>&nbsp;</p>
+<p>You may also use negative numbers for S or N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$not"></a><span class="f_Bolddefault">$not(A)</span></p>
+<p>Returns the binary not value of A.</p>
+<p>&nbsp;</p>
+<p><a name="id_$or"></a><span class="f_Bolddefault">$or(A,B)</span></p>
+<p>Returns A binary or B.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ord"></a><span class="f_Bolddefault">$ord(N)</span></p>
+<p>Appends st, nd, rd, th as appropriate to the number N.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_pi"></a><span class="f_Bolddefault">$pi</span></p>
+<p>Returns the value of the mathematical constant pi to 20 decimal places.</p>
+<p>&nbsp;</p>
+<p><a name="id_$pos"></a><span class="f_Bolddefault">$pos(text,string,N)</span></p>
+<p>Returns a number indicating the position of the Nth occurrence of string in text.</p>
+<p>&nbsp;</p>
+<p>$pos(hello there,e,1) &nbsp;returns 2</p>
+<p>$pos(hello there,e,2) &nbsp;returns 9</p>
+<p>$pos(hello there,a,1) &nbsp;returns $null</p>
+<p>&nbsp;</p>
+<p>If N is zero, it returns the number of times string appears in text.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use $poscs() for a case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$qt"></a><span class="f_Bolddefault">$qt(text)</span></p>
+<p><span class="f_Bolddefault">$noqt(text)</span></p>
+<p>Add/remove outer enclosing quotes around text.</p>
+<p>&nbsp;</p>
+<p><a name="id_$rand"></a><span class="f_Bolddefault">$rand(v1,v2)</span></p>
+<p>This works in two ways. If you supply it with numbers for v1 and v2, it returns a random number between v1 and v2. If you supply it with letters, it returns a random letter between letters v1 and v2.</p>
+<p>&nbsp;</p>
+<p>$rand(a,z) &nbsp; returns a letter in the range a,b,c,...,z</p>
+<p>$rand(A,Z) &nbsp;returns a letter in the range A,B,C,...,Z</p>
+<p>$rand(0,N) &nbsp;returns a number in the range 0,1,2,...,N</p>
+<p>&nbsp;</p>
+<p><a name="id_$remove"></a><span class="f_Bolddefault">$remove(string,substring,...)</span></p>
+<p>Removes any occurrence of substring in string.</p>
+<p>&nbsp;</p>
+<p>$remove(abcdefg,cd) &nbsp;returns abefg</p>
+<p>&nbsp;</p>
+<p>You can also specify <span class="f_Bolddefault">multiple</span> remove parameters:</p>
+<p>&nbsp;</p>
+<p>$remove(abcdefg,a,c,e,g) &nbsp;returns bdf</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use $removecs() for a case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$replace"></a><span class="f_Bolddefault">$replace(string,substring,newstring,...)</span></p>
+<p>Replaces any occurrence of substring in string with newstring.</p>
+<p>&nbsp;</p>
+<p>$replace(abcdefg,cd,xyz) &nbsp;returns abxyzefg</p>
+<p>&nbsp;</p>
+<p>You can also specify <span class="f_Bolddefault">multiple</span> replace parameters:</p>
+<p>&nbsp;</p>
+<p>$replace(abcdefg,a,A,b,B,c,C,d,D) &nbsp;returns ABCDefg</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use $replacecs() for a case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$replacex"></a><span class="f_Bolddefault">$replacex(string,substring,newstring,...)</span></p>
+<p>Replaces any occurrence of substring in string with newstring except for replacements that have already been made.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use $replacexcs() for a case-sensitive version.</p>
+<p>&nbsp;</p>
+<p><a name="id_$right"></a><span class="f_Bolddefault">$right(text,N)</span></p>
+<p>Returns the N right characters of text.</p>
+<p>&nbsp;</p>
+<p>$right(othello,5) &nbsp;returns hello</p>
+<p>&nbsp;</p>
+<p>If N is a negative value, it returns all but N characters.</p>
+<p>&nbsp;</p>
+<p><a name="id_$round"></a><span class="f_Bolddefault">$round(N,D)</span></p>
+<p>Returns the specified floating point number rounded to the Dth decimal digit.</p>
+<p>&nbsp;</p>
+<p>$round(3.14159,2) &nbsp;returns 3.14</p>
+<p>&nbsp;</p>
+<p>The D parameter is optional.</p>
+<p>&nbsp;</p>
+<p><a name="id_$sin"></a><span class="f_Bolddefault">$sin(N), $sinh(N), $asin(N)</span></p>
+<p>Return the sine, hyperbolic sine, and arcsine of N.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> deg</p>
+<p>&nbsp;</p>
+<p><a name="id_$sqrt"></a><span class="f_Bolddefault">$sqrt(N)</span></p>
+<p>Returns the square root of N.</p>
+<p>&nbsp;</p>
+<p><a name="id_$str"></a><span class="f_Bolddefault">$str(text,N)</span></p>
+<p>Returns text repeated N times.</p>
+<p>&nbsp;</p>
+<p>$str(ho,3) &nbsp;returns hohoho</p>
+<p>&nbsp;</p>
+<p><a name="id_$strip"></a><span class="f_Bolddefault">$strip(text,burcmo)</span></p>
+<p>Returns text with all bold, underline, reverse, and color control codes stripped out.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">burcmo</span> parameter is optional, if used, it strips only the specified types of characters.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">m</span> applies the strip settings in the <a href="messages.html">Messages</a> dialog, and the <span class="f_Bolddefault">o</span> applies the &quot;only if...&quot; settings in the messages dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$stripped"></a><span class="f_Bolddefault">$stripped</span></p>
+<p>Returns the <span class="f_Bolddefault">number</span> of control codes that were stripped from an incoming message, if any. This can be used in any script event that triggers when a message is received from a user.</p>
+<p>&nbsp;</p>
+<p><a name="id_tan"></a><span class="f_Bolddefault">$tan(N), $tanh(N), $atan(N), $atan2(N,M)</span></p>
+<p>Return the tangent, hyperbolic tangent, and arctangent of N, and the arctangent of N/M.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> deg</p>
+<p>&nbsp;</p>
+<p><a name="id_$upper"></a><span class="f_Bolddefault">$upper(text)</span></p>
+<p>Returns text in uppercase.</p>
+<p>&nbsp;</p>
+<p>$upper(hello) &nbsp;returns HELLO</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_utfencode"></a><span class="f_Bolddefault">$utfencode/$utfdecode(text)</span></p>
+<p>Returns text UTF-8 encoded or decoded.</p>
+<p>&nbsp;</p>
+<p><a name="id_$wrap"></a><span class="f_Bolddefault">$wrap(text, font, size, width, [word,] N)</span></p>
+<p>Returns Nth line in text wrapped to the specified width in pixels.</p>
+<p>&nbsp;</p>
+<p>If the optional word parameter is 1, text is wrapped at whole words (which is the default).</p>
+<p>&nbsp;</p>
+<p>You can specify 0 for N to return the total number of wrapped lines.</p>
+<p>&nbsp;</p>
+<p><a name="id_$xor"></a><span class="f_Bolddefault">$xor(A,B)</span></p>
+<p>Returns A binary xor B.</p>
+
+</td></tr></table>
+
+</body>
+</html>

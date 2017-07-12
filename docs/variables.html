@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Variables</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Variables" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Variables</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Variables</span> are temporary storage areas to which you can assign <span class="f_Bolddefault">values</span> which you can use later in your scripts.</p>
+<p>&nbsp;</p>
+<p><a name="id_$null"></a>If a variable is referred to and it does not exist, it returns the value <span class="f_Bolddefault">$null</span>. The <span class="f_Bolddefault">$null</span> value can be used in comparisons in <a href="if_then_else.html">if-then-else</a> statements to control branching etc.</p>
+<p>&nbsp;</p>
+<p>The following <span class="f_Bolddefault">commands</span> allow you to create and set the values of variables.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_set"></a><span class="f_Bolddefault">/set [-snzelkuN] &lt;%var&gt; [value]</span></p>
+<p>This sets the value of %var to the specified value.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-uN</span> switch, %var is unset after N seconds, assuming it is not set again by another script. If you specify a zero for N, the variable is unset when the script finishes.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-k</span> switch keeps the current <span class="f_Bolddefault">-uN</span> setting for a variable.</p>
+<p>The <span class="f_Bolddefault">-n</span> switch makes it treat value as plain text.</p>
+<p>The <span class="f_Bolddefault">-z</span> switch decreases %var until it reaches zero and then unsets it.</p>
+<p>The <span class="f_Bolddefault">-e</span> switch unsets the variable when mIRC exits.</p>
+<p>The <span class="f_Bolddefault">-l</span> switch makes the variable a local variable.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_unset"></a><span class="f_Bolddefault">/unset [-s] &lt;%var&gt;</span></p>
+<p>This unsets and removes the specified variables from the variables list. If you specify a variable with <span class="f_Bolddefault">wildcard</span> characters then all matching variables will be removed.</p>
+<p>&nbsp;</p>
+<p>/unset %test*</p>
+<p>&nbsp;</p>
+<p>This will <span class="f_Bolddefault">remove</span> all variables beginning with the word %test.</p>
+<p>&nbsp;</p>
+<p>You can also set/unset dynamic variables using [] brackets:</p>
+<p>&nbsp;</p>
+<p>vartest &nbsp;{</p>
+<p> &nbsp;set %a [ $+ b ] 1</p>
+<p> &nbsp;set %a [ $+ c ] 2</p>
+<p> &nbsp;set %a [ $+ d ] 3</p>
+<p>&nbsp;</p>
+<p> &nbsp;echo ab = %ab</p>
+<p> &nbsp;echo ac = %ac</p>
+<p> &nbsp;echo ad = %ad</p>
+<p>&nbsp;</p>
+<p> &nbsp;unset %a [ $+ b ] %a [ $+ c ] %a [ $+ d ]</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><a name="cmd_unsetall"></a><span class="f_Bolddefault">/unsetall</span></p>
+<p>This unsets and removes all variables from the variables list.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_inc"></a><span class="f_Bolddefault">/inc [-cszeuN] &lt;%var&gt; [value]</span></p>
+<p>This increases the value of %var by value.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-uN</span> switch, %var is increased by the value <span class="f_Bolddefault">once</span> and then %var is unset N seconds later, assuming it is not set again by another script.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch increases %var once per second.</p>
+<p>The <span class="f_Bolddefault">-z</span> switch decreases %var until it reaches zero and then unsets it.</p>
+<p>The <span class="f_Bolddefault">-e</span> switch unsets the variable when mIRC exits.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_dec"></a><span class="f_Bolddefault">/dec [-cszeuN] &lt;%var&gt; [value]</span></p>
+<p>This decreases the value of %var by value.</p>
+<p>&nbsp;</p>
+<p>If you specify the <span class="f_Bolddefault">-uN</span> switch, %var is decreased by the value <span class="f_Bolddefault">once</span> and then %var is unset N seconds later, assuming it is not set again by another script.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch decreases %var once per second.</p>
+<p>The <span class="f_Bolddefault">-z</span> switch decreases %var until it reaches zero and then unsets it.</p>
+<p>The <span class="f_Bolddefault">-e</span> switch unsets the variable when mIRC exits.</p>
+<p>&nbsp;</p>
+<p>You can also use the <span class="f_Bolddefault">equal</span> sign to <span class="f_Bolddefault">assign</span> values to variables:</p>
+<p>&nbsp;</p>
+<p>%i = 5</p>
+<p>%xyzi = 3.14159</p>
+<p>%count = $1</p>
+<p>&nbsp;</p>
+<p><a name="varoperations"></a>And you can perform the following <span class="f_Bolddefault">operations</span> on variables when using the <span class="f_Bolddefault">equal</span> sign:</p>
+<p>&nbsp;</p>
+<p>%x = 5 + 1</p>
+<p>%x = 5 - %y</p>
+<p>%x = %x * 2</p>
+<p>%x = %z / $2</p>
+<p>%x = $1 % 3</p>
+<p>%x = 2 ^ %w</p>
+<p>&nbsp;</p>
+<p>You can only perform a <span class="f_Bolddefault">single</span> operation in an assignment at this time.</p>
+<p>&nbsp;</p>
+<p>You can also use the <span class="f_Bolddefault">$calc()</span> identifier which allows you to perform complex calculations.</p>
+<p>&nbsp;</p>
+<p>//echo 1 $calc(3.14159 * (2 ^ %x % 3) - ($ticks / (10000 + 1)))</p>
+<p>&nbsp;</p>
+<p>For <span class="f_Bolddefault">floating point</span> numbers you can also use the <span class="f_Bolddefault">$round(N,D)</span> and <span class="f_Bolddefault">$int(N)</span> identifiers to handle precision of the decimal digits. The number of decimals is currently limited to 5 digits.</p>
+<p>&nbsp;</p>
+<p><a name="localvariables"></a><span class="f_Subheading">Local Variables</span></p>
+<p>Local variables are variables that exist <span class="f_Bolddefault">only</span> for the <span class="f_Bolddefault">duration</span> of the script in which they are created and can <span class="f_Bolddefault">only</span> be accessed from <span class="f_Bolddefault">within</span> that script. They can be created with the /var command:</p>
+<p>&nbsp;</p>
+<p>/var %x</p>
+<p>&nbsp;</p>
+<p>This creates the local variable %x in the current routine and can only be referenced from inside this routine.</p>
+<p>&nbsp;</p>
+<p>/var %x = hello</p>
+<p>&nbsp;</p>
+<p>This creates a local variable %x and <span class="f_Bolddefault">assigns</span> it the value <span class="f_Bolddefault">hello</span>.</p>
+<p>&nbsp;</p>
+<p>You can create <span class="f_Bolddefault">multiple</span> local variables by separating them with commas:</p>
+<p>&nbsp;</p>
+<p>/var %x = hello, %y, %z = $me</p>
+<p>&nbsp;</p>
+<p>loop {</p>
+<p> &nbsp;var %x = 1</p>
+<p> &nbsp;:next</p>
+<p> &nbsp;echo item %x</p>
+<p> &nbsp;inc %x</p>
+<p> &nbsp;if (%x &lt; 10) goto next</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can use /var -s to make a variable show the result when a value is set, /var -g to set a global variable, and /var -n to make it treat a value as plain text.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$var"></a><span class="f_Bolddefault">$var(%var,N)</span></p>
+<p>Returns the Nth matching variable name.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> value, local, secs</p>
+<p>&nbsp;</p>
+<p>You can use a wildcard in the variable name.</p>
+<p>&nbsp;</p>
+<p>If N = 0, returns total number of matching variable names.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> This searches both local and global variables.</p>
+
+</td></tr></table>
+
+</body>
+</html>

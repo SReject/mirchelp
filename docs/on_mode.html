@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on MODE</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on MODE,on SERVERMODE" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on MODE</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on MODE</span> event triggers when a user changes a channel mode.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:MODE:&lt;#[,#]&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:MODE:#mIRC:/notice $me $nick changed $chan mode to $1-</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on SERVERMODE</span> event uses the same format, and triggers when an IRC Server changes a channel mode.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on @1:MODE:#:/notice $me $nick changed $chan mode to $1-</p>
+<p>&nbsp;</p>
+<p>This triggers when a user changes a mode on any channel where you have Ops (the @ sign specifies the Op requirement, see the <a href="access_levels.html">Access Levels</a> section for more info). The actual parameters of the mode change are stored in <span class="f_Bolddefault">$1-</span> which you would need to parse yourself to enforce a particular mode.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Note:</span> These events only trigger on <span class="f_Bolddefault">channel</span> mode changes not user mode changes such as ops, bans, etc.</p>
+
+</td></tr></table>
+
+</body>
+</html>

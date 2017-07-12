@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Picture Windows</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Picture windows" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Picture Windows</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">picture window</span> is a special type of <a href="custom_windows.html">custom window</a> that can display a combination of text, graphics, and pictures, and can trigger script events relating to mouse clicks and movements.</p>
+<p>&nbsp;</p>
+<p>Once you have opened a picture window using the <a href="custom_windows.html">/window</a> command, you can use the following commands and identifiers to draw and monitor activity in this window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Drawing commands</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawsize"></a><span class="f_Bolddefault">/drawsize @ &lt;w h&gt;</span></p>
+<p>Sets the minimum bitmap size for a picture window to the specified width and height, up to a maximum of 8192 x 8192 pixels.</p>
+<p>&nbsp;</p>
+<p>Normally, the maximum point that can be drawn to is based on the size of the visible window.</p>
+<p>&nbsp;</p>
+<p>If you make the window bigger, the bitmap is enlarged.</p>
+<p>&nbsp;</p>
+<p>If you make the window smaller, the bitmap is shrunk but only to the largest point that has already been drawn on it.</p>
+<p>&nbsp;</p>
+<p>The largest point can be reset with the /clear command.</p>
+<p>&nbsp;</p>
+<p>The /drawsize command allows you to set a minimum bitmap size.</p>
+<p><span class="f_Highlight">&nbsp;</span></p>
+<p><span class="f_Highlight">Note:</span> Bitmaps use a large amount of memory and can cause Windows to run out of memory if not used carefully. You should always use the smallest bitmap that you need.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawdot"></a><span class="f_Bolddefault">/drawdot -ihnr @ &lt;color&gt; &lt;size&gt; &lt;x y&gt; [&lt;x y&gt;...]</span></p>
+<p>Draws a dot using the specified color and size at the x,y co-ordinates. Multiple co-ordinates can be provided.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-i</span> switch draws in inverse mode.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-h</span> switch highlights the windows icon if it is minimized.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch prevents the display from being updated immediately. This allows you to make changes to the window in the background and then display the results only when you have finished. You can update the display by using any of the /draw commands with only the window name specified.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch indicates that the color is in RGB format. You can use $rgb(N,N,N) to create an RGB value.</p>
+<p>&nbsp;</p>
+<p>The whole window can be cleared by using the /clear command, eg. /clear @name. You can also specify the <span class="f_Bolddefault">-n</span> switch in /clear to delay the effect as described above.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawline"></a><span class="f_Bolddefault">/drawline -ihnr @ &lt;color&gt; &lt;size&gt; &lt;x y&gt; &lt;x y&gt; [&lt;x y&gt;...]</span></p>
+<p>Draws a line from the first &lt;x y&gt; co-ordinate to the second, if more co-ordinates are specified, the line is continued. The switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawrect"></a><span class="f_Bolddefault">/drawrect -ihnrfecd @ &lt;color&gt; &lt;size&gt; &lt;x y w h&gt; [&lt;x y w h&gt;...]</span></p>
+<p>Draws a rectangle at the specified co-ordinates of the specified width and height. If more co-ordinates are specified these are also drawn as separate rectangles.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-f</span> switch fills the rectangle with the current color.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-e</span> switch draws an Ellipse instead of a rectangle. You can draw a filled ellipse if you also specify the <span class="f_Bolddefault">-f</span> switch.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch draws a focus rectangle.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-d</span> switch draws a rounded rectangle, using the format /drawrect -d x y w h [w h], &nbsp;where <span class="f_Bolddefault">w</span> and <span class="f_Bolddefault">h</span> are the width and height of the ellipse used to draw the corners.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawfill"></a><span class="f_Bolddefault">/drawfill -ihnrs @ &lt;color&gt; &lt;color&gt; &lt;x y&gt; [filename] [&lt;x y&gt;...]</span></p>
+<p>Fills an area with the specified color starting at the specified co-ordinates.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switches indicates that the second color parameter is the color that should be filled (surface fill). If no <span class="f_Bolddefault">-s</span> is specified, the second color is the border color at which filling should stop (border fill).</p>
+<p>&nbsp;</p>
+<p>The optional <span class="f_Bolddefault">[filename]</span> specifies a bitmap .BMP file that is 8 by 8 pixels in size and is used as a fill pattern.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawtext"></a><span class="f_Bolddefault">/drawtext -hnrpboc @ &lt;color&gt; [color] [fontname fontsize] &lt;x y [w h]&gt; &lt;text&gt;</span></p>
+<p>Draws text at the specified co-ordinates.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-p</span> switch processes and interprets color/bold/etc. codes in the text.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch indicates that you have specified the second color parameter as the background color for the text.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-o</span> switch means the specified font should be in bold.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch means that you have specified the [w h] values as the rectangle in which text should be printed. Text will be clipped if it extends beyond this rectangle.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you use a negative number for the font size, it will match the size of fonts in the font dialog.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawsave"></a><span class="f_Bolddefault">/drawsave -bNqN @ &lt;filename&gt;</span></p>
+<p>This saves the background picture of the specified picture @window to a .bmp filename.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-bN</span> switch allows you to specify the bit depth of the saved file, which can be 1, 4, 8, 16, 24, or 32.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-qN</span> switch allows you to specify the quality of the jpeg file that is being saved, where N is between 1 and 100.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawscroll"></a><span class="f_Bolddefault">/drawscroll -hn @ &lt;x&gt; &lt;y&gt; &lt;x y w h&gt; [&lt;x&gt; &lt;y&gt; &lt;x y w h&gt;...]</span></p>
+<p>Scrolls the region inside the specified rectangle. The first &lt;x&gt; and &lt;y&gt; parameters represent the distance to scroll and can be positive or negative.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawcopy"></a><span class="f_Bolddefault">/drawcopy -ihmnt @ [color] &lt;x y w h&gt; @ &lt;x y [w h]&gt;</span></p>
+<p>Copies part of a picture to a different position in the same window or to another window. If the second [w h] parameters are specified, the picture is stretched/squeezed to fit.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch indicates that you have specified the [color] RGB value as a transparent color in the source bitmap.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-m</span> switch changes the stretch mode quality when the picture is resized.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawpic"></a><span class="f_Bolddefault">/drawpic -ihmnotsclgN @ [color] &lt;x y [w h]&gt; [x y w h] [N] &lt;filename&gt;</span></p>
+<p>Loads and draws a picture at the specified co-ordinates. The picture can be a graphics file, or an ico/exe/dll file.</p>
+<p>&nbsp;</p>
+<p>If the first [w h] are specified, it is stretched or squeezed to fit. The second [x y w h] rectangle specifies which portion of the loaded bitmap should be displayed ie. a bitmap could contain multiple pictures.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch indicates that you have specified the [color] RGB value as a transparent color in the specified bitmap.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-s</span> switch indicates that you have specified the first [w h] parameters (as explained above) to squeeze/stretch the bitmap.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch indicates that the bitmap should be <span class="f_Bolddefault">cached</span>. This greatly speeds up subsequent references to this bitmap. If you specify <span class="f_Bolddefault">-c</span> and the bitmap is already in the cache, it is loaded and used from the cache, otherwise it is reloaded from the file. You can clear the entire cache with /drawpic -c.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-l</span> switch tiles the picture.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-m</span> switch changes the stretch mode quality when the picture is resized.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-o</span> switch indicates that you have specified the [N] value before the filename represents the index of the icon in the file.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-gN</span> switch attempts to load the large icon in an icon file, if none exists, it loads the small icon. If N is specified, N = 0 loads the small icon, N = 1 loads the large icon, and N = 2 loads the actual icon.</p>
+<p>&nbsp;</p>
+<p>If you try to load and cache a bitmap and there are already 30 bitmaps in the cache, the bitmap with the lowest reference count is freed and replaced by the new bitmap.</p>
+<p>&nbsp;</p>
+<p>If you try to load a bitmap and there is not enough memory, mIRC repeatedly frees the least referenced bitmap and tries to load again.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawrot"></a><span class="f_Bolddefault">/drawrot -hmnbfc @ [color] &lt;angle&gt; [x y w h]</span></p>
+<p>Rotates an area of a bitmap by the specified angle.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-b</span> switch indicates that you have specified the background color value.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-f</span> switch fits the newly rotated bitmap into the original width/height.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-c</span> switch centers the rotated image if -f is not specified.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-m</span> switch changes the stretch mode quality when the picture is resized.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_drawreplace"></a><span class="f_Bolddefault">/drawreplace -nr @ &lt;color1&gt; &lt;color2&gt; [x y w h]</span></p>
+<p>Replaces color1 with color2 in the specified picture window.</p>
+<p>&nbsp;</p>
+<p>The remaining switches are the same as those in /drawdot.</p>
+<p>&nbsp;</p>
+<p><a name="menuprefix"></a><span class="f_Subheading">Events and Identifiers</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Mouse events</span> can be defined in a scripts <a href="popups.html">menu</a> definition, where they must be placed first above all other menu items:</p>
+<p>&nbsp;</p>
+<p>menu @test {</p>
+<p> &nbsp;mouse:/echo mouse moved at $mouse.x $mouse.y in $active $1</p>
+<p> &nbsp;sclick:/echo single click at $mouse.x $mouse.y</p>
+<p> &nbsp;dclick:/echo double click at $mouse.x $mouse.y</p>
+<p> &nbsp;uclick:/echo mouse released at $mouse.x $mouse.y</p>
+<p> &nbsp;rclick:/echo single right-click at $mouse.x $mouse.y in $active $1</p>
+<p> &nbsp;lbclick:/echo mouse selected $active $1</p>
+<p> &nbsp;leave:/echo mouse left $leftwin $leftwinwid $leftwincid</p>
+<p> &nbsp;drop:/echo drag and drop at $mouse.x $mouse.y</p>
+<p>}</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">mouse</span> event is triggered when you move a mouse inside a picture window. You can use the <span class="f_Bolddefault">$mouse</span> identifier (see below) for the x and y position of the mouse.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">sclick</span> event is triggered when you click once inside a picture window. It will also trigger if you double-click.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">dclick</span> event is triggered when you double-click inside a picture window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">uclick</span> event is triggered when a mouse button is released inside a picture window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">lbclick</span> event is triggered when an item is selected in a listbox, either with the mouse or the cursor keys.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">leave</span> event is triggered when the mouse is moved outside the borders of a custom window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">drop</span> event is triggered if you click and drag the mouse in a window and then let go of the button.</p>
+<p>&nbsp;</p>
+<p><a name="id_$mouse"></a><span class="f_Bolddefault">$mouse</span></p>
+<p>Returns the x, y position of the current mouse event, and whether the left mouse button, shift key, and/or control key are pressed.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> win, x, y, mx, my, cx, cy, dx, dy, key, lb</p>
+<p>&nbsp;</p>
+<p>The $mouse identifier can be used in the mouse/click events. For $mouse.key you can use the <span class="f_Bolddefault">&amp;</span> bitwise operator to check if the left button, shift key, and/or control key are pressed:</p>
+<p>&nbsp;</p>
+<p>if ($mouse.key &amp; 1) echo left button is pressed.</p>
+<p>if ($mouse.key &amp; 2) echo control key is pressed.</p>
+<p>if ($mouse.key &amp; 4) echo shift key is pressed.</p>
+<p>if ($mouse.key &amp; 8) echo alt key is pressed.</p>
+<p>if ($mouse.key &amp; 16) echo right mouse button is pressed.</p>
+<p>&nbsp;</p>
+<p>The following properties can also be used:</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">.win</span> property returns the name of the active window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">.x/.y</span>, <span class="f_Bolddefault">.mx/.my</span>, and <span class="f_Bolddefault">.dx/.dy</span> properties return the x and y position of the mouse relative to the active window, the main mIRC window, and the desktop respectively.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">.lb</span> property returns $true if a mouse event occurred over a listbox, or $false if it did not.</p>
+<p>&nbsp;</p>
+<p><a name="id_$click"></a><span class="f_Bolddefault">$click(@,N)</span></p>
+<p>This stores a history of x,y clicks for a window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> x, y</p>
+<p>&nbsp;</p>
+<p>You can use /clear -c @name to clear the history of clicks for a window. If you use $click() with no properties it returns x y.</p>
+<p>&nbsp;</p>
+<p><a name="id_$inellipse"></a><span class="f_Bolddefault">$inellipse(x,y,x,y,w,h)</span></p>
+<p>Returns $true if the point x y is inside the specified ellipse, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p><a name="id_$inrect"></a><span class="f_Bolddefault">$inrect(x,y,x,y,w,h)</span></p>
+<p>Returns $true if the point x y is inside the specified rectangle, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p><a name="id_$inroundrect"></a><span class="f_Bolddefault">$inroundrect(x,y,x,y,w,h,w,h)</span></p>
+<p>Returns $true if the point x y is inside the specified rounded rectangle, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p><a name="id_$inpoly"></a><span class="f_Bolddefault">$inpoly(x,y,a1,a2,b1,b2,...)</span></p>
+<p>Returns $true if the point x y is inside the polygon defined by the specified points, and $false if it is not.</p>
+<p>&nbsp;</p>
+<p><a name="id_$onpoly"></a><span class="f_Bolddefault">$onpoly(n1,n2,x,y,x,y,...)</span></p>
+<p>Returns $true if two polygons overlap. n1 is the number of points in the first polygon, n2 in the second polygon.</p>
+<p>&nbsp;</p>
+<p><a name="id_$rgb"></a><span class="f_Bolddefault">$rgb(N,N,N|N|name)</span></p>
+<p>Returns an RGB color value for use in /draw commands.</p>
+<p>&nbsp;</p>
+<p>If you use only <span class="f_Bolddefault">one</span> parameter and it is a number, it assumes it is an RGB color value and returns N,N,N.</p>
+<p>&nbsp;</p>
+<p>If it is not a number, it assumes it is one of these system color names: face, shadow, hilight, 3dlight, frame, and text, and returns an RGB color value.</p>
+<p>&nbsp;</p>
+<p><a name="id_$getdot"></a><span class="f_Bolddefault">$getdot(@,x,y)</span></p>
+<p>Returns the RGB color value of the dot at the specified position.</p>
+<p>&nbsp;</p>
+<p><a name="id_$height"></a><span class="f_Bolddefault">$height(text,font,size)</span></p>
+<p>Returns height of text in pixels for the specified font.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you use a negative number for the font size, it will match the size of fonts in the font dialog.</p>
+<p>&nbsp;</p>
+<p><a name="id_$window"></a><span class="f_Bolddefault">$window</span></p>
+<p>Returns the name of the window in the <span class="f_Bolddefault">leave</span> menu event which was just left.</p>
+<p>&nbsp;</p>
+<p><a name="id_$pic"></a><span class="f_Bolddefault">$pic(filename)</span></p>
+<p>Returns the size, width, and height of a bmp, jpg, or png file.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> size, width, height</p>
+<p>&nbsp;</p>
+<p><a name="id_$width"></a><span class="f_Bolddefault">$width(text,font,size,B,C)</span></p>
+<p>Returns width of text in pixels for the specified font.</p>
+<p>&nbsp;</p>
+<p>If <span class="f_Bolddefault">B</span> is non-zero, the font is bold, if <span class="f_Bolddefault">C</span> is non-zero, control codes are processed. Both B and C are optional.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you use a negative number for the font size, it will match the size of fonts in the font dialog.</p>
+
+</td></tr></table>
+
+</body>
+</html>

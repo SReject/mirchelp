@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>SendMessage</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="SendMessage" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">SendMessage</span></p>
+<p>&nbsp;</p>
+<p>mIRC supports <span class="f_Bolddefault">SendMessage </span>communication, which allows external applications to control mIRC or to request information from it. Note that it is also possible to communicate with mIRC by using <a href="dde.html">DDE</a>.</p>
+<p><span class="f_Subheading">&nbsp;</span></p>
+<p><span class="f_Subheading">Performing Commands</span></p>
+<p>The following call to SendMessage() makes mIRC <span class="f_Bolddefault">perform the commands</span> that you specify:</p>
+<p>&nbsp;</p>
+<p> &nbsp; SendMessage(mHwnd, WM_MCOMMAND, cMethod, cIndex)</p>
+<p>&nbsp;</p>
+<p> &nbsp; mHwnd - the handle of the main mIRC window, or the handle of a Channel, Query, etc. window.</p>
+<p>&nbsp;</p>
+<p> &nbsp; WM_MCOMMAND - which should be defined as WM_USER + 200</p>
+<p>&nbsp;</p>
+<p> &nbsp; cMethod - how mIRC should process the message, where:</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 = as if typed in editbox (default)</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 2 = as if typed in editbox, send as plain text</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 4 = use flood protection if turned on, can be or'd with 1 or 2</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8 = use unicode text</p>
+<p>&nbsp;</p>
+<p> &nbsp; cIndex - use a named mapped file, where lParam = N, the mapped filename is mIRCN.</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;If lParam is zero, the filename is mIRC.</p>
+<p>&nbsp;</p>
+<p> &nbsp; Returns - 1 if success, 0 if fail</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Evaluating Identifiers and Variables</span></p>
+<p>The following call to SendMessage() makes mIRC <span class="f_Bolddefault">evaluate the contents</span> of any line that you specify:</p>
+<p>&nbsp;</p>
+<p> &nbsp; SendMessage(mHwnd, WM_MEVALUATE, cMethod, cIndex)</p>
+<p>&nbsp;</p>
+<p> &nbsp; mHwnd - the handle of the main mIRC window, or the handle of a Channel, Query, etc. window.</p>
+<p>&nbsp;</p>
+<p> &nbsp; WM_MEVALUATE - should be defined as WM_USER + 201</p>
+<p>&nbsp;</p>
+<p> &nbsp; cMethod - how mIRC should process the message, where:</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8 = use unicode text</p>
+<p>&nbsp;</p>
+<p> &nbsp; cIndex - use a named mapped file, where lParam = N, the mapped filename is mIRCN.</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;If lParam is zero, the filename is mIRC.</p>
+<p>&nbsp;</p>
+<p> &nbsp; Returns - 1 if success, 0 if fail</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Mapped Files</span></p>
+<p>The application that sends these messages <span class="f_Bolddefault">must</span> create a <span class="f_Bolddefault">mapped file</span> named <span class="f_Bolddefault">mIRC</span> with <span class="f_Bolddefault">CreateFileMapping()</span>.</p>
+<p>&nbsp;</p>
+<p>The lParam (cIndex) parameter indicates the mapped file name that you have used, where lParam = N, the mapped filename is mIRCN. If lParam is zero, the filename is <span class="f_Bolddefault">mIRC</span>.</p>
+<p>&nbsp;</p>
+<p>When mIRC receives the above messages, it will open this file and use the data that this mapped file contains to perform the command or evaluation. In the case of an <span class="f_Bolddefault">evaluation</span>, mIRC will output the <span class="f_Bolddefault">results</span> to the mapped file.</p>
+<p>&nbsp;</p>
+<p>The mapped file must be at least <span class="f_Bolddefault">4096</span> bytes in length.</p>
+<p>&nbsp;</p>
+<p>To prevent simultaneous access to the mapped file, your code must check whether the mapped file exists or not before using it. If it exists, you should assume that it is in use by another program, and should try again later.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Remote Event Context</span></p>
+<p>If during a remote event, such as on TEXT, your script calls a DLL which then uses SendMessage() to execute a command or evaluate an identifier, you can tell SendMessage() to execute in the context of that remote event.</p>
+<p>&nbsp;</p>
+<p>During a remote event, a $eventid identifier is set to a unique value to identify the event. This can be passed to a DLL which can then pass it back to mIRC using:</p>
+<p>&nbsp;</p>
+<p> &nbsp; SendMessage(mHwnd, WM_MCOMMAND, MAKEWPARAM(cMethod, cEventId), cIndex)</p>
+<p>&nbsp;</p>
+<p>This will cause the command/evaluation to execute in the context of the remote event identified by cEventId. If cEventId is 0, this indicates a non-remote event.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Extended Version Information</span></p>
+<p>If cMethod is set to -1, you can set cIndex to -1 to receive the mIRC version number and to -2 to receive the cMethod options that are supported.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Extended Error Information</span></p>
+<p>If cMethod is or'd with the value 16, SendMessage() will return more specific error values.</p>
+<p>&nbsp;</p>
+<p>The return values are: 0 = success, 1 = failure.</p>
+<p>&nbsp;</p>
+<p>The 1 = failure error can be or'd with 2 = bad mapfile name, 4 = bad mapfile size, 8 = bad eventid, 16 = bad server, 32 = bad script, 64 = disabled (if disabled in the <a href="other.html">Other</a> dialog).</p>
+<p>&nbsp;</p>
+<p>If the error is just 1, this indicates that the command/identifier returned an error.</p>
+<p>&nbsp;</p>
+<p>The 16 and 32 errors indicate that the server/script associated with the eventid no longer exists.</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

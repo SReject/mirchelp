@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>on TEXT</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="on ACTION,on NOTICE,on TEXT" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">on TEXT</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on TEXT</span> event triggers when you receive private and/or channel messages.</p>
+<p>&nbsp;</p>
+<p>Format: &nbsp; &nbsp; &nbsp; &nbsp;on &lt;level&gt;:TEXT:&lt;matchtext&gt;:&lt;*&gt;&lt;?&gt;&lt;#[,#]&gt;:&lt;commands&gt;</p>
+<p>Example: &nbsp; &nbsp; &nbsp; &nbsp;on 1:TEXT:*help*:#mirc,#irchelp:/msg $nick what is the problem?</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">on ACTION</span> and <span class="f_Bolddefault">on NOTICE</span> events use exactly the same format as on TEXT, and trigger on an action and on a notice event respectively.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">match text</span> can be a <span class="f_Bolddefault">wildcard</span> string, where:</p>
+<p>&nbsp;</p>
+<p> &nbsp;* &nbsp; &nbsp; &nbsp; &nbsp;matches any text</p>
+<p> &nbsp;&amp; &nbsp; &nbsp; &nbsp; &nbsp;matches any word</p>
+<p> &nbsp;text &nbsp; &nbsp; &nbsp; &nbsp;matches if text contains only this word</p>
+<p> &nbsp;text* &nbsp; &nbsp; &nbsp; &nbsp;matches if text starts with this word</p>
+<p> &nbsp;*text &nbsp; &nbsp; &nbsp; &nbsp;matches if text ends with this word</p>
+<p> &nbsp;*text* &nbsp; &nbsp; &nbsp; &nbsp;matches if text contains this word anywhere</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">match text</span> can also be a regular expression. See the <span class="f_Bolddefault">$ prefix</span> section in <a href="access_levels.html">Access Levels</a>.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">location</span> where this event occurs can be specified using:</p>
+<p>&nbsp;</p>
+<p> &nbsp;? &nbsp; &nbsp; &nbsp; &nbsp;for any private message</p>
+<p> &nbsp;# &nbsp; &nbsp; &nbsp; &nbsp;for any channel message</p>
+<p> &nbsp;#mirc &nbsp; &nbsp; &nbsp; &nbsp;for any messages on channel #mirc</p>
+<p> &nbsp;* &nbsp; &nbsp; &nbsp; &nbsp;for any private or channel messages</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>on 1:TEXT:hello*:#:/msg $chan Welcome to $chan $nick!</p>
+<p>&nbsp;</p>
+<p>This listens on any channel for any line beginning with the word hello and welcomes the user who said it to the channel.</p>
+<p>&nbsp;</p>
+<p>on 1:TEXT:*cookie*:#food:/describe $chan gives $nick a cookie :)</p>
+<p>&nbsp;</p>
+<p>This listens on channel #food for any message containing the word cookie and gives the user who said it a cookie.</p>
+<p>&nbsp;</p>
+<p>on 1:ACTION:moo:#:/msg $chan Aha, I see we have a cow among us.</p>
+<p>&nbsp;</p>
+<p>This listens on any channel for an action that contains the word moo and responds accordingly.</p>
+<p>&nbsp;</p>
+<p>on 1:NOTICE:*:?:/msg $nick I am AFK, back in a moment!</p>
+<p>&nbsp;</p>
+<p>This listens for any private notice and responds with the message that you are away from the keyboard.</p>
+<p>&nbsp;</p>
+<p>For more flexibility, you can also use <a href="variables.html">Variables</a> in place of both the matchtext and the channel parameters.</p>
+<p>&nbsp;</p>
+<p>on 1:TEXT:%matchtext:%channel:/msg $nick You just said $1- on channel %channel</p>
+<p>&nbsp;</p>
+<p>The value of %matchtext will be matched against whatever text the user sends, and the value of %channel will be matched against the channel to which the message was sent.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You cannot test out these events by typing text to yourself. They can only be initiated by someone else saying something in a channel or in a private message.</p>
+
+</td></tr></table>
+
+</body>
+</html>

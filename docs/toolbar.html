@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Toolbar</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Toolbar" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Toolbar</span></p>
+<p>&nbsp;</p>
+<p><a name="cmd_toolbar"></a>The <span class="f_Bolddefault">/toolbar</span> command can be used to <span class="f_Bolddefault">modify</span> the mIRC toolbar. The command format is:</p>
+<p>&nbsp;</p>
+<p>/toolbar -aidmsxkNnNzNebwhyNurctplorf[sld] [N] &lt;name/N&gt; &lt;tooltip&gt; &lt;picfile|@&gt; [x y w h] [/alias] [popfile|@]</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Switches and Parameters</span></p>
+<p>&nbsp;</p>
+<p>-a = add button</p>
+<p>-i = insert button at position [N]</p>
+<p>-d = delete button at position [N] or &lt;name&gt;</p>
+<p>-m = move button &lt;name/N&gt; to position [N]</p>
+<p>&nbsp;</p>
+<p>-s = separator</p>
+<p>-x = wide button</p>
+<p>&nbsp;</p>
+<p>-kN = use when adding button to make it a check button</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; check/uncheck with N = 1 or N = 0</p>
+<p>&nbsp;</p>
+<p>-nN = icon index in picfile</p>
+<p>-zN = icon size, 1 = small, 2 = large, 3 = actual</p>
+<p>&nbsp;</p>
+<p>-eb = enable/disable button [N] or &lt;name&gt;</p>
+<p>-wh = show/hide button [N] or &lt;name&gt;</p>
+<p>&nbsp;</p>
+<p>-yN = set transparency (0 to 255) for button [N] or &lt;name&gt;</p>
+<p>&nbsp;</p>
+<p>-u = update display immediately</p>
+<p>-r = reset buttons</p>
+<p>-c = clear all buttons</p>
+<p>&nbsp;</p>
+<p>-f[sld] = load/save/delete settings in toolbar.ini file</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;toolbar.ini is automatically loaded on startup</p>
+<p>&nbsp;</p>
+<p>To update properties for an existing button:</p>
+<p>&nbsp;</p>
+<p>-t = tooltip</p>
+<p>-p = picfile</p>
+<p>-l = alias</p>
+<p>-o = popup</p>
+<p>&nbsp;</p>
+<p>name = unique name assigned to button/separator, it cannot be a number.</p>
+<p>&nbsp;</p>
+<p>tooltip = text displayed when the mouse hovers over button.</p>
+<p>&nbsp;</p>
+<p>picfile|@ = picture filename or picture @window, min 16x16, max 256x256 pixels.</p>
+<p>&nbsp;</p>
+<p>x y w h = position in bitmap and size of bitmap to use (not for use with icons).</p>
+<p>&nbsp;</p>
+<p>/alias = command performed when button pressed, where $!1 = button name.</p>
+<p>&nbsp;</p>
+<p>popupfile|@ = popup filename or @menu name.</p>
+<p>&nbsp;</p>
+<p>The tooltip, picfile, alias and popup can be enclosed in quotes if necessary. To clear an item, can use &quot;&quot; empty quotes.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Modifying some of the default mIRC buttons, such as Connect, Notify, etc. may not always work since they are managed by mIRC. They can however be deleted.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>/toolbar -a Cow &quot;Moo moo!&quot; cow.bmp &quot;/echo I am cow, hear my moo&quot; @cow</p>
+<p>&nbsp;</p>
+<p>The above command creates a button called &quot;Cow&quot; with the tooltip &quot;Moo moo!&quot; using the button picture cow.bmp. If the button is clicked, it will run the command &quot;/echo I am cow, hear my moo&quot;, and if right-clicked, it will popup the menu @cow.</p>
+<p>&nbsp;</p>
+<p>/toolbar -m 1 Cow</p>
+<p>&nbsp;</p>
+<p>The above command will move the button named &quot;Cow&quot; to position 1 in the toolbar.</p>
+<p>&nbsp;</p>
+<p>/toolbar -p Cow goat.bmp</p>
+<p>&nbsp;</p>
+<p>The above command will change the picture on the button named &quot;Cow&quot; to &quot;goat.bmp&quot;</p>
+<p>&nbsp;</p>
+<p>/toolbar -is 2 cowsep</p>
+<p>&nbsp;</p>
+<p>The above command will insert a separator named &quot;cowsep&quot; (every button and separator you add to the toolbar must have a name) at position 2.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Identifiers</span></p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><a name="id_$toolbar"></a><span class="f_Bolddefault">$toolbar(name/N)</span></p>
+<p>Returns properties for a toolbar button. If N = 0, returns number of buttons.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties</span>: name,type,tip,alias,popup,width,height,wide,enabled,visible,checked,alpha</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

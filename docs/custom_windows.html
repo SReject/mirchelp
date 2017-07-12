@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Custom Windows</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Custom Windows,/window,@windows" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Custom Windows</span></p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">/window</span> command, along with a few <span class="f_Bolddefault">other</span> related commands listed below, allows you to <span class="f_Bolddefault">create</span> and <span class="f_Bolddefault">manipulate</span> custom windows. Its format is:</p>
+<p>&nbsp;</p>
+<p>/window [-abBcCde[N]fg[N]hHij[N]k[N]l[N]mMn[N]oprRsSuvw[N]xz] [-tN,..,N] [+bdeflLmnstx] &lt;@name&gt; [x y [w h]] [/command] [popup.txt] [font [size]] [iconfile [N]]</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Switches and Parameters</span></p>
+<p>You can specify the following switches and parameters either when first creating a window or to manipulate an existing window.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">first</span> set of switches:</p>
+<p>&nbsp;</p>
+<p>a &nbsp; &nbsp; &nbsp; &nbsp;= activate window</p>
+<p>b &nbsp; &nbsp; &nbsp; &nbsp;= update horizontal scrollbar width for listbox</p>
+<p>B &nbsp; &nbsp; &nbsp; &nbsp;= prevent window from using an internal border</p>
+<p>c &nbsp; &nbsp; &nbsp; &nbsp;= close window</p>
+<p>C &nbsp; &nbsp; &nbsp; &nbsp;= center window when first created</p>
+<p>d &nbsp; &nbsp; &nbsp; &nbsp;= open as desktop window</p>
+<p>D &nbsp; &nbsp; &nbsp; &nbsp;= allows a window to be toggled between mdi and desktop</p>
+<p>e[N] &nbsp; &nbsp; &nbsp; &nbsp;= use editbox, where 0 = single, 1 = multi, 2 = auto, 3 = default</p>
+<p>f &nbsp; &nbsp; &nbsp; &nbsp;= indicates that w h are the required width and height of the text display area as opposed to the window size</p>
+<p>g[N] &nbsp; &nbsp; &nbsp; &nbsp;= sets/removes hilight for a window button, 0 = none, 1 = message color, 2 = hilight color</p>
+<p>h &nbsp; &nbsp; &nbsp; &nbsp;= hide window (window only appears in Window menu)</p>
+<p>H &nbsp; &nbsp; &nbsp; &nbsp;= enables auto-hide for a side-listbox</p>
+<p>i &nbsp; &nbsp; &nbsp; &nbsp;= dynamically associate with whatever happens to be the active connection</p>
+<p>j[N] &nbsp; &nbsp; &nbsp; &nbsp;= sets buffer size to N lines</p>
+<p>k[N] &nbsp; &nbsp; &nbsp; &nbsp;= hides the @ prefix in the window name, 0 = hide prefix, 1 = show prefix</p>
+<p>l[N] &nbsp; &nbsp; &nbsp; &nbsp;= listbox, if N is specified then a side-listbox N characters wide is created</p>
+<p>m &nbsp; &nbsp; &nbsp; &nbsp;= allow <a href="display_options.html">line marker</a> to be used in window</p>
+<p>M &nbsp; &nbsp; &nbsp; &nbsp;= chops text at tab stops.</p>
+<p>n[N] &nbsp; &nbsp; &nbsp; &nbsp;= minimize window, 2 = minimize without auto-expanding item in treebar</p>
+<p>o &nbsp; &nbsp; &nbsp; &nbsp;= if opened on desktop, place ontop</p>
+<p>p &nbsp; &nbsp; &nbsp; &nbsp;= creates a <a href="picture_windows.html">picture window</a></p>
+<p>r &nbsp; &nbsp; &nbsp; &nbsp;= restore window</p>
+<p>R &nbsp; &nbsp; &nbsp; &nbsp;= reset window position to previously saved position</p>
+<p>s &nbsp; &nbsp; &nbsp; &nbsp;= sort the main window, whether text or listbox</p>
+<p>S &nbsp; &nbsp; &nbsp; &nbsp;= sort the side-listbox</p>
+<p>u &nbsp; &nbsp; &nbsp; &nbsp;= remove ontop setting of a desktop window</p>
+<p>v &nbsp; &nbsp; &nbsp; &nbsp;= close window when associated status window is closed</p>
+<p>w[N] &nbsp; &nbsp; &nbsp; &nbsp;= where 0 = hide from switchbar/treebar, 1 = show in switchbar, 2 = show in treebar, 3 = show in both</p>
+<p>x &nbsp; &nbsp; &nbsp; &nbsp;= maximize window</p>
+<p>z &nbsp; &nbsp; &nbsp; &nbsp;= place window button at end of switchbar</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-t</span> switch used to set the <span class="f_Bolddefault">tab positions</span> in a listbox.</p>
+<p>&nbsp;</p>
+<p>t[N,...,N] &nbsp; &nbsp; &nbsp; &nbsp;= specifies the tab positions in a listbox, if text contains tabs it will be</p>
+<p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; spaced out according to these tab settings</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">third</span> set of switches is used to change the <span class="f_Bolddefault">appearance</span> of a window.</p>
+<p>&nbsp;</p>
+<p>b &nbsp; &nbsp; &nbsp; &nbsp;= border</p>
+<p>d &nbsp; &nbsp; &nbsp; &nbsp;= no border</p>
+<p>e &nbsp; &nbsp; &nbsp; &nbsp;= 3d edge</p>
+<p>f &nbsp; &nbsp; &nbsp; &nbsp;= dialog frame</p>
+<p>l &nbsp; &nbsp; &nbsp; &nbsp;= tool window</p>
+<p>L &nbsp; &nbsp; &nbsp; &nbsp;= tool window but window will not appear in taskbar</p>
+<p>n &nbsp; &nbsp; &nbsp; &nbsp;= minimize box</p>
+<p>s &nbsp; &nbsp; &nbsp; &nbsp;= sizable</p>
+<p>t &nbsp; &nbsp; &nbsp; &nbsp;= titlebar</p>
+<p>x &nbsp; &nbsp; &nbsp; &nbsp;= maximize box</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> Some switches may automatically turn others on/off.</p>
+<p>&nbsp;</p>
+<p>@name &nbsp; &nbsp; &nbsp; &nbsp;window name (must prefix with a @)</p>
+<p>x,y,w,h &nbsp; &nbsp; &nbsp; &nbsp;left top width height</p>
+<p>popup.txt &nbsp; &nbsp; &nbsp; &nbsp;popup filename, loaded when needed (must be a plain non-ini text file)</p>
+<p>/command &nbsp; &nbsp; &nbsp; &nbsp;default command (executed whenever you enter text in an editbox)</p>
+<p>font/size &nbsp; &nbsp; &nbsp; &nbsp;font name and size (defaults to status window font)</p>
+<p>iconfile/N &nbsp; &nbsp; &nbsp; &nbsp;sets the titlebar icon for a custom window</p>
+<p>&nbsp;</p>
+<p>If you want the custom window to use a <a href="popups.html">menu definition</a> in a remote script, you can specify the custom window's name as the popup filename instead of an actual popup.txt filename.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> If you specify -1 for any of the x,y,w,h values, a default value is used, unless the window exists in which case the current value is used.</p>
+<p>&nbsp;</p>
+<p><a name="linecommands"></a><span class="f_Subheading">Commands</span></p>
+<p>The following commands allow you to manipulate the <span class="f_Bolddefault">lines</span> in a custom window.</p>
+<p>&nbsp;</p>
+<p>/aline [c] &lt;@name&gt; &lt;text&gt; &nbsp; &nbsp; &nbsp; &nbsp;add line to list</p>
+<p>/cline [c] &lt;@name&gt; &lt;N&gt; &nbsp; &nbsp; &nbsp; &nbsp;changes the color of the Nth line to color C</p>
+<p>/dline [c] &lt;@name&gt; &lt;N[-N2]&gt; &nbsp; &nbsp; &nbsp; &nbsp;delete Nth line through N2th line</p>
+<p>/iline [c] &lt;@name&gt; &lt;N&gt; &lt;text&gt; &nbsp; &nbsp; &nbsp; &nbsp;insert line at Nth line</p>
+<p>/rline [c] &lt;@name&gt; &lt;N&gt; &lt;text&gt; &nbsp; &nbsp; &nbsp; &nbsp;replace Nth line</p>
+<p>/sline [c] &lt;@name&gt; &lt;N&gt; &nbsp; &nbsp; &nbsp; &nbsp;select Nth line</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">c</span> parameter specifies a color number for the line.</p>
+<p>The <span class="f_Bolddefault">-s</span> switch selects the line that was just added and clears the current selections.</p>
+<p>The <span class="f_Bolddefault">-a</span> switch selects a line without clearing the current selections.</p>
+<p>The <span class="f_Bolddefault">-h</span> switch highlights the window's button if it is currently minimized.</p>
+<p>The <span class="f_Bolddefault">-p</span> switch forces the line of text to be wrapped if it is too long to fit on one line.</p>
+<p>The <span class="f_Bolddefault">-r</span> switch is used with /cline to reset a nickname color in a channel listbox to the default color.</p>
+<p>The <span class="f_Bolddefault">-i</span> switch is used with /aline and /iline to indent a newly added line.</p>
+<p>The <span class="f_Bolddefault">-n</span> switch is used with /aline and /iline to prevent a line from being added if it exists.</p>
+<p>The <span class="f_Bolddefault">-m</span> switch is used with /cline when coloring nicknames in a channel nicklist, and makes mIRC also color the nick in channel messages.</p>
+<p>&nbsp;</p>
+<p>If you are referencing a window which uses a side-listbox, you can specify the <span class="f_Bolddefault">-l</span> switch in the above commands to act on the side-listbox.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_renwin"></a><span class="f_Bolddefault">/renwin &lt;@oldname&gt; &lt;@newname&gt; [topic]</span></p>
+<p>This allows you to change the name of an existing window to a different one, and an optional topic can be specified.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Identifiers</span></p>
+<p>The following identifiers return custom window information.</p>
+<p>&nbsp;</p>
+<p><a name="id_window"></a><span class="f_Bolddefault">$window(N/@name)</span></p>
+<p>Returns properties for a window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> x, y, w, h, dx, dy, dw, dh, bw, bh, mdi, title, state, font, fontsize, fontbold, fontitalic, fontcs, logfile, stamp, icon, ontop, type, anysc, wid, cid, hwnd, sbtext, sbcolor, sbstate, tbtext, tbstate, idle</p>
+<p>&nbsp;</p>
+<p>x,y,w,h &nbsp; &nbsp; &nbsp; &nbsp;return the left, top positions, and the width and height of the window respectively.</p>
+<p>dx,dy &nbsp; &nbsp; &nbsp; &nbsp;return the left, top positions of the window relative to the desktop.</p>
+<p>dw,dh &nbsp; &nbsp; &nbsp; &nbsp;return the width and height of the text display area.</p>
+<p>bw,bh &nbsp; &nbsp; &nbsp; &nbsp;return the width and height of the bitmap for a graphic window.</p>
+<p>mdi &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the window is mdi, otherwise returns $false</p>
+<p>title &nbsp; &nbsp; &nbsp; &nbsp;returns the text in the titlebar of the window</p>
+<p>state &nbsp; &nbsp; &nbsp; &nbsp;returns minimized/maximized/hidden/normal</p>
+<p>font &nbsp; &nbsp; &nbsp; &nbsp;returns the name of the current font</p>
+<p>fontsize &nbsp; &nbsp; &nbsp; &nbsp;returns the size of the current font</p>
+<p>fontbold &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the font is bold, otherwise returns $false</p>
+<p>fontitalic &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the font is italic, otherwise returns $false</p>
+<p>fontcs &nbsp; &nbsp; &nbsp; &nbsp;returns the character set of the current font</p>
+<p>logfile &nbsp; &nbsp; &nbsp; &nbsp;returns name of logfile if one is open for the window</p>
+<p>stamp &nbsp; &nbsp; &nbsp; &nbsp;returns timestamp setting</p>
+<p>icon &nbsp; &nbsp; &nbsp; &nbsp;returns on/off depending on whether icon is visible</p>
+<p>ontop &nbsp; &nbsp; &nbsp; &nbsp;returns ontop status for a window</p>
+<p>type &nbsp; &nbsp; &nbsp; &nbsp;returns window type</p>
+<p>anysc &nbsp; &nbsp; &nbsp; &nbsp;returns $true if the /window -i switch was specified</p>
+<p>wid  &nbsp; &nbsp; &nbsp; &nbsp;returns the window id</p>
+<p>cid &nbsp; &nbsp; &nbsp; &nbsp;returns the associated connection id</p>
+<p>hwnd &nbsp; &nbsp; &nbsp; &nbsp;returns the window handle</p>
+<p>sbtext &nbsp; &nbsp; &nbsp; &nbsp;returns the switchbar button text</p>
+<p>sbcolor &nbsp; &nbsp; &nbsp; &nbsp;returns the switchbar highlight color</p>
+<p>sbstate &nbsp; &nbsp; &nbsp; &nbsp;returns switchbar button state for a window</p>
+<p>tbtext &nbsp; &nbsp; &nbsp; &nbsp;returns the toolbar button text</p>
+<p>tbstate &nbsp; &nbsp; &nbsp; &nbsp;returns treebar button state for a window</p>
+<p>idle &nbsp; &nbsp; &nbsp; &nbsp;returns idle state</p>
+<p>&nbsp;</p>
+<p>You can also use the format <span class="f_Bolddefault">$window(@wildcard,N)</span> which returns the Nth window matching the wildcard window name.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can also get the .w and .h properties by specifying: -1 for the width and height of the screen, -2 for the main mIRC window, and -3 for the MDI window where all other windows inside mIRC are displayed.</p>
+<p>&nbsp;</p>
+<p><a name="id_line"></a><span class="f_Bolddefault">$line(@name,N,T)</span></p>
+<p>Returns the Nth line of text in the specified window. If N is zero, it returns the total number of lines in the window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> state, color</p>
+<p>&nbsp;</p>
+<p>$line(@name,1).state - returns selection state for a line in a listbox.</p>
+<p>&nbsp;</p>
+<p>If you are referencing a window which uses a side-listbox, you can set T to zero to reference the display area, or set T to one to reference the side-listbox.</p>
+<p>&nbsp;</p>
+<p><a name="id_fline"></a><span class="f_Bolddefault">$fline(@name,wildtext,N,T)</span></p>
+<p>Returns Nth position of line which matches the specified wildcard text. If T is 1, it references the listbox, 2 implies that wildtext is a regular expression, and 3 for both.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> text</p>
+<p>&nbsp;</p>
+<p><a name="id_sline"></a><span class="f_Bolddefault">$sline(@name,N)</span></p>
+<p>Returns the Nth selected line in a listbox (only works in listboxes). If N is zero, it returns the total number of selected lines in the window.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> ln</p>
+<p>&nbsp;</p>
+<p>$sline(@name,N).ln &nbsp; &nbsp; &nbsp; &nbsp;returns the <span class="f_Bolddefault">line number</span> of the Nth selected line</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>/window @test</p>
+<p>&nbsp;</p>
+<p>This would create a window named @test with all of the default settings.</p>
+<p>&nbsp;</p>
+<p>/window -els @clones 10 10 clones.txt</p>
+<p>&nbsp;</p>
+<p>This would create a window with a sorted listbox and an editbox, positioned near the top left of the mIRC window, and using the popup file clones.txt which would appear whenever you click the right mouse button in the listbox.</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> The popup text file must be plain text in a non-ini format using a non-ini extension.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Raw Events</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Numeric events,Raw events,RAW prefix,Server messages" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">Raw Events</span></p>
+<p>&nbsp;</p>
+<p>The raw event allows you to process numeric server messages that are identified only by a <span class="f_Bolddefault">number</span>, and non-numeric server messages which mIRC does not recognize internally.</p>
+<p>&nbsp;</p>
+<p>There are a large number of raw events, far too many to go into here, so it is recommended that you check out the <a href="http://www.mirc.com" target="_blank" class="weblink">mIRC website</a> for technical information. The document you are looking for is called <span class="f_Bolddefault">RFC1459</span>. There is also a numerics help file available which is more up-to-date than this document.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Filtering</span> and <span class="f_Bolddefault">handling</span> raw messages can be very <span class="f_Bolddefault">time-consuming</span> because of the large number of messages that a server can send, so you should try to make sure that your scripts process this information as quickly as possible. The format of the raw event definition is:</p>
+<p>&nbsp;</p>
+<p>raw &lt;numeric&gt;:&lt;matchtext&gt;:&lt;commands&gt;</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Examples</span></p>
+<p>&nbsp;</p>
+<p>The following script filters out the <span class="f_Bolddefault">channels list</span> numeric when you use the /list command.</p>
+<p>&nbsp;</p>
+<p>raw 322:*mirc*:/echo 5 raw $numeric : $1-</p>
+<p>&nbsp;</p>
+<p>The above script matches numeric 322 which is the channels /list numeric and if the line returned by this numeric has the word <span class="f_Bolddefault">mirc</span> in it, it is printed out in the status window.</p>
+<p>&nbsp;</p>
+<p>You can process <span class="f_Bolddefault">non-numeric</span> server messages by specifying the name of the event:</p>
+<p>&nbsp;</p>
+<p>raw PROP:*mirc*:/echo 5 raw $event : $1-</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Note:</span> You can prevent most raw server messages from printing out their default text by using the /halt command.</p>
+
+</td></tr></table>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>DCC Server Protocol</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="DCC Server Protocol" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">DCC Server Protocol</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Chat Protocol</span></p>
+<p>Client connects to Server and sends:</p>
+<p>100 clientnickname</p>
+<p>When Server receives this, it sends:</p>
+<p>101 servernickname</p>
+<p>Connection is established, users can now chat.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Fserve Protocol</span></p>
+<p>Client connects to Server and sends:</p>
+<p>110 clientnickname</p>
+<p>When Server receives this, it sends:</p>
+<p>111 servernickname</p>
+<p>Connection is established, user can now access fserve.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Send Protocol</span></p>
+<p>Client connects to Server and sends:</p>
+<p>120 clientnickname filesize filename</p>
+<p>When Server receives this, it sends:</p>
+<p>121 servernickname resumeposition</p>
+<p>Where resumeposition is between 0 and filesize, and is required.</p>
+<p>Connection is established, and Server dcc gets the file.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Get Protocol</span></p>
+<p>Client connects to Server and sends:</p>
+<p>130 clientnickname filename</p>
+<p>When Server receives this, it sends:</p>
+<p>131 servernickname filesize</p>
+<p>When Client receives this, it sends:</p>
+<p>132 clientnickname resumeposition</p>
+<p>Where resumeposition is between 0 and filesize, and is required.</p>
+<p>Connection is established, and Server dcc sends the file.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">Other</span></p>
+<p>If server receives unexpected information, or does not receive info 15 seconds after initial connection, it closes the connection.</p>
+<p>&nbsp;</p>
+<p>If service is unavailable, server sends:</p>
+<p>150 unavailable</p>
+<p>&nbsp;</p>
+<p>If server rejects connection, it sends:</p>
+<p>151 rejected</p>
+<p>&nbsp;</p>
+<p><span class="f_Highlight">Notes:</span></p>
+<p>The Get protocol has been implemented in this way mainly because I am assuming:</p>
+<p>&nbsp;</p>
+<p> &nbsp;1) The client may not be able to open a socket to listen for and accept a connection (firewall etc.)</p>
+<p>&nbsp;</p>
+<p> &nbsp;2) The DCC Server may only be able to listen for connections on port 59 (firewall etc.)</p>
+<p>&nbsp;</p>
+<p> &nbsp;3) Since the client was able to connect to the DCC Server the first time, it should have no problem connecting to the same port again.</p>
+<p>&nbsp;</p>
+<p>Currently the Get Protocol is <span class="f_Bolddefault">only</span> used by the Fileserver when a user who has connected to a Fileserver via the DCC Server requests a &quot;get filename&quot;. All other attempts to Get a file via the DCC Server are ignored.</p>
+
+</td></tr></table>
+
+</body>
+</html>

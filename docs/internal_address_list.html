@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <title>Internal Address List</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="IAL,Internal Address List" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+   <meta http-equiv="Content-Style-Type" content="text/css" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+</head>
+<body style="margin: 0px 0px 0px 0px; background: #FFFFFF;">
+
+
+
+<!-- Placeholder for topic body. -->
+<table width="100%" border="0" cellspacing="0" cellpadding="5"><tr valign="top"><td align="left">
+<p>&nbsp;</p>
+<p><span class="f_Heading1">The Internal Address List</span></p>
+<p>&nbsp;</p>
+<p>mIRC maintains an <span class="f_Bolddefault">internal address list</span> of all users who are currently on the same <span class="f_Bolddefault">channels</span> as you.</p>
+<p>&nbsp;</p>
+<p>The internal address list is used by the <a href="remote_commands.html">/guser</a>, <a href="remote_commands.html">/ruser</a>, <a href="mirc_commands.html">/ban</a>, <a href="control.html">/ignore</a>, and <a href="mirc_commands.html">/dns</a> commands to quickly find a user's address without resorting to a <span class="f_Bolddefault">/userhost</span> server lookup.</p>
+<p>&nbsp;</p>
+<p>A user's address is <span class="f_Bolddefault">added</span> to the list either when they join the channel, send a message to a channel, or make a mode change.</p>
+<p>&nbsp;</p>
+<p>A user's address is <span class="f_Bolddefault">removed</span> from the list when they are no longer on any of the channels which you are currently on.</p>
+<p>&nbsp;</p>
+<p>You can <span class="f_Bolddefault">fill the internal address list</span> by using <span class="f_Bolddefault">/who #channel</span> which will ask the server to send a list of the addresses of all nicknames on a channel. However, be aware that on large channels this can lead to your connection being closed by the server due to flooding.</p>
+<p>&nbsp;</p>
+<p>The reason why only addresses for users on the <span class="f_Bolddefault">same channels</span> as you are stored is because this guarantees the <span class="f_Bolddefault">integrity</span> of the list. ie. that a specific nickname is associated with a specific address.</p>
+<p>&nbsp;</p>
+<p><a name="cmd_ial"></a><span class="f_Subheading">IAL Commands</span></p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/ial [on | off]</span></p>
+<p>Turns IAL on or off. Note that this setting is not persistent across sessions and resets to <span class="f_Bolddefault">on</span> every time mIRC is run.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">/ialclear [nick]</span></p>
+<p>Clears the IAL, or if a nickname is specified, clears that nickname's IAL entry.</p>
+<p>&nbsp;</p>
+<p class="p_Bolddefault"><span class="f_Bolddefault">/ialmark -nrw &lt;nick&gt; [name] [text]</span></p>
+<p>Adds marks, in the form of text, to the IAL entry for a nickname.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-n</span> switch sets the name of the mark. If -n is not used, the default name 'default' is used.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-r</span> switch removes the mark.</p>
+<p>&nbsp;</p>
+<p>The <span class="f_Bolddefault">-w</span> switch is used with -rn to treat name as a wildcard.</p>
+<p>&nbsp;</p>
+<p><span class="f_Subheading">IAL Identifiers</span></p>
+<p>&nbsp;</p>
+<p><a name="id_$ial"></a><span class="f_Bolddefault">$ial</span></p>
+<p>Returns $true or $false depending on whether the IAL is on or off.</p>
+<p><span class="f_Bolddefault">&nbsp;</span></p>
+<p><span class="f_Bolddefault">$ial(nick/mask,N)</span></p>
+<p>Returns the Nth address matching nick or mask in the Internal Address List.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> nick, user, host, addr, mark, account, away, gecos, id</p>
+<p>&nbsp;</p>
+<p>$ial(*!*@*.com,0) &nbsp; &nbsp; &nbsp; &nbsp;returns the total number of addresses in the IAL matching *!*@*.com</p>
+<p>$ial(*!*@*.com,3) &nbsp; &nbsp; &nbsp; &nbsp;returns the 3rd address in the IAL matching *!*@*.com</p>
+<p>$ial(*!*@*.com,4).nick &nbsp; &nbsp; &nbsp; &nbsp;returns the nick of the 4th matching address ending in .com</p>
+<p>$ial(*!*@*.com,4).user &nbsp; &nbsp; &nbsp; &nbsp;returns the userid of the 4th matching address ending in .com</p>
+<p>&nbsp;</p>
+<p>To scan each address in the IAL you can use $ial(*,N).</p>
+<p>&nbsp;</p>
+<p>The N parameter is optional, defaults to 1 if not specified.</p>
+<p>&nbsp;</p>
+<p><a name="id_$ialchan"></a><span class="f_Bolddefault">$ialchan(nick/mask,#,N)</span></p>
+<p>Returns the Nth address on the specified channel matching nick or mask in the Internal Address List.</p>
+<p>&nbsp;</p>
+<p>This works the same way as the $ial() identifier.</p>
+<p>&nbsp;</p>
+<p><a name="id_ialmark"></a><span class="f_Bolddefault">$ialmark(nick,N/name)</span></p>
+<p>Returns the marks added by the /ialmark command.</p>
+<p>&nbsp;</p>
+<p><span class="f_Bolddefault">Properties:</span> name, mark</p>
+
+</td></tr></table>
+
+</body>
+</html>
